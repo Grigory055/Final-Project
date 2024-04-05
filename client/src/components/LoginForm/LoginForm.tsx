@@ -7,7 +7,7 @@ import { fetchUserLogin } from "../../redux/thunkActions";
 
 export function LoginForm() {
   const navigate = useNavigate();
-  const isLogin = useAppSelector((store) => store.isLogin);
+  const isLogin = useAppSelector((store) => store.persistedReducer.isLogin);
 
   const [inputs, setInputs] = useState<ILoginPassword>({ login: '', password: '' })
 

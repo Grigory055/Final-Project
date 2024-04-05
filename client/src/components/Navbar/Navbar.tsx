@@ -7,6 +7,7 @@ import { fetchUserLogout } from "../../redux/thunkActions";
 export function Navbar() {
   const navigate = useNavigate();
   const isLogin = useAppSelector((store) => store.persistedReducer.isLogin);
+  const login = useAppSelector((store) => store.persistedReducer.login);
 
   const dispatch = useAppDispatch();
 
@@ -28,7 +29,7 @@ export function Navbar() {
           <Stack direction="row" spacing={2}>
             {isLogin ? (<Link component={ReactRouterLink} to="/menu" lineHeight={2.5}>Главное меню</Link>) : (<></>)}
             {isLogin ? ( <Link onClick={logoutHandler} lineHeight={2.5}>Выйти</Link>) :  (<Link component={ReactRouterLink} to="/login" lineHeight={2.5}>Войти</Link>)}
-            {isLogin ? (<Typography variant="body1" lineHeight={2.5}>johndoe</Typography>) : (<Typography variant="body1" lineHeight={2.5}>Гость</Typography>)}
+            {isLogin ? (<Typography variant="body1" lineHeight={2.5}>{login}</Typography>) : (<Typography variant="body1" lineHeight={2.5}>Гость</Typography>)}
             <Avatar alt="user" src="images/avatar.jpg" />
           </Stack>
         </Box>

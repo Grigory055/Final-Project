@@ -1,6 +1,7 @@
 import { Box, Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormGroup, Grid, TextField, Typography } from "@mui/material"
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { Link as ReactRouterLink  } from "react-router-dom";
 import { fetchTopics } from "../../redux/thunkActions";
 
 export function Game() {
@@ -72,7 +73,7 @@ export function Game() {
       </Grid>
 
       <Box mt={5}>
-        <Button variant="contained" id="playBtn" size="large">Завершить игру</Button>
+        <Button variant="contained" component={ReactRouterLink} to="/menu" id="playBtn" size="large">Завершить игру</Button>
       </Box>
 
       <Dialog
