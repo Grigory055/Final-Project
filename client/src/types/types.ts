@@ -25,4 +25,12 @@ interface IGameStat {
   updatedAt: string,
 }
 
-export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat }
+interface ICard {
+  questions: string,
+  answer: string,
+  image: string,
+  value: number,
+  topic_id: number,
+}
+
+export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard }

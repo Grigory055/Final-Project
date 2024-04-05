@@ -14,6 +14,15 @@ export const fetchStats = createAsyncThunk('stats/user', async () => {
   }
 });
 
+export const fetchTopics = createAsyncThunk('topics/all', async () => {
+  try {
+    const response = await axios.get('http://localhost:3000/api/topics');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // export const fetchAddTodo = createAsyncThunk(
 //   'todos/add',
 //   async (title: string) => {

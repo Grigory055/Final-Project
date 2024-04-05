@@ -1,10 +1,24 @@
 import { Box, Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormGroup, Grid, TextField, Typography } from "@mui/material"
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { fetchTopics } from "../../redux/thunkActions";
 
 export function Game() {
   const [open, setOpen] = React.useState(false);
+  const [card, setCard] = React.useState({ questions: '', answer: '' });
+  const [input, setInput] = React.useState<string>('')
 
-  const handleClickOpen = () => {
+  const topics = useAppSelector((store) => store.persistedReducer.topics);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    void dispatch(fetchTopics());
+  }, [dispatch]);
+
+  const handleClickOpen = (id) => {
+    setInput(() => '')
+    const currentCard = topics.find((el) => el.id === id);
+    setCard({ questions: currentCard.questions, answer: currentCard.questions })
     setOpen(true);
   };
 
@@ -12,46 +26,32 @@ export function Game() {
     setOpen(false);
   };
 
+  const inputHandler = (e : React.ChangeEvent<HTMLInputElement>) => {
+    setInput(() => (e.target.value ))
+  }
+
+  const submitHandler = async (e: React.FormEvent): Promise<void> => {
+    e.preventDefault()
+    console.log(input);
+    
+  };
+
+  // console.log(topics);
+  
+
   return (
     <>
       <Grid container spacing={1} rowSpacing={1} justifyContent="center" columns={7}>
         <Grid item xs={2}>
           <Card><CardContent>Эльбрус</CardContent></Card>
         </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>200</CardContent></Card>
-        </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>400</CardContent></Card>
-        </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>600</CardContent></Card>
-        </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>800</CardContent></Card>
-        </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>1000</CardContent></Card> 
-        </Grid>
+        {topics && topics.filter((el) => el.topic_id === 1).map((el) => <Grid key={el.id} item xs={1}><Card onClick={() => handleClickOpen(el.id)}><CardContent>{el.value}</CardContent></Card></Grid>)}
         <Grid item xs={2}>
           <Card><CardContent>Барсы</CardContent></Card>
         </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>200</CardContent></Card>
-        </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>400</CardContent></Card>
-        </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>600</CardContent></Card>
-        </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>800</CardContent></Card>
-        </Grid>
-        <Grid item xs={1}>
-          <Card onClick={handleClickOpen}><CardContent>1000</CardContent></Card> 
-        </Grid>
+        
       </Grid>
+
       <Box mt={5}>
         <Button variant="contained" id="playBtn" size="large">Завершить игру</Button>
       </Box>
@@ -61,23 +61,17 @@ export function Game() {
         onClose={handleClose}
         PaperProps={{
           component: 'form',
-          onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries((formData as any).entries());
-            const email = formJson.email;
-            console.log(email);
-            handleClose();
-          },
+          onSubmit: submitHandler,
         }}
         disableRestoreFocus
       >
         <DialogTitle textAlign="center">00:10</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Кто металлический едет на концерт кураги орать песни и преисполняться?
+            {card.questions}
           </DialogContentText>
           <TextField
+            onChange={inputHandler}
             autoFocus
             required
             margin="dense"
@@ -87,6 +81,7 @@ export function Game() {
             type="text"
             fullWidth
             variant="standard"
+            value={input}
           />
         </DialogContent>
         <DialogActions>

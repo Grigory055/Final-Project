@@ -5,16 +5,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const topics = await Topic.findAll({
-      raw: true,
-      include: [
-        {
-          model: Card,
-          attributes: ['questions', 'answer', 'value', 'image'],
-          raw: true,
-        },
-      ],
-    });
+    const topics = await Card.findAll({ raw: true });
     console.log(topics);
     res.json(topics);
   } catch (error) {
