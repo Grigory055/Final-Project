@@ -69,3 +69,10 @@ html, body, #root {
 #btnAvtorization{
   background-color: black;
 }
+
+.mainInfoText{
+  font-weight: bold;
+  color: silver;
+  text-align: center;
+  -webkit-text-stroke: 1px black;
+}
