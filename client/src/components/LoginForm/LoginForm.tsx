@@ -1,13 +1,37 @@
-import { Button, Box, TextField, Typography, Link } from "@mui/material";
+import { Button, Box, TextField, Typography, Link, FormControl } from "@mui/material";
+import { useState } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { ILoginPassword } from "../../types/types";
+import { useAppDispatch } from "../../redux/hooks";
+import { fetchUserLogin } from "../../redux/thunkActions";
 
 export function LoginForm() {
+  const [inputs, setInputs] = useState<ILoginPassword>({ login: '', password: '' })
+
+  const dispatch = useAppDispatch();
+
+  const inputHandler = (e : React.ChangeEvent<HTMLInputElement>) => {
+    setInputs((pre) => ({ ...pre, [e.target.name]: e.target.value }))
+  }
+
+  const submitHandler = async (e: React.FormEvent): Promise<void> => {
+      e.preventDefault()
+      if (inputs) {
+        void dispatch(fetchUserLogin(inputs));
+        setInputs({ login: '', password: '' });
+      }
+    };
+
   return (
     <Box display="flex" flexDirection="column" gap={2}>
       <Typography variant="h4" textAlign="center">Авторизация</Typography>
-      <TextField name="username" label="Имя пользователя" type="text" required />
-      <TextField name="password" label="Пароль" type="password" required />
-      <Button variant="contained" type="submit" size="large">Войти</Button>
+      <form onSubmit={submitHandler}>
+        <Box display="flex" flexDirection="column" gap={2}>
+          <TextField onChange={inputHandler} value={inputs.login} name="login" label="Имя пользователя" type="text" required />
+          <TextField onChange={inputHandler} value={inputs.password} name="password" label="Пароль" type="password" required />
+          <Button variant="contained" type="submit" size="large">Войти</Button>
+        </Box>
+      </form>
       <Typography variant="body1" textAlign="center">Впервые здесь? <Link component={ReactRouterLink} to="/register">Зарегистрироваться</Link></Typography>
     </Box>
   )
