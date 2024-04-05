@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   Card.init({
     questions: DataTypes.STRING,
     answer: DataTypes.STRING,
+    image: DataTypes.STRING,
     value: DataTypes.INTEGER,
     topic_id: DataTypes.INTEGER,
   }, {

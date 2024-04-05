@@ -22,6 +22,7 @@ module.exports = {
       },
       topic_id: {
         type: Sequelize.INTEGER,
+        onDelete: 'cascade',
         references: {
           model: {
             tableName: 'Topics',
