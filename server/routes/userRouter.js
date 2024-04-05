@@ -28,9 +28,9 @@ userRouter.post('/registration', async (req, res) => {
 
 userRouter.post('/login', async (req, res) => {
   console.log(req.body, 'req.body');
-  const { email, password } = req.body;
+  const { login, password } = req.body;
   try {
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { login } });
     if (!user) {
       res.sendStatus(400);
     } else {
