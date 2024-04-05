@@ -1,21 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { AxiosResponse } from 'axios';
-import { ILoginEmailPassword, ILoginPassword, IUser } from '../types/types';
+import { IGameStat, ILoginEmailPassword, ILoginPassword, IUser } from '../types/types';
 
 
 
-// export const fetchTodos = createAsyncThunk('todos/all', async () => {
-//   // 'posts/all' = это не URL
-//   try {
-//     const response = await axios.get<ITask[]>(
-//       'http://localhost:3000/api/todos'
-//     ); // URL ТУТ
-//     return response.data; //* это payload
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+export const fetchStats = createAsyncThunk('stats/user', async () => {
+  try {
+    const response = await axios.get<IGameStat[]>('http://localhost:3000/api/games/stats');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // export const fetchAddTodo = createAsyncThunk(
 //   'todos/add',

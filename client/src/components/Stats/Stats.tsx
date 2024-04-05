@@ -1,20 +1,30 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useEffect } from "react";
+import { fetchStats } from "../../redux/thunkActions";
 
 export function Stats() {
 
-  function createData(
-    name: string,
-    date: string,
-    score: number,
-  ) {
-    return { name, date, score };
-  }
+  const stats = useAppSelector((store) => store.statSlice.stats);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    void dispatch(fetchStats());
+  }, [dispatch]);
+
+  // function createData(
+  //   name: string,
+  //   date: string,
+  //   score: number,
+  // ) {
+  //   return { name, date, score };
+  // }
   
-  const rows = [
-    createData('johndoe', '23 мая 2024', 6000),
-    createData('dmvoronkov', '24 декабря 2024', 9000),
-    createData('eclair', '12 января 2024', 16000)
-  ];
+  // const rows = [
+  //   createData('johndoe', '23 мая 2024', 6000),
+  //   createData('dmvoronkov', '24 декабря 2024', 9000),
+  //   createData('eclair', '12 января 2024', 16000)
+  // ];
 
   return (
     <TableContainer component={Paper}>
@@ -27,16 +37,16 @@ export function Stats() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {stats.map((game) => (
             <TableRow
-              key={row.name}
+              key={game.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {game['User.login']}
               </TableCell>
-              <TableCell align="right">{row.date}</TableCell>
-              <TableCell align="right">{row.score}</TableCell>
+              <TableCell align="right">{game.createdAt}</TableCell>
+              <TableCell align="right">{game.score}</TableCell>
             </TableRow>
           ))}
         </TableBody>

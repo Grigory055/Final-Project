@@ -16,4 +16,13 @@ interface ILoginEmailPassword {
   password: string;
 }
 
-export type { IUser, ILoginPassword, ILoginEmailPassword }
+interface IGameStat {
+  id: number,
+  score: number,
+  user_id: number,
+  'User.login': string,
+  createdAt: string,
+  updatedAt: string,
+}
+
+export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat }

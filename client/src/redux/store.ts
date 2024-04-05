@@ -1,6 +1,7 @@
 import { ConfigureStoreOptions, configureStore } from '@reduxjs/toolkit';
 // import todoSlice, { TodoSliceState } from './todoSlice';
 import userSlice, { UserSliceState } from './userSlice';
+import statSlice, { StatSliceState } from './statSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -13,8 +14,9 @@ import {
   REGISTER,
 } from 'redux-persist'
 
+
 // type StoreType = {
-//   // todoSlice: TodoSliceState;
+//   statSlice: StatSliceState;
 //   userSlice: UserSliceState
 // };
 
@@ -26,11 +28,10 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, userSlice)
 
 const storeOptions = {
-  // reducer: {
-  //   todoSlice,
-  //   persistedReducer
-  // },
-  reducer: persistedReducer,
+  reducer: {
+    statSlice,
+    persistedReducer
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

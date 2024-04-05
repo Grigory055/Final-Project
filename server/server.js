@@ -7,8 +7,6 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 const apiRouter = require('./routes/apiRouter');
-const gameRouter = require('./routes/gameRouter');
-const topicRouter = require('./routes/topicRouter');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -38,7 +36,5 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', apiRouter);
-app.use('/api/stat', gameRouter);
-app.use('/api/topic', topicRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
