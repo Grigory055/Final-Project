@@ -13,7 +13,7 @@ userRouter.post('/registration', async (req, res) => {
 
     const clearedUser = {
       id: user.id,
-      name: user.login,
+      login: user.login,
       email: user.email,
     };
 
@@ -40,7 +40,7 @@ userRouter.post('/login', async (req, res) => {
       } if (passwordCompare) {
         const clearedUser = {
           id: user.id,
-          name: user.login,
+          login: user.login,
           email: user.email,
         };
         req.session.user = clearedUser;
