@@ -53,7 +53,7 @@ export function Game() {
         </Grid>
       </Grid>
       <Box mt={5}>
-        <Button variant="contained" size="large">Завершить игру</Button>
+        <Button variant="contained" id="playBtn" size="large">Завершить игру</Button>
       </Box>
 
       <Dialog

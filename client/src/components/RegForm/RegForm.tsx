@@ -24,13 +24,13 @@ export function RegForm() {
 
   return (
     <Box display="flex" flexDirection="column" gap={2}>
-      <Typography variant="h4" textAlign="center">Регистрация</Typography>
+      <Typography variant="h4" id="MainMenu_gl" textAlign="center">Регистрация</Typography>
       <form onSubmit={submitHandler}>
       <Box display="flex" flexDirection="column" gap={2}>
         <TextField onChange={inputHandler} value={inputs.login}  name="login" label="Имя пользователя" type="text" required />
         <TextField onChange={inputHandler} value={inputs.email}  name="email" label="Электронная почта" type="email" required />
         <TextField onChange={inputHandler} value={inputs.password}  name="password" label="Пароль" type="password" required />
-        <Button variant="contained" type="submit" size="large">Зарегистрироваться</Button>
+        <Button variant="contained" type="submit" id="btnAvtorization" size="large">Зарегистрироваться</Button>
       </Box>
       </form>
       <Typography variant="body1" textAlign="center">Уже есть аккаунт? <Link component={ReactRouterLink} to="/login">Войти</Link></Typography>

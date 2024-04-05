@@ -18,7 +18,7 @@ export function Stats() {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 650 }} id="stata"  aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Имя пользователя</TableCell>
