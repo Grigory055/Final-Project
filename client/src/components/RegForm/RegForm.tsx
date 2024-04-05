@@ -1,11 +1,12 @@
 import { Button, Box, TextField, Typography, Link } from "@mui/material";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
 import { ILoginEmailPassword } from "../../types/types";
 import { useAppDispatch } from "../../redux/hooks";
 import { fetchUserRegister } from "../../redux/thunkActions";
 import { useState } from "react";
 
 export function RegForm() {
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState<ILoginEmailPassword>({ login: '', email: '', password: '' })
 
   const dispatch = useAppDispatch();
@@ -20,6 +21,7 @@ export function RegForm() {
         void dispatch(fetchUserRegister(inputs));
         setInputs({ login: '', email: '', password: '' });
       }
+      navigate('/');
     };
 
   return (

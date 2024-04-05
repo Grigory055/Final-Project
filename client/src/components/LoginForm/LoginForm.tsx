@@ -1,14 +1,18 @@
 import { Button, Box, TextField, Typography, Link, FormControl } from "@mui/material";
 import { useState } from "react";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
 import { ILoginPassword } from "../../types/types";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector  } from "../../redux/hooks";
 import { fetchUserLogin } from "../../redux/thunkActions";
 
 export function LoginForm() {
+  const navigate = useNavigate();
+  const isLogin = useAppSelector((store) => store.isLogin);
+
   const [inputs, setInputs] = useState<ILoginPassword>({ login: '', password: '' })
 
   const dispatch = useAppDispatch();
+
 
   const inputHandler = (e : React.ChangeEvent<HTMLInputElement>) => {
     setInputs((pre) => ({ ...pre, [e.target.name]: e.target.value }))
@@ -20,6 +24,9 @@ export function LoginForm() {
         void dispatch(fetchUserLogin(inputs));
         setInputs({ login: '', password: '' });
       }
+      // if(isLogin) {
+        navigate('/');
+      // }
     };
 
   return (
