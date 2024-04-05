@@ -1,6 +1,6 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage } from './pages'
+import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage } from './pages'
 import { Container } from '@mui/material'
 import { Navbar } from './components'
 
@@ -16,6 +16,7 @@ function App() {
           <Route path='/register' element={<RegPage />} />
           <Route path='/menu' element={<MainMenuPage />} />
           <Route path='/stats' element={<StatsPage />} />
+          <Route path='/newgame' element={<GamePage />} />
         </Routes>
       </Container>
     </>
