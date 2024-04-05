@@ -58,7 +58,7 @@ userRouter.post('/login', async (req, res) => {
 userRouter.get('/logout', isUser, async (req, res) => {
   try {
     req.session.destroy(() => {
-      res.clearCookie('newSession');
+      res.clearCookie('reactCookies');
       res.sendStatus(200);
     });
   } catch (error) {

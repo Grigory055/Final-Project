@@ -80,6 +80,18 @@ export const fetchUserLogin = createAsyncThunk(
   }
 )
 
+export const fetchUserLogout = createAsyncThunk(
+  'user/logout', 
+  async() => {
+    try {
+      const response = await axios.get('http://localhost:3000/api/users/logout', { withCredentials: true })
+      return response.status;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+)
+
 export const fetchUserRegister = createAsyncThunk(
   'user/register', 
   async(loginEmailPassoword: ILoginEmailPassword) => {
