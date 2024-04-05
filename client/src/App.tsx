@@ -5,6 +5,8 @@ import { Container } from '@mui/material'
 import { Navbar } from './components'
 
 function App() {
+  console.log('xxx');
+  
   return (
     <>
       <Navbar />
