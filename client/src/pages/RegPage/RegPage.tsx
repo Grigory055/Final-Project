@@ -1,11 +1,11 @@
 import { Grid } from "@mui/material";
-import { LoginForm } from "../../components";
+import { RegForm } from "../../components";
 
-export function LoginPage() {
+export function RegPage() {
   return (
       <Grid container justifyContent="center">
         <Grid item xs={12} sm={6}>
-          <LoginForm />
+          <RegForm />
         </Grid>
       </Grid>
   )
