@@ -6,7 +6,7 @@ import { fetchUserLogout } from "../../redux/thunkActions";
 
 export function Navbar() {
   const navigate = useNavigate();
-  const isLogin = useAppSelector((store) => store.isLogin);
+  const isLogin = useAppSelector((store) => store.persistedReducer.isLogin);
 
   const dispatch = useAppDispatch();
 

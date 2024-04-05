@@ -5,8 +5,9 @@ import { fetchTopics } from "../../redux/thunkActions";
 
 export function Game() {
   const [open, setOpen] = React.useState(false);
-  const [card, setCard] = React.useState({ questions: '', answer: '' });
-  const [input, setInput] = React.useState<string>('')
+  const [card, setCard] = React.useState({});
+  const [input, setInput] = React.useState<string>('');
+  const [score, setScore] = React.useState<number>(0);
 
   const topics = useAppSelector((store) => store.persistedReducer.topics);
   const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ export function Game() {
   const handleClickOpen = (id) => {
     setInput(() => '')
     const currentCard = topics.find((el) => el.id === id);
-    setCard({ questions: currentCard.questions, answer: currentCard.questions })
+    setCard(currentCard)
     setOpen(true);
   };
 
@@ -32,24 +33,42 @@ export function Game() {
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault()
-    console.log(input);
-    
-  };
-
-  // console.log(topics);
-  
+    handleClose();
+    if (input.toLowerCase() === card.answer.toLowerCase()) {
+      setScore((pre) => pre + card.value)
+    } else {
+      setScore((pre) => pre - card.value)
+    }  
+  }; 
 
   return (
     <>
+      <Typography variant="h4" mb={5}>Ваш счет: {score}</Typography>
       <Grid container spacing={1} rowSpacing={1} justifyContent="center" columns={7}>
         <Grid item xs={2}>
           <Card><CardContent>Эльбрус</CardContent></Card>
         </Grid>
-        {topics && topics.filter((el) => el.topic_id === 1).map((el) => <Grid key={el.id} item xs={1}><Card onClick={() => handleClickOpen(el.id)}><CardContent>{el.value}</CardContent></Card></Grid>)}
+        {topics && topics.filter((el) => el.topic_id === 1).map((el) => <Grid id={el.id} key={el.id} item xs={1}><Card onClick={() => handleClickOpen(el.id)}><CardContent>{el.value}</CardContent></Card></Grid>)}
         <Grid item xs={2}>
           <Card><CardContent>Барсы</CardContent></Card>
         </Grid>
-        
+        {topics && topics.filter((el) => el.topic_id === 2).map((el) => <Grid id={el.id} key={el.id} item xs={1}><Card onClick={() => handleClickOpen(el.id)}><CardContent>{el.value}</CardContent></Card></Grid>)}
+        <Grid item xs={2}>
+          <Card><CardContent>Флаги</CardContent></Card>
+        </Grid>
+        {topics && topics.filter((el) => el.topic_id === 3).map((el) => <Grid id={el.id} key={el.id} item xs={1}><Card onClick={() => handleClickOpen(el.id)}><CardContent>{el.value}</CardContent></Card></Grid>)}
+        <Grid item xs={2}>
+          <Card><CardContent>Животные</CardContent></Card>
+        </Grid>
+        {topics && topics.filter((el) => el.topic_id === 4).map((el) => <Grid id={el.id} key={el.id} item xs={1}><Card onClick={() => handleClickOpen(el.id)}><CardContent>{el.value}</CardContent></Card></Grid>)}
+        <Grid item xs={2}>
+          <Card><CardContent>Школьная программа</CardContent></Card>
+        </Grid>
+        {topics && topics.filter((el) => el.topic_id === 5).map((el) => <Grid id={el.id} key={el.id} item xs={1}><Card onClick={() => handleClickOpen(el.id)}><CardContent>{el.value}</CardContent></Card></Grid>)}
+        <Grid item xs={2}>
+          <Card><CardContent>Легкие примеры</CardContent></Card>
+        </Grid>
+        {topics && topics.filter((el) => el.topic_id === 6).map((el) => <Grid id={el.id} key={el.id} item xs={1}><Card onClick={() => handleClickOpen(el.id)}><CardContent>{el.value}</CardContent></Card></Grid>)}
       </Grid>
 
       <Box mt={5}>
@@ -65,7 +84,13 @@ export function Game() {
         }}
         disableRestoreFocus
       >
-        <DialogTitle textAlign="center">00:10</DialogTitle>
+        <DialogTitle textAlign="center">
+          {card.image && (
+            <Box maxWidth={'500px'}>
+            <img width={'100%'} src={card.image} alt="Image" />
+            </Box>
+          )}
+          </DialogTitle>
         <DialogContent>
           <DialogContentText>
             {card.questions}
