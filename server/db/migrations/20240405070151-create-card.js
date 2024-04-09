@@ -20,6 +20,9 @@ module.exports = {
       value: {
         type: Sequelize.INTEGER,
       },
+      condition: {
+        type: Sequelize.STRING,
+      },
       topic_id: {
         type: Sequelize.INTEGER,
         onDelete: 'cascade',

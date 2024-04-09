@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     answer: DataTypes.STRING,
     image: DataTypes.STRING,
     value: DataTypes.INTEGER,
+    condition: DataTypes.STRING,
     topic_id: DataTypes.INTEGER,
   }, {
     sequelize,
