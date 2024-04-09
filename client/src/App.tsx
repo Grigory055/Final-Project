@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage } from './pages'
 import { Container } from '@mui/material'
 import { Navbar } from './components'
+import StartGame from './components/Race/StartGame'
 
 function App() {
   console.log('xxx');
