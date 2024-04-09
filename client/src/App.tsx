@@ -2,7 +2,7 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage } from './pages'
 import { Container } from '@mui/material'
-import { Navbar } from './components'
+import { FlashCardsGame, Navbar } from './components'
 
 function App() {
   console.log('xxx');
@@ -19,6 +19,7 @@ function App() {
           <Route path='/menu' element={<MainMenuPage />} />
           <Route path='/stats' element={<StatsPage />} />
           <Route path='/newgame' element={<GamePage />} />
+          <Route path='/game' element={<FlashCardsGame />} />
         </Routes>
       </Container>
     </>
