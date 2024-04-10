@@ -1,12 +1,18 @@
 import { Grid } from "@mui/material";
-import { RegForm } from "../../components";
+import { Navbar, RegForm } from "../../components";
+import { Container } from "react-bootstrap";
 
 export function RegPage() {
   return (
-      <Grid container justifyContent="center">
-        <Grid item xs={12} sm={6}>
-          <RegForm />
+    <>
+      <Navbar />
+      <Container id="main">
+        <Grid container justifyContent="center">
+          <Grid item xs={12} sm={6}>
+            <RegForm />
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
+    </>
   )
 }

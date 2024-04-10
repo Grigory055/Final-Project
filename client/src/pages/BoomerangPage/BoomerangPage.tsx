@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { Boomerang } from "../../components";
 
-export function GamePage() {
+export function BoomerangPage() {
 
   return (
     <>

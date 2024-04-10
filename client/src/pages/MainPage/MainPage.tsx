@@ -1,13 +1,24 @@
-import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 export function MainPage() {
   return (
     <>
-  <Typography id="MainMenu_gl" variant="h1">Главная</Typography>
-  <Typography  variant="h4"  className="mainInfoText">Правила игры!</Typography>
-  <Typography variant="h5" className="mainInfoText">В начале игры игрок имеет 0 очков! Игрок может выбрать любую тему. Чем дороже цена вопроса, тем сложнее вопрос. 
-    Отвечая на вопрос правильно игроку плюсуються баллы, но если игрок ответит не верно, баллы уменьшаться!
-  </Typography>
-  </>
+      <div id="game-title">
+        <img src="/game-title.png" alt="Lord of Elbrus" />
+      </div>
+      <div id="map-inactive">
+        <div id="map">
+          <div className="level" id="second-level">
+            <div className="phase active" id="phase-3"></div>
+            <div className="phase active" id="phase-2"></div>
+          </div>
+          <div className="level" id="first-level">
+            <Box component={ReactRouterLink} to="/rpg" className="phase active" id="phase-0"></Box>
+            <div className="phase active" id="phase-1"></div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
