@@ -39,6 +39,8 @@ export class Rod extends GameObject {
       image: resources.images.rod,
       position: this.position
     })
+
+    window.location.href = "/";
   }
 
 

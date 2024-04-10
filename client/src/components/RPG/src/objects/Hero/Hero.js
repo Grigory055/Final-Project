@@ -72,7 +72,6 @@ export class Hero extends GameObject {
     // Lock movement if celebrating an item pickup
     if (this.itemPickupTime > 0) {
       this.workOnItemPickup(delta);
-      console.log(this);
       return;
     }
 
@@ -159,7 +158,6 @@ export class Hero extends GameObject {
     // Remove the item being held overhead
     if (this.itemPickupTime <= 0) {
       this.itemPickupShell.destroy();
-      console.log(this.itemPickupShell);
     }
 
   }

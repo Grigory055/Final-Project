@@ -8,58 +8,101 @@ import {gridCells} from "./src/helpers/grid.js";
 import {GameObject} from "./src/GameObject.js";
 import {Hero} from "./src/objects/Hero/Hero.js";
 import {Camera} from "./src/Camera.js";
-import {Rod} from "./src/objects/Rod/Rod.js";
 import {Inventory} from "./src/objects/Inventory/Inventory.js";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import {events} from "./src/Events.js";
+import { Boomerang } from '../Boomerang/Boomerang.js';
 
 export function RPG() {
+  const [open, setOpen] = useState(false);
 
-  const canvas = useRef(null);
+  class Rod extends GameObject {
+    constructor(x,y) {
+      super({
+        name: "Rod",
+        position: new Vector2(x,y)
+      });
+      const sprite = new Sprite({
+        resource: resources.images.rod,
+        position: new Vector2(0, -5) // nudge upwards visually
+      })
+      this.addChild(sprite);
+    }
+  
+    ready() {
+      events.on("HERO_POSITION", this, pos => {
+        // detect overlap...
+        const roundedHeroX = Math.round(pos.x);
+        const roundedHeroY = Math.round(pos.y);
+        if (roundedHeroX === this.position.x && roundedHeroY === this.position.y) {
+          this.onCollideWithHero();
+        }
+      })
+    }
+  
+    onCollideWithHero() {
+      // Remove this instance from the scene
+      this.destroy();
+  
+      // Alert other things that we picked up a rod
+      events.emit("HERO_PICKS_UP_ITEM", {
+        type: "ROD",
+        image: resources.images.rod,
+        position: this.position
+      })
+  
+      setOpen(true);
+    }
+  }
 
-  useEffect(() => {
-    const ctx = canvas.current.getContext("2d");
+  const canvasRef = useRef(null);
 
-    // Establish the root scene
-    const mainScene = new GameObject({
-      position: new Vector2(0,0)
-    })
+  // Establish the root scene
+  const mainScene = new GameObject({
+    position: new Vector2(0,0)
+  })
 
-    // Build up the scene by adding a sky, ground, and hero
-    // const skySprite = new Sprite({
-    //   resource: resources.images.sky,
-    //   frameSize: new Vector2(320, 180)
-    // })
+  // Build up the scene by adding a sky, ground, and hero
+  // const skySprite = new Sprite({
+  //   resource: resources.images.sky,
+  //   frameSize: new Vector2(320, 180)
+  // })
 
-    const groundSprite = new Sprite({
-      resource: resources.images.ground,
-      frameSize: new Vector2(589, 508)
-    })
-    mainScene.addChild(groundSprite);
+  const groundSprite = new Sprite({
+    resource: resources.images.ground,
+    frameSize: new Vector2(1080, 840)
+  })
+  mainScene.addChild(groundSprite);
 
-    const hero = new Hero(gridCells(6), gridCells(5))
-    mainScene.addChild(hero);
+  const hero = new Hero(gridCells(6), gridCells(5))
+  mainScene.addChild(hero);
 
-    const camera = new Camera()
-    mainScene.addChild(camera);
+  const camera = new Camera()
+  mainScene.addChild(camera);
 
-    const rod = new Rod(gridCells(7), gridCells(6))
-    mainScene.addChild(rod);
+  const rod = new Rod(gridCells(7), gridCells(6))
+  mainScene.addChild(rod);
 
-    const inventory = new Inventory();
-
-
-    // Add an Input class to the main scene
-    mainScene.input = new Input();
+  const inventory = new Inventory();
 
 
-    // Establish update and draw loops
-    const update = (delta) => {
-      mainScene.stepEntry(delta, mainScene)
-    };
-    const draw = () => {      
+  // Add an Input class to the main scene
+  mainScene.input = new Input();
+
+
+  // Establish update and draw loops
+  const update = (delta) => {
+    mainScene.stepEntry(delta, mainScene)
+  };
+
+  const draw = () => { 
+
+    const canvas = canvasRef.current;   
+    const ctx = canvas.getContext("2d");     
 
     // Clear anything stale
-    ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     // Draw the sky
     // skySprite.drawImage(ctx, 0, 0)
@@ -81,12 +124,29 @@ export function RPG() {
 
     }
 
-    // Start the game!
     const gameLoop = new GameLoop(update, draw);
+
+    const handleCloseClick = () => {
+      setOpen(false);
+    }
+
+  useEffect(() => {
+    draw();  
     gameLoop.start();
   }, [])
 
   return (
-    <canvas id="game-canvas" ref={canvas} width={320} height={180}></canvas>
+
+    <>
+      <canvas id="game-canvas" ref={canvasRef} width={320} height={180}></canvas>
+      <Dialog open={open} maxWidth={false}>
+        <DialogTitle textAlign="center">Title</DialogTitle>
+        <DialogContent><Boomerang /></DialogContent>
+        <DialogActions>
+          <Button onClick={() => handleCloseClick()}>Закрыть</Button>
+        </DialogActions>
+      </Dialog>
+    </>
+    
   )
 }

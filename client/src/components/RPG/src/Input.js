@@ -8,6 +8,8 @@ export class Input {
 
     this.heldDirections = [];
 
+    this.active = true;
+
     document.addEventListener("keydown", (e) => {
       // Also check for dedicated direction list
       if (e.code === "ArrowUp" || e.code === "KeyW") {
@@ -46,9 +48,11 @@ export class Input {
   }
 
   onArrowPressed(direction) {
-    // Add this arrow to the queue if it's new
-    if (this.heldDirections.indexOf(direction) === -1) {
-      this.heldDirections.unshift(direction);
+    if (this.active) {
+      // Add this arrow to the queue if it's new
+      if (this.heldDirections.indexOf(direction) === -1) {
+        this.heldDirections.unshift(direction);
+      }
     }
   }
 

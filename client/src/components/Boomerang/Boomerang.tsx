@@ -109,7 +109,7 @@ export function Boomerang() {
   }, [game.score])
 
   const moveHero = (e: React.KeyboardEvent): void => {
-    if (e.key === 'd') {
+    if (e.key === 'c') {
       setGame((pre) => {      
         if (pre.status === 'play' && pre.heroPosition < pre.track.length - 1 && !pre.boomerangIsFlying) {
           return ({...pre, heroPosition: pre.heroPosition + 1, boomerangPosition: pre.boomerangPosition + 1});
@@ -120,7 +120,7 @@ export function Boomerang() {
         }
       });
     }
-    if (e.key === 'a') {
+    if (e.key === 'z') {
       setGame((pre) => {      
         if (pre.status === 'play' && pre.heroPosition > 0 && !pre.boomerangIsFlying) {
           return ({...pre, heroPosition: pre.heroPosition - 1, boomerangPosition: pre.boomerangPosition - 1});
@@ -131,7 +131,7 @@ export function Boomerang() {
         }
       });
     }
-    if (e.key === 'e') {
+    if (e.key === 'x') {
       setGame((pre) => {
         if (pre.status === 'play') {
           return ({...pre, boomerangIsFlying: true})
@@ -160,7 +160,7 @@ export function Boomerang() {
       })()}
       <p>Управление: A - влево, D - вправо, E - кинуть бумеранг</p>
       <br />
-      <div className="game" style={{ display: 'flex', fontSize: '22px'}}>{game.track.map((el) => <div>{el}</div>)}</div>
+      <div className="game" style={{ display: 'flex', fontSize: '22px'}}>{game.track.map((el, i) => <div key={i}>{el}</div>)}</div>
       <br />
       {(() => {
         switch (game.status) {
