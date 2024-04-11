@@ -2,11 +2,12 @@ class Resources {
   constructor() {
     // Everything we plan to download
     this.toLoad = {
-      sky: "/sprites/sky.png",
+      water: "/sprites/water.png",
       ground: "/sprites/ground.png",
       hero: "/sprites/hero-sheet.png",
       shadow: "/sprites/shadow.png",
       rod: "/sprites/rod.png",
+      dialog: "/sprites/dialog.png",
     };
 
     // A bucket to keep all of our images
