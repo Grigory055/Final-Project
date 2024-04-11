@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import styles from './DialogsPhase0.module.css';
 
 interface IDialog {
     person: string
@@ -45,12 +46,12 @@ export default function DialogSvetaPhase0() {
 
   return (
     <>
-    <div style={{ textAlign: "center", margin: 'auto ', fontSize: '25px', width: '440px', height: '300px', border: '2px solid', backgroundColor: 'white', padding: '15px'}}>
+    <div className={styles.container}>
        {(() => {
         switch (dialog.status) {
           case '1':
             return <div> <div>{Sveta.text} </div><div>
-            <button style={{ width: '100px'}} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</button></div></div> ;
+            <button className={styles.button} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</button></div></div> ;
           case '2':
             return <div> <div style={{ display: 'flex', flexDirection: 'column'}}>{Sveta2.text}
             <form style={{ display: 'flex', flexDirection: 'column'}} action="">
