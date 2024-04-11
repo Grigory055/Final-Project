@@ -13,6 +13,9 @@ import QuestionsP2W1 from './components/Questions/QuestionsP2/QuestionsP2W1'
 import QuestionsP2W2 from './components/Questions/QuestionsP2/QuestionsP2W2'
 import QuestionsP3W1 from './components/Questions/QuestionsP3/QuestionsP3W1'
 import { FlashCardsGame, Navbar } from './components'
+import Gladiator from './components/Gladiator/Gladiator'
+import DialogAntonPhase0 from './components/Dialogs/DialogsPhase0/DialogAntonPhase0'
+import DialogSvetaPhase0 from './components/Dialogs/DialogsPhase0/DialogSvetaPhase0'
 
 
 function App() {
@@ -29,6 +32,9 @@ function App() {
         <Route path='/game' element={<FlashCardsGame />} />
         <Route path='/boomerang' element={<BoomerangPage />} />
         <Route path='/rpg' element={<RPGPage />} />
+        <Route path='/gladiator' element={<Gladiator />} />
+        <Route path='/dialogSveta' element={<DialogSvetaPhase0 />} />
+        <Route path='/dialogAnton' element={<DialogAntonPhase0 />} />
   {/* <QuestionsP0W1/>
       <QuestionsP0W2/>
       <QuestionsP0W3/>
