@@ -12,11 +12,12 @@ export function Game() {
   const [input, setInput] = React.useState<string>('');
   const [score, setScore] = React.useState<number>(0);
   const [cards, setCards] = React.useState([]);
-  const [time, setTimer] = React.useState(10);
+  const [time, setTimer] = React.useState(3);
 
   useEffect((): void => {
     (async function (): Promise<void> {
       try {
+        setTimer(1000)
         const response = await axios.get('http://localhost:3000/api/topics');
         setCards(() => response.data);
       } catch (error) {
@@ -27,7 +28,7 @@ export function Game() {
 
   const handleClickOpen = (id) => {
     setInput('')
-    setTimer(10)
+    setTimer(15)
     const currentCard = cards.find((el) => el.id === id);
     setCard(currentCard);
     if (currentCard.condition === '') {
@@ -100,7 +101,7 @@ export function Game() {
       });
       // setScore((pre) => score + card.value);
       card.condition = '1';
-      setTimer(800);
+      setTimer(1800);
       console.log(score)
     } else {
        setScore((pre) => {
@@ -111,7 +112,7 @@ export function Game() {
       }
     });
       card.condition = '2';
-      setTimer(800);
+      setTimer(1800);
     } 
   };
 
@@ -120,13 +121,7 @@ export function Game() {
       <Typography variant="h4" mb={5}>
         Ваш счет: {score}
       </Typography>
-      <Grid
-        container
-        spacing={1}
-        rowSpacing={1}
-        justifyContent="center"
-        columns={7}
-      >
+      <Grid container spacing={1} rowSpacing={1} justifyContent="center" columns={7}>
         <Grid item xs={2}>
           <Card>
             <CardContent>Эльбрус</CardContent>
@@ -138,7 +133,7 @@ export function Game() {
             .map((el) => (
               <Grid id={el.id} key={el.id} item xs={1}>
                 <Card onClick={() => handleClickOpen(el.id)}>
-                  <CardContent
+                  <CardContent 
                     className={
                       el.condition === '1'
                         ? 'oo'
