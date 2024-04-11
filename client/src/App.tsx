@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom'
 import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage, BoomerangPage, RPGPage } from './pages'
 import { Container } from '@mui/material'
 
-import { Navbar } from './components'
 import QuestionsP0W1 from './components/Questions/QuestionsP0/QuestionsP0W1'
 import QuestionsP0W2 from './components/Questions/QuestionsP0/QuestionsP0W2'
 import QuestionsP0W3 from './components/Questions/QuestionsP0/QuestionsP0W3'
