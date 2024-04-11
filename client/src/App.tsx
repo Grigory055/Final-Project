@@ -1,7 +1,8 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage } from './pages'
+import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage, BoomerangPage, RPGPage } from './pages'
 import { Container } from '@mui/material'
+
 import { Navbar } from './components'
 import QuestionsP0W1 from './components/Questions/QuestionsP0/QuestionsP0W1'
 import QuestionsP0W2 from './components/Questions/QuestionsP0/QuestionsP0W2'
@@ -12,25 +13,24 @@ import QuestionsP1W3 from './components/Questions/QuestionsP1/QuestionsP1W3'
 import QuestionsP2W1 from './components/Questions/QuestionsP2/QuestionsP2W1'
 import QuestionsP2W2 from './components/Questions/QuestionsP2/QuestionsP2W2'
 import QuestionsP3W1 from './components/Questions/QuestionsP3/QuestionsP3W1'
+import { FlashCardsGame, Navbar } from './components'
+
 
 function App() {
-  console.log('xxx');
-  
   return (
     <>
-      {/* <Navbar />
-      <Container id="main">
-        <Routes>
-          <Route path='/' element={<MainPage />} />
-          <Route path='/info' element={<InfoPage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegPage />} />
-          <Route path='/menu' element={<MainMenuPage />} />
-          <Route path='/stats' element={<StatsPage />} />
-          <Route path='/newgame' element={<GamePage />} />
-        </Routes>
-      </Container> */}
-      {/* <QuestionsP0W1/>
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/info' element={<InfoPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<RegPage />} />
+        <Route path='/menu' element={<MainMenuPage />} />
+        <Route path='/stats' element={<StatsPage />} />
+        <Route path='/newgame' element={<GamePage />} />
+        <Route path='/game' element={<FlashCardsGame />} />
+        <Route path='/boomerang' element={<BoomerangPage />} />
+        <Route path='/rpg' element={<RPGPage />} />
+  {/* <QuestionsP0W1/>
       <QuestionsP0W2/>
       <QuestionsP0W3/>
       <QuestionsP1W1/>
@@ -39,6 +39,7 @@ function App() {
       <QuestionsP2W1/>
       <QuestionsP2W2/>
       <QuestionsP3W1/> */}
+      </Routes>
     </>
   )
 }
