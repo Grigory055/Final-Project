@@ -5,32 +5,32 @@ module.exports = {
       'Topics',
       [
         {
-          title: 'Эльбрус',
+          title: 'Java Script',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: 'Барсы',
+          title: 'CSS',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: 'Флаги',
+          title: 'HTML',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: 'Животные',
+          title: 'React',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: 'Школьная программа',
+          title: 'Express',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: 'Легкие примеры',
+          title: 'GIT',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
