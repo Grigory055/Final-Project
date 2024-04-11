@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './DialogsPhase0.module.css';
 
 interface IDialog {
     person: string
@@ -7,25 +8,25 @@ interface IDialog {
   }
 
   const Anton: IDialog = {
-    person: 'Sveta',
+    person: 'Anton',
     status: '1',
     text: 'Привет! Я - Антон. Я ем, сплю и сижу за компом в своих наушниках.'
   }
 
   const Anton2: IDialog = {
-    person: 'Sveta',
+    person: 'Anton',
     status: '2',
     text: 'Вот уж не ожидал! Ты прошел 0 фазу! Теперь ты умеешь красить кнопки!'
   }
 
   const Anton3: IDialog = {
-    person: 'Sveta',
+    person: 'Anton',
     status: '3',
     text: 'Спасибо, что собрал для меня все БРЮЛИКИ, и помог мне с вопросами, благодаря тебе мы можем сыграть в игру Гладиаторы!'
   }
 
   const Anton4: IDialog = {
-    person: 'Sveta',
+    person: 'Anton',
     status: '4',
     text: 'Ты можешь научиться делать такую же! для этого тебе нужно пройти Фазу 1 Научишься так же, даже Больше!'
   }
@@ -45,7 +46,7 @@ export default function DialogAntonPhase0() {
 
   return (
     <>
-    <div style={{ textAlign: "center", margin: 'auto ', fontSize: '25px', width: '440px', height: '300px', border: '2px solid', backgroundColor: 'white', padding: '15px' }}>
+    <div className={styles.container}>
        {(() => {
         switch (dialog.status) {
           case '1':

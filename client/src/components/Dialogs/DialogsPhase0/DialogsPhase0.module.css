@@ -1,0 +1,14 @@
+.container {
+  text-align: center;
+  margin: auto;
+  font-size: 25px;
+  width: 440px;
+  height: 300px;
+  border: 2px solid;
+  background-color: white;
+  padding: 15px;
+}
+
+.button {
+    width: 100px;
+}
