@@ -14,6 +14,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/
 import {events} from "./src/Events.js";
 import { Boomerang } from '../Boomerang/Boomerang.js';
 import StartGame from '../Race/StartGame.js';
+import { ExitToMap } from '../Dialogs/ExitToMap.js';
 
 export function RPG() {
   const [open, setOpen] = useState(false);
@@ -60,6 +61,43 @@ export function RPG() {
     }
   }
 
+
+  class DialogBubble extends GameObject {
+    constructor(x,y, component) {
+      super({
+        name: "DialogBubble",
+        position: new Vector2(x,y)
+      });
+      this.body = new Sprite({
+        resource: resources.images.dialog,
+        frameSize: new Vector2(32,32),
+        hFrames: 3,
+        vFrames: 1,
+        frame: 2,
+        position: new Vector2(-8, -20),
+      })
+      this.addChild(this.body);
+      this.component = component;
+  
+    }
+  
+    ready() {
+      events.on("HERO_POSITION", this, pos => {
+        // detect overlap...
+        const roundedHeroX = Math.round(pos.x);
+        const roundedHeroY = Math.round(pos.y);
+        if (roundedHeroX === this.position.x && roundedHeroY === this.position.y) {
+          this.onCollideWithHero();
+        }
+      })
+    }
+  
+    onCollideWithHero() {
+      setModalComponent(() => this.component)
+      setOpen(true);
+    }
+  }
+
   const canvasRef = useRef(null);
 
   // Establish the root scene
@@ -68,28 +106,29 @@ export function RPG() {
   })
 
   // Build up the scene by adding a sky, ground, and hero
-  // const skySprite = new Sprite({
-  //   resource: resources.images.sky,
-  //   frameSize: new Vector2(320, 180)
-  // })
+  const waterSprite = new Sprite({
+    resource: resources.images.water,
+    frameSize: new Vector2(1056, 832)
+  })
+  mainScene.addChild(waterSprite);
 
   const groundSprite = new Sprite({
     resource: resources.images.ground,
-    frameSize: new Vector2(1080, 840)
+    frameSize: new Vector2(1056, 832)
   })
   mainScene.addChild(groundSprite);
 
-  const hero = new Hero(gridCells(6), gridCells(5))
+  const hero = new Hero(gridCells(20), gridCells(6))
   mainScene.addChild(hero);
 
   const camera = new Camera()
   mainScene.addChild(camera);
 
-  const rod1 = new Rod(gridCells(7), gridCells(6), <Boomerang />)
+  const rod1 = new Rod(gridCells(19), gridCells(12), <Boomerang />)
   mainScene.addChild(rod1);
 
-  const rod2 = new Rod(gridCells(9), gridCells(6), <StartGame />)
-  mainScene.addChild(rod2);
+  const dialogBubble = new DialogBubble(gridCells(35), gridCells(14), <ExitToMap />)
+  mainScene.addChild(dialogBubble);
 
   const inventory = new Inventory();
 
@@ -111,8 +150,8 @@ export function RPG() {
     // Clear anything stale
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    // Draw the sky
-    // skySprite.drawImage(ctx, 0, 0)
+    // Draw the water
+    // waterSprite.drawImage(ctx, 0, 0)
 
     // Save the current state (for camera offset)
     ctx.save();
