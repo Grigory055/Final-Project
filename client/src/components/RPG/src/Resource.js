@@ -8,6 +8,7 @@ class Resources {
       shadow: "/sprites/shadow.png",
       rod: "/sprites/rod.png",
       dialog: "/sprites/dialog.png",
+      npc: "/sprites/npc.png",
     };
 
     // A bucket to keep all of our images

@@ -98,6 +98,66 @@ export function RPG() {
     }
   }
 
+  class NPC extends GameObject {
+    constructor(x,y, component) {
+      super({
+        name: "NPC",
+        position: new Vector2(x,y)
+      });
+
+      const shadow = new Sprite({
+        resource: resources.images.shadow,
+        frameSize: new Vector2(32, 32),
+        position: new Vector2(-8, -19),
+      })
+      this.addChild(shadow);
+
+      this.body = new Sprite({
+        resource: resources.images.npc,
+        frameSize: new Vector2(32,32),
+        hFrames: 1,
+        vFrames: 2,
+        frame: 0,
+        position: new Vector2(-8, -17),
+      })
+      this.addChild(this.body);
+      this.component = component;
+  
+    }
+  
+    ready() {
+      events.on("HERO_POSITION", this, pos => {
+        // detect overlap...
+        const roundedHeroX = Math.round(pos.x);
+        const roundedHeroY = Math.round(pos.y);
+        if (roundedHeroX === this.position.x && roundedHeroY === this.position.y) {
+          this.onCollideWithHero();
+        }
+      })
+    }
+  
+    onCollideWithHero() {
+      setModalComponent(() => this.component)
+      setOpen(true);
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const canvasRef = useRef(null);
 
   // Establish the root scene
@@ -106,20 +166,17 @@ export function RPG() {
   })
 
   // Build up the scene by adding a sky, ground, and hero
-  const waterSprite = new Sprite({
-    resource: resources.images.water,
-    frameSize: new Vector2(1056, 832)
-  })
-  mainScene.addChild(waterSprite);
+  // const waterSprite = new Sprite({
+  //   resource: resources.images.water,
+  //   frameSize: new Vector2(1056, 832)
+  // })
+  // mainScene.addChild(waterSprite);
 
   const groundSprite = new Sprite({
     resource: resources.images.ground,
-    frameSize: new Vector2(1056, 832)
+    frameSize: new Vector2(1152, 1152)
   })
   mainScene.addChild(groundSprite);
-
-  const hero = new Hero(gridCells(20), gridCells(6))
-  mainScene.addChild(hero);
 
   const camera = new Camera()
   mainScene.addChild(camera);
@@ -129,6 +186,12 @@ export function RPG() {
 
   const dialogBubble = new DialogBubble(gridCells(35), gridCells(14), <ExitToMap />)
   mainScene.addChild(dialogBubble);
+
+  const sveta = new NPC(gridCells(24), gridCells(26), <ExitToMap />)
+  mainScene.addChild(sveta);
+
+  const hero = new Hero(gridCells(18), gridCells(26))
+  mainScene.addChild(hero);
 
   const inventory = new Inventory();
 
