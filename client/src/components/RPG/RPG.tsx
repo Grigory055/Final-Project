@@ -9,16 +9,18 @@ import {GameObject} from "./src/GameObject.js";
 import {Hero} from "./src/objects/Hero/Hero.js";
 import {Camera} from "./src/Camera.js";
 import {Inventory} from "./src/objects/Inventory/Inventory.js";
-import { useEffect, useRef, useState } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import {events} from "./src/Events.js";
 import { Boomerang } from '../Boomerang/Boomerang.js';
+import StartGame from '../Race/StartGame.js';
 
 export function RPG() {
   const [open, setOpen] = useState(false);
+  const [modalComponent, setModalComponent] = useState<JSX.Element | null>(null)
 
   class Rod extends GameObject {
-    constructor(x,y) {
+    constructor(x,y, component) {
       super({
         name: "Rod",
         position: new Vector2(x,y)
@@ -28,6 +30,7 @@ export function RPG() {
         position: new Vector2(0, -5) // nudge upwards visually
       })
       this.addChild(sprite);
+      this.component = component;
     }
   
     ready() {
@@ -51,7 +54,8 @@ export function RPG() {
         image: resources.images.rod,
         position: this.position
       })
-  
+      
+      setModalComponent(() => this.component)
       setOpen(true);
     }
   }
@@ -81,8 +85,11 @@ export function RPG() {
   const camera = new Camera()
   mainScene.addChild(camera);
 
-  const rod = new Rod(gridCells(7), gridCells(6))
-  mainScene.addChild(rod);
+  const rod1 = new Rod(gridCells(7), gridCells(6), <Boomerang />)
+  mainScene.addChild(rod1);
+
+  const rod2 = new Rod(gridCells(9), gridCells(6), <StartGame />)
+  mainScene.addChild(rod2);
 
   const inventory = new Inventory();
 
@@ -141,7 +148,7 @@ export function RPG() {
       <canvas id="game-canvas" ref={canvasRef} width={320} height={180}></canvas>
       <Dialog open={open} maxWidth={false}>
         <DialogTitle textAlign="center">Title</DialogTitle>
-        <DialogContent><Boomerang /></DialogContent>
+        <DialogContent>{modalComponent}</DialogContent>
         <DialogActions>
           <Button onClick={() => handleCloseClick()}>Закрыть</Button>
         </DialogActions>
