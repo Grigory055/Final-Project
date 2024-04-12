@@ -2,7 +2,7 @@ export const phase1objects = {
   hero: {
     position: {
       x: 26, // 27
-      y: 17, // 57
+      y: 56, // 57
     },
   },
   rod1: {
