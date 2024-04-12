@@ -51,8 +51,12 @@ phase0walls.add(`544,368`);
 phase0walls.add(`560,368`);
 phase0walls.add(`576,352`);
 phase0walls.add(`576,336`);
+
 phase0walls.add(`592,320`);
-phase0walls.add(`624,320`);
+phase0walls.add(`608,304`);
+phase0walls.add(`624,304`);
+phase0walls.add(`640,320`);
+
 phase0walls.add(`640,336`);
 phase0walls.add(`640,352`);
 phase0walls.add(`656,368`);
@@ -105,20 +109,24 @@ phase0walls.add(`752,560`);
 phase0walls.add(`752,576`);
 phase0walls.add(`752,592`);
 phase0walls.add(`752,608`);
-phase0walls.add(`752,624`);
+phase0walls.add(`752,624`);// от пещеры к антону
+
+phase0walls.add(`736,608`);
+phase0walls.add(`720,608`);
+phase0walls.add(`704,608`);
+
 phase0walls.add(`752,640`);
 phase0walls.add(`752,656`);
+// phase0walls.add(`736,592`);
+// phase0walls.add(`720,592`);
+// phase0walls.add(`704,592`);
+// phase0walls.add(`688,608`);
 
-
-phase0walls.add(`736,592`);// от пещеры к антону
-phase0walls.add(`720,592`);
-phase0walls.add(`704,592`);
-phase0walls.add(`688,608`);
 phase0walls.add(`688,624`);
 phase0walls.add(`688,640`);
 phase0walls.add(`688,656`);
 phase0walls.add(`688,672`);
-phase0walls.add(`688,668`);
+phase0walls.add(`688,688`);
 phase0walls.add(`688,704`);
 phase0walls.add(`672,720`);
 phase0walls.add(`656,720`);
@@ -138,15 +146,29 @@ phase0walls.add(`768,720`);
 phase0walls.add(`752,736`);
 phase0walls.add(`752,752`);
 phase0walls.add(`752,768`);
-phase0walls.add(`736,784`);
-phase0walls.add(`720,784`);
-phase0walls.add(`704,784`);
-phase0walls.add(`688,784`);
-phase0walls.add(`672,784`);
-phase0walls.add(`656,784`);
-phase0walls.add(`640,784`);
-phase0walls.add(`624,784`);
-phase0walls.add(`608,784`);
+phase0walls.add(`752,784`);
+// phase0walls.add(`736,784`);
+
+// phase0walls.add(`720,784`);
+// phase0walls.add(`704,784`);
+// phase0walls.add(`688,784`);
+// phase0walls.add(`672,784`);
+// phase0walls.add(`656,784`);
+// phase0walls.add(`640,784`);
+// phase0walls.add(`624,784`);
+// phase0walls.add(`624,800`);
+phase0walls.add(`608,816`);
+phase0walls.add(`624,800`);
+phase0walls.add(`640,800`);
+phase0walls.add(`656,800`);
+phase0walls.add(`672,800`);
+phase0walls.add(`688,800`);
+phase0walls.add(`704,800`);
+phase0walls.add(`720,800`);
+phase0walls.add(`736,800`);
+
+// phase0walls.add(`608,800`);
+
 phase0walls.add(`592,800`);
 
 phase0walls.add(`576,752`);
