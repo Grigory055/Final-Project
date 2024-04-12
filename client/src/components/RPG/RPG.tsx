@@ -15,7 +15,9 @@ import {events} from "./src/Events.js";
 import { ExitToMap, DialogSvetaPhase0, DialogAntonPhase0 } from '../Dialogs';
 import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3 } from '../Questions/index.js';
 import { useParams } from 'react-router-dom';
-
+import { phase0walls } from './src/levels/phase0walls.js'
+import { phase1walls } from './src/levels/phase1walls.js'
+const walls = [phase0walls, phase1walls]
 const hero = new Hero(gridCells(1), gridCells(1));
 
 export function RPG() {
@@ -266,7 +268,8 @@ export function RPG() {
   useEffect(() => {
     console.log('useEffect', gameLoop.isRunning);
     hero.position = new Vector2(gridCells(19), gridCells(26));
-    hero.destinationPosition = hero.position.duplicate(); 
+    hero.destinationPosition = hero.position.duplicate();
+    hero.walls = walls[Number(id)];
     draw();  
     gameLoop.start();
   }, [])
