@@ -15,18 +15,15 @@ import {events} from "./src/Events.js";
 import { ExitToMap, DialogSvetaPhase0, DialogAntonPhase0 } from '../Dialogs';
 import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3 } from '../Questions/index.js';
 import { useParams } from 'react-router-dom';
-import { phase0walls } from './src/levels/phase0walls.js'
-import { phase1walls } from './src/levels/phase1walls.js'
+import { phase0objects, phase0walls, phase1objects, phase1walls } from './src/levels/'
 const walls = [phase0walls, phase1walls]
+const gameObjects = [phase0objects, phase1objects];
 const hero = new Hero(gridCells(1), gridCells(1));
 
 export function RPG() {
   const [open, setOpen] = useState(false);
   const [modalComponent, setModalComponent] = useState<JSX.Element | null>(null)
   const { id } = useParams();
-  console.log(id);
-  console.log(hero);
-  
 
   const handleCloseClick = () => {
     setOpen(false);
@@ -75,7 +72,6 @@ export function RPG() {
       hero.isWalking = false;
     }
   }
-
 
   class DialogBubble extends GameObject {
     constructor(x,y, component) {
@@ -267,7 +263,10 @@ export function RPG() {
 
   useEffect(() => {
     console.log('useEffect', gameLoop.isRunning);
-    hero.position = new Vector2(gridCells(19), gridCells(26));
+    const { x, y } = gameObjects[Number(id)].hero.position
+    hero.position = new Vector2(gridCells(x), gridCells(y));
+    // phase0 x 19 y 26
+    // phase1 x 27 y 57
     hero.destinationPosition = hero.position.duplicate();
     hero.walls = walls[Number(id)];
     draw();  
