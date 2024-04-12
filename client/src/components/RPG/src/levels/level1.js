@@ -1,5 +1,6 @@
 export const walls = new Set();
 
+walls.add(`16,0`);
  // Sveta head
 walls.add(`384,416`); // Света
 

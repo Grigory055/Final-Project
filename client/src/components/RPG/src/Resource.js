@@ -3,7 +3,8 @@ class Resources {
     // Everything we plan to download
     this.toLoad = {
       water: "/sprites/water.png",
-      ground: "/sprites/ground.png",
+      phase0: "/sprites/phase0.png",
+      phase1: "/sprites/phase1.png",
       hero: "/sprites/hero-sheet.png",
       shadow: "/sprites/shadow.png",
       rod: "/sprites/rod.png",

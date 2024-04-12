@@ -14,7 +14,7 @@ export function MainPage() {
             <div className="phase active" id="phase-2"></div>
           </div>
           <div className="level" id="first-level">
-            <Box component={ReactRouterLink} to="/rpg" className="phase active" id="phase-0"></Box>
+            <Box component={ReactRouterLink} to="/phase/0" className="phase active" id="phase-0"></Box>
             <div className="phase active" id="phase-1"></div>
           </div>
         </div>

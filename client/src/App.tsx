@@ -17,7 +17,7 @@ function App() {
         <Route path='/newgame' element={<GamePage />} />
         <Route path='/game' element={<FlashCardsGame />} />
         <Route path='/boomerang' element={<BoomerangPage />} />
-        <Route path='/rpg' element={<RPGPage />} />
+        <Route path='/phase/:id' element={<RPGPage />} />
         <Route path='/gladiator' element={<Gladiator />} />
       </Routes>
     </>

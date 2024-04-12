@@ -14,12 +14,17 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/
 import {events} from "./src/Events.js";
 import { ExitToMap, DialogSvetaPhase0, DialogAntonPhase0 } from '../Dialogs';
 import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3 } from '../Questions/index.js';
+import { useParams } from 'react-router-dom';
 
-const hero = new Hero(gridCells(19), gridCells(26));
+const hero = new Hero(gridCells(1), gridCells(1));
 
 export function RPG() {
   const [open, setOpen] = useState(false);
   const [modalComponent, setModalComponent] = useState<JSX.Element | null>(null)
+  const { id } = useParams();
+  console.log(id);
+  console.log(hero);
+  
 
   const handleCloseClick = () => {
     setOpen(false);
@@ -152,7 +157,7 @@ export function RPG() {
       setModalComponent(() => this.component);
       setOpen(true);
       hero.walls.delete(`${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`);
-      hero.isWalking = false;     
+      hero.isWalking = false;
     }
   }
 
@@ -188,7 +193,7 @@ export function RPG() {
   // mainScene.addChild(waterSprite);
 
   const groundSprite = new Sprite({
-    resource: resources.images.ground,
+    resource: resources.images[`phase${id}`],
     frameSize: new Vector2(1152, 1152)
   })
   mainScene.addChild(groundSprite);
@@ -260,6 +265,8 @@ export function RPG() {
 
   useEffect(() => {
     console.log('useEffect', gameLoop.isRunning);
+    hero.position = new Vector2(gridCells(19), gridCells(26));
+    hero.destinationPosition = hero.position.duplicate(); 
     draw();  
     gameLoop.start();
   }, [])
