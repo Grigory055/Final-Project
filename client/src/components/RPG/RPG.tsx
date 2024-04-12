@@ -9,16 +9,23 @@ import {GameObject} from "./src/GameObject.js";
 import {Hero} from "./src/objects/Hero/Hero.js";
 import {Camera} from "./src/Camera.js";
 import {Inventory} from "./src/objects/Inventory/Inventory.js";
-import { ReactElement, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import {events} from "./src/Events.js";
-import { Boomerang } from '../Boomerang/Boomerang.js';
-import StartGame from '../Race/StartGame.js';
-import { ExitToMap } from '../Dialogs/ExitToMap.js';
+import { ExitToMap, DialogSvetaPhase0, DialogAntonPhase0 } from '../Dialogs';
+import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3 } from '../Questions/index.js';
+
+const hero = new Hero(gridCells(19), gridCells(26));
 
 export function RPG() {
   const [open, setOpen] = useState(false);
   const [modalComponent, setModalComponent] = useState<JSX.Element | null>(null)
+
+  const handleCloseClick = () => {
+    setOpen(false);
+    hero.isWalking = true;
+    console.log(hero.isWalking);
+  }
 
   class Rod extends GameObject {
     constructor(x,y, component) {
@@ -58,6 +65,7 @@ export function RPG() {
       
       setModalComponent(() => this.component)
       setOpen(true);
+      hero.isWalking = false;
     }
   }
 
@@ -95,11 +103,12 @@ export function RPG() {
     onCollideWithHero() {
       setModalComponent(() => this.component)
       setOpen(true);
+      hero.isWalking = false;
     }
   }
 
   class NPC extends GameObject {
-    constructor(x,y, component) {
+    constructor(x,y, component, exitCoordX, exitCoordY, skin) {
       super({
         name: "NPC",
         position: new Vector2(x,y)
@@ -115,13 +124,14 @@ export function RPG() {
       this.body = new Sprite({
         resource: resources.images.npc,
         frameSize: new Vector2(32,32),
-        hFrames: 1,
+        hFrames: 2,
         vFrames: 2,
-        frame: 0,
-        position: new Vector2(-8, -17),
+        frame: skin,
+        position: new Vector2(-8, -19),
       })
       this.addChild(this.body);
       this.component = component;
+      this.exitCoords = { exitCoordX, exitCoordY }
   
     }
   
@@ -130,15 +140,19 @@ export function RPG() {
         // detect overlap...
         const roundedHeroX = Math.round(pos.x);
         const roundedHeroY = Math.round(pos.y);
-        if (roundedHeroX === this.position.x && roundedHeroY === this.position.y) {
+        if (roundedHeroX === this.position.x - 16 && roundedHeroY === this.position.y ||
+            roundedHeroX === this.position.x + 16 && roundedHeroY === this.position.y ||
+            roundedHeroX === this.position.x && roundedHeroY === this.position.y + 16) {
           this.onCollideWithHero();
         }
       })
     }
   
     onCollideWithHero() {
-      setModalComponent(() => this.component)
+      setModalComponent(() => this.component);
       setOpen(true);
+      hero.walls.delete(`${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`);
+      hero.isWalking = false;     
     }
   }
 
@@ -158,7 +172,8 @@ export function RPG() {
 
 
 
-  const canvasRef = useRef(null);
+  const canvasRef = useRef();
+  console.log(canvasRef);  
 
   // Establish the root scene
   const mainScene = new GameObject({
@@ -181,16 +196,24 @@ export function RPG() {
   const camera = new Camera()
   mainScene.addChild(camera);
 
-  const rod1 = new Rod(gridCells(19), gridCells(12), <Boomerang />)
+  const rod1 = new Rod(gridCells(38), gridCells(19), <QuestionsP0W1 />)
   mainScene.addChild(rod1);
 
-  const dialogBubble = new DialogBubble(gridCells(35), gridCells(14), <ExitToMap />)
+  const rod2 = new Rod(gridCells(46), gridCells(39), <QuestionsP0W2 />)
+  mainScene.addChild(rod2);
+
+  const rod3 = new Rod(gridCells(35), gridCells(48), <QuestionsP0W3 />)
+  mainScene.addChild(rod3);
+
+  const dialogBubble = new DialogBubble(gridCells(35), gridCells(24), <ExitToMap />)
   mainScene.addChild(dialogBubble);
 
-  const sveta = new NPC(gridCells(24), gridCells(26), <ExitToMap />)
+  const sveta = new NPC(gridCells(24), gridCells(26), <DialogSvetaPhase0 handleCloseClick={handleCloseClick} />, 384, 384, 0)
   mainScene.addChild(sveta);
 
-  const hero = new Hero(gridCells(18), gridCells(26))
+  const anton = new NPC(gridCells(26), gridCells(47), <DialogAntonPhase0 />, 384, 384, 2)
+  mainScene.addChild(anton);
+
   mainScene.addChild(hero);
 
   const inventory = new Inventory();
@@ -205,41 +228,38 @@ export function RPG() {
     mainScene.stepEntry(delta, mainScene)
   };
 
-  const draw = () => { 
-
-    const canvas = canvasRef.current;   
-    const ctx = canvas.getContext("2d");     
-
-    // Clear anything stale
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
-    // Draw the water
-    // waterSprite.drawImage(ctx, 0, 0)
-
-    // Save the current state (for camera offset)
-    ctx.save();
-
-    //Offset by camera position
-    ctx.translate(camera.position.x, camera.position.y);
-
-    // Draw objects in the mounted scene
-    mainScene.draw(ctx, 0, 0);
-
-    // Restore to original state
-    ctx.restore();
-
-    // Draw anything above the game world
-    inventory.draw(ctx, 0, 0)
-
+  const draw = () => {
+    if (canvasRef.current) {
+      const canvas = canvasRef.current;   
+      const ctx = canvas.getContext("2d");     
+  
+      // Clear anything stale
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  
+      // Draw the water
+      // waterSprite.drawImage(ctx, 0, 0)
+  
+      // Save the current state (for camera offset)
+      ctx.save();
+  
+      //Offset by camera position
+      ctx.translate(camera.position.x, camera.position.y);
+  
+      // Draw objects in the mounted scene
+      mainScene.draw(ctx, 0, 0);
+  
+      // Restore to original state
+      ctx.restore();
+  
+      // Draw anything above the game world
+      inventory.draw(ctx, 0, 0)
     }
-
-    const gameLoop = new GameLoop(update, draw);
-
-    const handleCloseClick = () => {
-      setOpen(false);
-    }
+  }
+    
+  const gameLoop = new GameLoop(update, draw);
 
   useEffect(() => {
+    console.log('useEffect', gameLoop.isRunning);
     draw();  
     gameLoop.start();
   }, [])
@@ -247,13 +267,25 @@ export function RPG() {
   return (
 
     <>
-      <canvas id="game-canvas" ref={canvasRef} width={320} height={180}></canvas>
+      <canvas id="game-canvas" ref={canvasRef} width={320} height={180}></canvas>;
       <Dialog open={open} maxWidth={false}>
-        <DialogTitle textAlign="center">Title</DialogTitle>
-        <DialogContent>{modalComponent}</DialogContent>
-        <DialogActions>
-          <Button onClick={() => handleCloseClick()}>Закрыть</Button>
-        </DialogActions>
+        <div id='modal'>
+          <div id="modal-header" className='section'>
+            <div className='left'></div>
+            <div className='center'></div>
+            <div className='right'></div>
+          </div>
+          <div id="modal-content" className='section'>
+            <div className='left'></div>
+            <div className='center'>{modalComponent}</div>
+            <div className='right'></div>
+          </div>
+          <div id="modal-footer" className='section'>
+            <div className='left'></div>
+            <div className='center'></div>
+            <div className='right'></div>
+          </div>
+        </div>
       </Dialog>
     </>
     

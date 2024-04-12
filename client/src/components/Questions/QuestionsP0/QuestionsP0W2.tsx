@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './QuestionsP0.module.css';
 
-export default function QuestionsP0W2() {
+export function QuestionsP0W2() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
   const[coins,setCoins] = useState<number>(0)
   const[nextAnswer,setNextAnswer] = useState<boolean>(false)

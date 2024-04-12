@@ -21,6 +21,7 @@ import {
 import {moveTowards} from "../../helpers/moveTowards.js";
 import {events} from "../../Events.js";
 
+
 export class Hero extends GameObject {
   constructor(x, y) {
     super({
@@ -57,8 +58,10 @@ export class Hero extends GameObject {
 
     this.facingDirection = DOWN;
     this.destinationPosition = this.position.duplicate();
+    this.isWalking = true;
     this.itemPickupTime = 0;
     this.itemPickupShell = null;
+    this.walls = walls;
 
     // React to picking up an item
     events.on("HERO_PICKS_UP_ITEM", this, data => {
@@ -74,6 +77,8 @@ export class Hero extends GameObject {
       this.workOnItemPickup(delta);
       return;
     }
+
+    if (!this.isWalking) return;
 
     const distance = moveTowards(this, this.destinationPosition, 1);
     const hasArrived = distance <= 1;
@@ -130,7 +135,7 @@ export class Hero extends GameObject {
     this.facingDirection = input.direction ?? this.facingDirection;
 
     // Validating that the next destination is free
-    if (isSpaceFree(walls, nextX, nextY)) {
+    if (isSpaceFree(this.walls, nextX, nextY)) {
       this.destinationPosition.x = nextX;
       this.destinationPosition.y = nextY;
     }

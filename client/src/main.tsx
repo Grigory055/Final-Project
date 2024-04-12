@@ -7,39 +7,50 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store.ts';
 
 const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'pixel',
+      'sans-serif',
+    ].join(','),
+  },
   components: {
-    // Name of the component
     MuiCard: {
       styleOverrides: {
-        // Name of the slot
         root: {
-          // Some CSS
           borderRadius: '0px',
-          // backgroundColor: 'green',
-          border: '2px solid',
+          border: 'none',
+          background: 'none',
         },
       },
     },
     MuiCardContent: {
       styleOverrides: {
-        // Name of the slot
         root: {
-          // Some CSS
           borderRadius: '0px',
-          // backgroundColor: 'aqua',
-          border: '2px solid',
+          border: 'none',
+          background: 'none',
         },
       },
     },
     MuiButton: {
       styleOverrides: {
-        // Name of the slot
         root: {
-          // Some CSS
-          color: 'red',
+          borderRadius: '0px',
+          border: 'none',
+          background: 'none',
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          border: 'none',
+          borderRadius: '0px',
+          background: 'none',
+          boxShadow: 'none',
+        },
+      },
+    }
   },
 });
 

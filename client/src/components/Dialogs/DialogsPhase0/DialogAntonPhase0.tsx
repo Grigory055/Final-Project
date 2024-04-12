@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import Gladiator from '../../Gladiator/Gladiator'
+import { Button, Link } from "@mui/material";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 interface IDialog {
     person: string
@@ -9,7 +12,7 @@ interface IDialog {
   const Anton: IDialog = {
     person: 'Sveta',
     status: '1',
-    text: 'Привет! Я - Антон. Я ем, сплю и сижу за компом в своих наушниках.'
+    text: 'Привет! Я - Антон. Зацени мои наушники!'
   }
 
   const Anton2: IDialog = {
@@ -30,7 +33,7 @@ interface IDialog {
     text: 'Ты можешь научиться делать такую же! для этого тебе нужно пройти Фазу 1 Научишься так же, даже Больше!'
   }
 
-export default function DialogAntonPhase0() {
+export function DialogAntonPhase0() {
 
     const [dialog, setDialog] = useState<IDialog>(Anton)
     
@@ -61,8 +64,16 @@ export default function DialogAntonPhase0() {
           case '3':
             return <div>{Anton3.text}
             <button onClick={() => handlerDialog2()}>Играть в гладиаторы</button></div>
+          case '5':
+            return  <div>{Anton4.text}
+            <Link component={ReactRouterLink} to="/"><Button>К следующей фазе!</Button></Link>
+            {/* <button onClick={() => setDialog((pre) => ({...pre, status: '5'}))} >К следующей фазе!</button> */}
+            </div>;
           case '4':
-            return  <div>{Anton4.text}<button onClick={() => setDialog((pre) => ({...pre, status: '1'}))} >К следующей фазе!</button></div>;
+            return <>
+                    <Gladiator />;
+                    <button onClick={() => setDialog((pre) => ({...pre, status: '5'}))} >Далее</button>
+                  </>
         //   case '4':
         //     return <button>Идем дальше!</button>;
         }

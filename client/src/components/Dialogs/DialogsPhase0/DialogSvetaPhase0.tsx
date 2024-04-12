@@ -30,7 +30,7 @@ interface IDialog {
     text: 'Итак, приступим! Добро пожаловать на Фазу 0! Твоя задача: нужно найти три таблички и ответить на вопросы, которые на ней написаны'
   }
 
-export default function DialogSvetaPhase0() {
+export function DialogSvetaPhase0({ handleCloseClick }) {
 
     const [dialog, setDialog] = useState<IDialog>(Sveta)
     
@@ -45,7 +45,7 @@ export default function DialogSvetaPhase0() {
 
   return (
     <>
-    <div style={{ textAlign: "center", margin: 'auto ', fontSize: '25px', width: '440px', height: '300px', border: '2px solid', backgroundColor: 'white', padding: '15px'}}>
+    <div style={{maxWidth: '300px'}}>
        {(() => {
         switch (dialog.status) {
           case '1':
@@ -65,7 +65,7 @@ export default function DialogSvetaPhase0() {
             return <div> <div>{Sveta3.text}</div>
             <button onClick={() => handlerDialog2()}>Далее</button></div>
           case '4':
-            return  <div>{Sveta4.text}<button onClick={() => setDialog((pre) => ({...pre, status: '1'}))} >Искать приключения</button></div>;
+            return  <div>{Sveta4.text}<button onClick={() => handleCloseClick()} >Искать приключения</button></div>;
         //   case '4':
         //     return <button>Идем дальше!</button>;
         }
