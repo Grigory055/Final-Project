@@ -15,7 +15,7 @@ export function MainPage() {
           </div>
           <div className="level" id="first-level">
             <Box component={ReactRouterLink} to="/phase/0" className="phase active" id="phase-0"></Box>
-            <div className="phase active" id="phase-1"></div>
+            <Box component={ReactRouterLink} to="/phase/1" className="phase active" id="phase-1"></Box>
           </div>
         </div>
       </div>
