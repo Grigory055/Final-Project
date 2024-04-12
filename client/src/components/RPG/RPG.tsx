@@ -12,8 +12,8 @@ import {Inventory} from "./src/objects/Inventory/Inventory.js";
 import { useEffect, useRef, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import {events} from "./src/Events.js";
-import { ExitToMap, DialogSvetaPhase0, DialogAntonPhase0 } from '../Dialogs';
-import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3 } from '../Questions/index.js';
+import { ExitToMap, DialogSvetaPhase0, DialogAntonPhase0, DialogSvetaPhase1, DialogMaksPhase1, DialogStartPhase0, DialogStartPhase1 } from '../Dialogs';
+import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3, QuestionsP1W1, QuestionsP1W2, QuestionsP1W3 } from '../Questions';
 import { useParams } from 'react-router-dom';
 import { phase0objects, phase0walls, phase1objects, phase1walls } from './src/levels/'
 const walls = [phase0walls, phase1walls]
@@ -24,12 +24,33 @@ export function RPG() {
   const [open, setOpen] = useState(false);
   const [modalComponent, setModalComponent] = useState<JSX.Element | null>(null)
   const { id } = useParams();
+  const levelObjects = gameObjects[Number(id)];
 
   const handleCloseClick = () => {
     setOpen(false);
     hero.isWalking = true;
-    console.log(hero.isWalking);
   }
+
+  const dialogs = [
+    {
+      rod1: <QuestionsP0W1 handleCloseClick={handleCloseClick} />,
+      rod2: <QuestionsP0W2 handleCloseClick={handleCloseClick} />,
+      rod3: <QuestionsP0W3 handleCloseClick={handleCloseClick} />,
+      dialogBubble: <DialogStartPhase0 handleCloseClick={handleCloseClick} />,
+      npc1: <DialogSvetaPhase0 handleCloseClick={handleCloseClick} />,
+      npc2: <DialogAntonPhase0 handleCloseClick={handleCloseClick} />,
+    },
+    {
+      rod1: <QuestionsP1W1 handleCloseClick={handleCloseClick} />,
+      rod2: <QuestionsP1W2 handleCloseClick={handleCloseClick} />,
+      rod3: <QuestionsP1W3 handleCloseClick={handleCloseClick} />,
+      dialogBubble: <DialogStartPhase1 handleCloseClick={handleCloseClick} />,
+      npc1: <DialogSvetaPhase1 handleCloseClick={handleCloseClick} />,
+      npc2: <DialogMaksPhase1 handleCloseClick={handleCloseClick} />,
+    }
+  ]
+
+  const levelDialogs = dialogs[Number(id)];
 
   class Rod extends GameObject {
     constructor(x,y, component) {
@@ -128,7 +149,7 @@ export function RPG() {
         resource: resources.images.npc,
         frameSize: new Vector2(32,32),
         hFrames: 2,
-        vFrames: 2,
+        vFrames: 3,
         frame: skin,
         position: new Vector2(-8, -19),
       })
@@ -176,7 +197,6 @@ export function RPG() {
 
 
   const canvasRef = useRef();
-  console.log(canvasRef);  
 
   // Establish the root scene
   const mainScene = new GameObject({
@@ -199,23 +219,37 @@ export function RPG() {
   const camera = new Camera()
   mainScene.addChild(camera);
 
-  const rod1 = new Rod(gridCells(39), gridCells(20), <QuestionsP0W1 handleCloseClick={handleCloseClick} />)
+  const rod1 = new Rod(gridCells(levelObjects.rod1.x), gridCells(levelObjects.rod1.y), levelDialogs.rod1)
   mainScene.addChild(rod1);
 
-  const rod2 = new Rod(gridCells(46), gridCells(39), <QuestionsP0W2 handleCloseClick={handleCloseClick} />)
+  const rod2 = new Rod(gridCells(levelObjects.rod2.x), gridCells(levelObjects.rod2.y), levelDialogs.rod2)
   mainScene.addChild(rod2);
 
-  const rod3 = new Rod(gridCells(35), gridCells(48), <QuestionsP0W3 handleCloseClick={handleCloseClick} />)
+  const rod3 = new Rod(gridCells(levelObjects.rod3.x), gridCells(levelObjects.rod3.y), levelDialogs.rod3)
   mainScene.addChild(rod3);
 
-  const dialogBubble = new DialogBubble(gridCells(35), gridCells(24), <ExitToMap />)
+  const dialogBubble = new DialogBubble(gridCells(levelObjects.dialogBubble.x), gridCells(levelObjects.dialogBubble.y), levelDialogs.dialogBubble)
   mainScene.addChild(dialogBubble);
 
-  const sveta = new NPC(gridCells(24), gridCells(26), <DialogSvetaPhase0 handleCloseClick={handleCloseClick} />, 384, 384, 0)
-  mainScene.addChild(sveta);
+  const npc1 = new NPC(
+    gridCells(levelObjects.npc1.x),
+    gridCells(levelObjects.npc1.y),
+    levelDialogs.npc1,
+    levelObjects.npc1.exit.x,
+    levelObjects.npc1.exit.y,
+    levelObjects.npc1.skin)
 
-  const anton = new NPC(gridCells(24), gridCells(49), <DialogAntonPhase0 />, 384, 384, 2)
-  mainScene.addChild(anton);
+  mainScene.addChild(npc1);
+
+  const npc2 = new NPC(
+    gridCells(levelObjects.npc2.x),
+    gridCells(levelObjects.npc2.y),
+    levelDialogs.npc2,
+    levelObjects.npc2.exit.x,
+    levelObjects.npc2.exit.y,
+    levelObjects.npc2.skin)
+    
+  mainScene.addChild(npc2);
 
   mainScene.addChild(hero);
 
@@ -263,7 +297,7 @@ export function RPG() {
 
   useEffect(() => {
     console.log('useEffect', gameLoop.isRunning);
-    const { x, y } = gameObjects[Number(id)].hero.position
+    const { x, y } = levelObjects.hero.position
     hero.position = new Vector2(gridCells(x), gridCells(y));
     // phase0 x 19 y 26
     // phase1 x 27 y 57

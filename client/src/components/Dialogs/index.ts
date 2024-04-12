@@ -1,3 +1,7 @@
 export { ExitToMap } from './ExitToMap'
+export { DialogStartPhase0 } from './DialogsPhase0/DialogStartPhase0'
 export { DialogAntonPhase0 } from './DialogsPhase0/DialogAntonPhase0'
 export { DialogSvetaPhase0 } from './DialogsPhase0/DialogSvetaPhase0'
+export { DialogStartPhase1 } from './DialogsPhase1/DialogStartPhase1'
+export { DialogMaksPhase1 } from './DialogsPhase1/DialogMaksPhase1'
+export { DialogSvetaPhase1 } from './DialogsPhase1/DialogSvetaPhase1'

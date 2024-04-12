@@ -1,3 +1,6 @@
 export { QuestionsP0W1 } from './QuestionsP0/QuestionsP0W1'
 export { QuestionsP0W2 } from './QuestionsP0/QuestionsP0W2'
 export { QuestionsP0W3 } from './QuestionsP0/QuestionsP0W3'
+export { QuestionsP1W1 } from './QuestionsP1/QuestionsP1W1'
+export { QuestionsP1W2 } from './QuestionsP1/QuestionsP1W2'
+export { QuestionsP1W3 } from './QuestionsP1/QuestionsP1W3'

@@ -428,7 +428,7 @@ export default function Gladiator() {
 
   return (
     <>
-      <div>
+      <div style={{ width: '600px' }}>
         <Button onClick={() => handlerWeapons()}>Раздача оружия</Button>
         <h2>
           {

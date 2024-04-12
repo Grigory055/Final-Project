@@ -19,7 +19,7 @@ interface IDialog {
     text: 'Понравилась фаза 1?',
   }
 
-export default function DialogSvetaPhase1() {
+export function DialogSvetaPhase1({ handleCloseClick }) {
 
     const [dialog, setDialog] = useState<IDialog>(Sveta1)
 

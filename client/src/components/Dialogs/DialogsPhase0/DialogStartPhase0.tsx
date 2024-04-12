@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './DialogsPhase0.module.css'
+import { Button } from '@mui/material'
 
 interface IDialog {
     text: string
@@ -9,7 +10,7 @@ interface IDialog {
     text: 'Итак, приступим! Добро пожаловать на Фазу 0! Твоя задача: нужно найти три таблички и ответить на вопросы, которые на ней написаны'
   }
 
-export default function DialogStartPhase0() {
+export function DialogStartPhase0({ handleCloseClick }) {
 
     const [dialog, setDialog] = useState<IDialog>(dialogStartPhase0)
 
@@ -20,7 +21,7 @@ export default function DialogStartPhase0() {
           {dialog.text}
         </div>
         <div>
-          <button onClick={() => console.log(dialog)}>Далее</button>
+        <Button onClick={() => handleCloseClick()} >Далее</Button>
         </div>
       </div>
     </>

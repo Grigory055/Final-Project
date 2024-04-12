@@ -25,7 +25,7 @@ interface IDialog {
     text: 'Вот это экшн! Твой стиль меня поразил! Поздравляю с переходом на фазу 2!!!',
   }
 
-export default function DialogMaksPhase1() {
+export function DialogMaksPhase1({ handleCloseClick }) {
 
   const [dialog, setDialog] = useState<IDialog>(Maks1)
 

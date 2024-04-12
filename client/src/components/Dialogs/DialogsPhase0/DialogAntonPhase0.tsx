@@ -33,7 +33,7 @@ interface IDialog {
     text: 'Ты можешь научиться делать такую же! для этого тебе нужно пройти Фазу 1 Научишься так же, даже Больше!'
   }
 
-export function DialogAntonPhase0() {
+export function DialogAntonPhase0({ handleCloseClick }) {
 
     const [dialog, setDialog] = useState<IDialog>(Anton)
     
@@ -52,20 +52,20 @@ export function DialogAntonPhase0() {
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div><p>{Anton.text}</p>
-            <Button style={{ width: '100px'}} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div> ;
+            return <div style={{ width: '400px' }}><p>{Anton.text}</p>
+            <Button onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div> ;
           case '2':
-            return <div><p>{Anton2.text}</p>
+            return <div style={{ width: '400px' }}><p>{Anton2.text}</p>
             
                 <Button onClick={() =>handlerDialog()} >Далее</Button>
             
             </div>;
             // return <button onClick={() => setDialog((pre) => ({...pre, status: 'end'}))} >Завершить игру</button>;
           case '3':
-            return <div><p>{Anton3.text}</p>
+            return <div style={{ width: '400px' }}><p>{Anton3.text}</p>
             <Button onClick={() => handlerDialog2()}>Играть в гладиаторы</Button></div>
           case '5':
-            return  <div>{Anton4.text}
+            return  <div style={{ width: '400px' }}>{Anton4.text}
             <Link component={ReactRouterLink} to="/"><Button>К следующей фазе!</Button></Link>
             {/* <button onClick={() => setDialog((pre) => ({...pre, status: '5'}))} >К следующей фазе!</button> */}
             </div>;
