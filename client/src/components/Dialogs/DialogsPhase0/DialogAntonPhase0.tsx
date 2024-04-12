@@ -10,25 +10,25 @@ interface IDialog {
   }
 
   const Anton: IDialog = {
-    person: 'Sveta',
+    person: 'Anton',
     status: '1',
     text: 'Привет! Я - Антон. Зацени мои наушники!'
   }
 
   const Anton2: IDialog = {
-    person: 'Sveta',
+    person: 'Anton',
     status: '2',
     text: 'Вот уж не ожидал! Ты прошел 0 фазу! Теперь ты умеешь красить кнопки!'
   }
 
   const Anton3: IDialog = {
-    person: 'Sveta',
+    person: 'Anton',
     status: '3',
     text: 'Спасибо, что собрал для меня все БРЮЛИКИ, и помог мне с вопросами, благодаря тебе мы можем сыграть в игру Гладиаторы!'
   }
 
   const Anton4: IDialog = {
-    person: 'Sveta',
+    person: 'Anton',
     status: '4',
     text: 'Ты можешь научиться делать такую же! для этого тебе нужно пройти Фазу 1 Научишься так же, даже Больше!'
   }
