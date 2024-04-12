@@ -15,9 +15,9 @@ import {events} from "./src/Events.js";
 import { ExitToMap, DialogSvetaPhase0, DialogAntonPhase0, DialogSvetaPhase1, DialogMaksPhase1, DialogStartPhase0, DialogStartPhase1 } from '../Dialogs';
 import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3, QuestionsP1W1, QuestionsP1W2, QuestionsP1W3 } from '../Questions';
 import { useParams } from 'react-router-dom';
-import { phase0objects, phase0walls, phase1objects, phase1walls } from './src/levels/'
-const walls = [phase0walls, phase1walls]
-const gameObjects = [phase0objects, phase1objects];
+import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls } from './src/levels/'
+const walls = [phase0walls, phase1walls, phase2walls]
+const gameObjects = [phase0objects, phase1objects, phase2objects];
 const hero = new Hero(gridCells(1), gridCells(1));
 
 export function RPG() {
@@ -41,6 +41,14 @@ export function RPG() {
       dialogBubble: <DialogStartPhase0 handleCloseClick={handleCloseClick} />,
       npc1: <DialogSvetaPhase0 handleCloseClick={handleCloseClick} />,
       npc2: <DialogAntonPhase0 handleCloseClick={handleCloseClick} />,
+    },
+    {
+      rod1: <QuestionsP1W1 handleCloseClick={handleCloseClick} />,
+      rod2: <QuestionsP1W2 handleCloseClick={handleCloseClick} />,
+      rod3: <QuestionsP1W3 handleCloseClick={handleCloseClick} />,
+      dialogBubble: <DialogStartPhase1 handleCloseClick={handleCloseClick} />,
+      npc1: <DialogSvetaPhase1 handleCloseClick={handleCloseClick} />,
+      npc2: <DialogMaksPhase1 handleCloseClick={handleCloseClick} />,
     },
     {
       rod1: <QuestionsP1W1 handleCloseClick={handleCloseClick} />,

@@ -5,6 +5,7 @@ class Resources {
       water: "/sprites/water.png",
       phase0: "/sprites/phase0.png",
       phase1: "/sprites/phase1.png",
+      phase2: "/sprites/phase2.png",
       hero: "/sprites/hero-sheet.png",
       shadow: "/sprites/shadow.png",
       rod: "/sprites/rod.png",
