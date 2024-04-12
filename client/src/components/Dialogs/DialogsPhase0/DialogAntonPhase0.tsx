@@ -48,22 +48,22 @@ export function DialogAntonPhase0() {
 
   return (
     <>
-    <div style={{ textAlign: "center", margin: 'auto ', fontSize: '25px', width: '440px', height: '300px', border: '2px solid', backgroundColor: 'white', padding: '15px' }}>
+    <div>
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div>{Anton.text}
-            <button style={{ width: '100px'}} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</button></div> ;
+            return <div><p>{Anton.text}</p>
+            <Button style={{ width: '100px'}} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div> ;
           case '2':
-            return <div>{Anton2.text}
+            return <div><p>{Anton2.text}</p>
             
-                <button onClick={() =>handlerDialog()} >Далее</button>
+                <Button onClick={() =>handlerDialog()} >Далее</Button>
             
             </div>;
             // return <button onClick={() => setDialog((pre) => ({...pre, status: 'end'}))} >Завершить игру</button>;
           case '3':
-            return <div>{Anton3.text}
-            <button onClick={() => handlerDialog2()}>Играть в гладиаторы</button></div>
+            return <div><p>{Anton3.text}</p>
+            <Button onClick={() => handlerDialog2()}>Играть в гладиаторы</Button></div>
           case '5':
             return  <div>{Anton4.text}
             <Link component={ReactRouterLink} to="/"><Button>К следующей фазе!</Button></Link>
@@ -72,7 +72,7 @@ export function DialogAntonPhase0() {
           case '4':
             return <>
                     <Gladiator />;
-                    <button onClick={() => setDialog((pre) => ({...pre, status: '5'}))} >Далее</button>
+                    <Button onClick={() => setDialog((pre) => ({...pre, status: '5'}))} >Далее</Button>
                   </>
         //   case '4':
         //     return <button>Идем дальше!</button>;

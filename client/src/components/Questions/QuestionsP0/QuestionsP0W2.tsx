@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './QuestionsP0.module.css';
+import { Button } from '@mui/material';
 
-export function QuestionsP0W2() {
+export function QuestionsP0W2({ handleCloseClick }) {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
   const[coins,setCoins] = useState<number>(0)
   const[nextAnswer,setNextAnswer] = useState<boolean>(false)
@@ -62,7 +63,7 @@ const secondRightAnswerHandler: () => void = () => {
             <p>Тебе предстоит ответить на пару вопросов!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn.gif" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
-          <button className={styles.modal_btn_answer}>далее</button></>)}
+          <Button onClick={() => handleCloseClick()} >далее</Button></>)}
       </div>
     </>
   )

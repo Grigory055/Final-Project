@@ -1,13 +1,8 @@
-@font-face {
-  font-family: 'pixel';
-  src: url('/fonts/font.ttf');
-}
 
 .container {
-  display: flex;
-
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .question_modal {
@@ -18,11 +13,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 200px;
   width: 600px;
   height: 400px;
   background-image: url('/components/p0modal.jpg');
-  border-radius: 20px;
   color: rgb(117, 17, 126);
 }
 

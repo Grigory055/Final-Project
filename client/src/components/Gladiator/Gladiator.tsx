@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 interface IGladiator {
@@ -428,7 +429,7 @@ export default function Gladiator() {
   return (
     <>
       <div>
-        <button onClick={() => handlerWeapons()}>Раздача оружия</button>
+        <Button onClick={() => handlerWeapons()}>Раздача оружия</Button>
         <h2>
           {
             <img
@@ -452,7 +453,7 @@ export default function Gladiator() {
         </h2>
       </div>
       <div>
-        <button onClick={() => handleFight()}>Атака</button>
+        <Button onClick={() => handleFight()}>Атака</Button>
         <h2>
           {game1.name} {game1.hp} {attack1} {game2.name}
         </h2>

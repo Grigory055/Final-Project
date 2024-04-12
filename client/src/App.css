@@ -157,3 +157,23 @@ body,
 #modal-footer .center {
   background-image: url('/assets/modal-footer-center.png');
 }
+
+#modal .controls {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#modal .close {
+  background: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  background-image: url('/assets/close.png');
+}
+
+#modal .close:active {
+  background-image: url('/assets/close-active.png');
+}

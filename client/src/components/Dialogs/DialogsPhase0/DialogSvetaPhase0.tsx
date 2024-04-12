@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import React, { useState } from 'react'
 
 interface IDialog {
@@ -49,23 +50,22 @@ export function DialogSvetaPhase0({ handleCloseClick }) {
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div> <div>{Sveta.text} </div><div>
-            <button style={{ width: '100px'}} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</button></div></div> ;
+            return <div><p>{Sveta.text}</p><div>
+            <Button onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div></div> ;
           case '2':
             return <div> <div style={{ display: 'flex', flexDirection: 'column'}}>{Sveta2.text}
             <form style={{ display: 'flex', flexDirection: 'column'}} action="">
                 <input type="text" name='email' placeholder='mail' />
                 <input type="text" name='login' placeholder='login' />
                 <input type="password" name='password' placeholder='password' />
-                <button onClick={() =>handlerDialog()} >Регистрация</button>
+                <Button onClick={() =>handlerDialog()} >Регистрация</Button>
             </form>
             </div></div>;
-            // return <button onClick={() => setDialog((pre) => ({...pre, status: 'end'}))} >Завершить игру</button>;
           case '3':
-            return <div> <div>{Sveta3.text}</div>
-            <button onClick={() => handlerDialog2()}>Далее</button></div>
+            return <div><p>{Sveta3.text}</p>
+            <Button onClick={() => handleCloseClick()} >Искать приключения</Button></div>
           case '4':
-            return  <div>{Sveta4.text}<button onClick={() => handleCloseClick()} >Искать приключения</button></div>;
+            return  <div><p>{Sveta4.text}</p><Button onClick={() => handleCloseClick()} >Искать приключения</Button></div>;
         //   case '4':
         //     return <button>Идем дальше!</button>;
         }

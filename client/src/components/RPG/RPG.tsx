@@ -196,13 +196,13 @@ export function RPG() {
   const camera = new Camera()
   mainScene.addChild(camera);
 
-  const rod1 = new Rod(gridCells(38), gridCells(19), <QuestionsP0W1 />)
+  const rod1 = new Rod(gridCells(39), gridCells(20), <QuestionsP0W1 handleCloseClick={handleCloseClick} />)
   mainScene.addChild(rod1);
 
-  const rod2 = new Rod(gridCells(46), gridCells(39), <QuestionsP0W2 />)
+  const rod2 = new Rod(gridCells(46), gridCells(39), <QuestionsP0W2 handleCloseClick={handleCloseClick} />)
   mainScene.addChild(rod2);
 
-  const rod3 = new Rod(gridCells(35), gridCells(48), <QuestionsP0W3 />)
+  const rod3 = new Rod(gridCells(35), gridCells(48), <QuestionsP0W3 handleCloseClick={handleCloseClick} />)
   mainScene.addChild(rod3);
 
   const dialogBubble = new DialogBubble(gridCells(35), gridCells(24), <ExitToMap />)
@@ -211,7 +211,7 @@ export function RPG() {
   const sveta = new NPC(gridCells(24), gridCells(26), <DialogSvetaPhase0 handleCloseClick={handleCloseClick} />, 384, 384, 0)
   mainScene.addChild(sveta);
 
-  const anton = new NPC(gridCells(26), gridCells(47), <DialogAntonPhase0 />, 384, 384, 2)
+  const anton = new NPC(gridCells(24), gridCells(49), <DialogAntonPhase0 />, 384, 384, 2)
   mainScene.addChild(anton);
 
   mainScene.addChild(hero);
@@ -277,7 +277,10 @@ export function RPG() {
           </div>
           <div id="modal-content" className='section'>
             <div className='left'></div>
-            <div className='center'>{modalComponent}</div>
+            <div className='center'>
+              <div className='controls'><button onClick={() => handleCloseClick()} className='close' /></div>
+              {modalComponent}
+            </div>
             <div className='right'></div>
           </div>
           <div id="modal-footer" className='section'>
