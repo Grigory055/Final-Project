@@ -1,17 +1,7 @@
 import './style.css'
-import {resources} from "./src/Resource.js";
-import {Sprite} from "./src/Sprite.js";
-import {Vector2} from "./src/Vector2.js";
-import {GameLoop} from "./src/GameLoop.js";
-import {Input} from "./src/Input.js";
-import {gridCells} from "./src/helpers/grid.js";
-import {GameObject} from "./src/GameObject.js";
-import {Hero} from "./src/objects/Hero/Hero.js";
-import {Camera} from "./src/Camera.js";
-import {Inventory} from "./src/objects/Inventory/Inventory.js";
 import { useEffect, useRef, useState } from 'react';
 import { Dialog } from '@mui/material';
-import {events} from "./src/Events.js";
+import { resources, Sprite, Vector2, GameLoop, Input, gridCells, GameObject, Hero, Camera, Inventory, events } from "./src";
 import { DialogSvetaPhase0, DialogAntonPhase0, DialogSvetaPhase1, DialogMaksPhase1, DialogStartPhase0, DialogStartPhase1 } from '../Dialogs';
 import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3, QuestionsP1W1, QuestionsP1W2, QuestionsP1W3 } from '../Questions';
 import { useParams } from 'react-router-dom';
@@ -31,7 +21,11 @@ export function RPG() {
 
   const handleCloseClick = () => {
     setOpen(false);
-    hero.isWalking = true;
+    setHero((hero) => {
+      hero.isWalking = true;
+      return hero;
+    })
+    
   }
 
   const dialogs = [
