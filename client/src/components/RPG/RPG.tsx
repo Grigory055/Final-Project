@@ -10,18 +10,19 @@ import {Hero} from "./src/objects/Hero/Hero.js";
 import {Camera} from "./src/Camera.js";
 import {Inventory} from "./src/objects/Inventory/Inventory.js";
 import { useEffect, useRef, useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { Dialog } from '@mui/material';
 import {events} from "./src/Events.js";
-import { ExitToMap, DialogSvetaPhase0, DialogAntonPhase0, DialogSvetaPhase1, DialogMaksPhase1, DialogStartPhase0, DialogStartPhase1 } from '../Dialogs';
+import { DialogSvetaPhase0, DialogAntonPhase0, DialogSvetaPhase1, DialogMaksPhase1, DialogStartPhase0, DialogStartPhase1 } from '../Dialogs';
 import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3, QuestionsP1W1, QuestionsP1W2, QuestionsP1W3 } from '../Questions';
 import { useParams } from 'react-router-dom';
 import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls } from './src/levels/'
 const walls = [phase0walls, phase1walls, phase2walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects];
-const hero = new Hero(gridCells(1), gridCells(1));
+
 
 export function RPG() {
   const [open, setOpen] = useState(false);
+  const [hero, setHero] = useState({});
   const [modalComponent, setModalComponent] = useState<JSX.Element | null>(
     null
   );
@@ -103,7 +104,10 @@ export function RPG() {
 
       setModalComponent(() => this.component);
       setOpen(true);
-      hero.isWalking = false;
+      setHero((hero) => {
+        hero.isWalking = false;
+        return hero;
+      })
     }
   }
 
@@ -142,7 +146,11 @@ export function RPG() {
     onCollideWithHero() {
       setModalComponent(() => this.component);
       setOpen(true);
-      hero.isWalking = false;
+      setHero((hero) => {
+        hero.isWalking = false;
+        return hero;
+      })
+      
     }
   }
 
@@ -194,15 +202,27 @@ export function RPG() {
     onCollideWithHero() {
       setModalComponent(() => this.component);
       setOpen(true);
-      hero.walls.delete(
-        `${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`
-      );
-      hero.isWalking = false;
+      setHero((hero) => {
+        hero.walls.delete(
+          `${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`
+        );
+        hero.isWalking = false;
+        return hero;
+      })
+      
     }
   }
 
   const canvasRef = useRef();
+  
+  useEffect(() => {
 
+    const { x, y } = levelObjects.hero.position
+    const newHero = new Hero(gridCells(x), gridCells(y));
+    newHero.walls = new Set(walls[Number(id)]);
+    setHero(newHero);
+    console.log(newHero.children);
+    
   // Establish the root scene
   const mainScene = new GameObject({
     position: new Vector2(0, 0),
@@ -256,7 +276,7 @@ export function RPG() {
     
   mainScene.addChild(npc2);
 
-  mainScene.addChild(hero);
+  mainScene.addChild(newHero);
 
   const inventory = new Inventory();
 
@@ -298,16 +318,13 @@ export function RPG() {
 
   const gameLoop = new GameLoop(update, draw);
 
-  useEffect(() => {
     console.log('useEffect', gameLoop.isRunning);
-    const { x, y } = levelObjects.hero.position
-    hero.position = new Vector2(gridCells(x), gridCells(y));
-    // phase0 x 19 y 26
-    // phase1 x 27 y 57
-    hero.destinationPosition = hero.position.duplicate();
-    hero.walls = walls[Number(id)];
+
     draw();
     gameLoop.start();
+    return () => {
+      setHero({});
+    }
   }, []);
 
   return (
