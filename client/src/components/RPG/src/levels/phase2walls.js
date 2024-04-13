@@ -171,6 +171,7 @@ phase2walls.add(`752,592`);
 phase2walls.add(`752,608`);
 phase2walls.add(`752,624`);
 phase2walls.add(`736,624`);
+phase2walls.add(`736,640`);
 phase2walls.add(`720,624`);
 phase2walls.add(`704,624`);
 phase2walls.add(`688,624`);
