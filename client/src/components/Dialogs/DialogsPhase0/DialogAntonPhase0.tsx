@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Gladiator from '../../Gladiator/Gladiator'
 import { Button, Link } from "@mui/material";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { useAppDispatch } from '../../../redux/hooks';
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
 
 interface IDialog {
     person: string
@@ -33,7 +35,15 @@ interface IDialog {
     text: 'Ты можешь научиться делать такую же! для этого тебе нужно пройти Фазу 1 Научишься так же, даже Больше!'
   }
 
-export function DialogAntonPhase0({ handleCloseClick }) {
+export function DialogAntonPhase0() {
+
+  const dispatch = useAppDispatch();
+
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+  }
+
 
     const [dialog, setDialog] = useState<IDialog>(Anton)
     
@@ -66,7 +76,7 @@ export function DialogAntonPhase0({ handleCloseClick }) {
             <Button onClick={() => handlerDialog2()}>Играть в гладиаторы</Button></div>
           case '5':
             return  <div style={{ width: '400px' }}>{Anton4.text}
-            <Link component={ReactRouterLink} to="/"><Button>К следующей фазе!</Button></Link>
+            <Link component={ReactRouterLink} to="/" onClick={() => handleCloseClick()}><Button>К следующей фазе!</Button></Link>
             {/* <button onClick={() => setDialog((pre) => ({...pre, status: '5'}))} >К следующей фазе!</button> */}
             </div>;
           case '4':

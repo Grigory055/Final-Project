@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styles from './DialogsPhase1.module.css'
+import { useAppDispatch } from '../../../redux/hooks'
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 
 interface IDialog {
     person: string
@@ -25,7 +27,15 @@ interface IDialog {
     text: 'Вот это экшн! Твой стиль меня поразил! Поздравляю с переходом на фазу 2!!!',
   }
 
-export function DialogMaksPhase1({ handleCloseClick }) {
+export function DialogMaksPhase1() {
+
+  const dispatch = useAppDispatch();
+
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+  }
+
 
   const [dialog, setDialog] = useState<IDialog>(Maks1)
 
@@ -51,7 +61,7 @@ export function DialogMaksPhase1({ handleCloseClick }) {
               </div>;
           case '3':
             return <div><div>{Maks3.text}</div><div>
-            <button onClick={() => setDialog((pre) => ({...pre, status: '1'}))}>Переход на 2 фазу</button></div></div>
+            <button onClick={() => handleCloseClick()}>Переход на 2 фазу</button></div></div>
         }
       })()}
     </div>

@@ -14,8 +14,7 @@ body,
   display: flex;
   flex-direction: column;
   background: rgb(91,187,199);
-  background: radial-gradient(circle, rgba(91,187,199,1) 0%, rgba(54,130,128,1) 100%);
-  background-image: url('/water.png');
+  background: radial-gradient(circle, rgba(91,187,199,1) 0%, rgba(3,61,85,1) 100%);
 }
 
 #game-title {
