@@ -10,7 +10,7 @@ export function MainPage() {
       <div id="map-inactive">
         <div id="map">
           <div className="level" id="second-level">
-            <div className="phase active" id="phase-3"></div>
+            <Box component={ReactRouterLink} to="/phase/3" className="phase active" id="phase-3"></Box>
             <Box component={ReactRouterLink} to="/phase/2" className="phase active" id="phase-2"></Box>
           </div>
           <div className="level" id="first-level">

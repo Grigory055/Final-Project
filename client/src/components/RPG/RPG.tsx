@@ -57,7 +57,15 @@ export function RPG() {
       dialogBubble: <DialogStartPhase2 handleCloseClick={handleCloseClick} />,
       npc1: <DialogSvetaPhase2 handleCloseClick={handleCloseClick} />,
       npc2: <DialogGrishaPhase2 handleCloseClick={handleCloseClick} />,
-    }
+    },
+    {
+      rod1: <QuestionsP0W1 handleCloseClick={handleCloseClick} />,
+      rod2: <QuestionsP0W2 handleCloseClick={handleCloseClick} />,
+      rod3: <QuestionsP0W3 handleCloseClick={handleCloseClick} />,
+      dialogBubble: <DialogStartPhase0 handleCloseClick={handleCloseClick} />,
+      npc1: <DialogSvetaPhase0 handleCloseClick={handleCloseClick} />,
+      npc2: <DialogAntonPhase0 handleCloseClick={handleCloseClick} />,
+    },
   ]
 
   const levelDialogs = dialogs[Number(id)];
