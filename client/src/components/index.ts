@@ -7,3 +7,4 @@ export { Stats } from "./Stats/Stats";
 export { Game } from "./Game/Game";
 export { Boomerang } from "./Boomerang/Boomerang"
 export { RPG } from "./RPG/RPG"
+export { ChooseCharacter } from "./ChooseCharacter/ChooseCharacter"

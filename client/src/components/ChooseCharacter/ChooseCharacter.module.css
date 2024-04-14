@@ -1,0 +1,20 @@
+.container {
+  width: 400px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.characters {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.male {
+  background-image: url('/sprites/character-male.png');
+  width: 78px;
+}
+
+.female {
+  background-image: url('/sprites/character-female.png');
+  width: 78px;
+}
