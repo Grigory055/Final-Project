@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 
 const initTrack = new Array(30).fill('__');
@@ -32,7 +33,7 @@ const initGame = {
   enemyIsAlive: true
 }
 
-export function Boomerang() {
+export function Boomerang({ handlerDialog }) {
   const [game, setGame] = useState<IGame>(initGame)
 
   useEffect(() => {
@@ -165,14 +166,14 @@ export function Boomerang() {
       {(() => {
         switch (game.status) {
           case 'init':
-            return <button onClick={() => setGame((pre) => ({...pre, status: 'play'}))} >Начать игру</button>;
+            return <Button onClick={() => setGame((pre) => ({...pre, status: 'play'}))} >Начать игру</Button>;
           case 'play':
-            return <button onClick={() => setGame((pre) => ({...pre, status: 'end'}))} >Завершить игру</button>;
+            return <Button onClick={() => setGame((pre) => ({...pre, status: 'end'}))} >Завершить игру</Button>;
           case 'lose':
           case 'end':
-            return <button onClick={() => setGame((pre) => ({...initGame, status: 'play'}))} >Начать заново</button>;
+            return <Button onClick={() => setGame((pre) => ({...initGame, status: 'play'}))} >Начать заново</Button>;
           case 'won':
-            return <button>Идем дальше!</button>;
+            return <Button onClick={() => handlerDialog('4')}>Идем дальше!</Button>;
         }
       })()}
     </>

@@ -6,6 +6,11 @@ import { DialogSvetaPhase0, DialogAntonPhase0, DialogSvetaPhase1, DialogMaksPhas
 import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3, QuestionsP1W1, QuestionsP1W2, QuestionsP1W3 } from '../Questions';
 import { useParams } from 'react-router-dom';
 import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls } from './src/levels/'
+import QuestionsP2W1 from '../Questions/QuestionsP2/QuestionsP2W1';
+import QuestionsP2W2 from '../Questions/QuestionsP2/QuestionsP2W2';
+import DialogStartPhase2 from '../Dialogs/DialogsPhase2/DialogStartPhase2';
+import DialogSvetaPhase2 from '../Dialogs/DialogsPhase2/DialogSvetaPhase2';
+import DialogGrishaPhase2 from '../Dialogs/DialogsPhase2/DialogGrishaPhase2';
 const walls = [phase0walls, phase1walls, phase2walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects];
 
@@ -21,8 +26,8 @@ export function RPG() {
 
   const handleCloseClick = () => {
     setOpen(false);
-    setHero((hero) => {
-      hero.isWalking = true;
+    setHero((person) => {
+      person.isWalking = true;
       return hero;
     })
     
@@ -46,13 +51,21 @@ export function RPG() {
       npc2: <DialogMaksPhase1 handleCloseClick={handleCloseClick} />,
     },
     {
-      rod1: <QuestionsP1W1 handleCloseClick={handleCloseClick} />,
-      rod2: <QuestionsP1W2 handleCloseClick={handleCloseClick} />,
-      rod3: <QuestionsP1W3 handleCloseClick={handleCloseClick} />,
-      dialogBubble: <DialogStartPhase1 handleCloseClick={handleCloseClick} />,
-      npc1: <DialogSvetaPhase1 handleCloseClick={handleCloseClick} />,
-      npc2: <DialogMaksPhase1 handleCloseClick={handleCloseClick} />,
-    }
+      rod1: <QuestionsP2W1 handleCloseClick={handleCloseClick} />,
+      rod2: <QuestionsP2W2 handleCloseClick={handleCloseClick} />,
+      // rod3: <QuestionsP3W3 handleCloseClick={handleCloseClick} />,
+      dialogBubble: <DialogStartPhase2 handleCloseClick={handleCloseClick} />,
+      npc1: <DialogSvetaPhase2 handleCloseClick={handleCloseClick} />,
+      npc2: <DialogGrishaPhase2 handleCloseClick={handleCloseClick} />,
+    },
+    {
+      rod1: <QuestionsP0W1 handleCloseClick={handleCloseClick} />,
+      rod2: <QuestionsP0W2 handleCloseClick={handleCloseClick} />,
+      rod3: <QuestionsP0W3 handleCloseClick={handleCloseClick} />,
+      dialogBubble: <DialogStartPhase0 handleCloseClick={handleCloseClick} />,
+      npc1: <DialogSvetaPhase0 handleCloseClick={handleCloseClick} />,
+      npc2: <DialogAntonPhase0 handleCloseClick={handleCloseClick} />,
+    },
   ]
 
   const levelDialogs = dialogs[Number(id)];
