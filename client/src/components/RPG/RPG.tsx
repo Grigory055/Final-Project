@@ -5,7 +5,7 @@ import { resources, Sprite, Vector2, GameLoop, Input, gridCells, GameObject, Her
 import { DialogSvetaPhase0, DialogAntonPhase0, DialogSvetaPhase1, DialogMaksPhase1, DialogStartPhase0, DialogStartPhase1 } from '../Dialogs';
 import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3, QuestionsP1W1, QuestionsP1W2, QuestionsP1W3 } from '../Questions';
 import { useParams } from 'react-router-dom';
-import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls } from './src/levels/'
+import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls, phase3objects, phase3walls } from './src/levels/'
 import QuestionsP2W1 from '../Questions/QuestionsP2/QuestionsP2W1';
 import QuestionsP2W2 from '../Questions/QuestionsP2/QuestionsP2W2';
 import DialogStartPhase2 from '../Dialogs/DialogsPhase2/DialogStartPhase2';
@@ -13,8 +13,8 @@ import DialogSvetaPhase2 from '../Dialogs/DialogsPhase2/DialogSvetaPhase2';
 import DialogGrishaPhase2 from '../Dialogs/DialogsPhase2/DialogGrishaPhase2';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { openExit, setWalls, switchHeroWalk, switchDialog } from '../../redux/RPGSlice';
-const walls = [phase0walls, phase1walls, phase2walls]
-const gameObjects = [phase0objects, phase1objects, phase2objects];
+const walls = [phase0walls, phase1walls, phase2walls, phase3walls]
+const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects];
 
 
 export function RPG() {

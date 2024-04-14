@@ -1,4 +1,4 @@
-export const phase2objects = {
+export const phase3objects = {
     hero: {
       position: {
         x: 19, // 19
