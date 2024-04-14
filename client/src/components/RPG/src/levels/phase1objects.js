@@ -31,7 +31,7 @@ export const phase1objects = {
     skin: 0,
   },
   npc2: {
-    x: 21,
+    x: 24,
     y: 33,
     exit: {
       x: 0,
