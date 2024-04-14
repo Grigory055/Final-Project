@@ -184,9 +184,6 @@ phase0walls.add(`432,720`);
 phase0walls.add(`416,720`);
 phase0walls.add(`400,720`);
 phase0walls.add(`384,720`);
-
-phase0walls.add(`384,784`); // На антона не наступаем
-
 phase0walls.add(`368,736`);
 phase0walls.add(`368,752`);
 phase0walls.add(`368,768`);
@@ -216,6 +213,8 @@ phase0walls.add(`448,928`);
 phase0walls.add(`432,928`);
 phase0walls.add(`416,928`);
 phase0walls.add(`400,928`);
+
+
 
 phase0walls.add(`384,400`); // Мост низ
 phase0walls.add(`400,400`);
