@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Gladiator from "../../Gladiator/Gladiator";
 import { Button, Link } from "@mui/material";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { useAppDispatch } from '../../../redux/hooks';
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
 
 interface IDialog {
   person: string;
@@ -34,16 +36,25 @@ const Anton4: IDialog = {
 };
 
 export function DialogAntonPhase0() {
-  const [dialog, setDialog] = useState<IDialog>(Anton);
 
-  const handlerDialog = () => {
-    setDialog((pre) => ({ ...pre, status: "3" }));
-    console.log("dialog1", dialog);
-  };
-  const handlerDialog2 = () => {
-    setDialog((pre) => ({ ...pre, status: "4" }));
-    console.log("dialog2", dialog);
-  };
+  const dispatch = useAppDispatch();
+
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+  }
+
+
+    const [dialog, setDialog] = useState<IDialog>(Anton)
+    
+    const handlerDialog = () => {
+        setDialog((pre) => ({...pre, status: '3'}))
+        console.log('dialog1', dialog)
+    }
+    const handlerDialog2 = () => {
+        setDialog((pre) => ({...pre, status: '4'}))
+        console.log('dialog2', dialog)
+    }
 
   return (
     <>

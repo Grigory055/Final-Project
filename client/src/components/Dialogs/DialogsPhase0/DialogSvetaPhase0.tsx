@@ -1,5 +1,8 @@
 import { Button } from '@mui/material'
 import React, { useState } from 'react'
+import { useAppDispatch } from '../../../redux/hooks'
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
+
 
 interface IDialog {
     person: string
@@ -31,7 +34,14 @@ interface IDialog {
     text: 'Итак, приступим! Добро пожаловать на Фазу 0! Твоя задача: нужно найти три таблички и ответить на вопросы, которые на ней написаны'
   }
 
-export function DialogSvetaPhase0({ handleCloseClick }) {
+export function DialogSvetaPhase0() {
+
+  const dispatch = useAppDispatch();
+
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+  }
 
     const [dialog, setDialog] = useState<IDialog>(Sveta)
     

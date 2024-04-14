@@ -19,6 +19,8 @@ import {
 } from "./heroAnimations.js";
 import {moveTowards} from "../../helpers/moveTowards.js";
 import {events} from "../../Events.js";
+import { store } from "../../../../../redux/store";
+
 
 
 export class Hero extends GameObject {
@@ -70,6 +72,9 @@ export class Hero extends GameObject {
   }
 
   step(delta, root) {
+
+    const state = store.getState();
+    this.isWalking = state.RPGSlice.heroIsWalking;
 
     // Lock movement if celebrating an item pickup
     if (this.itemPickupTime > 0) {
@@ -133,8 +138,11 @@ export class Hero extends GameObject {
     }
     this.facingDirection = input.direction ?? this.facingDirection;
 
+    const state = store.getState();
+    const walls = state.RPGSlice.walls
+
     // Validating that the next destination is free
-    if (isSpaceFree(this.walls, nextX, nextY)) {
+    if (isSpaceFree(walls, nextX, nextY)) {
       this.destinationPosition.x = nextX;
       this.destinationPosition.y = nextY;
     }
