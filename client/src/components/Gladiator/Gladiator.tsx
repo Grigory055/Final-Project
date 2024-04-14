@@ -139,6 +139,10 @@ export default function Gladiator() {
         setReserved1(() => 'получила');
         setWeapon1(() => weap1);
         glad1.weapon += weap1?.name;
+
+        console.log('glad1 ', glad1.name);
+        console.log('glad1', glad1.img);
+        console.log('gladiator1', gladiator1.img);
       }, 1000);
     } else {
       setTimeout(() => {
@@ -149,6 +153,9 @@ export default function Gladiator() {
         glad1.weapon += weap1?.name;
 
         console.log('glad1', glad1.name);
+        console.log('glad1', glad1.img);
+        console.log('gladiator1', gladiator1.img);
+        
       }, 1000);
     }
 
@@ -434,7 +441,7 @@ export default function Gladiator() {
           {
             <img
               style={{ width: '100px', height: '100px' }}
-              src={gladiator1?.img}
+              src={`/${gladiator1?.img}`}
               alt=""
             />
           }{' '}
@@ -445,7 +452,7 @@ export default function Gladiator() {
           {
             <img
               style={{ width: '100px', height: '100px' }}
-              src={gladiator2?.img}
+              src={`/${gladiator2?.img}`}
               alt=""
             />
           }{' '}
