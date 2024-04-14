@@ -1,7 +1,7 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage, BoomerangPage, RPGPage } from './pages'
-import { FlashCardsGame, Navbar } from './components'
+import { FlashCardsGame } from './components'
 import Gladiator from './components/Gladiator/Gladiator'
 
 function App() {
@@ -9,7 +9,6 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<MainPage />} />
-        <Route path='/info' element={<InfoPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegPage />} />
         <Route path='/menu' element={<MainMenuPage />} />
