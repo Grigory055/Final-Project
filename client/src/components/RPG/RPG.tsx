@@ -13,6 +13,9 @@ import DialogSvetaPhase2 from '../Dialogs/DialogsPhase2/DialogSvetaPhase2';
 import DialogGrishaPhase2 from '../Dialogs/DialogsPhase2/DialogGrishaPhase2';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { openExit, setWalls, switchHeroWalk, switchDialog } from '../../redux/RPGSlice';
+import QuestionsP3W1 from '../Questions/QuestionsP3/QuestionsP3W1';
+import DialogStartPhase3 from '../Dialogs/DialogsPhase3/DialogStartPhase3';
+import DialogDenisPhase3 from '../Dialogs/DialogsPhase3/DialogDenisPhase3';
 const walls = [phase0walls, phase1walls, phase2walls, phase3walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects];
 
@@ -58,12 +61,12 @@ export function RPG() {
       npc2: <DialogGrishaPhase2 handleCloseClick={handleCloseClick} />,
     },
     {
-      rod1: <QuestionsP0W1 handleCloseClick={handleCloseClick} />,
-      rod2: <QuestionsP0W2 handleCloseClick={handleCloseClick} />,
-      rod3: <QuestionsP0W3 handleCloseClick={handleCloseClick} />,
-      dialogBubble: <DialogStartPhase0 handleCloseClick={handleCloseClick} />,
+      rod1: <QuestionsP3W1 handleCloseClick={handleCloseClick} />,
+      // rod2: <QuestionsP0W2 handleCloseClick={handleCloseClick} />,
+      // rod3: <QuestionsP0W3 handleCloseClick={handleCloseClick} />,
+      dialogBubble: <DialogStartPhase3 handleCloseClick={handleCloseClick} />,
       npc1: <DialogSvetaPhase0 handleCloseClick={handleCloseClick} />,
-      npc2: <DialogAntonPhase0 handleCloseClick={handleCloseClick} />,
+      npc2: <DialogDenisPhase3 handleCloseClick={handleCloseClick} />,
     },
   ]
 
