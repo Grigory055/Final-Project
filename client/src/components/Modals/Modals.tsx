@@ -1,6 +1,6 @@
 import { DialogStartPhase0 } from "../Dialogs"
 
-export default function Modals({ componentID }) {
+export default function Modals({ componentID }: {componentID: number}) {
 
   const modals = [
     {
@@ -9,7 +9,7 @@ export default function Modals({ componentID }) {
     },
   ]
 
-  return (
-    <div>Modals</div>
-  )
+  const component = modals.find((el) => el.id = componentID);
+
+  return component;
 }
