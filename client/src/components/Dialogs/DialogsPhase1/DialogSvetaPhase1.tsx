@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styles from './DialogsPhase1.module.css'
+import { useAppDispatch } from '../../../redux/hooks'
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 
 interface IDialog {
     person: string
@@ -19,7 +21,15 @@ interface IDialog {
     text: 'Понравилась фаза 1?',
   }
 
-export function DialogSvetaPhase1({ handleCloseClick }) {
+export function DialogSvetaPhase1() {
+
+  const dispatch = useAppDispatch();
+
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+  }
+
 
     const [dialog, setDialog] = useState<IDialog>(Sveta1)
 
@@ -40,7 +50,7 @@ export function DialogSvetaPhase1({ handleCloseClick }) {
             return <div>
               <div>{Sveta2.text}</div>
                 <div>
-                  <button onClick={() =>handlerDialog()} >Понравилась</button>
+                  <button onClick={() => handleCloseClick()} >Понравилась</button>
                 </div>
                 <div>
                   <button onClick={() =>handlerDialog()} >Не понарвилась 'Эта кнопка будет убегать'</button>

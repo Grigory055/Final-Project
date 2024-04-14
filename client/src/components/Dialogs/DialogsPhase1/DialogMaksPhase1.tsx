@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./DialogsPhase1.module.css";
 import { Button } from "@mui/material";
 import { Boomerang } from "../..";
+import { useAppDispatch } from '../../../redux/hooks'
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 
 interface IDialog {
   person: string;
@@ -27,8 +29,17 @@ const Maks3: IDialog = {
   text: "Вот это экшн! Твой стиль меня поразил! Поздравляю с переходом на фазу 2!!!",
 };
 
-export function DialogMaksPhase1({ handleCloseClick }) {
-  const [dialog, setDialog] = useState<IDialog>(Maks1);
+export function DialogMaksPhase1() {
+
+  const dispatch = useAppDispatch();
+
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+  }
+
+
+  const [dialog, setDialog] = useState<IDialog>(Maks1)
 
   const handlerDialog = (status) => {
     setDialog((pre) => ({ ...pre, status: status }));

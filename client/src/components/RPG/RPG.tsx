@@ -11,13 +11,16 @@ import QuestionsP2W2 from '../Questions/QuestionsP2/QuestionsP2W2';
 import DialogStartPhase2 from '../Dialogs/DialogsPhase2/DialogStartPhase2';
 import DialogSvetaPhase2 from '../Dialogs/DialogsPhase2/DialogSvetaPhase2';
 import DialogGrishaPhase2 from '../Dialogs/DialogsPhase2/DialogGrishaPhase2';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { openExit, setWalls, switchHeroWalk, switchDialog } from '../../redux/RPGSlice';
 const walls = [phase0walls, phase1walls, phase2walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects];
 
 
 export function RPG() {
-  const [open, setOpen] = useState(false);
-  const [hero, setHero] = useState({});
+  // const [open, setOpen] = useState(false);
+  const open = useAppSelector((state: { RPGSlice: { dialogIsOpen: boolean } }) => state.RPGSlice.dialogIsOpen);
+  const dispatch = useAppDispatch();
   const [modalComponent, setModalComponent] = useState<JSX.Element | null>(
     null
   );
@@ -25,12 +28,8 @@ export function RPG() {
   const levelObjects = gameObjects[Number(id)];
 
   const handleCloseClick = () => {
-    setOpen(false);
-    setHero((person) => {
-      person.isWalking = true;
-      return hero;
-    })
-    
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
   }
 
   const dialogs = [
@@ -38,17 +37,17 @@ export function RPG() {
       rod1: <QuestionsP0W1 handleCloseClick={handleCloseClick} />,
       rod2: <QuestionsP0W2 handleCloseClick={handleCloseClick} />,
       rod3: <QuestionsP0W3 handleCloseClick={handleCloseClick} />,
-      dialogBubble: <DialogStartPhase0 handleCloseClick={handleCloseClick} />,
-      npc1: <DialogSvetaPhase0 handleCloseClick={handleCloseClick} />,
-      npc2: <DialogAntonPhase0 handleCloseClick={handleCloseClick} />,
+      dialogBubble: <DialogStartPhase0 />,
+      npc1: <DialogSvetaPhase0 />,
+      npc2: <DialogAntonPhase0 />,
     },
     {
       rod1: <QuestionsP1W1 handleCloseClick={handleCloseClick} />,
       rod2: <QuestionsP1W2 handleCloseClick={handleCloseClick} />,
       rod3: <QuestionsP1W3 handleCloseClick={handleCloseClick} />,
-      dialogBubble: <DialogStartPhase1 handleCloseClick={handleCloseClick} />,
-      npc1: <DialogSvetaPhase1 handleCloseClick={handleCloseClick} />,
-      npc2: <DialogMaksPhase1 handleCloseClick={handleCloseClick} />,
+      dialogBubble: <DialogStartPhase1 />,
+      npc1: <DialogSvetaPhase1 />,
+      npc2: <DialogMaksPhase1 />,
     },
     {
       rod1: <QuestionsP2W1 handleCloseClick={handleCloseClick} />,
@@ -110,11 +109,8 @@ export function RPG() {
       });
 
       setModalComponent(() => this.component);
-      setOpen(true);
-      setHero((hero) => {
-        hero.isWalking = false;
-        return hero;
-      })
+      dispatch(switchDialog(true));
+      dispatch(switchHeroWalk(false));
     }
   }
 
@@ -152,12 +148,8 @@ export function RPG() {
 
     onCollideWithHero() {
       setModalComponent(() => this.component);
-      setOpen(true);
-      setHero((hero) => {
-        hero.isWalking = false;
-        return hero;
-      })
-      
+      dispatch(switchDialog(true));
+      dispatch(switchHeroWalk(false));
     }
   }
 
@@ -207,28 +199,20 @@ export function RPG() {
     }
 
     onCollideWithHero() {
+      dispatch(switchHeroWalk(false));
       setModalComponent(() => this.component);
-      setOpen(true);
-      setHero((hero) => {
-        hero.walls.delete(
-          `${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`
-        );
-        hero.isWalking = false;
-        return hero;
-      })
-      
+      dispatch(switchDialog(true));
+      dispatch(openExit(`${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`))
     }
   }
 
   const canvasRef = useRef();
   
   useEffect(() => {
-
+    dispatch(switchDialog(false));
     const { x, y } = levelObjects.hero.position
     const newHero = new Hero(gridCells(x), gridCells(y));
-    newHero.walls = new Set(walls[Number(id)]);
-    setHero(newHero);
-    console.log(newHero.children);
+    dispatch(setWalls(walls[Number(id)]));   
     
   // Establish the root scene
   const mainScene = new GameObject({
@@ -329,9 +313,6 @@ export function RPG() {
 
     draw();
     gameLoop.start();
-    return () => {
-      setHero({});
-    }
   }, []);
 
   return (

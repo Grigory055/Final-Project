@@ -13,6 +13,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
+import RPGSlice from './RPGSlice';
 
 
 // type StoreType = {
@@ -30,6 +31,7 @@ const persistedReducer = persistReducer(persistConfig, userSlice)
 const storeOptions = {
   reducer: {
     statSlice,
+    RPGSlice,
     persistedReducer
   },
   middleware: (getDefaultMiddleware) =>
