@@ -17,7 +17,9 @@ export function MainPage() {
       <div id="map-inactive">
         <div id="map">
           <div className="level" id="second-level">
-          { isLogin ? (
+            <Box component={ReactRouterLink} to="/phase/3" className="phase active" id="phase-3"></Box>
+            <Box component={ReactRouterLink} to="/phase/2" className="phase active" id="phase-2"></Box>
+          {/* { isLogin ? (
               <>
                 <Box component={ReactRouterLink} to="/phase/3" className="phase active" id="phase-3"></Box>
                 <Box component={ReactRouterLink} to="/phase/2" className="phase active" id="phase-2"></Box>
@@ -27,10 +29,12 @@ export function MainPage() {
                 <Box component={ReactRouterLink} to="/login" className="phase active" id="phase-3"></Box>
                 <Box component={ReactRouterLink} to="/login" className="phase active" id="phase-2"></Box>
               </>
-            ) }
+            ) } */}
           </div>
           <div className="level" id="first-level">
-            { isLogin ? (
+            <Box component={ReactRouterLink} to="/phase/0" className="phase active" id="phase-0"></Box>
+            <Box component={ReactRouterLink} to="/phase/1" className="phase active" id="phase-1"></Box>
+            {/* { isLogin ? (
               <>
                 <Box component={ReactRouterLink} to="/phase/0" className="phase active" id="phase-0"></Box>
                 <Box component={ReactRouterLink} to="/phase/1" className="phase active" id="phase-1"></Box>
@@ -40,7 +44,7 @@ export function MainPage() {
                 <Box component={ReactRouterLink} to="/login" className="phase active" id="phase-0"></Box>
                 <Box component={ReactRouterLink} to="/login" className="phase active" id="phase-1"></Box>
               </>
-            ) }
+            ) } */}
           </div>
         </div>
       </div>
