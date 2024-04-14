@@ -6,7 +6,7 @@ module.exports = {
       [
         {
           questions: 'Метод строки, который удаляет пробельные символы с начала и конца строки.',
-          answer: 'Trim',
+          answer: 'trim',
           value: 200,
           condition: '',
           topic_id: 1,
@@ -23,8 +23,8 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          questions: 'Объект, который используются в JavaScript при выполнении асинхронных операций?',
-          answer: 'Промис',
+          questions: 'Переменная, с блочной областью видимости, переназначить её нельзя?',
+          answer: 'const',
           value: 600,
           condition: '',
           topic_id: 1,
@@ -32,8 +32,8 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          questions: '',
-          answer: '',
+          questions: 'Свойство используется в массивах и строках, чтобы быстро узнать, сколько элементов находится в массиве или сколько символов в строке?',
+          answer: 'length',
           value: 800,
           condition: '',
           topic_id: 1,
@@ -41,8 +41,8 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          questions: '',
-          answer: '',
+          questions: 'Объект, который используются в JavaScript при выполнении асинхронных операций?',
+          answer: 'Промис',
           value: 1000,
           condition: '',
           topic_id: 1,
@@ -59,8 +59,8 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          questions: '',
-          answer: '',
+          questions: 'Какой псевдокласс используется для описания стиля, который активируется при нахождении курсора в пределах элемента, но без щелчка по этому элементу?',
+          answer: 'hover',
           value: 400,
           condition: '',
           topic_id: 2,
@@ -68,8 +68,8 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          questions: '',
-          answer: '',
+          questions: 'К какому селектору нужно применить свойство margin, чтобы изменить отступы на всей странице?',
+          answer: 'body',
           value: 600,
           condition: '',
           topic_id: 2,

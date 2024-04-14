@@ -434,7 +434,7 @@ export default function Gladiator() {
           {
             <img
               style={{ width: '100px', height: '100px' }}
-              src={gladiator1?.img}
+              src={`/${gladiator1?.img}`}
               alt=""
             />
           }{' '}
@@ -445,7 +445,7 @@ export default function Gladiator() {
           {
             <img
               style={{ width: '100px', height: '100px' }}
-              src={gladiator2?.img}
+              src={`/${gladiator2?.img}`}
               alt=""
             />
           }{' '}
