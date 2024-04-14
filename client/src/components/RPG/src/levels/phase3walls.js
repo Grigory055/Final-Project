@@ -267,4 +267,4 @@ phase3walls.push(`848,800`);
 phase3walls.push(`848,816`);
 phase3walls.push(`848,832`);
 
-phase3walls.push(`864,816`); // первая модалка на пути
+// phase3walls.push(`864,816`); // первая модалка на пути

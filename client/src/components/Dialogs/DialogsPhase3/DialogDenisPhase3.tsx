@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styles from './DialogPhase3.module.css'
+import { Button } from '@mui/material'
+import { Game } from '../..'
 
 interface IDialog {
     person: string
@@ -23,8 +25,8 @@ export default function DialogDenisPhase3() {
     
   const [dialog, setDialog] = useState<IDialog>(Denis1)
 
-  const handlerDialog = () => {
-    setDialog((pre) => ({...pre, status: '1'}))
+  const handlerDialog = (status) => {
+    setDialog((pre) => ({...pre, status: status}))
     console.log('dialog1', dialog)
 }
 
@@ -35,14 +37,18 @@ export default function DialogDenisPhase3() {
         switch (dialog.status) {
           case '1':
             return <div><div>{Denis1.text}</div><div>
-            <button className={styles.button} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</button></div></div> ;
+            <Button className={styles.button} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div></div> ;
           case '2':
             return <div>
               <div>{Denis2.text}</div>
                 <div>
-                  <button onClick={() =>handlerDialog()} >Играть</button>
+                  <Button onClick={() =>handlerDialog(3)} >Играть</Button>
                 </div>
               </div>
+              case '3':
+                return <div>
+                  <Game />
+                  </div>
         }
       })()}
     </div>
