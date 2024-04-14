@@ -7,14 +7,12 @@ interface IDialog {
 }
 
 const dialogStartPhase1: IDialog = {
-  text: 'Добро пожаловать на первую фазу! Всё так же, собирай брюлики и отвечай на вопросы с табличек! Не приближайся к Максу без завершенных заданий. Он будет ждать когда ты доделаешь!'
+  text: 'Добро пожаловать на первую фазу! Всё так же, собирай брюлики и отвечай на вопросы с табличек! Не приближайся к Максимусу без завершенных заданий. Он будет ждать когда ты доделаешь!'
 }
 
 export function DialogStartPhase1({ handleCloseClick }) {
 
   const [dialog, setDialog] = useState<IDialog>(dialogStartPhase1)
-
-  // console.log(dialog)
 
   return (
     <>
