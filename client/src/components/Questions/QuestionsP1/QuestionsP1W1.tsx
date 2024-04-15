@@ -5,6 +5,7 @@ import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
 import { setScores } from '../../../redux/userSlice';
 
 export function QuestionsP1W1() {
+export function QuestionsP1W1() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
   const[coins,setCoins] = useState<number>(0)
   const[nextAnswer,setNextAnswer] = useState<boolean>(false)
