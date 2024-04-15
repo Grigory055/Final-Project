@@ -1,5 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react'
+import { useAppDispatch } from '../../redux/hooks';
+import { setScore } from '../../redux/userSlice';
 
 const initTrack = new Array(30).fill('__');
 
@@ -35,6 +37,7 @@ const initGame = {
 
 export function Boomerang({ handlerDialog }) {
   const [game, setGame] = useState<IGame>(initGame)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     document.addEventListener('keydown', moveHero)
@@ -109,6 +112,11 @@ export function Boomerang({ handlerDialog }) {
     })
   }, [game.score])
 
+  const exitGameHandler = () => {
+    dispatch(setScore(game.score))
+    handlerDialog('4')
+  }
+
   const moveHero = (e: React.KeyboardEvent): void => {
     if (e.key === 'c') {
       setGame((pre) => {      
@@ -173,7 +181,7 @@ export function Boomerang({ handlerDialog }) {
           case 'end':
             return <Button onClick={() => setGame((pre) => ({...initGame, status: 'play'}))} >Начать заново</Button>;
           case 'won':
-            return <Button onClick={() => handlerDialog('4')}>Идем дальше!</Button>;
+            return <Button onClick={() => exitGameHandler()}>Идем дальше!</Button>;
         }
       })()}
     </>

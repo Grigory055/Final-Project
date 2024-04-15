@@ -278,7 +278,7 @@ export function Game() {
         <Button
           variant="contained"
           component={ReactRouterLink}
-          to="/menu"
+          // to="/menu"
           id="playBtn"
           size="large"
         >

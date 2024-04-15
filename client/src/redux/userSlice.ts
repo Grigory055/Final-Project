@@ -6,6 +6,7 @@ export type UserSliceState = {
     isLogin: boolean,
     login: string,
     topics: ICard[],
+    score: number,
     character: string,
 }
 
@@ -13,6 +14,7 @@ const initialState: UserSliceState = {
     isLogin: false,
     login: 'Гость',
     topics: [],
+    score: 0,
     character: '',
 }
 
@@ -23,6 +25,9 @@ const userSlice = createSlice({
         setCharacter(state, { payload }) {
             state.character = payload;
         },
+        setScore(state, {payload} ) {
+            state.score += payload;
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchUserLogin.fulfilled, (state: UserSliceState, { payload }) => {
@@ -44,4 +49,4 @@ const userSlice = createSlice({
 })
 
 export default userSlice.reducer
-export const { setCharacter } = userSlice.actions;
+export const { setCharacter, setScore } = userSlice.actions;
