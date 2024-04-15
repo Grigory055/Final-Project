@@ -1,5 +1,5 @@
-import {Vector2} from "./Vector2.js";
-import {events} from "./Events.js";
+import { Vector2 } from './Vector2.js';
+import { events } from './Events.js';
 
 export class GameObject {
   constructor({ position }) {
@@ -12,7 +12,7 @@ export class GameObject {
   // First entry point of the loop
   stepEntry(delta, root) {
     // Call updates on all children first
-    this.children.forEach((child) => child.stepEntry(delta, root));
+    this.children.forEach(child => child.stepEntry(delta, root));
 
     // Call ready on the first frame
     if (!this.hasReadyBeenCalled) {
@@ -43,7 +43,7 @@ export class GameObject {
     this.drawImage(ctx, drawPosX, drawPosY);
 
     // Pass on to children
-    this.children.forEach((child) => child.draw(ctx, drawPosX, drawPosY));
+    this.children.forEach(child => child.draw(ctx, drawPosX, drawPosY));
   }
 
   drawImage(ctx, drawPosX, drawPosY) {
@@ -54,8 +54,8 @@ export class GameObject {
   destroy() {
     this.children.forEach(child => {
       child.destroy();
-    })
-    this.parent.removeChild(this)
+    });
+    this.parent.removeChild(this);
   }
 
   /* Other Game Objects are nestable inside this one */
@@ -68,6 +68,11 @@ export class GameObject {
     events.unsubscribe(gameObject);
     this.children = this.children.filter(g => {
       return gameObject !== g;
-    })
+    });
   }
 }
+
+addEventListener('click', e => {
+  e.preventDefault();
+  console.log(e.target);
+});

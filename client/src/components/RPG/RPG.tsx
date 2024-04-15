@@ -189,7 +189,7 @@ export function RPG() {
 
   const groundSprite = new Sprite({
     resource: resources.images.ground,
-    frameSize: new Vector2(1152, 1152)
+    frameSize: new Vector2(2304, 2304)
   })
   mainScene.addChild(groundSprite);
 
