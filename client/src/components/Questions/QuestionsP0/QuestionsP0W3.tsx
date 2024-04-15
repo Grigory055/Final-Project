@@ -65,8 +65,8 @@ const secondRightAnswerHandler: () => void = () => {
               </div>
             </div>
             )}</>
-          ): (<><p>добро пожаловать на третью неделю фазы 0!</p>
-            <p>Тебе предстоит ответить на пару вопросов!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn.gif" alt="start" /></button></>)}
+          ): (<><p>Жить вдвоем с Git - значит вместе решать проблемы</p>
+            <p>Которых не возникло бы, если бы вы не начали жить вдвоем!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn.gif" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
           <Button onClick={() => handleCloseClick()} >далее</Button></>)}
