@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./DialogPhase3.module.css";
 import { Button } from "@mui/material";
-import { Game } from "../..";
+import { Game } from "../../Game/Game";
+
 
 interface IDialog {
   person: string;
@@ -55,7 +56,8 @@ export default function DialogDenisPhase3() {
                 <div>
                   <div>{Denis2.text}</div>
                   <div>
-                    <Button onClick={() => handlerDialog(3)}>Играть</Button>
+                    <Button onClick={() => setDialog((pre) => ({ ...pre, status: "3" }))}>Играть</Button>
+                    
                   </div>
                 </div>
               );

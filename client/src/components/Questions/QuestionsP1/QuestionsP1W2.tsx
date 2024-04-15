@@ -54,8 +54,8 @@ const secondRightAnswerHandler: () => void = () => {
               <h2>{question2}</h2>
               <div className={styles.answers}>
               <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>get/send</button>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>async/await</button>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>to/from</button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>async/await</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>to/from</button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>

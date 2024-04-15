@@ -9,7 +9,7 @@ export default function QuestionsP3W1_2() {
   const[nextAnswer,setNextAnswer] = useState<boolean>(false)
   const[end,setEnd] = useState<boolean>(true)
   const question1 = "Зачем нужен Redux Thunk?"
-  const question2 ="Какой второй опциональный параметр можно передать в метод setState и за что он отвечает?"
+  const question2 ="что такое компоненты в React?"
   const dispatch = useAppDispatch();
 
   const handleCloseClick = () => {
@@ -53,22 +53,23 @@ const secondRightAnswerHandler: () => void = () => {
             <>{nextAnswer?(<div>
               <h2>{question2}</h2>
               <div className={styles.answers}>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>Функция, уведомляющая, что компонент закончил процесс обмена информации с сервером.</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. document.title.</button>
 <p>-</p>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>Функция, уведомляющая, что компонент закончил процесс ре-рендеринга.</button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>2. Отображение определенной части интерфейса.</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>3. Отображение кода в консоли.</button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>Middleware позволяющая добавлять состояние приложения в Redux в парасинхронном режиме</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>1. Middleware позволяющая добавлять состояние приложения в Redux в парасинхронном режиме</button>
 
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>Middleware позволяющая изменять состояние приложения в Redux в асинхронном режиме</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>2. Middleware позволяющая изменять состояние приложения в Redux в асинхронном режиме</button>
        
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>Middleware позволяющая удалять состояние приложения в Redux в синхронном режиме</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>3. Middleware позволяющая удалять состояние приложения в Redux в синхронном режиме</button>
               </div>
             </div>
             )}</>
-          ): (<><p>Преисполнись!</p><p>Первая неделя, и сразу последняя!</p><p>Вы будете вспоминать это время с ностальгией.</p>
-            <button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn.gif" alt="start" /></button></>)}
+          ): (<><p>Уже вот-вот конец!</p><p>совсем большие стали!</p><p>Вы будете вспоминать это время с ностальгией.</p>
+            <button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/green_btn_new.jpg" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
           <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}

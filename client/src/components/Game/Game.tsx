@@ -19,6 +19,7 @@ export function Game() {
       try {
         setTimer(1000)
         const response = await axios.get('http://localhost:3000/api/topics');
+        console.log('2024reesponse!', response.data)
         setCards(() => response.data);
       } catch (error) {
         console.log(error);
@@ -118,6 +119,7 @@ export function Game() {
 
   return (
     <>
+    <div className='svoya_igra_container'>
       <Typography variant="h4" mb={5}>
         Ваш счет: {score}
       </Typography>
@@ -324,6 +326,7 @@ export function Game() {
           <Button type="submit">Отправить</Button>
         </DialogActions>
       </Dialog>
+      </div>
     </>
   );
 }

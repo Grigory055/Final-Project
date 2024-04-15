@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const topics = await Card.findAll({ raw: true });
-    console.log(topics);
+    console.log('topics!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', topics);
     res.json(topics);
   } catch (error) {
     console.error('Error fetching data:', error);

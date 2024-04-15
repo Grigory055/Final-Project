@@ -10,7 +10,7 @@
 }
 
 .question_modal {
-  border: 2px solid rgb(250, 39, 197);
+  border: 2px solid rgb(190, 175, 87);
   flex-direction: column;
   font-family: pixel;
   font-size: 17px;
@@ -18,12 +18,12 @@
   display: flex;
   /* align-items: center; */
   /* justify-content: center; */
-  margin-top: 200px;
+  /* margin-top: 200px; */
   width: 800px;
   height: 336px;
   background-image: url('/components/p3_2.gif');
   border-radius: 20px;
-  color: #f104de;
+  color: #ff7b00;
   padding-left: 20px;
 }
 
