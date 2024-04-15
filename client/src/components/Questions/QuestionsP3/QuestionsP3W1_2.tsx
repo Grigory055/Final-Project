@@ -3,7 +3,7 @@ import styles from './QuestionsP3.module.css';
 import { useAppDispatch } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 
-export default function QuestionsP3W1_2() {
+export function QuestionsP3W1_2() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
   const[coins,setCoins] = useState<number>(0)
   const[nextAnswer,setNextAnswer] = useState<boolean>(false)

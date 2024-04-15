@@ -180,3 +180,7 @@ body,
 #modal .close:active {
   background-image: url('/assets/close-active.png');
 }
+
+.link {
+  cursor: pointer;
+}

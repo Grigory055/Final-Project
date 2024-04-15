@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { setDialog, switchDialog } from "../../redux/RPGSlice";
 
 export function MainPage() {
 
@@ -8,6 +9,12 @@ export function MainPage() {
   const login = useAppSelector((store) => store.persistedReducer.login);
   console.log(isLogin, login);
   
+  const dispatch = useAppDispatch();
+
+  const clickPhaseHandler = () => {
+    dispatch(setDialog(99));
+    dispatch(switchDialog(true));
+  }
 
   return (
     <>
@@ -24,8 +31,8 @@ export function MainPage() {
               </>
             ) : (
               <>
-                <Box component={ReactRouterLink} to="/char" className="phase active" id="phase-3"></Box>
-                <Box component={ReactRouterLink} to="/char" className="phase active" id="phase-2"></Box>
+                <div onClick={clickPhaseHandler} className="phase active" id="phase-3"></div>
+                <div onClick={clickPhaseHandler} to="/char" className="phase active" id="phase-2"></div>
               </>
             ) }
           </div>
@@ -37,8 +44,8 @@ export function MainPage() {
               </>
             ) : (
               <>
-                <Box component={ReactRouterLink} to="/char" className="phase active" id="phase-0"></Box>
-                <Box component={ReactRouterLink} to="/char" className="phase active" id="phase-1"></Box>
+                <div onClick={clickPhaseHandler} to="/char" className="phase active" id="phase-0"></div>
+                <div onClick={clickPhaseHandler} to="/char" className="phase active" id="phase-1"></div>
               </>
             ) }
           </div>

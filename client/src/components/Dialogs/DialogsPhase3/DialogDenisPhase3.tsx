@@ -22,7 +22,7 @@ const Denis2: IDialog = {
   text: "Давай просто преисполнимся и насладимся Своей игрой...",
 };
 
-export default function DialogDenisPhase3() {
+export function DialogDenisPhase3() {
   const [dialog, setDialog] = useState<IDialog>(Denis1);
 
   const handlerDialog = (status) => {

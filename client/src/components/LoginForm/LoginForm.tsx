@@ -4,6 +4,7 @@ import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
 import { ILoginPassword } from "../../types/types";
 import { useAppDispatch, useAppSelector  } from "../../redux/hooks";
 import { fetchUserLogin } from "../../redux/thunkActions";
+import { setDialog, switchDialog } from "../../redux/RPGSlice";
 
 export function LoginForm() {
   const navigate = useNavigate();
@@ -28,6 +29,11 @@ export function LoginForm() {
         navigate('/');
       // }
     };
+  
+  const clickRegisterHandler = () => {
+    dispatch(setDialog(101));
+    dispatch(switchDialog(true));
+  } 
 
   return (
     <Box display="flex" flexDirection="column" gap={2}>
@@ -39,7 +45,7 @@ export function LoginForm() {
           <Button id="btnAvtorization" variant="contained" type="submit" size="large">Войти</Button>
         </Box>
       </form>
-      <Typography variant="body1" textAlign="center">Впервые здесь? <Link component={ReactRouterLink} to="/register">Зарегистрироваться</Link></Typography>
+      <Typography variant="body1" textAlign="center">Впервые здесь? <span className="link" onClick={clickRegisterHandler}>Зарегистрироваться</span></Typography>
     </Box>
   )
 }

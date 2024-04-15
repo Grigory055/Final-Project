@@ -12,7 +12,7 @@ interface IDialog {
     text: 'Вот и 2 Фаза... Как же быстро летит время! Что делать, я думаю ты уже знаешь...'
   }
 
-export default function DialogStartPhase2() {
+export function DialogStartPhase2() {
 
     const [dialog, setDialog] = useState<IDialog>(dialogStartPhase2)
     const dispatch = useAppDispatch();

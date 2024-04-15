@@ -23,7 +23,7 @@ const Sveta2: IDialog = {
   text: "Круто! Надеюсь тебе понравилось! Очки начислены!",
 };
 
-export default function DialogSvetaPhase2() {
+export function DialogSvetaPhase2() {
   const [dialog, setDialog] = useState<IDialog>(Sveta1);
   const dispatch = useAppDispatch();
 

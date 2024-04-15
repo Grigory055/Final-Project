@@ -71,8 +71,3 @@ export class GameObject {
     });
   }
 }
-
-addEventListener('click', e => {
-  e.preventDefault();
-  console.log(e.target);
-});

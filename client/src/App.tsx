@@ -1,9 +1,9 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage, BoomerangPage, RPGPage } from './pages'
+import { LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage, BoomerangPage, RPGPage } from './pages'
 import { ChooseCharacter, FlashCardsGame } from './components'
 import Gladiator from './components/Gladiator/Gladiator'
-import { DialogSvetaPhase1 } from './components/Dialogs'
+import Modals from './components/Modals/Modals'
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
         <Route path='/phase/:id' element={<RPGPage />} />
         <Route path='/gladiator' element={<Gladiator />} />
         <Route path='/char' element={<ChooseCharacter />} />
-        <Route path='/rpg' element={<DialogSvetaPhase1/>} />
       </Routes>
+      <Modals />
     </>
   )
 }

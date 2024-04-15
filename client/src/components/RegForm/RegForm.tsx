@@ -4,6 +4,7 @@ import { ILoginEmailPassword } from "../../types/types";
 import { useAppDispatch } from "../../redux/hooks";
 import { fetchUserRegister } from "../../redux/thunkActions";
 import { useState } from "react";
+import { setDialog, switchDialog } from "../../redux/RPGSlice";
 
 export function RegForm() {
   const navigate = useNavigate();
@@ -23,7 +24,12 @@ export function RegForm() {
       }
       navigate('/');
     };
-
+  
+  const clickLoginHandler = () => {
+    dispatch(setDialog(100));
+    dispatch(switchDialog(true));
+  } 
+  
   return (
     <Box display="flex" flexDirection="column" gap={2}>
       <Typography variant="h4" id="MainMenu_gl" textAlign="center">Регистрация</Typography>
@@ -35,7 +41,7 @@ export function RegForm() {
         <Button variant="contained" type="submit" id="btnAvtorization" size="large">Зарегистрироваться</Button>
       </Box>
       </form>
-      <Typography variant="body1" textAlign="center">Уже есть аккаунт? <Link component={ReactRouterLink} to="/login">Войти</Link></Typography>
+      <Typography variant="body1" textAlign="center">Уже есть аккаунт? <span className="link" onClick={clickLoginHandler}>Войти</span></Typography>
     </Box>
   )
 }

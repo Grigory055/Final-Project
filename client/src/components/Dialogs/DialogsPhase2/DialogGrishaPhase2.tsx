@@ -27,7 +27,7 @@ interface IDialog {
     text: 'Поздравляю с окончанием предпоследней фазы! Ты большой молодец! Пока и хорошего вечера, кочанный мешок без маны!',
   }
 
-export default function DialogGrishaPhase2() {
+export function DialogGrishaPhase2() {
 
     const [dialog, setDialog] = useState<IDialog>(Grisha1)
 

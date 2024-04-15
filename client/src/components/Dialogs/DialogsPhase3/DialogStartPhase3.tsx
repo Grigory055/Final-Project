@@ -12,7 +12,7 @@ const dialogStartPhase2: IDialog = {
   text: 'Вот и финишная прямая...'
 }
 
-export default function DialogStartPhase3() {
+export function DialogStartPhase3() {
   
   const [dialog, setDialog] = useState<IDialog>(dialogStartPhase2)
   const dispatch = useAppDispatch();
