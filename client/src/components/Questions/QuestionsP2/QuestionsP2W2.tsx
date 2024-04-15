@@ -54,15 +54,15 @@ const secondRightAnswerHandler: () => void = () => {
             <>{nextAnswer?(<div>
               <h2>{question2}</h2>
               <div className={styles.answers}>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>Библиотека, помогающая правильно распределить компоненты приложения</button>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>Это стиль архитектуры программного обеспечения</button>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>Фреймворк созданный совместными усилиями Facebook и Apple</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. Библиотека, помогающая правильно распределить компоненты приложения. </button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>2. Это стиль архитектуры программного обеспечения. </button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>3. Фреймворк созданный совместными усилиями Facebook и Apple.</button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>приносит боль</button>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>обрабатывает данные на сервере и передаёт обратно</button>
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>запускает процесс извлечения ресурса из сети</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>1. приносит боль</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>2. обрабатывает данные на сервере и передаёт обратно</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>3. запускает процесс извлечения ресурса из сети</button>
               </div>
             </div>
             )}</>

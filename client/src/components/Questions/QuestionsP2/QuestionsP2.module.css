@@ -10,7 +10,7 @@
 }
 
 .question_modal {
-  border: 2px solid rgb(21, 118, 143);
+  border: 2px solid rgb(179, 169, 87);
   flex-direction: column;
   font-family: pixel;
   font-size: 17px;
@@ -21,7 +21,7 @@
   height: 600px;
   background-image: url('/components/p2modal.jpg');
   border-radius: 20px;
-  color: rgb(29, 59, 78);
+  color: rgb(44, 2, 42);
 }
 
 .modal_btn {
@@ -53,7 +53,7 @@ h2 {
   width: 500px;
   font-size: 17px;
   cursor: pointer;
-  color: rgb(8, 49, 15);
+  color: rgb(6, 38, 75);
   text-align: start;
   display: flex;
   /* flex-direction: column; */

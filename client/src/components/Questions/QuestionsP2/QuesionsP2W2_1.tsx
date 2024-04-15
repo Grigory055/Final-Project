@@ -58,9 +58,9 @@ const secondRightAnswerHandler: () => void = () => {
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>CRUD расшифровывается как "CSS, React, useState, DBeaver". Это то, чему можно научиться в Эльбрусе!</button>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>CRUD расшифровывается как "Computer, Relax, Underground,Download". Это четыре основных действия, которые можно выполнять с базами данных через REST API.</button>
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>CRUD расшифровывается как "Create, Read, Update, Delete". Это четыре основных действия, которые можно выполнять с базами данных через REST API.</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>CRUD расшифровывается как "CSS, React, useState, DBeaver".</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>CRUD расшифровывается как "Computer, Relax, Underground,Download".</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>CRUD расшифровывается как "Create, Read, Update, Delete".</button>
               </div>
             </div>
             )}</>

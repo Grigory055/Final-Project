@@ -53,22 +53,22 @@ const secondRightAnswerHandler: () => void = () => {
             <>{nextAnswer?(<div>
               <h2>{question2}</h2>
               <div className={styles.answers}>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>Обычный объект - источник данных. Содержит информацию по поведению и состоянию интерфейса. Можно мутировать</button>
-<p>-</p>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>JavaScript фреймворк, для объективного тестирования на основе Jasmine. Разработал Facebook. Очень удобен именно для React</button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>1. Обычный объект - источник данных. Содержит информацию по поведению и состоянию интерфейса.</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>2. JavaScript фреймворк, для объективного тестирования на основе Jasmine.</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>3. React хук для оптимизации работы приложения.</button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>Настройки среды разработки</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>1. Настройки среды разработки</button>
 
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>Набор конфигураций пользователя</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>2. Набор конфигураций пользователя</button>
        
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>Сокращенно от Properties. Входящие свойства в компонент.</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>3. Сокращенно от Properties. Входящие свойства в компонент.</button>
               </div>
             </div>
             )}</>
-          ): (<><p>Преисполнись!</p><p>Первая неделя, и сразу последняя!</p><p>На самом деле это только начало твоего пути!</p>
-            <button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn.gif" alt="start" /></button></>)}
+          ): (<><p>Взгляни назад...</p><p>Ты преодолел великий путь!</p><p>На самом деле это только начало!</p>
+            <button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/yellow_start.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
           <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}
