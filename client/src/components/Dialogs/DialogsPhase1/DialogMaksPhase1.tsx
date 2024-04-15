@@ -31,15 +31,12 @@ const Maks3: IDialog = {
 
 export function DialogMaksPhase1() {
 
-  const score = useAppSelector((store) => store.persistedReducer.score);
-
 
   const dispatch = useAppDispatch();
 
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
-    console.log('score', score)
   }
 
 

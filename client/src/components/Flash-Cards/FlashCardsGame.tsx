@@ -27,6 +27,7 @@ export function FlashCardsGame() {
       console.log(error);
     }
   }
+  // console.log(questions)
 
   const row1 = questions.slice(0, 4);
   const row2 = questions.slice(4, 8);

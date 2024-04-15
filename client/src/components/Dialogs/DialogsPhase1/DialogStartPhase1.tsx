@@ -19,6 +19,7 @@ export function DialogStartPhase1() {
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
+    console.log('score', score)
   }
 
 

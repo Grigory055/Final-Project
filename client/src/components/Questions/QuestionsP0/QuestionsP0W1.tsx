@@ -3,10 +3,13 @@ import styles from './QuestionsP0.module.css';
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../../../redux/hooks';
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
+import { setScores } from '../../../redux/userSlice';
 
 export function QuestionsP0W1() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
+
   const[coins,setCoins] = useState<number>(0)
+
   const[nextAnswer,setNextAnswer] = useState<boolean>(false)
   const[end,setEnd] = useState<boolean>(true)
   const question1 = "Какую команду нужно прописать, чтобы установить зависимости в проекте?"
@@ -17,6 +20,7 @@ export function QuestionsP0W1() {
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
+    dispatch(setScores(coins * 1000))
   }
 
   const startHandler: () => void = () => {

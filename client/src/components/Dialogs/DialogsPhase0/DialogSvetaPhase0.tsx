@@ -1,7 +1,8 @@
 import { Button } from '@mui/material'
 import React, { useState } from 'react'
-import { useAppDispatch } from '../../../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
+import { setScores } from '../../../redux/userSlice'
 
 
 interface IDialog {
@@ -37,6 +38,8 @@ interface IDialog {
 export function DialogSvetaPhase0() {
 
   const dispatch = useAppDispatch();
+
+  // const score = useAppSelector((store) => store.persistedReducer.score);
 
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
