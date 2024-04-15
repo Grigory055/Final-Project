@@ -65,8 +65,8 @@ const secondRightAnswerHandler: () => void = () => {
               </div>
             </div>
             )}</>
-          ): (<><p>добро пожаловать на SECOND неделю фазы 1!</p>
-            <p>Тебе предстоит ответить еще на пару вопросов!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
+          ): (<><p>Массивы что это такое?</p>
+            <p>А массив массивов?!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
           <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}

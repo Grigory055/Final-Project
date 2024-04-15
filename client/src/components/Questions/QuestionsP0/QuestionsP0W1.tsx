@@ -53,20 +53,20 @@ const secondRightAnswerHandler: () => void = () => {
             <>{nextAnswer?(<div>
               <h2>{question2}</h2>
               <div className={styles.answers}>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>alight-items: start;</button>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>justify-content: space-between;</button>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>display: flex;</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. alight-items: start;</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>2. justify-content: space-between;</button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>3. display: flex;</button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>npx i</button>
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>npm install</button>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>npm init -y</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>1. npx i</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>2. npm install</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>3. npm init -y</button>
               </div>
             </div>
             )}</>
-          ): (<><p>добро пожаловать на первую неделю фазы 0!</p>
-            <p>Тебе предстоит ответить на пару вопросов!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn.gif" alt="start" /></button></>)}
+          ): (<><p>JS: Смог ли я поселиться в твоем сердце?</p>
+            <p>Я: Ты вломился в него, не снимая обувь!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn.gif" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
           <Button onClick={() => handleCloseClick()} >далее</Button></>)}
