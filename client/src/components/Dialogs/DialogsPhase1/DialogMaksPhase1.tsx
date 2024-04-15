@@ -26,7 +26,7 @@ const Maks2: IDialog = {
 const Maks3: IDialog = {
   person: "Maks",
   status: "3",
-  text: "Вот это экшн! Твой стиль меня поразил! Поздравляю с переходом на фазу 2!!!",
+  text: "Твой стиль меня поразил! Поздравляю с переходом на фазу 2!!! Не забудь подойти к Свете, и оставить ОС.",
 };
 
 export function DialogMaksPhase1() {
@@ -96,7 +96,7 @@ export function DialogMaksPhase1() {
                         handleCloseClick()
                       }
                     >
-                      Переход на 2 фазу
+                      Далее
                     </Button>
                   </div>
                 </div>

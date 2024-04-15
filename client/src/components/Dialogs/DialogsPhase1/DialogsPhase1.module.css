@@ -2,9 +2,9 @@
   text-align: center;
   margin: auto;
   font-size: 25px;
-  width: 700px;
-  border: 2px solid;
-  background-color: white;
+  min-width: 700px;
+  max-width: 930px;
+  width: auto;
   padding: 15px;
 }
 
@@ -23,6 +23,6 @@
 .buttons_div {
   display: flex;
   align-items: center;
-  margin-left: 30%;
+  margin-left: 23%;
   gap: 100px;
 }

@@ -167,7 +167,7 @@ export function Boomerang({ handlerDialog }) {
             return <h3 style={{ color: 'green' }}>Вы выиграли!</h3>;
         }
       })()}
-      <p>Управление: A - влево, D - вправо, E - кинуть бумеранг</p>
+      <p>Управление: Z - влево, X - вправо, C - кинуть бумеранг</p>
       <br />
       <div className="game" style={{ display: 'flex', fontSize: '22px'}}>{game.track.map((el, i) => <div key={i}>{el}</div>)}</div>
       <br />
