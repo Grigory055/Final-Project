@@ -12,14 +12,14 @@ import DialogStartPhase2 from '../Dialogs/DialogsPhase2/DialogStartPhase2';
 import DialogSvetaPhase2 from '../Dialogs/DialogsPhase2/DialogSvetaPhase2';
 import DialogGrishaPhase2 from '../Dialogs/DialogsPhase2/DialogGrishaPhase2';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { openExit, setWalls, switchHeroWalk, switchDialog } from '../../redux/RPGSlice';
+import { openExit, setWalls, switchHeroWalk, switchDialog, setDialog } from '../../redux/RPGSlice';
+import Modals from '../Modals/Modals';
 const walls = [phase0walls, phase1walls, phase2walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects];
 
 
 export function RPG() {
   // const [open, setOpen] = useState(false);
-  const open = useAppSelector((state: { RPGSlice: { dialogIsOpen: boolean } }) => state.RPGSlice.dialogIsOpen);
   const dispatch = useAppDispatch();
   const [modalComponent, setModalComponent] = useState<JSX.Element | null>(
     null
@@ -37,7 +37,7 @@ export function RPG() {
       rod1: <QuestionsP0W1 handleCloseClick={handleCloseClick} />,
       rod2: <QuestionsP0W2 handleCloseClick={handleCloseClick} />,
       rod3: <QuestionsP0W3 handleCloseClick={handleCloseClick} />,
-      dialogBubble: <DialogStartPhase0 />,
+      dialogBubble: <Modals componentID={1} />,
       npc1: <DialogSvetaPhase0 />,
       npc2: <DialogAntonPhase0 />,
     },
@@ -70,7 +70,7 @@ export function RPG() {
   const levelDialogs = dialogs[Number(id)];
 
   class Rod extends GameObject {
-    constructor(x, y, component) {
+    constructor(x, y, dialogID) {
       super({
         name: "Rod",
         position: new Vector2(x, y),
@@ -80,7 +80,7 @@ export function RPG() {
         position: new Vector2(0, -5), // nudge upwards visually
       });
       this.addChild(sprite);
-      this.component = component;
+      this.dialogID = dialogID;
     }
 
     ready() {
@@ -108,14 +108,14 @@ export function RPG() {
         position: this.position,
       });
 
-      setModalComponent(() => this.component);
+      dispatch(setDialog(this.dialogID));
       dispatch(switchDialog(true));
       dispatch(switchHeroWalk(false));
     }
   }
 
   class DialogBubble extends GameObject {
-    constructor(x, y, component) {
+    constructor(x, y, dialogID) {
       super({
         name: "DialogBubble",
         position: new Vector2(x, y),
@@ -129,7 +129,7 @@ export function RPG() {
         position: new Vector2(-8, -20),
       });
       this.addChild(this.body);
-      this.component = component;
+      this.dialogID = dialogID;
     }
 
     ready() {
@@ -147,14 +147,14 @@ export function RPG() {
     }
 
     onCollideWithHero() {
-      setModalComponent(() => this.component);
+      dispatch(setDialog(this.dialogID));
       dispatch(switchDialog(true));
       dispatch(switchHeroWalk(false));
     }
   }
 
   class NPC extends GameObject {
-    constructor(x, y, component, exitCoordX, exitCoordY, skin) {
+    constructor(x, y, dialogID, exitCoordX, exitCoordY, skin) {
       super({
         name: "NPC",
         position: new Vector2(x, y),
@@ -176,7 +176,7 @@ export function RPG() {
         position: new Vector2(-8, -19),
       });
       this.addChild(this.body);
-      this.component = component;
+      this.dialogID = dialogID;
       this.exitCoords = { exitCoordX, exitCoordY };
     }
 
@@ -200,7 +200,7 @@ export function RPG() {
 
     onCollideWithHero() {
       dispatch(switchHeroWalk(false));
-      setModalComponent(() => this.component);
+      dispatch(setDialog(this.dialogID));
       dispatch(switchDialog(true));
       dispatch(openExit(`${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`))
     }
@@ -235,22 +235,22 @@ export function RPG() {
   const camera = new Camera();
   mainScene.addChild(camera);
 
-  const rod1 = new Rod(gridCells(levelObjects.rod1.x), gridCells(levelObjects.rod1.y), levelDialogs.rod1)
+  const rod1 = new Rod(gridCells(levelObjects.rod1.x), gridCells(levelObjects.rod1.y), levelObjects.rod1.dialogID)
   mainScene.addChild(rod1);
 
-  const rod2 = new Rod(gridCells(levelObjects.rod2.x), gridCells(levelObjects.rod2.y), levelDialogs.rod2)
+  const rod2 = new Rod(gridCells(levelObjects.rod2.x), gridCells(levelObjects.rod2.y), levelObjects.rod2.dialogID)
   mainScene.addChild(rod2);
 
-  const rod3 = new Rod(gridCells(levelObjects.rod3.x), gridCells(levelObjects.rod3.y), levelDialogs.rod3)
+  const rod3 = new Rod(gridCells(levelObjects.rod3.x), gridCells(levelObjects.rod3.y), levelObjects.rod2.dialogID)
   mainScene.addChild(rod3);
 
-  const dialogBubble = new DialogBubble(gridCells(levelObjects.dialogBubble.x), gridCells(levelObjects.dialogBubble.y), levelDialogs.dialogBubble)
+  const dialogBubble = new DialogBubble(gridCells(levelObjects.dialogBubble.x), gridCells(levelObjects.dialogBubble.y), levelObjects.dialogBubble.dialogID)
   mainScene.addChild(dialogBubble);
 
   const npc1 = new NPC(
     gridCells(levelObjects.npc1.x),
     gridCells(levelObjects.npc1.y),
-    levelDialogs.npc1,
+    levelObjects.npc1.dialogID,
     levelObjects.npc1.exit.x,
     levelObjects.npc1.exit.y,
     levelObjects.npc1.skin)
@@ -260,7 +260,7 @@ export function RPG() {
   const npc2 = new NPC(
     gridCells(levelObjects.npc2.x),
     gridCells(levelObjects.npc2.y),
-    levelDialogs.npc2,
+    levelObjects.npc2.dialogID,
     levelObjects.npc2.exit.x,
     levelObjects.npc2.exit.y,
     levelObjects.npc2.skin)
@@ -323,31 +323,7 @@ export function RPG() {
         width={320}
         height={180}
       ></canvas>
-      ;
-      <Dialog open={open} maxWidth={false}>
-        <div id="modal">
-          <div id="modal-header" className="section">
-            <div className="left"></div>
-            <div className="center"></div>
-            <div className="right"></div>
-          </div>
-          <div id="modal-content" className="section">
-            <div className="left"></div>
-            <div className="center">
-              <div className="controls">
-                <button onClick={() => handleCloseClick()} className="close" />
-              </div>
-              {modalComponent}
-            </div>
-            <div className="right"></div>
-          </div>
-          <div id="modal-footer" className="section">
-            <div className="left"></div>
-            <div className="center"></div>
-            <div className="right"></div>
-          </div>
-        </div>
-      </Dialog>
+      <Modals />
     </>
   );
 }

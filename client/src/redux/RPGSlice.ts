@@ -4,12 +4,14 @@ export type RPGSliceState = {
   heroIsWalking: boolean,
   walls: Array<string>,
   dialogIsOpen: boolean,
+  dialogID: number,
 }
 
 const initialState: RPGSliceState = {
   heroIsWalking: true,
   walls: [],
   dialogIsOpen: false,
+  dialogID: 0,
 }
 
 const RPGSlice = createSlice({
@@ -28,8 +30,11 @@ const RPGSlice = createSlice({
       switchDialog(state, { payload }) {
         state.dialogIsOpen = payload;
       },
+      setDialog(state, { payload }) {
+        state.dialogID = payload;
+      },
     },
 })
 
 export default RPGSlice.reducer
-export const { openExit, setWalls, switchHeroWalk, switchDialog } = RPGSlice.actions;
+export const { openExit, setWalls, switchHeroWalk, switchDialog, setDialog } = RPGSlice.actions;
