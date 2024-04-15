@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route path='/' element={<MainPage />} />
+        <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegPage />} />
         <Route path='/menu' element={<MainMenuPage />} />
@@ -19,7 +19,7 @@ function App() {
         <Route path='/boomerang' element={<BoomerangPage />} />
         <Route path='/phase/:id' element={<RPGPage />} />
         <Route path='/gladiator' element={<Gladiator />} />
-        <Route path='/char' element={<ChooseCharacter />} /> */}
+        <Route path='/char' element={<ChooseCharacter />} />
         <Route path='/rpg' element={<DialogSvetaPhase1/>} />
       </Routes>
     </>

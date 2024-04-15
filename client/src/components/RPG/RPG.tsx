@@ -14,6 +14,9 @@ import DialogGrishaPhase2 from '../Dialogs/DialogsPhase2/DialogGrishaPhase2';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { openExit, setWalls, switchHeroWalk, switchDialog, setDialog } from '../../redux/RPGSlice';
 import Modals from '../Modals/Modals';
+import QuestionsP3W1 from '../Questions/QuestionsP3/QuestionsP3W1';
+import DialogStartPhase3 from '../Dialogs/DialogsPhase3/DialogStartPhase3';
+import DialogDenisPhase3 from '../Dialogs/DialogsPhase3/DialogDenisPhase3';
 const walls = [phase0walls, phase1walls, phase2walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects];
 
@@ -213,7 +216,6 @@ export function RPG() {
     const { x, y } = levelObjects.hero.position
     const newHero = new Hero(gridCells(x), gridCells(y));
     dispatch(setWalls(walls[Number(id)]));
-    console.log(character);
       
     
   // Establish the root scene
