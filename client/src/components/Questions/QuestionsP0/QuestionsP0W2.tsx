@@ -54,7 +54,7 @@ const secondRightAnswerHandler: () => void = () => {
               <h2>{question2}</h2>
               <div className={styles.answers}>
               <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. Когда уютно в нём!</button>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>2. Это библиотека, которая позволяет работать с JS с домашней страницы</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>2. Это библиотека, позволяющая работать с JS</button>
               <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>3. Это инструмент, позволяющий разработчикам управляться с содержимым веб-страницы</button>
             </div></div>):(<div>
               <h2>{question1}</h2>

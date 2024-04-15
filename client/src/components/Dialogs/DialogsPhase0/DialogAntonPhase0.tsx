@@ -93,7 +93,7 @@ export function DialogAntonPhase0() {
               case "4":
               return (
                 <>
-                  <Gladiator />;
+                  <Gladiator />
                   <Button
                     onClick={() =>
                       setDialog((pre) => ({ ...pre, status: "5" }))
