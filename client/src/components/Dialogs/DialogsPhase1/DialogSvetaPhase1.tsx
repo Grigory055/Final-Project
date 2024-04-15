@@ -13,7 +13,7 @@ interface IDialog {
 const Sveta1: IDialog = {
   person: "Sveta",
   status: "1",
-  text: " Молодец, как солёный огурец! Заполни, пожалуйста форму обратной связи!",
+  text: "Молодец, как солёный огурец! Заполни, пожалуйста форму обратной связи!",
 };
 
 const Sveta2: IDialog = {
