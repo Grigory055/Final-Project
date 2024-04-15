@@ -72,7 +72,7 @@ const secondRightAnswerHandler: () => void = () => {
               </div>
             </div>
             )}</>
-          ): (<><p>ВОТ И ВТОРАЯ ФАЗА!</p><p>Первая неделя, всё для тебя!</p><p>Кажется, ты стал забывать, что такое боль...</p>
+          ): (<><p>ВОТ И ВТОРАЯ ФАЗА!</p><p>всё для тебя!</p><p>Кажется, ты стал забывать, что такое боль...</p>
             <button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_fade.gif" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>

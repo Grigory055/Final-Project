@@ -1,7 +1,7 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import { InfoPage, LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage, BoomerangPage, RPGPage } from './pages'
-import { FlashCardsGame } from './components'
+import { ChooseCharacter, FlashCardsGame } from './components'
 import Gladiator from './components/Gladiator/Gladiator'
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <Route path='/boomerang' element={<BoomerangPage />} />
         <Route path='/phase/:id' element={<RPGPage />} />
         <Route path='/gladiator' element={<Gladiator />} />
+        <Route path='/char' element={<ChooseCharacter />} />
       </Routes>
     </>
   )
