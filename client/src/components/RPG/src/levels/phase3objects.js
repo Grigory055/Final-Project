@@ -1,7 +1,7 @@
 export const phase3objects = {
   hero: {
     position: {
-      x: 30, // 68
+      x: 68, // 68
       y: 19, // 19
     },
   },
