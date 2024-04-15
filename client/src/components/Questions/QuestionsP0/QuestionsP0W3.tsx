@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styles from './QuestionsP0.module.css';
 import { Button } from '@mui/material';
+import { useAppDispatch } from '../../../redux/hooks';
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
 
-export function QuestionsP0W3({ handleCloseClick }) {
+export function QuestionsP0W3() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
   const[coins,setCoins] = useState<number>(0)
   const[nextAnswer,setNextAnswer] = useState<boolean>(false)
@@ -10,8 +12,12 @@ export function QuestionsP0W3({ handleCloseClick }) {
   const question1 = "Что нужно добавить, чтобы обозначить, что класс наследуется? class Rabbit ______ Animal {...}"
   const question2 ="Что такое HTML,CSS и JS?"
 
+  const dispatch = useAppDispatch();
 
-
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+  }
 
   const startHandler: () => void = () => {
     setStartP1W1(true)
