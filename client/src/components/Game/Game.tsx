@@ -65,7 +65,7 @@ export function Game() {
     //   }
     // });
     setScore((pre) => score - card.value);
-    console.log(id)
+    // console.log(id)
     setOpen(false);
     setCard({})
   }

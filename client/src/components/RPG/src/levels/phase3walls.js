@@ -227,7 +227,7 @@ phase3walls.push(`800,624`);
 phase3walls.push(`800,640`);
 phase3walls.push(`800,656`);
 
-phase3walls.push(`784,528`); // препод
+// phase3walls.push(`784,528`); // препод
 
 phase3walls.push(`784,672`);
 phase3walls.push(`768,672`);

@@ -101,6 +101,7 @@ const gladArr = [Denisius, Svetlanius, Grigorius, Antonius, Maksimius];
 const weaponsArr = [Sword, Spear, Trident, Mace, Whip, Axe];
 const fight = [
   'отразил удар',
+  'за Эльбрус и двор',
   'нанёс удар',
   'нанёс колоссальный урон',
   'ушёл читать лекцию',
@@ -265,6 +266,16 @@ export default function Gladiator() {
       // alert(`Сомнительно, что ${game1.name} зовёт HELP, ну OKEY`);
     }
     if (attack2 === 'зовёт HELP') {
+      const newFight = fight.filter((el) => el !== attack2);
+      setAttack1(() => newFight[Math.floor(Math.random() * newFight.length)]);
+      // alert(`Сомнительно, что ${game2.name} зовёт HELP, ну OKEY`);
+    }
+    if (attack1 === 'за Эльбрус и двор') {
+      const newFight = fight.filter((el) => el !== attack1);
+      setAttack2(() => newFight[Math.floor(Math.random() * newFight.length)]);
+      // alert(`Сомнительно, что ${game1.name} зовёт HELP, ну OKEY`);
+    }
+    if (attack2 === 'за Эльбрус и двор') {
       const newFight = fight.filter((el) => el !== attack2);
       setAttack1(() => newFight[Math.floor(Math.random() * newFight.length)]);
       // alert(`Сомнительно, что ${game2.name} зовёт HELP, ну OKEY`);
