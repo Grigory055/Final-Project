@@ -113,8 +113,6 @@ phase3walls.push(`832,928`);
 phase3walls.push(`784,704`);
 phase3walls.push(`768,704`);
 
-
-
 phase3walls.push(`816,912`);
 phase3walls.push(`800,896`);
 phase3walls.push(`784,880`);
