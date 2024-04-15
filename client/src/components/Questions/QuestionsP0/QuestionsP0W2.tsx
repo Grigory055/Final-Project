@@ -59,9 +59,9 @@ const secondRightAnswerHandler: () => void = () => {
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>document.title;</button>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>document.getElementsByTagName("title");</button>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>let title = document.getElementById("title"); title.innerText;</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>1. document.title;</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>2. document.getElementsByTagName("title");</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>3. let title = document.getElementById("title"); title.innerText;</button>
               </div>
             </div>
             )}</>

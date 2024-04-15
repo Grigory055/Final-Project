@@ -65,8 +65,8 @@ const secondRightAnswerHandler: () => void = () => {
               </div>
             </div>
             )}</>
-          ): (<><p>Е-Е-Е, завершающая неделя фазы 1!</p><p>ВСПОТЕЛ? ягодки впереди...</p>
-            <p>жми && отвечай на вопросы.</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
+          ): (<><p>Е-Е-Е, завершающие вопросы!</p><p>ВСПОТЕЛ? ягодки впереди...</p>
+            <p>Жми & отвечай на вопросы.</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
           <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}

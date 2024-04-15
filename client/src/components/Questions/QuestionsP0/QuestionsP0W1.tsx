@@ -53,15 +53,15 @@ const secondRightAnswerHandler: () => void = () => {
             <>{nextAnswer?(<div>
               <h2>{question2}</h2>
               <div className={styles.answers}>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>alight-items: start;</button>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>justify-content: space-between;</button>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>display: flex;</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. alight-items: start;</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>2. justify-content: space-between;</button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>3. display: flex;</button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>npx i</button>
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>npm install</button>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>npm init -y</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>1. npx i</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>2. npm install</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>3. npm init -y</button>
               </div>
             </div>
             )}</>

@@ -53,9 +53,9 @@ const secondRightAnswerHandler: () => void = () => {
             <>{nextAnswer?(<div>
               <h2>{question2}</h2>
               <div className={styles.answers}>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>➡➡ погуглить</button>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>➡➡ написать в хелпу </button>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>➡➡ тип поискового алгоритма, который последовательно делит пополам заранее отсортированный массив данных, чтобы обнаружить нужный элемент. </button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>Погуглить</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>Написать в хелпу </button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>Тип поискового алгоритма, который последовательно делит пополам заранее отсортированный массив данных, чтобы обнаружить нужный элемент. </button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
@@ -65,8 +65,8 @@ const secondRightAnswerHandler: () => void = () => {
               </div>
             </div>
             )}</>
-          ): (<><p>вы дошли до первой фазы! у вас железное терпение!</p><p>добро пожаловать на первую неделю!</p>
-            <p>Тебе предстоит ответить на пару вопросов!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
+          ): (<><p>Опять вопросы про Гит?</p>
+            <p>Попробую его взломать!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
           <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer} >далее</button></>)}
