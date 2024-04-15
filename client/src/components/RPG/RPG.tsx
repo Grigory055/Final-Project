@@ -234,7 +234,7 @@ export function RPG() {
 
   const groundSprite = new Sprite({
     resource: resources.images[`phase${id}`],
-    frameSize: new Vector2(1152, 1152),
+    frameSize: new Vector2(1312, 1152),
   });
   mainScene.addChild(groundSprite);
 
