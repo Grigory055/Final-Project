@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./DialogPhase2.module.css";
 import { Button } from "@mui/material";
 import { StartGame } from "../..";
+import { useAppDispatch } from '../../../redux/hooks'
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 
 interface IDialog {
   person: string;
@@ -21,9 +23,15 @@ const Sveta2: IDialog = {
   text: "Круто! Надеюсь тебе понравилось! Очки начислены!",
 };
 
-export default function DialogSvetaPhase2({ handleCloseClick }) {
+export default function DialogSvetaPhase2() {
   const [dialog, setDialog] = useState<IDialog>(Sveta1);
+  const dispatch = useAppDispatch();
 
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+  }
+  
   const handlerDialog = (status: string) => {
     setDialog((pre) => ({ ...pre, status: status }));
     console.log("dialog1", dialog);

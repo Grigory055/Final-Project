@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styles from './DialogPhase2.module.css'
 import { Button } from '@mui/material'
+import { useAppDispatch } from '../../../redux/hooks'
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 
 interface IDialog {
     text: string
@@ -10,9 +12,16 @@ interface IDialog {
     text: 'Вот и 2 Фаза... Как же быстро летит время! Что делать, я думаю ты уже знаешь...'
   }
 
-export default function DialogStartPhase2({ handleCloseClick }) {
+export default function DialogStartPhase2() {
 
     const [dialog, setDialog] = useState<IDialog>(dialogStartPhase2)
+    const dispatch = useAppDispatch();
+
+    const handleCloseClick = () => {
+      dispatch(switchHeroWalk(true));
+      dispatch(switchDialog(false));
+    }
+  
 
   return (
     <>

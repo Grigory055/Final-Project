@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './DialogPhase2.module.css'
+import { FlashCardsGame } from '../../Flash-Cards/FlashCardsGame'
 
 interface IDialog {
     person: string
@@ -37,6 +38,8 @@ export default function DialogGrishaPhase2() {
             return <div><div>{Grisha1.text}</div><div>
             <button className={styles.button} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Играть</button></div></div> ;
           case '2':
+            return <div><FlashCardsGame/></div>
+          case '3':
             return <div>
               <div>{Grisha2.text}</div>
                 <div>

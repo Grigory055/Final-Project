@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './QuestionsP2.module.css';
+import { useAppDispatch } from '../../../redux/hooks'
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 
 export default function QuestionsP2W2() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
@@ -8,6 +10,12 @@ export default function QuestionsP2W2() {
   const[end,setEnd] = useState<boolean>(true)
   const question1 = "Глобальный метод fetch(), для чего?"
   const question2 ="Что есть REST?"
+  const dispatch = useAppDispatch();
+
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+  }
 
 
 
@@ -62,7 +70,7 @@ const secondRightAnswerHandler: () => void = () => {
             <button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_stop.gif" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
-          <button className={styles.modal_btn_answer}>далее</button></>)}
+          <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}
       </div>
     </>
   )
