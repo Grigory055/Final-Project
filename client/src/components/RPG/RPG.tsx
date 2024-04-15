@@ -17,8 +17,8 @@ import Modals from '../Modals/Modals';
 import QuestionsP3W1 from '../Questions/QuestionsP3/QuestionsP3W1';
 import DialogStartPhase3 from '../Dialogs/DialogsPhase3/DialogStartPhase3';
 import DialogDenisPhase3 from '../Dialogs/DialogsPhase3/DialogDenisPhase3';
-const walls = [phase0walls, phase1walls, phase2walls]
-const gameObjects = [phase0objects, phase1objects, phase2objects];
+const walls = [phase0walls, phase1walls, phase2walls, phase3walls]
+const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects];
 
 
 export function RPG() {
