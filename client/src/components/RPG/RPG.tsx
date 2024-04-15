@@ -23,6 +23,7 @@ const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects]
 export function RPG() {
   // const [open, setOpen] = useState(false);
   const open = useAppSelector((state: { RPGSlice: { dialogIsOpen: boolean } }) => state.RPGSlice.dialogIsOpen);
+  const character = useAppSelector((store) => store.persistedReducer.character);
   const dispatch = useAppDispatch();
   const [modalComponent, setModalComponent] = useState<JSX.Element | null>(
     null
@@ -215,7 +216,9 @@ export function RPG() {
     dispatch(switchDialog(false));
     const { x, y } = levelObjects.hero.position
     const newHero = new Hero(gridCells(x), gridCells(y));
-    dispatch(setWalls(walls[Number(id)]));   
+    dispatch(setWalls(walls[Number(id)]));
+    console.log(character);
+      
     
   // Establish the root scene
   const mainScene = new GameObject({

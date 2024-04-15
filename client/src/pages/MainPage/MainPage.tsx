@@ -17,34 +17,30 @@ export function MainPage() {
       <div id="map-inactive">
         <div id="map">
           <div className="level" id="second-level">
-            <Box component={ReactRouterLink} to="/phase/3" className="phase active" id="phase-3"></Box>
-            <Box component={ReactRouterLink} to="/phase/2" className="phase active" id="phase-2"></Box>
-          {/* { isLogin ? (
+          { isLogin ? (
               <>
                 <Box component={ReactRouterLink} to="/phase/3" className="phase active" id="phase-3"></Box>
                 <Box component={ReactRouterLink} to="/phase/2" className="phase active" id="phase-2"></Box>
               </>
             ) : (
               <>
-                <Box component={ReactRouterLink} to="/login" className="phase active" id="phase-3"></Box>
-                <Box component={ReactRouterLink} to="/login" className="phase active" id="phase-2"></Box>
+                <Box component={ReactRouterLink} to="/char" className="phase active" id="phase-3"></Box>
+                <Box component={ReactRouterLink} to="/char" className="phase active" id="phase-2"></Box>
               </>
-            ) } */}
+            ) }
           </div>
           <div className="level" id="first-level">
-            <Box component={ReactRouterLink} to="/phase/0" className="phase active" id="phase-0"></Box>
-            <Box component={ReactRouterLink} to="/phase/1" className="phase active" id="phase-1"></Box>
-            {/* { isLogin ? (
+            { isLogin ? (
               <>
                 <Box component={ReactRouterLink} to="/phase/0" className="phase active" id="phase-0"></Box>
                 <Box component={ReactRouterLink} to="/phase/1" className="phase active" id="phase-1"></Box>
               </>
             ) : (
               <>
-                <Box component={ReactRouterLink} to="/login" className="phase active" id="phase-0"></Box>
-                <Box component={ReactRouterLink} to="/login" className="phase active" id="phase-1"></Box>
+                <Box component={ReactRouterLink} to="/char" className="phase active" id="phase-0"></Box>
+                <Box component={ReactRouterLink} to="/char" className="phase active" id="phase-1"></Box>
               </>
-            ) } */}
+            ) }
           </div>
         </div>
       </div>
