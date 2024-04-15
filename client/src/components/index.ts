@@ -1,3 +1,4 @@
+export { StartGame } from "./Race/StartGame";
 export { FlashCardsGame } from "./Flash-Cards/FlashCardsGame";
 export { Navbar } from "./Navbar/Navbar";
 export { LoginForm } from "./LoginForm/LoginForm";

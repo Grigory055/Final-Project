@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 .container {
-  font-size: 20px;
+  font-size: 22px;
   font-family: 'Pixelify Sans', sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
   width: 710px;
-  height: 480px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url('/bgcrace.png');
+  /* background-image: url('../../../public/components/bgcrace.png'); */
   background-size: cover;
 }
 .start_game {
@@ -28,14 +28,14 @@
   background-image: url('/bgcrace_game_btn.png');
   background-size: cover;
 }
-.start_game:hover,
+/* .start_game:hover,
 .game_btn:hover,
 .gas_btn:hover,
 .new_game_btn:hover {
   border-color: #ffffff;
-}
+} */
 .raceTruck1 {
-  font-size: 25px;
+  font-size: 30px;
 }
 .new_game_btn {
   margin-bottom: 30px;
@@ -45,7 +45,7 @@
 }
 
 .text_typing {
-  width: 40em;
+  width: 30em;
   white-space: nowrap;
   overflow: hidden;
   -webkit-animation: type 2.5s steps(50, end);
