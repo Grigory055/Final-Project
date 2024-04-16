@@ -10,11 +10,13 @@ export default function QuestionsP3W1_1() {
   const[end,setEnd] = useState<boolean>(true)
   const question1 = "Что такое Props?"
   const question2 ="Что такое state и как он используется?"
+  
   const dispatch = useAppDispatch();
 
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
+    dispatch(setScores(coins * 1000))
   }
 
 

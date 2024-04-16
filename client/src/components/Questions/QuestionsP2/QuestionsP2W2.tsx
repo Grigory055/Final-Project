@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './QuestionsP2.module.css';
 import { useAppDispatch } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
+import { setScores } from '../../../redux/userSlice';
 
 export default function QuestionsP2W2() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
@@ -10,16 +11,15 @@ export default function QuestionsP2W2() {
   const[end,setEnd] = useState<boolean>(true)
   const question1 = "Глобальный метод fetch(), для чего?"
   const question2 ="Что есть REST?"
+
   const dispatch = useAppDispatch();
 
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
+    dispatch(setScores(coins * 1000))
   }
-
-
-
-
+  
   const startHandler: () => void = () => {
     setStartP1W1(true)
    }

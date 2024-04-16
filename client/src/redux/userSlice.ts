@@ -27,7 +27,7 @@ const userSlice = createSlice({
         },
         setScores(state, { payload } ) {
             state.score += payload;
-            console.log('payload', payload)
+            console.log('state.score', state.score)
         }
     },
     extraReducers: (builder) => {

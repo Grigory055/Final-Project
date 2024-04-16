@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./FlashCardsGame.css";
 import GameModal from "./GameModal/GameModal";
+import { Button } from "@mui/material";
 
 export function FlashCardsGame() {
   const [questions, setQuestions] = useState([]);
@@ -36,17 +37,23 @@ export function FlashCardsGame() {
   // const row5 = questions.slice(16, 20);
   // const row6 = questions.slice(20, 24);
   const row7 = [row1, row2, row3];
+
+
   const [questionsId, setQuestionsId] = useState(null);
   const [showGameModal, setShowGameModal] = useState(false);
 
   function getQuestionsIdInGameModal(id) {
-    setQuestionsId(id);
-    setShowGameModal(true);
+    setQuestionsId((pre) => {
+      console.log(id)
+      return id
+    });
+    setShowGameModal((pre) => !pre);
   }
 
   function closeGameModal() {
     setShowGameModal(false);
   }
+
 
   const comfirmQuest = JSON.parse(localStorage.getItem("quest")) || [];
 
@@ -59,8 +66,8 @@ export function FlashCardsGame() {
 
   console.log(row7);
   return (
-    <div>
-      <Container className="containerGame">
+    <>
+      <Container style={{ width: '1400px'}} className="containerGame">
         {row7.map((row, index) => (
           <Row key={index} className="rowGame">
             <Col className="colGame colTheme">
@@ -73,7 +80,7 @@ export function FlashCardsGame() {
               </Col>
             )}
             {foultQuest.includes(row[0]?.id) && (
-              <Col className="colGame foultQuest">
+              <Col  className="colGame foultQuest">
                 <span className="themeText">{row[0]?.body}</span>
               </Col>
             )}
@@ -146,17 +153,19 @@ export function FlashCardsGame() {
                   <span className="themeText">{row[3]?.body}</span>
                 </Col>
               )}
+              
           </Row>
+          
         ))}
+
+        <GameModal questionsId={questionsId} showGameModal={showGameModal} closeGameModal={closeGameModal} />
+
+        <Button style={{ marginTop: '20px'}} className="buttonGame" onClick={resetGame}>
+        Далее
+      </Button>
       </Container>
-      <GameModal
-        questionsId={questionsId}
-        showGameModal={showGameModal}
-        closeGameModal={closeGameModal}
-      />
-      <button className="buttonGame" onClick={resetGame}>
-        Начать заново
-      </button>
-    </div>
+      
+      
+    </>
   );
 }

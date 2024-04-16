@@ -13,6 +13,7 @@ export function LoginForm() {
 
   const dispatch = useAppDispatch();
 
+  // console.log('body1', inputs)
 
   const inputHandler = (e : React.ChangeEvent<HTMLInputElement>) => {
     setInputs((pre) => ({ ...pre, [e.target.name]: e.target.value }))
@@ -20,9 +21,11 @@ export function LoginForm() {
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
       e.preventDefault()
+      // console.log('body2', inputs)
       if (inputs) {
         void dispatch(fetchUserLogin(inputs));
         setInputs({ login: '', password: '' });
+        
       }
       // if(isLogin) {
         navigate('/');

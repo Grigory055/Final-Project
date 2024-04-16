@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styles from './DialogPhase2.module.css'
 import { FlashCardsGame } from '../../Flash-Cards/FlashCardsGame'
+import GameModal from '../../Flash-Cards/GameModal/GameModal'
+import { Button } from '@mui/material'
 
 interface IDialog {
     person: string
@@ -36,14 +38,14 @@ export default function DialogGrishaPhase2() {
         switch (dialog.status) {
           case '1':
             return <div><div>{Grisha1.text}</div><div>
-            <button className={styles.button} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Играть</button></div></div> ;
+            <Button className={styles.button} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Играть</Button></div></div> ;
           case '2':
             return <div><FlashCardsGame/></div>
           case '3':
             return <div>
               <div>{Grisha2.text}</div>
                 <div>
-                  <button onClick={() =>handlerDialog()} >Играть</button>
+                  <Button onClick={() =>handlerDialog()} >Играть</Button>
                 </div>
               </div>
         }

@@ -44,6 +44,7 @@ userRouter.post('/login', async (req, res) => {
           email: user.email,
         };
         req.session.user = clearedUser;
+        // console.log('req.session.user', clearedUser)
         res.json(clearedUser);
       } else {
         res.sendStatus(400);

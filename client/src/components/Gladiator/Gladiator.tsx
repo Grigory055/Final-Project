@@ -408,33 +408,6 @@ export default function Gladiator() {
       setWeapon2(() => ({}));
       alert(`${game1.name} выиграл`);
     }
-
-    // if (attack1 === 'ушёл читать лекцию') {
-    //   alert(`${game1.name} ушёл читать лекцию`)
-    //   setGladiator1(() => (''))
-    //   setGladiator2(() => (''))
-    //   setAttack1(() => (''))
-    //   setAttack2(() => (''))
-    //   setGame1(() => (''))
-    //   setGame2(() => (''))
-    //   setReserved1(() => (''))
-    //   setReserved2(() => (''))
-    //   setWeapon1(() => (''))
-    //   setWeapon2(() => (''))
-
-    // } if (attack2 === 'ушёл читать лекцию') {
-    //   alert(`${game2.name} ушёл читать лекцию`)
-    //   setGladiator1(() => (''))
-    //   setGladiator2(() => (''))
-    //   setAttack1(() => (''))
-    //   setAttack2(() => (''))
-    //   setGame1(() => (''))
-    //   setGame2(() => (''))
-    //   setReserved1(() => (''))
-    //   setReserved2(() => (''))
-    //   setWeapon1(() => (''))
-    //   setWeapon2(() => (''))
-    // }
   };
 
   return (
@@ -442,23 +415,21 @@ export default function Gladiator() {
       <div style={{ width: '600px' }}>
         <Button onClick={() => handlerWeapons()}>Раздача оружия</Button>
         <h2>
-          {
+          {gladiator1?.img ? 
             <img
               style={{ width: '100px', height: '100px' }}
               src={`/${gladiator1?.img}`}
-              alt=""
-            />
+            /> : <></>
           }{' '}
           {gladiator1?.name} {game1.hp} {reserved1} {weapon1?.name}
         </h2>
 
         <h2>
-          {
+          {gladiator1?.img ?  
             <img
               style={{ width: '100px', height: '100px' }}
               src={`/${gladiator2?.img}`}
-              alt=""
-            />
+            /> : <></>
           }{' '}
           {gladiator2?.name} {game2.hp} {reserved2} {weapon2?.name}
         </h2>
@@ -466,11 +437,11 @@ export default function Gladiator() {
       <div>
         <Button onClick={() => handleFight()}>Атака</Button>
         <h2>
-          {game1.name} {game1.hp} {attack1} {game2.name}
+          {game1.name} {attack1} 
         </h2>
         <h1 style={{ color: 'red' }}>{game3}</h1>
         <h2>
-          {game2.name} {game2.hp} {attack2} {game1.name}
+          {game2.name} {attack2} 
         </h2>
         <h1 style={{ color: 'red' }}>{game4}</h1>
       </div>
