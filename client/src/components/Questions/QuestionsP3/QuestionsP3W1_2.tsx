@@ -54,7 +54,6 @@ const secondRightAnswerHandler: () => void = () => {
               <h2>{question2}</h2>
               <div className={styles.answers}>
               <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. document.title.</button>
-<p>-</p>
               <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>2. Отображение определенной части интерфейса.</button>
               <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>3. Отображение кода в консоли.</button>
             </div></div>):(<div>
