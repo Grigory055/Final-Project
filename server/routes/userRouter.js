@@ -8,13 +8,10 @@ userRouter.post('/registration', async (req, res) => {
   const {
     login, password, email, character,
   } = req.body;
-  console.log(req.body);
   try {
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({ login, email, password: hash });
     const game = await Game.create({ score: 0, character, user_id: user.id });
-    console.log(user);
-    console.log(game);
     const clearedUser = {
       id: user.id,
       login: user.login,
@@ -31,7 +28,6 @@ userRouter.post('/registration', async (req, res) => {
 });
 
 userRouter.post('/login', async (req, res) => {
-  console.log(req.body, 'req.body');
   const { login, password } = req.body;
   try {
     const user = await User.findOne({ where: { login } });
@@ -42,14 +38,14 @@ userRouter.post('/login', async (req, res) => {
       if (!passwordCompare) {
         res.status(400).json({ message: 'Неверный пароль' });
       } if (passwordCompare) {
+        const game = await Game.findOne({ where: { user_id: user.id } });
         const clearedUser = {
           id: user.id,
           login: user.login,
           email: user.email,
         };
         req.session.user = clearedUser;
-        // console.log('req.session.user', clearedUser)
-        res.json(clearedUser);
+        res.json({ ...clearedUser, score: game.score, character: game.character });
       } else {
         res.sendStatus(400);
       }

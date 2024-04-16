@@ -1,13 +1,14 @@
-import { Avatar, Box, Container, Link, Stack, Typography } from "@mui/material";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Box, Container, Link, Stack, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchUserLogout } from "../../redux/thunkActions";
+import { useNavigate } from "react-router-dom";
 
 
 export function Navbar() {
   const isLogin = useAppSelector((store) => store.persistedReducer.isLogin);
   const login = useAppSelector((store) => store.persistedReducer.login);
   const score = useAppSelector((store) => store.persistedReducer.score);
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
 
@@ -15,6 +16,7 @@ export function Navbar() {
     e.preventDefault()
     if (isLogin) {
       void dispatch(fetchUserLogout());
+      navigate('/');
     }
   };
   return (

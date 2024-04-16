@@ -4,6 +4,7 @@ interface IUser {
   email?: string;
   password: string;
   character?: string;
+  score?: number;
 }
 
 interface ILoginPassword {

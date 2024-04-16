@@ -3,9 +3,7 @@ import styles from './DialogsPhase0.module.css'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
-import { LoginForm } from '../../LoginForm/LoginForm'
-import SvetaP0dialog1 from '../../../../public/audio/SvetaP0dialog1.wav'
-import { setScores } from '../../../redux/userSlice'
+import { RegForm } from '../../RegForm/RegForm'
 
 
 interface IDialog {
@@ -67,7 +65,7 @@ export function DialogSvetaPhase0() {
         switch (dialog.status) {
           case '1':
             return <div><p>{Sveta.text}</p><div>
-            <Button onClick={setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div></div> ;
+            <Button onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div></div> ;
           case '2':
             return <div>
                 {isLogin ? (
@@ -78,7 +76,7 @@ export function DialogSvetaPhase0() {
                   ) : (
                     <>
                       <p>{Sveta2.text}</p>
-                      <LoginForm />
+                      <RegForm />
                     </>
                   ) }
               </div>

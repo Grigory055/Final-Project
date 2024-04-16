@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchTopics, fetchUserLogin, fetchUserLogout, fetchUserRegister } from './thunkActions';
-import { ICard } from '../types/types';
+import { ICard, IUser } from '../types/types';
 
 export type UserSliceState = {
     isLogin: boolean,
@@ -35,6 +35,8 @@ const userSlice = createSlice({
             if (payload) {
                state.isLogin = true;
                state.login = payload.login;
+               state.score = payload.score;
+               state.character = payload.character;
             }
         }),
         builder.addCase(fetchUserRegister.fulfilled, (state: UserSliceState, { payload }) => {
@@ -45,6 +47,7 @@ const userSlice = createSlice({
                 state.isLogin = false;
                 state.login = 'Гость';
                 state.score = 0;
+                state.character = '';
             }
         })
         builder.addCase(fetchTopics.fulfilled, (state: UserSliceState, { payload }) => {
