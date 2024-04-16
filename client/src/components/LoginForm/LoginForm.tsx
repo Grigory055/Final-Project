@@ -1,12 +1,13 @@
 import { Button, Box, TextField, Typography, Link, FormControl } from "@mui/material";
 import { useState } from "react";
-import { ILoginEmailPassword } from "../../types/types";
-import { useAppDispatch  } from "../../redux/hooks";
+import { IUser } from "../../types/types";
+import { useAppDispatch, useAppSelector  } from "../../redux/hooks";
 import { fetchUserLogin, fetchUserRegister } from "../../redux/thunkActions";
 
 export function LoginForm() {
   const [ registered, setRegistered ] = useState(false);
-  const [inputs, setInputs] = useState<ILoginEmailPassword>({ login: '', email: '', password: '' })
+  const [inputs, setInputs] = useState<IUser>({ login: '', password: '', email: '' })
+  const character = useAppSelector((store) => store.persistedReducer.character)
 
   const dispatch = useAppDispatch();
 
@@ -18,10 +19,10 @@ export function LoginForm() {
       e.preventDefault()
       if (inputs && registered) {
         void dispatch(fetchUserLogin(inputs));
-        setInputs({ login: '', email: '', password: '' });
+        setInputs({ login: '', password: '' });
       } else if (inputs && !registered) {
-        void dispatch(fetchUserRegister(inputs));
-        setInputs({ login: '', email: '', password: '' });
+        void dispatch(fetchUserRegister({...inputs, character }));
+        setInputs({ login: '', password: '', email: '' });
       }
     };
   

@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Game.init({
     score: DataTypes.INTEGER,
+    character: DataTypes.STRING,
     user_id: DataTypes.INTEGER,
   }, {
     sequelize,

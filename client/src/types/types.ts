@@ -1,8 +1,9 @@
 interface IUser {
-  id: number;
+  id?: number;
   login: string;
-  email: string;
+  email?: string;
   password: string;
+  character?: string;
 }
 
 interface ILoginPassword {
@@ -12,8 +13,8 @@ interface ILoginPassword {
 
 interface ILoginEmailPassword {
   login: string;
-  email: string;
   password: string;
+  email?: string;
 }
 
 interface IGameStat {

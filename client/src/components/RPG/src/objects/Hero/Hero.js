@@ -24,7 +24,7 @@ import { store } from "../../../../../redux/store";
 
 
 export class Hero extends GameObject {
-  constructor(x, y, name) {
+  constructor(x, y, name, character) {
     super({
       position: new Vector2(x, y),
     }, name);
@@ -37,7 +37,7 @@ export class Hero extends GameObject {
     this.addChild(shadow);
 
     this.body = new Sprite({
-      resource: resources.images.hero,
+      resource: resources.images[character],
       frameSize: new Vector2(32,32),
       hFrames: 3,
       vFrames: 8,

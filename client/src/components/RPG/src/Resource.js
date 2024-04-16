@@ -8,6 +8,8 @@ class Resources {
       phase2: "/sprites/phase2.png",
       phase3: "/sprites/phase3.png",
       hero: "/sprites/hero-sheet.png",
+      male: "/sprites/character-male.png",
+      female: "/sprites/character-female.png",
       shadow: "/sprites/shadow.png",
       rod: "/sprites/rod.png",
       dialog: "/sprites/dialog.png",
