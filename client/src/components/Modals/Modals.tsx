@@ -6,6 +6,7 @@ import { QuestionsP0W1, QuestionsP0W2, QuestionsP0W3, QuestionsP1W1, QuestionsP1
 import { ChooseCharacter } from "../ChooseCharacter/ChooseCharacter";
 import { LoginForm } from "../LoginForm/LoginForm";
 import { RegForm } from "../RegForm/RegForm";
+import { DialogSvetaPhase3 } from "../Dialogs/DialogsPhase3/DialogSvetaPhase3";
 
 export default function Modals(): JSX.Element {
   const open = useAppSelector((state: { RPGSlice: { dialogIsOpen: boolean } }) => state.RPGSlice.dialogIsOpen);
@@ -42,6 +43,7 @@ export default function Modals(): JSX.Element {
     { id:21, component: <QuestionsP3W1_1 /> },
     { id:22, component: <QuestionsP3W1_2 /> },
     { id:23, component: <DialogDenisPhase3 /> },
+    { id:24, component: <DialogSvetaPhase3 /> },
     { id:99, component: <ChooseCharacter /> },
     { id:100, component: <LoginForm /> },
     { id:101, component: <RegForm /> }

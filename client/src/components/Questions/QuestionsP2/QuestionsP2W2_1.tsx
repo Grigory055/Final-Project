@@ -17,7 +17,7 @@ export function QuestionsP2W2_1() {
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
-    dispatch(setScores(coins * 1000))
+    dispatch(setScores(coins * 100))
   }
 
   const startHandler: () => void = () => {

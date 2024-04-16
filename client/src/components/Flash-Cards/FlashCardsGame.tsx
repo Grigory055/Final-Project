@@ -4,7 +4,7 @@ import "./FlashCardsGame.css";
 import GameModal from "./GameModal/GameModal";
 import { Button } from "@mui/material";
 
-export function FlashCardsGame() {
+export function FlashCardsGame({ handlerDialog }) {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
@@ -60,8 +60,8 @@ export function FlashCardsGame() {
   const foultQuest = JSON.parse(localStorage.getItem("questFoult")) || [];
 
   function resetGame() {
-    localStorage.clear();
-    window.location.reload();
+    // localStorage.clear();
+    // window.location.reload();
   }
 
   console.log(row7);
@@ -160,7 +160,7 @@ export function FlashCardsGame() {
 
         <GameModal questionsId={questionsId} showGameModal={showGameModal} closeGameModal={closeGameModal} />
 
-        <Button style={{ marginTop: '20px'}} className="buttonGame" onClick={resetGame}>
+        <Button style={{ marginTop: '20px'}} className="buttonGame" onClick={() => handlerDialog('3')}>
         Далее
       </Button>
       </Container>

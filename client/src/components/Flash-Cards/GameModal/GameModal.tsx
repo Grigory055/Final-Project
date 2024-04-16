@@ -4,13 +4,15 @@ import Modal from 'react-bootstrap/Modal';
 import shuffle from './shuffle';
 import './GameModal.css';
 import { Button } from '@mui/material';
+import { useAppDispatch } from '../redux/hooks';
+import { setScores } from '../../../redux/userSlice';
 
 function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
   if (showGameModal) {
     getQuestion(questionsId);
   }
 
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
 
   async function getQuestion(id) {
     const response = await fetch(
@@ -69,10 +71,12 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
       const quest = JSON.parse(localStorage.getItem('quest')) || [];
       quest.push(questionsID);
       localStorage.setItem('quest', JSON.stringify(quest));
+      dispatch(setScores(100))
     } else {
       const questFoult = JSON.parse(localStorage.getItem('questFoult')) || [];
       questFoult.push(questionsID);
       localStorage.setItem('questFoult', JSON.stringify(questFoult));
+      dispatch(setScores(-100))
     }
 
     console.log('fgfgddfgfgddfgdfg', answerBool);

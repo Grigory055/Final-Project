@@ -42,7 +42,7 @@ module.exports = {
         },
         {
           questions: 'Объект, который используются в JavaScript при выполнении асинхронных операций?',
-          answer: 'Промис',
+          answer: 'Promise',
           value: 1000,
           condition: '',
           topic_id: 1,

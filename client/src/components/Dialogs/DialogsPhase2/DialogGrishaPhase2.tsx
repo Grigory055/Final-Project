@@ -3,6 +3,7 @@ import styles from './DialogPhase2.module.css'
 import { FlashCardsGame } from '../../Flash-Cards/FlashCardsGame'
 import GameModal from '../../Flash-Cards/GameModal/GameModal'
 import { Button } from '@mui/material'
+import { ExitToMap } from '../ExitToMap'
 
 interface IDialog {
     person: string
@@ -32,8 +33,8 @@ export function DialogGrishaPhase2() {
 
     const [dialog, setDialog] = useState<IDialog>(Grisha1)
 
-  const handlerDialog = () => {
-    setDialog((pre) => ({...pre, status: '1'}))
+  const handlerDialog = (status) => {
+    setDialog((pre) => ({...pre, status: status}))
     console.log('dialog1', dialog)
 }
 
@@ -44,14 +45,15 @@ export function DialogGrishaPhase2() {
         switch (dialog.status) {
           case '1':
             return <div><div>{Grisha1.text}</div><div>
-            <Button className={styles.button} onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Играть</Button></div></div> ;
+            <Button className={styles.button} onClick={() => handlerDialog('2')} >Играть</Button></div></div> ;
           case '2':
-            return <div><FlashCardsGame/></div>
-          case '4':
+            return <div><FlashCardsGame handlerDialog={handlerDialog} /></div>
+          case '3':
             return <div>
               <div>{Grisha3.text}</div>
                 <div>
-                  <Button onClick={() =>handlerDialog()} >Играть</Button>
+                  <ExitToMap />
+                  {/* <Button onClick={() =>handlerDialog()} >Играть</Button> */}
                 </div>
               </div>
         }
