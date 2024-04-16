@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import shuffle from './shuffle';
 import './GameModal.css';
+import { Button } from '@mui/material';
 
 function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
   if (showGameModal) {
     getQuestion(questionsId);
   }
+
+  // const dispatch = useAppDispatch()
 
   async function getQuestion(id) {
     const response = await fetch(
@@ -32,7 +35,7 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
     });
   }, [showGameModal]);
 
-  const shuffledAnswers = shuffle(answers);
+  // const shuffledAnswers = shuffle(answers);
   const userId = localStorage.getItem('userId');
 
   // async function answerInBase(answerId) {
@@ -57,6 +60,7 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
   // }
 
   function answerInStorage(answerId, questionsID, answerBool) {
+    
     if (answerBool) {
       const answerOK = JSON.parse(localStorage.getItem('answerOK')) || [];
       answerOK.push(answerId);
@@ -82,16 +86,37 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
     closeGameModal();
   }
 
-  console.log(shuffledAnswers);
+  console.log('shuffledAnswers', answers);
 
   return (
     <>
-      <Modal show={showGameModal} backdrop="static" keyboard={false}>
+    <div style={{ marginTop: '15px'}}>{answers[0]?.body}</div>
+    <div>{answers.map((el: any) => {
+            return (
+              <Button style={{ margin: '5px' }}
+                key={el?.['Answers.id']}
+                variant="primary"
+                // onClick={() => answerInBase(el?.['Answers.id'])}
+                onClick={() =>
+                  answerInStorage(
+                    el?.['Answers.id'],
+                    questionsId,
+                    el?.['Answers.is_correct']
+                  )
+                }
+              >
+                {el?.['Answers.text']}
+              </Button>
+            );
+          })}</div>
+    
+
+      {/* <Modal style={{ color: 'white', backgroundColor: 'white'}} show={showGameModal} backdrop="static" keyboard={false}>
         <Modal.Body className="gameModalBody">{answers[0]?.body}</Modal.Body>
         <Modal.Footer className="gameModalFooter">
-          {shuffledAnswers.map((el: any) => {
+          {answers.map((el: any) => {
             return (
-              <Button
+              <Button 
                 key={el?.['Answers.id']}
                 variant="primary"
                 // onClick={() => answerInBase(el?.['Answers.id'])}
@@ -108,7 +133,7 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
             );
           })}
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </>
   );
 }

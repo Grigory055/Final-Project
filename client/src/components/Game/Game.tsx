@@ -5,6 +5,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 import { fetchTopics } from '../../redux/thunkActions';
 import './Game.css';
 import axios from 'axios';
+import { setScores } from '../../redux/userSlice';
 
 export function Game() {
   const [open, setOpen] = React.useState(false);
@@ -13,6 +14,8 @@ export function Game() {
   const [score, setScore] = React.useState<number>(0);
   const [cards, setCards] = React.useState([]);
   const [time, setTimer] = React.useState(3);
+
+  const dispatch = useAppDispatch()
 
   useEffect((): void => {
     (async function (): Promise<void> {
@@ -116,6 +119,11 @@ export function Game() {
       setTimer(1800);
     } 
   };
+
+  const exitGameHandler = () => {
+    dispatch(setScores(score))
+    console.log('score', score)
+  }
 
   return (
     <>
@@ -280,6 +288,7 @@ export function Game() {
         <Button
           variant="contained"
           component={ReactRouterLink}
+          onClick={() => exitGameHandler()}
           // to="/menu"
           id="playBtn"
           size="large"

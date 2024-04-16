@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./StartGame.module.css";
 import { Button } from "@mui/material";
+import { useAppDispatch } from "../../redux/hooks";
+import { setScores } from "../../redux/userSlice";
 
 export function StartGame({ handlerDialog }) {
   const [p1, setP1] = useState<string>(
@@ -14,6 +16,8 @@ export function StartGame({ handlerDialog }) {
   const [winner, setWinner] = useState<string>("");
   const [startRace, setStartRace] = useState<boolean>(false);
   const [wins, setWins] = useState<number>(0);
+
+  const dispatch = useAppDispatch()
 
   const moveHandler = () => {
     setP1((pre) => "_" + pre.slice(0, -1));
@@ -83,6 +87,11 @@ export function StartGame({ handlerDialog }) {
       setWinner("p1");
     }
   }, [winner]);
+
+  const exitGameHandler = () => {
+    dispatch(setScores(1000))
+    handlerDialog('3')
+  }
 
   return (
     <>
@@ -190,7 +199,7 @@ export function StartGame({ handlerDialog }) {
           <p className={styles.text_typing}>
             чтобы перейти на следующий уровень
           </p>
-          <Button onClick={() => handlerDialog("3")}>Идем дальше!</Button>
+          <Button onClick={() => exitGameHandler()}>Идем дальше!</Button>
         </>
       )}
     </>
