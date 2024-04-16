@@ -20,7 +20,7 @@ export function RPG() {
   useEffect(() => {
     dispatch(switchDialog(false));
     const { x, y } = levelObjects.hero.position
-    const newHero = new Hero(gridCells(x), gridCells(y));
+    const hero = new Hero(gridCells(x), gridCells(y));
     dispatch(setWalls(walls[Number(id)]));
       
     const mainScene = new GameObject({
@@ -74,7 +74,7 @@ export function RPG() {
       
     mainScene.addChild(npc2);
 
-    mainScene.addChild(newHero);
+    mainScene.addChild(hero);
 
     const inventory = new Inventory();
 
