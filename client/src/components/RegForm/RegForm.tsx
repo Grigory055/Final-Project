@@ -22,7 +22,6 @@ export function RegForm() {
         void dispatch(fetchUserRegister(inputs));
         setInputs({ login: '', email: '', password: '' });
       }
-      navigate('/');
     };
   
   const clickLoginHandler = () => {

@@ -6,17 +6,21 @@ import {events} from "../../Events.js";
 import { store } from "../../../../../redux/store";
 import { setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
 
-export  class Rod extends GameObject {
+export class DialogBubble extends GameObject {
   constructor(x, y, dialogID) {
     super({
-      name: "Rod",
+      name: "DialogBubble",
       position: new Vector2(x, y),
     });
-    const sprite = new Sprite({
-      resource: resources.images.rod,
-      position: new Vector2(0, -5),
+    this.body = new Sprite({
+      resource: resources.images.dialog,
+      frameSize: new Vector2(32, 32),
+      hFrames: 3,
+      vFrames: 1,
+      frame: 2,
+      position: new Vector2(-8, -20),
     });
-    this.addChild(sprite);
+    this.addChild(this.body);
     this.dialogID = dialogID;
   }
 
@@ -34,14 +38,6 @@ export  class Rod extends GameObject {
   }
 
   onCollideWithHero() {
-    this.destroy();
-
-    events.emit("HERO_PICKS_UP_ITEM", {
-      type: "ROD",
-      image: resources.images.rod,
-      position: this.position,
-    });
-
     store.dispatch(setDialog(this.dialogID));
     store.dispatch(switchDialog(true));
     store.dispatch(switchHeroWalk(false));

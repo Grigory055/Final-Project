@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Gladiator from "../../Gladiator/Gladiator";
-import { Button, Link } from "@mui/material";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from '../../../redux/hooks';
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
 
@@ -36,25 +36,27 @@ const Anton4: IDialog = {
 };
 
 export function DialogAntonPhase0() {
-
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
+    setTimeout(() => {
+      navigate('/');
+    }, 10);
   }
 
-
-    const [dialog, setDialog] = useState<IDialog>(Anton)
-    
-    const handlerDialog = () => {
-        setDialog((pre) => ({...pre, status: '3'}))
-        console.log('dialog1', dialog)
-    }
-    const handlerDialog2 = () => {
-        setDialog((pre) => ({...pre, status: '4'}))
-        console.log('dialog2', dialog)
-    }
+  const [dialog, setDialog] = useState<IDialog>(Anton)
+  
+  const handlerDialog = () => {
+      setDialog((pre) => ({...pre, status: '3'}))
+      console.log('dialog1', dialog)
+  }
+  const handlerDialog2 = () => {
+      setDialog((pre) => ({...pre, status: '4'}))
+      console.log('dialog2', dialog)
+  }
 
   return (
     <>
@@ -107,9 +109,7 @@ export function DialogAntonPhase0() {
               return (
                 <div style={{ width: "400px" }}>
                   {Anton4.text}
-                  <Link component={ReactRouterLink} to="/">
-                    <Button>К следующей фазе!</Button>
-                  </Link>
+                  <Button onClick={handleCloseClick}>К следующей фазе!</Button>
                 </div>
               );
           }

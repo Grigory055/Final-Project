@@ -88,8 +88,10 @@ body,
 }
 
 #navbar {
-  border-bottom: 1px solid #cccccc;
-  background-color: black;
+  width: 100%;
+  background-color: none;
+  position: absolute;
+  top: 0;
   color: white;
 }
 
