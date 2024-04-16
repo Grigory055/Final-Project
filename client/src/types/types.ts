@@ -1,3 +1,5 @@
+import { GameObject } from "../components/RPG/src" 
+
 interface IUser {
   id: number;
   login: string;
@@ -34,4 +36,11 @@ interface ICard {
   topic_id: number,
 }
 
-export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard }
+interface IEvent {
+  id: number,
+  eventName: string,
+  caller: GameObject,
+  callback: () => void,
+}
+
+export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent }

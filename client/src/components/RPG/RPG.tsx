@@ -4,7 +4,7 @@ import { resources, Sprite, Vector2, GameLoop, Input, gridCells, GameObject, Her
 import { useParams } from 'react-router-dom';
 import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls, phase3objects, phase3walls } from './src/levels/'
 import { useAppDispatch } from '../../redux/hooks';
-import { setWalls, switchDialog } from '../../redux/RPGSlice';
+import { eventsClear, setWalls, switchDialog } from '../../redux/RPGSlice';
 import { Navbar } from '../Navbar/Navbar';
 const walls = [phase0walls, phase1walls, phase2walls, phase3walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects];
@@ -99,9 +99,12 @@ export function RPG() {
     };
 
     const gameLoop = new GameLoop(update, draw);
-
     draw();
     gameLoop.start();
+
+    return () => {
+      dispatch(eventsClear())
+    }
   }, []);
 
   return (
