@@ -3,8 +3,8 @@ import {events} from "./Events.js";
 import {Vector2} from "./Vector2.js";
 
 export class Camera extends GameObject {
-  constructor() {
-    super({});
+  constructor(name) {
+    super({}, name);
 
     events.on("HERO_POSITION", this, heroPosition => {
 

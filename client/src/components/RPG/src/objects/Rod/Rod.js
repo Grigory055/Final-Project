@@ -7,11 +7,10 @@ import { store } from "../../../../../redux/store";
 import { setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
 
 export  class Rod extends GameObject {
-  constructor(x, y, dialogID) {
+  constructor(x, y, name, dialogID) {
     super({
-      name: "Rod",
       position: new Vector2(x, y),
-    });
+    }, name);
     const sprite = new Sprite({
       resource: resources.images.rod,
       position: new Vector2(0, -5),

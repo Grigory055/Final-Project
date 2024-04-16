@@ -5,10 +5,10 @@ import {Vector2} from "../../Vector2.js";
 import {events} from "../../Events.js";
 
 export class Inventory extends GameObject {
-  constructor() {
+  constructor(name) {
     super({
       position: new Vector2(0, 1)
-    });
+    }, name);
 
     this.nextId = 0;
     this.items = []

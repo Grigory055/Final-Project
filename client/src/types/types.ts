@@ -1,5 +1,3 @@
-import { GameObject } from "../components/RPG/src" 
-
 interface IUser {
   id: number;
   login: string;
@@ -39,7 +37,7 @@ interface ICard {
 interface IEvent {
   id: number,
   eventName: string,
-  caller: GameObject,
+  caller: string,
   callback: () => void,
 }
 
