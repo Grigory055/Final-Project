@@ -11,7 +11,6 @@ export function QuestionsP2W1() {
   const[end,setEnd] = useState<boolean>(true)
   const question1 = "Чем является middleware сам по себе?"
   const question2 ="что есть AJAX"
-  const dispatch = useAppDispatch();
 
   const dispatch = useAppDispatch();
 
