@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './QuestionsP1.module.css';
 import { useAppDispatch } from '../../../redux/hooks';
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
+import { setScores } from '../../../redux/userSlice';
 
 export function QuestionsP1W1() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
@@ -10,9 +11,14 @@ export function QuestionsP1W1() {
   const[end,setEnd] = useState<boolean>(true)
   const question1 = "Как создать коммит?"
   const question2 ="Что такое бинарный поиск?"
+
   const dispatch = useAppDispatch();
 
-
+  const handleCloseClick = () => {
+    dispatch(switchHeroWalk(true));
+    dispatch(switchDialog(false));
+    dispatch(setScores(coins * 1000))
+  }
 
   const startHandler: () => void = () => {
     setStartP1W1(true)
@@ -38,11 +44,7 @@ const secondRightAnswerHandler: () => void = () => {
     setEnd(false)
    }
 
-   const handleCloseClick = () => {
-    dispatch(switchHeroWalk(true));
-    dispatch(switchDialog(false));
-  }
-
+   
 
   return (
     <>
@@ -69,7 +71,7 @@ const secondRightAnswerHandler: () => void = () => {
             <p>Попробую его взломать!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
-          <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer} >далее</button></>)}
+          <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}
       </div>
     </>
   )

@@ -3,6 +3,9 @@ import { Navbar, RegForm } from "../../components";
 import { Container } from "react-bootstrap";
 
 export function RegPage() {
+
+  
+
   return (
     <>
       <Navbar />

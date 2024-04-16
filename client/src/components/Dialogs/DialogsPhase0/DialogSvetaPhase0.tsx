@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 import { LoginForm } from '../../LoginForm/LoginForm'
 import SvetaP0dialog1 from '../../../../public/audio/SvetaP0dialog1.wav'
+import { setScores } from '../../../redux/userSlice'
 
 
 interface IDialog {

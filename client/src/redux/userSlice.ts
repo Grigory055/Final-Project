@@ -25,8 +25,9 @@ const userSlice = createSlice({
         setCharacter(state, { payload }) {
             state.character = payload;
         },
-        setScore(state, {payload} ) {
+        setScores(state, { payload } ) {
             state.score += payload;
+            console.log('state.score', state.score)
         }
     },
     extraReducers: (builder) => {
@@ -49,4 +50,4 @@ const userSlice = createSlice({
 })
 
 export default userSlice.reducer
-export const { setCharacter, setScore } = userSlice.actions;
+export const { setCharacter, setScores } = userSlice.actions;

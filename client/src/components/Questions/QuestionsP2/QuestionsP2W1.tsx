@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './QuestionsP2.module.css';
-import { useAppDispatch } from '../../../redux/hooks'
-import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
+import { useAppDispatch } from '../../../redux/hooks';
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
+import { setScores } from '../../../redux/userSlice';
 
 export function QuestionsP2W1() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
@@ -12,11 +13,13 @@ export function QuestionsP2W1() {
   const question2 ="что есть AJAX"
   const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
+
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
+    dispatch(setScores(coins * 1000))
   }
-
 
 
   const startHandler: () => void = () => {

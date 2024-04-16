@@ -15,12 +15,6 @@ import {
 } from 'redux-persist'
 import RPGSlice from './RPGSlice';
 
-
-// type StoreType = {
-//   statSlice: StatSliceState;
-//   userSlice: UserSliceState
-// };
-
 const persistConfig = {
   key: 'root',
   storage,
