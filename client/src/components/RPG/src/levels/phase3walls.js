@@ -365,3 +365,6 @@ phase3walls.push(`528,512`);
 phase3walls.push(`528,528`);
 phase3walls.push(`528,544`);
 phase3walls.push(`528,560`);
+
+phase3walls.push(`736,768`);
+phase3walls.push(`736,752`);

@@ -64,7 +64,6 @@ export function DialogDenisPhase3() {
             case "3":
               return (
                 <div>
-                  <Game />
                 </div>
               );
           }
