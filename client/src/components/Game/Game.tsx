@@ -7,7 +7,7 @@ import './Game.css';
 import axios from 'axios';
 import { setScores } from '../../redux/userSlice';
 
-export function Game() {
+export function Game({ handlerDialog }) {
   const [open, setOpen] = React.useState(false);
   const [card, setCard] = React.useState({});
   const [input, setInput] = React.useState<string>('');
@@ -101,6 +101,8 @@ export function Game() {
       setScore((pre) => {
         if ((score - card.value) < 0) {
           setScore((pre) => score + card.value);
+        } else {
+          setScore((pre) => score + card.value)
         }
       });
       // setScore((pre) => score + card.value);
@@ -122,173 +124,127 @@ export function Game() {
 
   const exitGameHandler = () => {
     dispatch(setScores(score))
+    handlerDialog('3')
     console.log('score', score)
   }
 
   return (
     <>
     <div className='svoya_igra_container'>
-      <Typography variant="h4" mb={5}>
-        Ваш счет: {score}
-      </Typography>
-      <Grid container spacing={1} rowSpacing={1} justifyContent="center" columns={7}>
-        <Grid item xs={2}>
-          <Card>
-            <CardContent>Эльбрус</CardContent>
-          </Card>
-        </Grid>
+        <div style={{ fontSize: '45px', marginBottom: '30px' }}>Ваш счет: {score}</div>
+        
+      <div>
+        <div style={{ display: 'flex' }}>
+          <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>JS</div>
         {cards &&
-          cards
-            .filter((el) => el.topic_id === 1)
-            .map((el) => (
-              <Grid id={el.id} key={el.id} item xs={1}>
-                <Card onClick={() => handleClickOpen(el.id)}>
-                  <CardContent 
-                    className={
-                      el.condition === '1'
-                        ? 'oo'
-                        : el.condition === '2'
-                        ? 'aa'
-                        : el.condition === '' && 'pp'
-                    }
-                  >
-                    {el.value}
-                  </CardContent>
-                </Card>
-              </Grid>
+          cards.filter((el) => el.topic_id === 1).map((el) => (
+              <div style={{ margin: '10px', fontSize: '15px' }}>
+                <div onClick={() => handleClickOpen(el.id)}>
+                  <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+                </div>
+              </div>
             ))}
-        <Grid item xs={2}>
-          <Card>
-            <CardContent>Барсы</CardContent>
-          </Card>
-        </Grid>
+            </div>
+            <div style={{ display: 'flex' }}>
+            <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>CSS</div>
+              
         {cards &&
           cards
             .filter((el) => el.topic_id === 2)
             .map((el) => (
-              <Grid id={el.id} key={el.id} item xs={1}>
-                <Card onClick={() => handleClickOpen(el.id)}>
-                  <CardContent
-                    className={
-                      el.condition === '1'
-                        ? 'oo'
-                        : el.condition === '2'
-                        ? 'aa'
-                        : el.condition === '' && 'pp'
-                    }
-                  >
-                    {el.value}
-                  </CardContent>
-                </Card>
-              </Grid>
+              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div onClick={() => handleClickOpen(el.id)}>
+             
+              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+             
+              </div>
+              </div>
             ))}
-        <Grid item xs={2}>
-          <Card>
-            <CardContent>Флаги</CardContent>
-          </Card>
-        </Grid>
+            </div>
+            <div style={{ display: 'flex' }}>
+            <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>HTML</div>
         {cards &&
           cards
             .filter((el) => el.topic_id === 3)
             .map((el) => (
-              <Grid id={el.id} key={el.id} item xs={1}>
-                <Card onClick={() => handleClickOpen(el.id)}>
-                  <CardContent
-                    className={
-                      el.condition === '1'
-                        ? 'oo'
-                        : el.condition === '2'
-                        ? 'aa'
-                        : el.condition === '' && 'pp'
-                    }
-                  >
-                    {el.value}
-                  </CardContent>
-                </Card>
-              </Grid>
+              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div onClick={() => handleClickOpen(el.id)}>
+             
+              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+             
+              </div>
+              </div>
+              // <Grid id={el.id} key={el.id} item xs={1}>
+              //   <Card onClick={() => handleClickOpen(el.id)}>
+                  // <CardContent
+                  //   className={
+                  //     el.condition === '1'
+                  //       ? 'oo'
+                  //       : el.condition === '2'
+                  //       ? 'aa'
+                  //       : el.condition === '' && 'pp'
+                  //   }
+                  // >
+                  //   {el.value}
+                  // </CardContent>
+              //   </Card>
+              // </Grid>
             ))}
-        <Grid item xs={2}>
-          <Card>
-            <CardContent>Животные</CardContent>
-          </Card>
-        </Grid>
+            </div>
+            <div style={{ display: 'flex' }}>
+            <div style={{ margin: 'auto',  width: '120px', fontSize: '20px' }}>React</div>
         {cards &&
           cards
             .filter((el) => el.topic_id === 4)
             .map((el) => (
-              <Grid id={el.id} key={el.id} item xs={1}>
-                <Card onClick={() => handleClickOpen(el.id)}>
-                  <CardContent
-                    className={
-                      el.condition === '1'
-                        ? 'oo'
-                        : el.condition === '2'
-                        ? 'aa'
-                        : el.condition === '' && 'pp'
-                    }
-                  >
-                    {el.value}
-                  </CardContent>
-                </Card>
-              </Grid>
+              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div onClick={() => handleClickOpen(el.id)}>
+             
+              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+             
+              </div>
+              </div>
             ))}
-        <Grid item xs={2}>
-          <Card>
-            <CardContent>Школьная программа</CardContent>
-          </Card>
-        </Grid>
+            </div>
+            <div style={{ display: 'flex' }}>
+            <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>Express</div>
         {cards &&
           cards
             .filter((el) => el.topic_id === 5)
             .map((el) => (
-              <Grid id={el.id} key={el.id} item xs={1}>
-                <Card onClick={() => handleClickOpen(el.id)}>
-                  <CardContent
-                    className={
-                      el.condition === '1'
-                        ? 'oo'
-                        : el.condition === '2'
-                        ? 'aa'
-                        : el.condition === '' && 'pp'
-                    }
-                  >
-                    {el.value}
-                  </CardContent>
-                </Card>
-              </Grid>
+              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div onClick={() => handleClickOpen(el.id)}>
+             
+              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+             
+              </div>
+              </div>
             ))}
-        <Grid item xs={2}>
-          <Card>
-            <CardContent>Легкие примеры</CardContent>
-          </Card>
-        </Grid>
+            </div>
+            <div style={{ display: 'flex' }}>
+            <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>GIT</div>
         {cards &&
           cards
             .filter((el) => el.topic_id === 6)
             .map((el) => (
-              <Grid id={el.id} key={el.id} item xs={1}>
-                <Card onClick={() => handleClickOpen(el.id)}>
-                  <CardContent
-                    className={
-                      el.condition === '1'
-                        ? 'oo'
-                        : el.condition === '2'
-                        ? 'aa'
-                        : el.condition === '' && 'pp'
-                    }
-                  >
-                    {el.value}
-                  </CardContent>
-                </Card>
-              </Grid>
+              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div onClick={() => handleClickOpen(el.id)}>
+             
+              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+             
+              </div>
+              </div>
             ))}
-      </Grid>
+            </div>
+          </div>
 
       <Box mt={5}>
         <Button
-          variant="contained"
-          component={ReactRouterLink}
+          // variant="contained"
+          // component={ReactRouterLink}
+          // onClick={() => handlerDialog('3')}
           onClick={() => exitGameHandler()}
+          // to={() => exitGameHandler()}
           // to="/menu"
           id="playBtn"
           size="large"
@@ -297,7 +253,7 @@ export function Game() {
         </Button>
       </Box>
 
-      <Dialog
+      <Dialog 
         open={open}
         // onClose={handleClose}
         PaperProps={{
@@ -306,16 +262,31 @@ export function Game() {
         }}
         disableRestoreFocus
       >
-        <DialogTitle textAlign="center">
+        <DialogTitle  textAlign="center">
           {card.image && (
             <Box maxWidth={'500px'}>
               <img width={'100%'} src={card.image} alt="Image" />
             </Box>
           )}
         </DialogTitle>
-        <DialogContent>
-          <DialogContentText>{card.questions}</DialogContentText>
-          <TextField
+        <DialogContent sx={{
+            backgroundColor: 'white',
+            width: 500,
+            color: 'black',
+            borderRadius: '12px', 
+            padding: '24px'
+          }}>
+          <DialogContentText  sx={{
+            color: 'black', 
+            padding: '14px'
+          }}>{card.questions}</DialogContentText>
+          {/* <input type="text" /> */}
+          <TextField 
+          // sx={{
+          //   backgroundColor: 'yellow',
+          //   width: 300,
+          //   color: 'red',
+          // }}
             onChange={inputHandler}
             autoFocus
             required
@@ -330,7 +301,13 @@ export function Game() {
           />
           {time}
         </DialogContent>
-        <DialogActions>
+        <DialogActions  sx={{
+            // backgroundColor: 'white',
+            // width: 500,
+            color: 'black',
+            borderRadius: '12px', 
+            padding: '24px'
+          }}>
           {/* <Button onClick={() => handleCloseClick(card.id)}>Закрыть</Button> */}
           <Button type="submit">Отправить</Button>
         </DialogActions>

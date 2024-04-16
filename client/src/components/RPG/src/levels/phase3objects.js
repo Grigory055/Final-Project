@@ -1,8 +1,8 @@
 export const phase3objects = {
   hero: {
     position: {
-      x: 68, // 68
-      y: 19, // 19
+      x: 45, // 68
+      y: 46, // 19
     },
   },
   rod1: {
@@ -28,8 +28,8 @@ export const phase3objects = {
   },
   npc1: {
     // svet
-    x: 1, // 46
-    y: 1, // 40
+    x: 46, // 46
+    y: 48, // 40
     dialogID: 24,
     exit: {
       x: 0,
