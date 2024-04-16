@@ -180,8 +180,8 @@ phase1walls.push(`352,240`);
 phase1walls.push(`352,256`);
 phase1walls.push(`352,272`);
 phase1walls.push(`416,272`);
-
 phase1walls.push(`384,288`);
+phase1walls.push(`384,272`);
 phase1walls.push(`368,288`);
 phase1walls.push(`352,304`);
 phase1walls.push(`368,304`);
