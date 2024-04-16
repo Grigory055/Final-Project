@@ -27,7 +27,7 @@ router.get('/stats', async (req, res) => {
   }
 });
 
-router.post('/stats', async (req, res) => {
+router.post('/', async (req, res) => {
   const { id } = req.session.user;
   const score = req.body;
   try {

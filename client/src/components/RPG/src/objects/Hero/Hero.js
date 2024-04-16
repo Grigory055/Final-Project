@@ -98,7 +98,6 @@ export class Hero extends GameObject {
     if (this.lastX === this.position.x && this.lastY === this.position.y) {
       return;
     }
-    console.log(this.position);
     
     this.lastX = this.position.x;
     this.lastY = this.position.y;

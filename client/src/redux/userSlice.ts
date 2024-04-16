@@ -41,7 +41,11 @@ const userSlice = createSlice({
             if (payload) state.isLogin = true
         }),
         builder.addCase(fetchUserLogout.fulfilled, (state: UserSliceState, { payload }) => {
-            if (payload === 200) state.isLogin = false
+            if (payload === 200) {
+                state.isLogin = false;
+                state.login = 'Гость';
+                state.score = 0;
+            }
         })
         builder.addCase(fetchTopics.fulfilled, (state: UserSliceState, { payload }) => {
             if (payload) state.topics = payload;

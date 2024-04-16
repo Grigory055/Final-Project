@@ -1,16 +1,20 @@
 const userRouter = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
+const { Game } = require('../db/models');
 const isUser = require('../middlewares/isUser');
 
 userRouter.post('/registration', async (req, res) => {
-  const { login, password, email } = req.body;
+  const {
+    login, password, email, character,
+  } = req.body;
   console.log(req.body);
   try {
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({ login, email, password: hash });
+    const game = await Game.create({ score: 0, character, user_id: user.id });
     console.log(user);
-
+    console.log(game);
     const clearedUser = {
       id: user.id,
       login: user.login,
