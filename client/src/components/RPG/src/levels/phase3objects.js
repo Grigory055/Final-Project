@@ -16,8 +16,8 @@ export const phase3objects = {
     dialogID: 21,
   },
   rod3: {
-    x: 49, // 25
-    y: 33, // 30
+    x: 47, // 25
+    y: 35, // 30
     dialogID: 22,
   },
   dialogBubble: {
