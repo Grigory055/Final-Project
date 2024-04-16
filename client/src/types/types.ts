@@ -34,4 +34,11 @@ interface ICard {
   topic_id: number,
 }
 
-export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard }
+interface IEvent {
+  id: number,
+  eventName: string,
+  caller: string,
+  callback: () => void,
+}
+
+export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent }

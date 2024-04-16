@@ -11,7 +11,7 @@ export class Sprite extends GameObject {
       scale, // how large to draw this image
       position, // where to draw it (top left corner)
       animations,
-    }) {
+    }, name) {
     super({
       name
     });

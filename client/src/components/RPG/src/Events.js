@@ -34,6 +34,10 @@ class Events {
     );
   }
 
+  clear() {
+    this.callbacks = [];
+    this.nextId = 0;
+  }
 
 }
 

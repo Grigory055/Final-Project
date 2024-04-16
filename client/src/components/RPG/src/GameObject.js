@@ -2,11 +2,12 @@ import { Vector2 } from './Vector2.js';
 import { events } from './Events.js';
 
 export class GameObject {
-  constructor({ position }) {
+  constructor({ position }, name ) {
     this.position = position ?? new Vector2(0, 0);
     this.children = [];
     this.parent = null;
     this.hasReadyBeenCalled = false;
+    this.name = name;
   }
 
   // First entry point of the loop

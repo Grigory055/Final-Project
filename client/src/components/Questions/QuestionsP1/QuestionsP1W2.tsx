@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../../redux/hooks';
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
 import styles from './QuestionsP1.module.css';
+import { setScores } from '../../../redux/userSlice';
 
 export function QuestionsP1W2() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
@@ -41,6 +42,7 @@ const secondRightAnswerHandler: () => void = () => {
    const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
+    dispatch(setScores(coins * 1000))
   }
 
 

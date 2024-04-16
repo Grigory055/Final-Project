@@ -24,10 +24,10 @@ import { store } from "../../../../../redux/store";
 
 
 export class Hero extends GameObject {
-  constructor(x, y) {
+  constructor(x, y, name) {
     super({
-      position: new Vector2(x, y)
-    });
+      position: new Vector2(x, y),
+    }, name);
 
     const shadow = new Sprite({
       resource: resources.images.shadow,
@@ -98,6 +98,8 @@ export class Hero extends GameObject {
     if (this.lastX === this.position.x && this.lastY === this.position.y) {
       return;
     }
+    console.log(this.position);
+    
     this.lastX = this.position.x;
     this.lastY = this.position.y;
     events.emit("HERO_POSITION", this.position)
@@ -171,7 +173,10 @@ export class Hero extends GameObject {
     if (this.itemPickupTime <= 0) {
       this.itemPickupShell.destroy();
     }
+  }
 
+  resetPosition() {
+    this.position = null;
   }
 
 

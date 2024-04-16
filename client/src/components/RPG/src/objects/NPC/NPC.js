@@ -7,11 +7,10 @@ import { store } from "../../../../../redux/store";
 import { openExit, setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
 
 export class NPC extends GameObject {
-  constructor(x, y, dialogID, exitCoordX, exitCoordY, skin) {
+  constructor(x, y, name, dialogID, exitCoordX, exitCoordY, skin) {
     super({
-      name: "NPC",
       position: new Vector2(x, y),
-    });
+    }, name);
 
     const shadow = new Sprite({
       resource: resources.images.shadow,
@@ -45,6 +44,8 @@ export class NPC extends GameObject {
         (roundedHeroX === this.position.x &&
           roundedHeroY === this.position.y + 16)
       ) {
+        console.log(roundedHeroX, this.position.x);
+        console.log(roundedHeroY, this.position.y);
         this.onCollideWithHero();
       }
     });
