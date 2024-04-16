@@ -16,7 +16,7 @@ export function QuestionsP3W1_2() {
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
-    dispatch(setScores(coins * 1000))
+    dispatch(setScores(coins * 100))
   }
 
 
