@@ -2,8 +2,9 @@ import { useState } from "react";
 import Gladiator from "../../Gladiator/Gladiator";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
+import { fetchUserScore } from "../../../redux/thunkActions";
 
 interface IDialog {
   person: string;
@@ -38,10 +39,12 @@ const Anton4: IDialog = {
 export function DialogAntonPhase0() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const score = useAppSelector((store) => store.persistedReducer.score)
 
-  const handleCloseClick = async () => {
-    await dispatch(switchHeroWalk(true));
-    await dispatch(switchDialog(false));
+  const handleCloseClick = () => {
+    void dispatch(fetchUserScore(score));
+    void dispatch(switchHeroWalk(true));
+    void dispatch(switchDialog(false));
     navigate('/');
   }
 

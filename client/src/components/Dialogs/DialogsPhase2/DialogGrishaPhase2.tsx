@@ -2,10 +2,10 @@ import { useState } from 'react'
 import styles from './DialogPhase2.module.css'
 import { FlashCardsGame } from '../../Flash-Cards/FlashCardsGame'
 import { Button } from '@mui/material'
-import { useAppDispatch } from '../../../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { useNavigate } from 'react-router-dom'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
-import { setScores } from '../../../redux/userSlice'
+import { fetchUserScore } from '../../../redux/thunkActions'
 
 interface IDialog {
     person: string
@@ -35,6 +35,7 @@ export function DialogGrishaPhase2() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [dialog, setDialog] = useState<IDialog>(Grisha1)
+  const score = useAppSelector((store) => store.persistedReducer.score)
 
   const handlerDialog = (status: string) => {
     setDialog((pre) => ({...pre, status: status}))
@@ -46,10 +47,10 @@ export function DialogGrishaPhase2() {
   //   console.log('dialog1', dialog)
   // }
 
-  const handleCloseClick = async () => {
-    await dispatch(switchHeroWalk(true));
-    await dispatch(switchDialog(false));
-    // await dispatch(setScores(100))
+  const handleCloseClick = () => {
+    void dispatch(fetchUserScore(score));
+    void dispatch(switchHeroWalk(true));
+    void dispatch(switchDialog(false));
     navigate('/');
   }
 

@@ -1,6 +1,6 @@
 import { Box, Container, Link, Stack, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { fetchUserLogout } from "../../redux/thunkActions";
+import { fetchUserLogout, fetchUserScore } from "../../redux/thunkActions";
 import { useNavigate } from "react-router-dom";
 
 

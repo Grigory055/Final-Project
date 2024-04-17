@@ -66,7 +66,6 @@ export const fetchUserScore = createAsyncThunk(
   '/user/score',
   async(score: number) => {
     try {
-      // console.log('score ======', score)
       const response = await axios.put<AxiosResponse>('http://localhost:3000/api/games', { score }, { withCredentials: true })
       console.log('score ======', score)
       console.log('response', response.data)

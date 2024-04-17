@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styles from "./DialogsPhase1.module.css";
-import { useAppDispatch } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { switchDialog, switchHeroWalk } from "../../../redux/RPGSlice";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { fetchUserScore } from "../../../redux/thunkActions";
 
 interface IDialog {
   person: string;
@@ -32,10 +33,12 @@ const Sveta3: IDialog = {
 export function DialogSvetaPhase1() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const score = useAppSelector((store) => store.persistedReducer.score)
 
-  const handleCloseClick = async () => {
-    await dispatch(switchHeroWalk(true));
-    await dispatch(switchDialog(false));
+  const handleCloseClick = () => {
+    void dispatch(fetchUserScore(score));
+    void dispatch(switchHeroWalk(true));
+    void dispatch(switchDialog(false));
     navigate('/');
   }
 

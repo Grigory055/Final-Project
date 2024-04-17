@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./DialogPhase3.module.css";
 import { Button } from "@mui/material";
-import { Game } from "../../Game/Game";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { fetchUserScore } from "../../../redux/thunkActions";
 
 
 interface IDialog {
@@ -24,10 +25,15 @@ const Denis2: IDialog = {
 
 export function DialogDenisPhase3() {
   const [dialog, setDialog] = useState<IDialog>(Denis1);
+  const dispatch = useAppDispatch();
+  const score = useAppSelector((store) => store.persistedReducer.score)
 
-  const handlerDialog = (status) => {
+  useEffect(() => {
+    void dispatch(fetchUserScore(score));
+  },[])
+
+  const handlerDialog = (status: string) => {
     setDialog((pre) => ({ ...pre, status: status }));
-    console.log("dialog1", dialog);
   };
 
   return (
@@ -41,14 +47,7 @@ export function DialogDenisPhase3() {
                   <h4>Денис</h4>
                   <div>{Denis1.text}</div>
                   <div>
-                    <Button
-                      className={styles.button}
-                      onClick={() =>
-                        setDialog((pre) => ({ ...pre, status: "2" }))
-                      }
-                    >
-                      Далее
-                    </Button>
+                    <Button className={styles.button} onClick={() => handlerDialog("2")} >Далее</Button>
                   </div>
                 </div>
               );
@@ -57,7 +56,7 @@ export function DialogDenisPhase3() {
                 <div>
                   <div>{Denis2.text}</div>
                   <div>
-                    <Button onClick={() => setDialog((pre) => ({ ...pre, status: "3" }))}>Играть</Button>
+                    <Button onClick={() => handlerDialog("3")}>Играть</Button>
                     
                   </div>
                 </div>

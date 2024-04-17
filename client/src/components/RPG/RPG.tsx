@@ -18,9 +18,7 @@ export function RPG() {
   const { id } = useParams();
   const levelObjects = gameObjects[Number(id)];
   const canvasRef = useRef();
-  
-  const score = useAppSelector((store) => store.persistedReducer.score)
-  
+
   useEffect(() => {
     dispatch(switchDialog(false));
     const { x, y } = levelObjects.hero.position
@@ -111,8 +109,7 @@ export function RPG() {
 
     gameLoop.start();
 
-    return async () => {
-      void await dispatch(fetchUserScore(score))
+    return () => {    
       gameLoop.stop();
       events.clear();
       hero.resetPosition();
