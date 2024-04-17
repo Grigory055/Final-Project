@@ -6,6 +6,7 @@ import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setWalls, switchDialog } from '../../redux/RPGSlice';
 import { Navbar } from '../Navbar/Navbar';
+import step from '../audio/steps/step.wav';
 import Theme1audio from '../audio/game/Theme1audio';
 import Theme2audio from '../audio/game/Theme2audio';
 import Theme3audio from '../audio/game/Theme3audio';
@@ -21,11 +22,14 @@ export function RPG() {
   const { id } = useParams();
   const levelObjects = gameObjects[Number(id)];
   const canvasRef = useRef();
+  const stepRef = useRef();
 
   useEffect(() => {
     void dispatch(switchDialog(false));
+
+    const stepAudio = stepRef.current;
     const { x, y } = levelObjects.hero.position
-    const hero = new Hero(gridCells(x), gridCells(y), 'hero', character);
+    const hero = new Hero(gridCells(x), gridCells(y), 'hero', character, stepAudio);
     
     void dispatch(setWalls(walls[Number(id)]));
       
@@ -119,6 +123,26 @@ export function RPG() {
     }
   }, []);
 
+  useEffect(() => {
+    const stepAudio = stepRef.current; 
+
+    if (stepAudio) {
+      stepAudio.volume = 0.05; // Установка громкости на 20%
+      stepAudio.playbackRate = 1.0; // Установка скорости на 100%
+      stepAudio.addEventListener('canplay', handleCanPlay);
+    }
+
+    function handleCanPlay() {
+      stepAudio.removeEventListener('canplay', handleCanPlay);
+    }
+
+    return () => {
+      if (stepAudio) {
+        stepAudio.removeEventListener('canplay', handleCanPlay);
+      }
+    };
+  }, []);
+
   return (
     <>
     {(() => {
@@ -155,6 +179,7 @@ export function RPG() {
         width={320}
         height={180}
       ></canvas>
+      <audio  src={step} ref={stepRef} />
       {/* <Theme1audio/> */}
       <Navbar />
     </>

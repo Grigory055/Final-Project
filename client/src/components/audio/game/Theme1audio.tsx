@@ -33,4 +33,4 @@ export default function Theme1audio() {
       <audio  src={voice} ref={voiceRef}  loop/>
     </div>
   );
-};
+}

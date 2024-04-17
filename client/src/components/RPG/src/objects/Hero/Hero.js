@@ -24,7 +24,7 @@ import { store } from "../../../../../redux/store";
 
 
 export class Hero extends GameObject {
-  constructor(x, y, name, character) {
+  constructor(x, y, name, character, stepAudio) {
     super({
       position: new Vector2(x, y),
     }, name);
@@ -63,6 +63,7 @@ export class Hero extends GameObject {
     this.itemPickupTime = 0;
     this.itemPickupShell = null;
     this.walls = null;
+    this.stepAudio = stepAudio;
 
     // React to picking up an item
     events.on("HERO_PICKS_UP_ITEM", this, data => {
@@ -147,6 +148,8 @@ export class Hero extends GameObject {
       this.destinationPosition.x = nextX;
       this.destinationPosition.y = nextY;
     }
+
+    this.stepAudio.play();
   }
 
   onPickUpItem({ image, position }) {
