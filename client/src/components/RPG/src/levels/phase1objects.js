@@ -36,7 +36,7 @@ export const phase1objects = {
     skin: 0,
   },
   npc2: {
-    x: 24,
+    x: 23,
     y: 33,
     dialogID: 11,
     exit: {

@@ -37,13 +37,8 @@ const initGame = {
 
 export function Boomerang({ handlerDialog }) {
   const [game, setGame] = useState<IGame>(initGame)
-  
 
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    document.addEventListener('keydown', moveHero)
-  }, [])
 
   useEffect(() => {
     setGame((pre: IGame): IGame => {
@@ -124,7 +119,7 @@ export function Boomerang({ handlerDialog }) {
     // !================================================================
 
   const moveHero = (e: React.KeyboardEvent): void => {
-    if (e.key === 'c') {
+    if (e.code === "KeyD") {
       setGame((pre) => {      
         if (pre.status === 'play' && pre.heroPosition < pre.track.length - 1 && !pre.boomerangIsFlying) {
           return ({...pre, heroPosition: pre.heroPosition + 1, boomerangPosition: pre.boomerangPosition + 1});
@@ -135,7 +130,7 @@ export function Boomerang({ handlerDialog }) {
         }
       });
     }
-    if (e.key === 'z') {
+    if (e.code === "KeyA") {
       setGame((pre) => {      
         if (pre.status === 'play' && pre.heroPosition > 0 && !pre.boomerangIsFlying) {
           return ({...pre, heroPosition: pre.heroPosition - 1, boomerangPosition: pre.boomerangPosition - 1});
@@ -146,7 +141,7 @@ export function Boomerang({ handlerDialog }) {
         }
       });
     }
-    if (e.key === 'x') {
+    if (e.code === "KeyE") {
       setGame((pre) => {
         if (pre.status === 'play') {
           return ({...pre, boomerangIsFlying: true})
@@ -158,7 +153,7 @@ export function Boomerang({ handlerDialog }) {
   }
 
   return (
-    <>
+    <div onKeyDown={moveHero} id="boomerang">
       <h2>Очки: {game.score}</h2>
       {(() => {
         switch (game.status) {
@@ -173,7 +168,7 @@ export function Boomerang({ handlerDialog }) {
             return <h3 style={{ color: 'green' }}>Вы выиграли!</h3>;
         }
       })()}
-      <p>Управление: Z - влево, X - вправо, C - кинуть бумеранг</p>
+      <p>Управление: A - влево, D - вправо, E - кинуть бумеранг</p>
       <br />
       <div className="game" style={{ display: 'flex', fontSize: '22px'}}>{game.track.map((el, i) => <div key={i}>{el}</div>)}</div>
       <br />
@@ -190,7 +185,7 @@ export function Boomerang({ handlerDialog }) {
             return <Button onClick={() => exitGameHandler()}>Идем дальше!</Button>;
         }
       })()}
-    </>
+    </div>
     
   )
 }

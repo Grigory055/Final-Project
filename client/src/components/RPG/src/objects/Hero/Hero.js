@@ -40,7 +40,7 @@ export class Hero extends GameObject {
       resource: resources.images[character],
       frameSize: new Vector2(32,32),
       hFrames: 3,
-      vFrames: 8,
+      vFrames: 5,
       frame: 1,
       position: new Vector2(-8, -20),
       animations: new Animations({

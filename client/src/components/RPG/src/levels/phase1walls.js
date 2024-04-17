@@ -72,7 +72,7 @@ phase1walls.push(`640,416`);
 phase1walls.push(`640,400`);
 phase1walls.push(`640,384`);
 
-phase1walls.push(`720,496`); // мост к Максу (спарва)
+phase1walls.push(`720,496`); // мост к Максу (справа)
 phase1walls.push(`720,480`);
 phase1walls.push(`720,464`);
 phase1walls.push(`720,448`);
@@ -217,6 +217,8 @@ phase1walls.push(`352,544`);
 phase1walls.push(`368,544`);
 phase1walls.push(`384,528`);
 phase1walls.push(`384,512`);
+phase1walls.push(`368,528`); // Макс
+phase1walls.push(`368,512`); // Голова
 phase1walls.push(`384,496`);
 phase1walls.push(`400,496`);
 phase1walls.push(`416,496`);

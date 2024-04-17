@@ -23,7 +23,7 @@ export class NPC extends GameObject {
       resource: resources.images.npc,
       frameSize: new Vector2(32, 32),
       hFrames: 2,
-      vFrames: 3,
+      vFrames: 5,
       frame: skin,
       position: new Vector2(-8, -19),
     });

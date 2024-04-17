@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styles from './DialogPhase2.module.css'
 import { FlashCardsGame } from '../../Flash-Cards/FlashCardsGame'
-import GameModal from '../../Flash-Cards/GameModal/GameModal'
 import { Button } from '@mui/material'
-import { ExitToMap } from '../ExitToMap'
+import { useAppDispatch } from '../../../redux/hooks'
+import { useNavigate } from 'react-router-dom'
+import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 
 interface IDialog {
     person: string
@@ -30,13 +31,20 @@ interface IDialog {
   }
 
 export function DialogGrishaPhase2() {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [dialog, setDialog] = useState<IDialog>(Grisha1)
 
-    const [dialog, setDialog] = useState<IDialog>(Grisha1)
-
-  const handlerDialog = (status) => {
+  const handlerDialog = (status: string) => {
     setDialog((pre) => ({...pre, status: status}))
     console.log('dialog1', dialog)
-}
+  }
+
+  const handleCloseClick = async () => {
+    await dispatch(switchHeroWalk(true));
+    await dispatch(switchDialog(false));
+    navigate('/');
+  }
 
   return (
     <>
@@ -44,16 +52,15 @@ export function DialogGrishaPhase2() {
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div><div>{Grisha1.text}</div><div>
+            return <div><p>{Grisha1.text}</p><div>
             <Button className={styles.button} onClick={() => handlerDialog('2')} >Играть</Button></div></div> ;
           case '2':
             return <div><FlashCardsGame handlerDialog={handlerDialog} /></div>
           case '3':
             return <div>
-              <div>{Grisha3.text}</div>
+              <p>{Grisha3.text}</p>
                 <div>
-                  <ExitToMap />
-                  {/* <Button onClick={() =>handlerDialog()} >Играть</Button> */}
+                <Button onClick={handleCloseClick}>К следующей фазе!</Button>
                 </div>
               </div>
         }
