@@ -73,6 +73,13 @@ export const theme = createTheme({
           boxShadow: 'none',
         },
       },
-    }
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          borderBottomColor: "black",
+        }
+      }
+    },
   },
 });

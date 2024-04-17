@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./DialogPhase3.module.css";
 import { Button } from "@mui/material";
 import { Game } from "../../Game/Game";
-import { useDispatch } from "react-redux";
 import { switchDialog, switchHeroWalk } from "../../../redux/RPGSlice";
 import { useAppDispatch } from "../../../redux/hooks";
 import SvetaP31 from "../../audio/sveta/svetap3/SvetaP31";
@@ -28,9 +27,7 @@ const Sveta2: IDialog = {
 };
 
 export function DialogSvetaPhase3() {
-  const [dialog, setDialog] = useState<IDialog>(Sveta1);
-
-  
+  const [dialog, setDialog] = useState<IDialog>(Sveta1); 
 
   const handlerDialog = (status) => {
     setDialog((pre) => ({ ...pre, status: status }));
@@ -81,7 +78,6 @@ export function DialogSvetaPhase3() {
                     
                   </div>
                 </div>
-                
               );
           }
         })()}

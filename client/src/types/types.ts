@@ -27,6 +27,7 @@ interface ILoginEmailPassword {
 interface IGameStat {
   id: number,
   score: number,
+  level: number,
   user_id: number,
   'User.login': string,
   createdAt: string,

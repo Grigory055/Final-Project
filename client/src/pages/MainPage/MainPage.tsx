@@ -5,6 +5,7 @@ import { setDialog, switchDialog } from "../../redux/RPGSlice";
 export function MainPage() {
 
   const { isLogin, level } = useAppSelector((store) => store.persistedReducer);
+  const dialogIsOpen = useAppSelector((state: { RPGSlice: { dialogIsOpen: boolean } }) => state.RPGSlice.dialogIsOpen)
   
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export function MainPage() {
   }
 
   return (
-    <>
+    <div id="main-page">
       <div id="game-title">
         <img src="/game-title.png" alt="Lord of Elbrus" />
       </div>
@@ -37,6 +38,6 @@ export function MainPage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

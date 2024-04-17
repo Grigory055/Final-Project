@@ -1,7 +1,8 @@
 import { Button, Box, Typography } from "@mui/material";
-import { Link as ReactRouterLink,  useNavigate  } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchUserLogout } from "../../redux/thunkActions";
+import { setDialog, switchDialog } from "../../redux/RPGSlice";
 
 export function MainMenu() {
   const navigate = useNavigate();
@@ -9,20 +10,29 @@ export function MainMenu() {
 
   const dispatch = useAppDispatch();
 
+  const toMapHandler = () => {
+    void dispatch(switchDialog(false));
+    navigate('/');
+  }
+
+  const statsHandler = () => {
+    void dispatch(setDialog(97));
+  }
+
   const logoutHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault()
     if (isLogin) {
+      void dispatch(switchDialog(false));
       void dispatch(fetchUserLogout());
-      navigate('/login');
+      navigate('/');
     }
   };
   return (
     <Box display="flex" flexDirection="column" gap={2}>
       <Typography variant="h4" id="MainMenu_gl" textAlign="center">Главное меню</Typography>
-      <Button component={ReactRouterLink} to="/newgame" variant="contained" id="MainMenu_p" type="submit" size="large">Новая Игра</Button>
-      <Button component={ReactRouterLink} to="/stats"variant="contained" id="MainMenu_p" type="submit" size="large">Статистика</Button>
-      <Button onClick={logoutHandler}  variant="contained" id="MainMenu_p" type="submit" size="large">Выйти</Button>
-
+      <Button onClick={toMapHandler}>На карту уровней</Button>
+      <Button onClick={statsHandler}>Статистика</Button>
+      <Button onClick={logoutHandler}>Выйти из аккаунта</Button>
     </Box>
   )
 }
