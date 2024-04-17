@@ -4,6 +4,10 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from '../../../redux/hooks';
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
+import AntonP01 from "../../audio/prepods/antonP0/Anton1";
+import AntonP02 from "../../audio/prepods/antonP0/Anton2";
+import AntonP03 from "../../audio/prepods/antonP0/Anton3";
+import AntonP04 from "../../audio/prepods/antonP0/Anton4";
 
 interface IDialog {
   person: string;
@@ -64,6 +68,7 @@ export function DialogAntonPhase0() {
             case "1":
               return (
                 <div style={{ width: "400px" }}>
+                  <AntonP01/>
                   <p>{Anton.text}</p>
                   <Button
                     onClick={() =>
@@ -78,6 +83,7 @@ export function DialogAntonPhase0() {
               return (
                 <div style={{ width: "400px" }}>
                   <h3>Антон</h3>
+                  <AntonP02/>
                   <p>{Anton2.text}</p>
                   <Button onClick={() => handlerDialog()}>Далее</Button>
                 </div>
@@ -86,6 +92,7 @@ export function DialogAntonPhase0() {
               return (
                 <div style={{ width: "400px" }}>
                   <h3>Антон</h3>
+                  <AntonP03/>
                   <p>{Anton3.text}</p>
                   <Button onClick={() => handlerDialog2()}>
                     Играть в гладиаторы
@@ -108,6 +115,7 @@ export function DialogAntonPhase0() {
             case "5":
               return (
                 <div style={{ width: "400px" }}>
+                  <AntonP04/>
                   {Anton4.text}
                   <Button onClick={handleCloseClick}>К следующей фазе!</Button>
                 </div>

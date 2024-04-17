@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import styles from "./DialogPhase3.module.css";
 import { Button } from "@mui/material";
 import { Game } from "../../Game/Game";
+import DenisP31 from "../../audio/prepods/denisP3/DenisP31";
+import DenisP32 from "../../audio/prepods/denisP3/DenisP32";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../redux/hooks";
+import { switchDialog } from "../../../redux/RPGSlice";
+
+
 
 
 interface IDialog {
@@ -23,12 +30,22 @@ const Denis2: IDialog = {
 };
 
 export function DialogDenisPhase3() {
+  const dispatch = useAppDispatch();
   const [dialog, setDialog] = useState<IDialog>(Denis1);
-
+  const navigate = useNavigate();
   const handlerDialog = (status) => {
     setDialog((pre) => ({ ...pre, status: status }));
     console.log("dialog1", dialog);
   };
+
+  const endGameHandler=()=>{
+    dispatch(switchDialog(false));
+    navigate('/end')
+  }
+
+  
+
+
 
   return (
     <>
@@ -39,6 +56,7 @@ export function DialogDenisPhase3() {
               return (
                 <div>
                   <h4>Денис</h4>
+                  <DenisP31/>
                   <div>{Denis1.text}</div>
                   <div>
                     <Button
@@ -55,18 +73,19 @@ export function DialogDenisPhase3() {
             case "2":
               return (
                 <div>
+                  <DenisP32/>
                   <div>{Denis2.text}</div>
                   <div>
-                    <Button onClick={() => setDialog((pre) => ({ ...pre, status: "3" }))}>Играть</Button>
+                    <Button onClick={()=>endGameHandler()}>Конец</Button>
                     
                   </div>
                 </div>
               );
-            case "3":
-              return (
-                <div>
-                </div>
-              );
+            // case "3":
+            //   return (
+            //     <div>
+            //     </div>
+            //   );
           }
         })()}
       </div>

@@ -4,6 +4,9 @@ import { Button } from "@mui/material";
 import { Boomerang } from "../..";
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
+import MaxP11 from "../../audio/prepods/maxP1/MaxP11";
+import MaxP12 from "../../audio/prepods/maxP1/MaxP12";
+import MaxP13 from "../../audio/prepods/maxP1/MaxP13";
 
 interface IDialog {
   person: string;
@@ -55,6 +58,7 @@ export function DialogMaksPhase1() {
             case "1":
               return (
                 <div>
+                  <MaxP11/>
                   <div>{Maks1.text}</div>
                   <div>
                     <Button
@@ -72,6 +76,7 @@ export function DialogMaksPhase1() {
               return (
                 <div>
                   <h4>Максимус</h4>
+                  <MaxP12/>
                   <div>{Maks2.text}</div>
                   <div>
                     <Button onClick={() => handlerDialog('3')}>Играть</Button>
@@ -88,6 +93,7 @@ export function DialogMaksPhase1() {
               return (
                 <div>
                   <h4>Максимус</h4>
+                  <MaxP13/>
                   <div>{Maks3.text}</div>
                   <div>
                     <Button

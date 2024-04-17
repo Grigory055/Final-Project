@@ -4,6 +4,7 @@ import { LoginPage, MainPage, RegPage, MainMenuPage, StatsPage, GamePage, Boomer
 import { ChooseCharacter, FlashCardsGame } from './components'
 import Gladiator from './components/Gladiator/Gladiator'
 import Modals from './components/Modals/Modals'
+import Video from './components/video/Video'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/phase/:id' element={<RPGPage />} />
         <Route path='/gladiator' element={<Gladiator />} />
         <Route path='/char' element={<ChooseCharacter />} />
+        <Route path='/end' element={<Video />} />
       </Routes>
       <Modals />
     </>

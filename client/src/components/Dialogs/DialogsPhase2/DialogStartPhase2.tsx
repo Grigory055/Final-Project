@@ -3,6 +3,7 @@ import styles from './DialogPhase2.module.css'
 import { Button } from '@mui/material'
 import { useAppDispatch } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
+import BubbleP2 from '../../audio/bubbles/BubbleP2'
 
 interface IDialog {
     text: string
@@ -28,6 +29,7 @@ export function DialogStartPhase2() {
       <div className={styles.container}>
         <div>
           {dialog.text}
+          <BubbleP2/>
         </div>
         <div>
           <Button onClick={() => handleCloseClick()} >Далее</Button>

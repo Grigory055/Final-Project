@@ -4,6 +4,9 @@ import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 import { RegForm } from '../../RegForm/RegForm'
+import SvetaP01 from '../../audio/sveta/svetap0/svetaP01'
+import SvetaP03 from '../../audio/sveta/svetap0/svetaP03'
+import SvetaP02 from '../../audio/sveta/svetap0/svetaP02'
 
 
 interface IDialog {
@@ -67,20 +70,21 @@ export function DialogSvetaPhase0() {
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div><h4>Света</h4><p>{Sveta.text}</p><div>
+            return <div><h4>Света</h4><SvetaP01/><p>{Sveta.text}</p><div>
             <Button onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div></div> ;
           case '2':
             return <div>
                 {isLogin ? (
                     <>
                     <h3>Света</h3>
+                    <SvetaP03/>
                       <p>{Sveta3.text}</p>
                       <Button onClick={() => handleCloseClick()} >Искать приключения</Button>
                     </>
                   ) : (
                     <>
-                    
                       <p>{Sveta2.text}</p>
+                      <SvetaP02/>
                       <RegForm />
                     </>
                   ) }

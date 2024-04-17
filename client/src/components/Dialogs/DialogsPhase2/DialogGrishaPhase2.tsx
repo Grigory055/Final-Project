@@ -6,6 +6,8 @@ import { useAppDispatch } from '../../../redux/hooks'
 import { useNavigate } from 'react-router-dom'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 import { setScores } from '../../../redux/userSlice'
+import GrishaP21 from '../../audio/prepods/grishaP2/GrishaP21'
+import GrishaP23 from '../../audio/prepods/grishaP2/GrishaP23'
 
 interface IDialog {
     person: string
@@ -59,12 +61,13 @@ export function DialogGrishaPhase2() {
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div><h5>Не Федор, а Гриша</h5><p>{Grisha1.text}</p><div>
+            return <div><h5>Не Федор, а Гриша</h5><GrishaP21/><p>{Grisha1.text}</p><div>
             <Button className={styles.button} onClick={() => handlerDialog('2')} >Играть</Button></div></div> ;
           case '2':
             return <div><FlashCardsGame handlerDialog={handlerDialog} /></div>
           case '3':
             return <div>
+              <GrishaP23/>
               <p>{Grisha3.text}</p>
                 <div>
                 <Button onClick={handleCloseClick}>К следующей фазе!</Button>
