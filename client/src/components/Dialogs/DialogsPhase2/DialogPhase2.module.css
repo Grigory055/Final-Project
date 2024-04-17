@@ -3,7 +3,8 @@
     background-color: #EAD4AA;
     margin: auto;
     font-size: 25px;
-    width: 1400px;
+    width: auto;
+    max-width: 1400px;
     max-height: 600px;
     height: auto;
     padding: 5px;
