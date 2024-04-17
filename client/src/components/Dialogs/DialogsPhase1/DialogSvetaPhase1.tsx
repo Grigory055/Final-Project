@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./DialogsPhase1.module.css";
-import { useAppDispatch } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { switchDialog, switchHeroWalk } from "../../../redux/RPGSlice";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import SvetaP11 from "../../audio/sveta/svetap1/SvetaP11";
 import SvetaP12 from "../../audio/sveta/svetap1/SvetaP12";
+import { fetchUserScore } from "../../../redux/thunkActions";
 
 interface IDialog {
   person: string;
@@ -34,10 +35,12 @@ const Sveta3: IDialog = {
 export function DialogSvetaPhase1() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const score = useAppSelector((store) => store.persistedReducer.score)
 
-  const handleCloseClick = async () => {
-    await dispatch(switchHeroWalk(true));
-    await dispatch(switchDialog(false));
+  const handleCloseClick = () => {
+    void dispatch(fetchUserScore(score));
+    void dispatch(switchHeroWalk(true));
+    void dispatch(switchDialog(false));
     navigate('/');
   }
 
@@ -54,10 +57,10 @@ export function DialogSvetaPhase1() {
 
   const [dialog, setDialog] = useState<IDialog>(Sveta1);
 
-  //   const handlerDialog = () => {
-  //     setDialog((pre) => ({...pre, status: '1'}))
-  //     console.log('dialog1', dialog)
-  // }
+    const handlerDialog = (status: string) => {
+      setDialog((pre) => ({...pre, status}))
+      console.log('dialog1', dialog)
+  }
 
   return (
     <>
@@ -72,14 +75,7 @@ export function DialogSvetaPhase1() {
                   <SvetaP11/>
                   <div>{Sveta1.text}</div>
                   <div>
-                    <Button
-                      className={styles.button}
-                      onClick={() =>
-                        setDialog((pre) => ({ ...pre, status: "2" }))
-                      }
-                    >
-                      Далее
-                    </Button>
+                    <Button className={styles.button} onClick={() => handlerDialog("2")}>Далее</Button>
                   </div>
                 </div>
               );
@@ -91,15 +87,10 @@ export function DialogSvetaPhase1() {
                   <div>{Sveta2.text}</div>
                   <div className={styles.buttons_div}>
                     <div>
-                      <Button onClick={() => setDialog((pre) => ({ ...pre, status: "3" }))}>
-                        Напишу
-                      </Button>
-
-                      {/* <div className={styles.button_wrapper} onClick={() => handleCloseClick()}><div><input className={styles.my_button} type="button" value="Понравилось" /></div></div> */}
+                      <Button onClick={() => handlerDialog("3")}>Напишу</Button>
                     </div>
                     <div>
                       <Button onMouseMove={moveHandler}> Нет времени</Button>
-                      {/* <div className={styles.button_wrapper} onMouseMove={handlerDialog}><div><input className={styles.my_button} type="button" value="Не понравилось" /></div></div> */}
                     </div>
                   </div>
                 </div>
@@ -107,7 +98,6 @@ export function DialogSvetaPhase1() {
             case "3":
               return (
                 <div>
-                  
                   <div>{Sveta3.text}</div>
                   <Button onClick={handleCloseClick}>К следующей фазе!</Button>
                 </div>
