@@ -56,7 +56,6 @@ const secondRightAnswerHandler: () => void = () => {
               <h2>{question2}</h2>
               <div className={styles.answers}>
               <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. document.title.</button>
-<p>-</p>
               <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>2. Отображение определенной части интерфейса.</button>
               <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>3. Отображение кода в консоли.</button>
             </div></div>):(<div>
@@ -71,7 +70,7 @@ const secondRightAnswerHandler: () => void = () => {
             </div>
             )}</>
           ): (<><p>Уже вот-вот конец!</p><p>совсем большие стали!</p><p>Вы будете вспоминать это время с ностальгией.</p>
-            <button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/green_btn_new.jpg" alt="start" /></button></>)}
+            <button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/green_btn_new.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
           <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}

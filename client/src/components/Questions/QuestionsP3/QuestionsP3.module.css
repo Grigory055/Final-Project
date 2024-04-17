@@ -16,9 +16,6 @@
   font-size: 17px;
   font-weight: 200;
   display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* margin-top: 200px; */
   width: 800px;
   height: 336px;
   background-image: url('/components/p3_2.gif');
@@ -34,8 +31,10 @@
   background-size: auto;
   cursor: pointer;
 }
+
 .btn_img {
-  height: 110px;
+  height: auto;
+  max-width: 140px;
 }
 h2 {
   max-width: 500px;
@@ -58,6 +57,5 @@ h2 {
   color: rgb(203, 206, 9);
   text-align: start;
   display: flex;
-  /* flex-direction: column; */
   align-items: flex-start;
 }
