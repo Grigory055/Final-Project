@@ -71,6 +71,7 @@ export function DialogMaksPhase1() {
             case "2":
               return (
                 <div>
+                  <h4>Максимус</h4>
                   <div>{Maks2.text}</div>
                   <div>
                     <Button onClick={() => handlerDialog('3')}>Играть</Button>
@@ -86,6 +87,7 @@ export function DialogMaksPhase1() {
             case "4":
               return (
                 <div>
+                  <h4>Максимус</h4>
                   <div>{Maks3.text}</div>
                   <div>
                     <Button
