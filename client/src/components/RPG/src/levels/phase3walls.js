@@ -25,7 +25,6 @@ phase3walls.push(`1120,496`);
 phase3walls.push(`1120,512`);
 phase3walls.push(`1120,528`);
 phase3walls.push(`1104,544`);
-phase3walls.push(`1088,544`);
 
 phase3walls.push(`1104,176`);
 phase3walls.push(`1088,176`);
@@ -55,8 +54,8 @@ phase3walls.push(`1008,512`);
 phase3walls.push(`1008,528`);
 phase3walls.push(`1008,544`);
 phase3walls.push(`1008,560`);
-phase3walls.push(`1008,576`);
-phase3walls.push(`1008,592`);
+phase3walls.push(`992,576`);
+phase3walls.push(`992,608`);
 
 phase3walls.push(`1088,560`);
 phase3walls.push(`1088,576`);
@@ -309,7 +308,6 @@ phase3walls.push(`656,688`);
 phase3walls.push(`656,672`);
 phase3walls.push(`656,656`);
 phase3walls.push(`656,640`);
-
 phase3walls.push(`784,640`);
 phase3walls.push(`768,624`);
 phase3walls.push(`768,608`);
@@ -331,10 +329,8 @@ phase3walls.push(`672,448`);
 phase3walls.push(`704,432`);
 phase3walls.push(`688,432`);
 phase3walls.push(`672,432`);
-
 phase3walls.push(`656,496`);
 phase3walls.push(`576,448`);
-
 phase3walls.push(`288,480`);
 phase3walls.push(`304,480`);
 phase3walls.push(`320,480`);
@@ -343,28 +339,29 @@ phase3walls.push(`352,480`);
 phase3walls.push(`288,496`);
 phase3walls.push(`304,496`);
 phase3walls.push(`320,496`);
-
 phase3walls.push(`288,512`);
 phase3walls.push(`288,528`);
 phase3walls.push(`288,544`);
 phase3walls.push(`288,560`);
 phase3walls.push(`288,576`);
-
 phase3walls.push(`304,640`);
-
 phase3walls.push(`336,656`);
 phase3walls.push(`352,656`);
-
 phase3walls.push(`464,656`);
 phase3walls.push(`464,640`);
 phase3walls.push(`464,624`);
 phase3walls.push(`464,608`);
 phase3walls.push(`464,592`);
-
 phase3walls.push(`528,512`);
 phase3walls.push(`528,528`);
 phase3walls.push(`528,544`);
 phase3walls.push(`528,560`);
-
 phase3walls.push(`736,768`);
 phase3walls.push(`736,752`);
+
+phase3walls.push(`1024,496`); // пути назад нет
+phase3walls.push(`1040,496`);
+phase3walls.push(`1056,496`);
+phase3walls.push(`1072,496`);
+phase3walls.push(`1088,496`);
+phase3walls.push(`1104,496`);
