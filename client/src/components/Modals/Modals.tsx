@@ -7,6 +7,7 @@ import { ChooseCharacter } from "../ChooseCharacter/ChooseCharacter";
 import { LoginForm } from "../LoginForm/LoginForm";
 import { RegForm } from "../RegForm/RegForm";
 import { DialogSvetaPhase3 } from "../Dialogs/DialogsPhase3/DialogSvetaPhase3";
+import styles from './Modals.module.css'
 
 export default function Modals(): JSX.Element {
   const open = useAppSelector((state: { RPGSlice: { dialogIsOpen: boolean } }) => state.RPGSlice.dialogIsOpen);
@@ -54,26 +55,26 @@ export default function Modals(): JSX.Element {
 
   return (
     <Dialog open={open} maxWidth={false}>
-      <div id="modal">
-        <div id="modal-header" className="section">
-          <div className="left"></div>
-          <div className="center"></div>
-          <div className="right"></div>
+      <div className={styles.modal} id="modal">
+        <div  id="modal-header" className={`${styles.section} ${styles.modalheader}`}>
+          <div className={styles.left}></div>
+          <div className={styles.center}></div>
+          <div className={styles.right}></div>
         </div>
-        <div id="modal-content" className="section">
-          <div className="left"></div>
-          <div className="center">
-            <div className="controls">
-              <button onClick={() => handleCloseClick()} className="close" />
+        <div id="modal-content" className={`${styles.section} ${styles.modalcontent}`}>
+          <div className={styles.left}></div>
+          <div className={styles.center}>
+            <div className={styles.controls}>
+              <button onClick={() => handleCloseClick()} className={styles.close} />
             </div>
             {component ? component : <ExitToMap />}
           </div>
-          <div className="right"></div>
+          <div className={styles.right}></div>
         </div>
-        <div id="modal-footer" className="section">
-          <div className="left"></div>
-          <div className="center"></div>
-          <div className="right"></div>
+        <div id="modal-footer" className={`${styles.section} ${styles.modalfooter}`}>
+          <div className={styles.left}></div>
+          <div className={styles.center}></div>
+          <div className={styles.right}></div>
         </div>
       </div>
     </Dialog>

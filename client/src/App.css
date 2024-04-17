@@ -56,6 +56,13 @@ body,
 .phase {
   height: 100%;
   width: 50%;
+  background-image: url('/assets/padlock.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.phase.active {
+  background: none;
 }
 
 #map:has(#phase-0.active:hover) {
@@ -138,86 +145,6 @@ body,
 
 .navbar-stats {
   color: rgb(60, 255, 0);
-}
-
-#modal {
-  display: flex;
-  flex-direction: column;
-}
-
-#modal .section {
-  display: flex;
-}
-
-#modal-content .left {
-  background-image: url('/assets/modal-content-left.png');
-}
-
-#modal-content .right {
-  background-image: url('/assets/modal-content-right.png');
-}
-
-#modal-content .center {
-  background-color: #ead4aa;
-  padding: 20px;
-}
-
-#modal .left,
-#modal .right {
-  width: 32px;
-}
-
-#modal .center {
-  flex: 1;
-}
-
-#modal-header,
-#modal-footer {
-  height: 32px;
-}
-
-#modal-header .left {
-  background-image: url('/assets/modal-header-left.png');
-}
-
-#modal-header .right {
-  background-image: url('/assets/modal-header-right.png');
-}
-
-#modal-header .center {
-  background-image: url('/assets/modal-header-center.png');
-}
-
-#modal-footer .left {
-  background-image: url('/assets/modal-footer-left.png');
-}
-
-#modal-footer .right {
-  background-image: url('/assets/modal-footer-right.png');
-}
-
-#modal-footer .center {
-  background-image: url('/assets/modal-footer-center.png');
-}
-
-#modal .controls {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-#modal .close {
-  background: none;
-  box-shadow: none;
-  outline: none;
-  border: none;
-  width: 32px;
-  height: 32px;
-  background-image: url('/assets/close.png');
-}
-
-#modal .close:active {
-  background-image: url('/assets/close-active.png');
 }
 
 .link {
