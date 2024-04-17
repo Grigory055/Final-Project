@@ -1,6 +1,6 @@
 const userRouter = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../db/models');
+const { User, Game } = require('../db/models');
 const isUser = require('../middlewares/isUser');
 
 userRouter.post('/registration', async (req, res) => {
@@ -9,6 +9,7 @@ userRouter.post('/registration', async (req, res) => {
   try {
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({ login, email, password: hash });
+    const game = await Game.create({ score: 0, user_id: user.id })
     console.log(user);
 
     const clearedUser = {
@@ -27,7 +28,6 @@ userRouter.post('/registration', async (req, res) => {
 });
 
 userRouter.post('/login', async (req, res) => {
-  console.log(req.body, 'req.body');
   const { login, password } = req.body;
   try {
     const user = await User.findOne({ where: { login } });
@@ -38,14 +38,14 @@ userRouter.post('/login', async (req, res) => {
       if (!passwordCompare) {
         res.status(400).json({ message: 'Неверный пароль' });
       } if (passwordCompare) {
-        const clearedUser = {
-          id: user.id,
-          login: user.login,
-          email: user.email,
-        };
-        req.session.user = clearedUser;
-        // console.log('req.session.user', clearedUser)
-        res.json(clearedUser);
+        const game = await Game.findOne({ where: { user_id: user.id }})
+
+        req.session.userId = user.id;
+        // req.session.save(() => {
+          res.json({ login: user.login, score: game.score });
+        // });
+        // console.log()
+        // res.json({ login: user.login, score: game.score });
       } else {
         res.sendStatus(400);
       }
