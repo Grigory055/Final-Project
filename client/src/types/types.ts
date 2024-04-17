@@ -2,6 +2,7 @@ interface IUser {
   id: number;
   login: string;
   email: string;
+  score: number;
   password: string;
 }
 

@@ -3,7 +3,7 @@ const { Game, User } = require('../db/models');
 
 const router = express.Router();
 
-router.get('/stats', async (req, res) => {
+router.get('/', async (req, res) => {
   // const { login } = req.session.user;
   // const user = await User.findOne({ where: { login } });
 
@@ -27,13 +27,15 @@ router.get('/stats', async (req, res) => {
   }
 });
 
-router.post('/stats', async (req, res) => {
-  const { id } = req.session.user;
-  const score = req.body;
+router.put('/', async (req, res) => {
+  const id = req.session.userId;
+  const { score } = req.body;
+  console.log(id, score)
   try {
-    const stats = await Game.create({ score, user_id: id });
-    console.log('stats', stats);
-
+    const stats = await Game.findOne({ where: { user_id: id } });
+    stats.score = score;
+    stats.save();
+    console.log('stats', stats)
     res.json(stats);
   } catch (error) {
     console.log(error);

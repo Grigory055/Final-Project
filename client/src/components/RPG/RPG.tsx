@@ -3,9 +3,11 @@ import { useEffect, useRef } from 'react';
 import { resources, Sprite, Vector2, GameLoop, Input, gridCells, GameObject, Hero, DialogBubble, NPC, Camera, Inventory, Rod, events } from "./src";
 import { useParams } from 'react-router-dom';
 import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls, phase3objects, phase3walls } from './src/levels/'
-import { useAppDispatch } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setWalls, switchDialog } from '../../redux/RPGSlice';
 import { Navbar } from '../Navbar/Navbar';
+import { fetchUserScore } from '../../redux/thunkActions';
+import { setScores } from '../../redux/userSlice';
 const walls = [phase0walls, phase1walls, phase2walls, phase3walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects];
 
@@ -16,6 +18,8 @@ export function RPG() {
   const { id } = useParams();
   const levelObjects = gameObjects[Number(id)];
   const canvasRef = useRef();
+  
+  const score = useAppSelector((store) => store.persistedReducer.score)
   
   useEffect(() => {
     dispatch(switchDialog(false));
@@ -102,13 +106,17 @@ export function RPG() {
     };
 
     const gameLoop = new GameLoop(update, draw);
+
     draw();
+
     gameLoop.start();
 
     return () => {
       gameLoop.stop();
       events.clear();
       hero.resetPosition();
+      // console.log('score', score)
+      void dispatch(fetchUserScore(score))
     }
   }, []);
 

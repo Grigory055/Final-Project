@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchTopics, fetchUserLogin, fetchUserLogout, fetchUserRegister } from './thunkActions';
+import { fetchTopics, fetchUserLogin, fetchUserLogout, fetchUserRegister, fetchUserScore } from './thunkActions';
 import { ICard } from '../types/types';
 
 export type UserSliceState = {
@@ -27,7 +27,7 @@ const userSlice = createSlice({
         },
         setScores(state, { payload } ) {
             state.score += payload;
-            console.log('state.score', state.score)
+            console.log('state.score!!!!!', state.score) // здесь ловит очки реальные
         }
     },
     extraReducers: (builder) => {
@@ -35,16 +35,25 @@ const userSlice = createSlice({
             if (payload) {
                state.isLogin = true;
                state.login = payload.login;
+               state.score = payload.score;
             }
         }),
         builder.addCase(fetchUserRegister.fulfilled, (state: UserSliceState, { payload }) => {
             if (payload) state.isLogin = true
         }),
         builder.addCase(fetchUserLogout.fulfilled, (state: UserSliceState, { payload }) => {
-            if (payload === 200) state.isLogin = false
+            if (payload === 200) {
+                state.isLogin = false
+                state.score = 0
+                state.login = 'Гость'
+            }
         })
         builder.addCase(fetchTopics.fulfilled, (state: UserSliceState, { payload }) => {
             if (payload) state.topics = payload;
+        })
+        builder.addCase(fetchUserScore.fulfilled, (state, { payload }) => {
+            if (payload) state.score = payload
+            console.log('123456', state.score) // здесь тоже очки реальные
         })
     }
 })

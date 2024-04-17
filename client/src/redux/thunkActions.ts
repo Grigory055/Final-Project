@@ -79,6 +79,7 @@ export const fetchUserLogin = createAsyncThunk(
     try {
       const response = await axios.post<AxiosResponse<IUser>>('http://localhost:3000/api/users/login', 
       loginPassoword, { withCredentials: true })
+      console.log('=====', response.data)
       return response.data;
     } catch (error) {
       console.log(error)
@@ -105,6 +106,20 @@ export const fetchUserRegister = createAsyncThunk(
       const response = await axios.post<AxiosResponse<IUser>>('http://localhost:3000/api/users/registration', 
       loginEmailPassoword, { withCredentials: true })
       return response.data;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+)
+
+export const fetchUserScore = createAsyncThunk(
+  '/user/score',
+  async(score: number) => {
+    try {
+      // console.log('score ======', score)
+      const response = await axios.put<AxiosResponse>('http://localhost:3000/api/games', { score }, { withCredentials: true })
+      console.log('score ======', score)
+      console.log('response', response.data)
     } catch (error) {
       console.log(error)
     }
