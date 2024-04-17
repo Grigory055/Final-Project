@@ -44,8 +44,6 @@ export class NPC extends GameObject {
         (roundedHeroX === this.position.x &&
           roundedHeroY === this.position.y + 16)
       ) {
-        console.log(roundedHeroX, this.position.x);
-        console.log(roundedHeroY, this.position.y);
         this.onCollideWithHero();
       }
     });
