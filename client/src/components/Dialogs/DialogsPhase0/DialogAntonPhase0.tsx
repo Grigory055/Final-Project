@@ -39,12 +39,10 @@ export function DialogAntonPhase0() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const handleCloseClick = () => {
-    dispatch(switchHeroWalk(true));
-    dispatch(switchDialog(false));
-    setTimeout(() => {
-      navigate('/');
-    }, 10);
+  const handleCloseClick = async () => {
+    await dispatch(switchHeroWalk(true));
+    await dispatch(switchDialog(false));
+    navigate('/');
   }
 
   const [dialog, setDialog] = useState<IDialog>(Anton)

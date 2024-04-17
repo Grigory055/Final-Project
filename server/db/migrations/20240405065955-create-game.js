@@ -11,6 +11,9 @@ module.exports = {
       score: {
         type: Sequelize.INTEGER,
       },
+      character: {
+        type: Sequelize.STRING,
+      },
       user_id: {
         type: Sequelize.INTEGER,
         references: {

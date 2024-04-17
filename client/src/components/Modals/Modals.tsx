@@ -46,7 +46,7 @@ export default function Modals(): JSX.Element {
     { id:24, component: <DialogSvetaPhase3 /> },
     { id:99, component: <ChooseCharacter /> },
     { id:100, component: <LoginForm /> },
-    { id:101, component: <RegForm /> }
+    { id:101, component: <RegForm /> },
     // { id:24, component: <DialogSvetaPhase2/> }
   ]
 

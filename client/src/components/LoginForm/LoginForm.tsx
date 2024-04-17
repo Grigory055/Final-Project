@@ -1,12 +1,12 @@
-import { Button, Box, TextField, Typography, Link, FormControl } from "@mui/material";
+import { Button, Box, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import { ILoginEmailPassword } from "../../types/types";
+import { IUser } from "../../types/types";
 import { useAppDispatch  } from "../../redux/hooks";
-import { fetchUserLogin, fetchUserRegister } from "../../redux/thunkActions";
+import { fetchUserLogin } from "../../redux/thunkActions";
+import { setDialog, switchDialog } from "../../redux/RPGSlice";
 
 export function LoginForm() {
-  const [ registered, setRegistered ] = useState(false);
-  const [inputs, setInputs] = useState<ILoginEmailPassword>({ login: '', email: '', password: '' })
+  const [inputs, setInputs] = useState<IUser>({ login: '', password: '' })
 
   const dispatch = useAppDispatch();
 
@@ -16,53 +16,28 @@ export function LoginForm() {
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
       e.preventDefault()
-      if (inputs && registered) {
+      if (inputs) {
         void dispatch(fetchUserLogin(inputs));
-        setInputs({ login: '', email: '', password: '' });
-      } else if (inputs && !registered) {
-        void dispatch(fetchUserRegister(inputs));
-        setInputs({ login: '', email: '', password: '' });
+        setInputs({ login: '', password: '' });
+        dispatch(switchDialog(false));
       }
     };
   
-  const clickRegisterHandler = () => {
-    setRegistered(false);   
-  } 
-
-  const clickLoginHandler = () => {
-    setRegistered(true);
+  const clickChooseCharacterHandler = () => {
+    dispatch(setDialog(99));
   } 
 
   return (
-    <Box display="flex" flexDirection="column" gap={2}>
-      { registered ? 
-      (
-        <>
-          <Typography variant="h4" id="MainMenu_gl" textAlign="center">Авторизация</Typography>
-          <form onSubmit={submitHandler}>
-            <Box display="flex" flexDirection="column" gap={2}>
-              <TextField onChange={inputHandler} value={inputs.login} name="login" label="Имя пользователя" type="text" required />
-              <TextField onChange={inputHandler} value={inputs.password} name="password" label="Пароль" type="password" required />
-              <Button id="btnAvtorization" variant="contained" type="submit" size="large">Войти</Button>
-            </Box>
-          </form>
-          <Typography variant="body1" textAlign="center">Впервые здесь? <span className="link" onClick={clickRegisterHandler}>Зарегистрироваться</span></Typography>
-        </>
-      ) : 
-      (
-        <>
-          <Typography variant="h4" id="MainMenu_gl" textAlign="center">Регистрация</Typography>
-          <form onSubmit={submitHandler}>
-          <Box display="flex" flexDirection="column" gap={2}>
-            <TextField onChange={inputHandler} value={inputs.login}  name="login" label="Имя пользователя" type="text" required />
-            <TextField onChange={inputHandler} value={inputs.email}  name="email" label="Электронная почта" type="email" required />
-            <TextField onChange={inputHandler} value={inputs.password}  name="password" label="Пароль" type="password" required />
-            <Button variant="contained" type="submit" id="btnAvtorization" size="large">Зарегистрироваться</Button>
-          </Box>
-          </form>
-          <Typography variant="body1" textAlign="center">Уже есть аккаунт? <span className="link" onClick={clickLoginHandler}>Войти</span></Typography>
-        </>
-      )}
+    <Box display="flex" flexDirection="column" gap={2} width={'600px'} height={'400px'}>
+      <Typography variant="h4" id="MainMenu_gl" textAlign="center">Авторизация</Typography>
+      <form onSubmit={submitHandler}>
+        <Box display="flex" flexDirection="column" gap={2}>
+          <TextField onChange={inputHandler} value={inputs.login} name="login" label="Имя пользователя" type="text" required />
+          <TextField onChange={inputHandler} value={inputs.password} name="password" label="Пароль" type="password" required />
+          <Button id="btnAvtorization" variant="contained" type="submit" size="large">Войти</Button>
+        </Box>
+      </form>
+      <Typography variant="body1" textAlign="center">Впервые здесь? <span className="link" onClick={clickChooseCharacterHandler}>Назад к выбору персонажа</span></Typography>
     </Box>
   )
 }

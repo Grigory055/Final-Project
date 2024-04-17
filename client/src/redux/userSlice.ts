@@ -36,6 +36,7 @@ const userSlice = createSlice({
                state.isLogin = true;
                state.login = payload.login;
                state.score = payload.score;
+               state.character = payload.character;
             }
         }),
         builder.addCase(fetchUserRegister.fulfilled, (state: UserSliceState, { payload }) => {
@@ -43,9 +44,10 @@ const userSlice = createSlice({
         }),
         builder.addCase(fetchUserLogout.fulfilled, (state: UserSliceState, { payload }) => {
             if (payload === 200) {
-                state.isLogin = false
-                state.score = 0
-                state.login = 'Гость'
+                state.isLogin = false;
+                state.login = 'Гость';
+                state.score = 0;
+                state.character = '';
             }
         })
         builder.addCase(fetchTopics.fulfilled, (state: UserSliceState, { payload }) => {

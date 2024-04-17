@@ -3,6 +3,7 @@ import styles from "./DialogsPhase1.module.css";
 import { useAppDispatch } from "../../../redux/hooks";
 import { switchDialog, switchHeroWalk } from "../../../redux/RPGSlice";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface IDialog {
   person: string;
@@ -22,13 +23,21 @@ const Sveta2: IDialog = {
   text: "Понравилась фаза 1?",
 };
 
+const Sveta3: IDialog = {
+  person: "Sveta",
+  status: "3",
+  text: "Спасибки! Переходи скорее к следующей фазе!",
+};
+
 export function DialogSvetaPhase1() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const handleCloseClick = () => {
-    dispatch(switchHeroWalk(true));
-    dispatch(switchDialog(false));
-  };
+  const handleCloseClick = async () => {
+    await dispatch(switchHeroWalk(true));
+    await dispatch(switchDialog(false));
+    navigate('/');
+  }
 
   const moveHandler = (e) => {
     e.target.style.transition = "all 0.03s linear 0s";
@@ -75,17 +84,24 @@ export function DialogSvetaPhase1() {
                   <div>{Sveta2.text}</div>
                   <div className={styles.buttons_div}>
                     <div>
-                      <Button onClick={() => handleCloseClick()}>
-                        Понравилось
+                      <Button onClick={() => setDialog((pre) => ({ ...pre, status: "3" }))}>
+                        Понравилась
                       </Button>
 
                       {/* <div className={styles.button_wrapper} onClick={() => handleCloseClick()}><div><input className={styles.my_button} type="button" value="Понравилось" /></div></div> */}
                     </div>
                     <div>
-                      <Button onMouseMove={moveHandler}> не Понравилось</Button>
+                      <Button onMouseMove={moveHandler}> Не понравилась</Button>
                       {/* <div className={styles.button_wrapper} onMouseMove={handlerDialog}><div><input className={styles.my_button} type="button" value="Не понравилось" /></div></div> */}
                     </div>
                   </div>
+                </div>
+              );
+            case "3":
+              return (
+                <div>
+                  <div>{Sveta3.text}</div>
+                  <Button onClick={handleCloseClick}>К следующей фазе!</Button>
                 </div>
               );
           }

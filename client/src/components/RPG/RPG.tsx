@@ -14,6 +14,7 @@ const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects]
 
 export function RPG() {
 
+  const character = useAppSelector((store) => store.persistedReducer.character);
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const levelObjects = gameObjects[Number(id)];
@@ -24,7 +25,7 @@ export function RPG() {
   useEffect(() => {
     dispatch(switchDialog(false));
     const { x, y } = levelObjects.hero.position
-    const hero = new Hero(gridCells(x), gridCells(y), 'hero');
+    const hero = new Hero(gridCells(x), gridCells(y), 'hero', character);
     
     dispatch(setWalls(walls[Number(id)]));
       

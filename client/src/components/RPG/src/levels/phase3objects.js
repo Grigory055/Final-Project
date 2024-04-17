@@ -45,6 +45,6 @@ export const phase3objects = {
       x: 0,
       y: 0,
     },
-    skin: 4,
+    skin: 8,
   },
 };

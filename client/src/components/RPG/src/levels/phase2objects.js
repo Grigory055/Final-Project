@@ -1,8 +1,8 @@
 export const phase2objects = {
   hero: {
     position: {
-      x: 24, // 19
-      y: 27, // 53
+      x: 19, // 19
+      y: 53, // 53
     },
   },
   rod1: {
@@ -43,6 +43,6 @@ export const phase2objects = {
       x: 0,
       y: 0,
     },
-    skin: 4,
+    skin: 6,
   },
 };
