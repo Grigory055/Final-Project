@@ -38,7 +38,7 @@ export function DialogSvetaPhase1() {
   const score = useAppSelector((store) => store.persistedReducer.score)
 
   const handleCloseClick = () => {
-    void dispatch(fetchUserScore(score));
+    void dispatch(fetchUserScore({ score, level: 2 }));
     void dispatch(switchHeroWalk(true));
     void dispatch(switchDialog(false));
     navigate('/');

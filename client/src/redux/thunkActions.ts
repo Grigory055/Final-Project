@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { AxiosResponse } from 'axios';
 import {
+  IGameSave,
   IGameStat,
   IUser,
 } from '../types/types';
@@ -9,7 +10,7 @@ import {
 export const fetchStats = createAsyncThunk('stats/user', async () => {
   try {
     const response = await axios.get<IGameStat[]>(
-      'http://localhost:3000/api/games/stats'
+      'http://localhost:3000/api/games'
     );
     return response.data;
   } catch (error) {
@@ -76,11 +77,10 @@ export const fetchUserRegister = createAsyncThunk(
 
 export const fetchUserScore = createAsyncThunk(
   '/user/score',
-  async (score: number) => {
+  async (saveGame: IGameSave) => {
     try {
-      const response = await axios.put<AxiosResponse>('http://localhost:3000/api/games', { score }, { withCredentials: true })
-      console.log('score ======', score)
-      console.log('response', response.data)
+      const response = await axios.put<AxiosResponse>('http://localhost:3000/api/games', saveGame, { withCredentials: true })
+      return response.data;
     } catch (error) {
       console.log(error);
     }

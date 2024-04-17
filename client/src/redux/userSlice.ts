@@ -76,8 +76,11 @@ const userSlice = createSlice({
             if (payload) state.topics = payload;
         })
         builder.addCase(fetchUserScore.fulfilled, (state, { payload }) => {
-            if (payload) state.score = payload
-            console.log('123456', state.score) // здесь тоже очки реальные
+            if (payload) {
+                state.score = payload.score;
+                state.level = payload.level;
+            }
+            console.log('123456', payload) // здесь тоже очки реальные
         })
     }
 })

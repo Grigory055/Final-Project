@@ -8,6 +8,11 @@ interface IUser {
   level?: number;
 }
 
+interface IGameSave {
+  score: number;
+  level: number;
+}
+
 interface ILoginPassword {
   login: string;
   password: string;
@@ -44,4 +49,4 @@ interface IEvent {
   callback: () => void,
 }
 
-export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent }
+export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent, IGameSave }

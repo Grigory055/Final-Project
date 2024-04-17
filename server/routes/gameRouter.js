@@ -26,9 +26,10 @@ router.get('/', async (req, res) => {
 router.put('/', async (req, res) => {
   if (req.session.user) {
     const { id } = req.session.user;
-    const { score } = req.body;
+    const { score, level } = req.body;
     try {
       const stats = await Game.findOne({ where: { user_id: id } });
+      if (level > stats.level) stats.level = level;
       stats.score = score;
       stats.save();
       console.log(stats);

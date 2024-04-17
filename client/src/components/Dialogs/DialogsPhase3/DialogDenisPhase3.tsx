@@ -36,7 +36,7 @@ export function DialogDenisPhase3() {
   const score = useAppSelector((store) => store.persistedReducer.score)
 
   useEffect(() => {
-    void dispatch(fetchUserScore(score));
+    void dispatch(fetchUserScore({ score, level: 3 }));
   },[])
 
   const handlerDialog = (status: string) => {

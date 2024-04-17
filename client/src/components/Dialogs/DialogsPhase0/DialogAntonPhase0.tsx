@@ -43,10 +43,10 @@ const Anton4: IDialog = {
 export function DialogAntonPhase0() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const score = useAppSelector((store) => store.persistedReducer.score)
+  const { score } = useAppSelector((store) => store.persistedReducer)
 
   const handleCloseClick = () => {
-    void dispatch(fetchUserScore(score));
+    void dispatch(fetchUserScore({ score, level: 1 }));
     void dispatch(switchHeroWalk(true));
     void dispatch(switchDialog(false));
     navigate('/');

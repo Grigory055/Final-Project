@@ -50,7 +50,7 @@ export function DialogGrishaPhase2() {
   // }
 
   const handleCloseClick = () => {
-    void dispatch(fetchUserScore(score));
+    void dispatch(fetchUserScore({ score, level: 3}));
     void dispatch(switchHeroWalk(true));
     void dispatch(switchDialog(false));
     navigate('/');
