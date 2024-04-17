@@ -40,7 +40,10 @@ const userSlice = createSlice({
             }
         }),
         builder.addCase(fetchUserRegister.fulfilled, (state: UserSliceState, { payload }) => {
-            if (payload) state.isLogin = true
+            if (payload) {
+                state.isLogin = true;
+                state.login = payload.login;
+            }
         }),
         builder.addCase(fetchUserLogout.fulfilled, (state: UserSliceState, { payload }) => {
             if (payload === 200) {
