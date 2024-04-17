@@ -49,7 +49,7 @@ export function DialogGrishaPhase2() {
   const handleCloseClick = async () => {
     await dispatch(switchHeroWalk(true));
     await dispatch(switchDialog(false));
-    await dispatch(setScores(100))
+    // await dispatch(setScores(100))
     navigate('/');
   }
 
