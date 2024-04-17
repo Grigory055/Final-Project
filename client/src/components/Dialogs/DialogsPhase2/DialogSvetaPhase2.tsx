@@ -4,6 +4,8 @@ import { Button } from "@mui/material";
 import { StartGame } from "../..";
 import { useAppDispatch } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
+import SvetaP21 from "../../audio/sveta/svetap2/SvetaP21";
+import SvetaP22 from "../../audio/sveta/svetap2/SvetaP22";
 
 interface IDialog {
   person: string;
@@ -46,6 +48,7 @@ export function DialogSvetaPhase2() {
               return (
                 <div>
                   <h5>Света</h5>
+                  <SvetaP21/>
                   <div>{Sveta1.text}</div>
                   <div>
                     <Button
@@ -66,6 +69,7 @@ export function DialogSvetaPhase2() {
             case "3":
               return (
                 <div>
+                  <SvetaP22/>
                   <div>{Sveta2.text}</div>
                   <div>
                     <Button onClick={() => handleCloseClick()}>Дальше</Button>

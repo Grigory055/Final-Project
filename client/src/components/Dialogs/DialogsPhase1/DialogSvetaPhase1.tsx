@@ -4,6 +4,9 @@ import { useAppDispatch } from "../../../redux/hooks";
 import { switchDialog, switchHeroWalk } from "../../../redux/RPGSlice";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import SvetaP11 from "../../audio/sveta/svetap1/SvetaP11";
+import SvetaP22 from "../../audio/sveta/svetap2/SvetaP22";
+import SvetaP12 from "../../audio/sveta/svetap1/SvetaP12";
 
 interface IDialog {
   person: string;
@@ -66,6 +69,7 @@ export function DialogSvetaPhase1() {
               return (
                 <div>
                   <h4>Света</h4>
+                  <SvetaP11/>
                   <div>{Sveta1.text}</div>
                   <div>
                     <Button
@@ -83,6 +87,7 @@ export function DialogSvetaPhase1() {
               return (
                 <div>
                   <h4></h4>
+                  <SvetaP12/>
                   <div>{Sveta2.text}</div>
                   <div className={styles.buttons_div}>
                     <div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./DialogPhase3.module.css";
 import { Button } from "@mui/material";
 import { Game } from "../../Game/Game";
+import DenisP31 from "../../audio/prepods/denisP3/DenisP31";
+import DenisP32 from "../../audio/prepods/denisP3/DenisP32";
 
 
 interface IDialog {
@@ -39,6 +41,7 @@ export function DialogDenisPhase3() {
               return (
                 <div>
                   <h4>Денис</h4>
+                  <DenisP31/>
                   <div>{Denis1.text}</div>
                   <div>
                     <Button
@@ -55,6 +58,7 @@ export function DialogDenisPhase3() {
             case "2":
               return (
                 <div>
+                  <DenisP32/>
                   <div>{Denis2.text}</div>
                   <div>
                     <Button onClick={() => setDialog((pre) => ({ ...pre, status: "3" }))}>Играть</Button>

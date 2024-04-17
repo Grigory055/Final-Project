@@ -5,6 +5,8 @@ import { Game } from "../../Game/Game";
 import { useDispatch } from "react-redux";
 import { switchDialog, switchHeroWalk } from "../../../redux/RPGSlice";
 import { useAppDispatch } from "../../../redux/hooks";
+import SvetaP31 from "../../audio/sveta/svetap3/SvetaP31";
+import SvetaP32 from "../../audio/sveta/svetap3/SvetaP32";
 
 
 interface IDialog {
@@ -51,6 +53,7 @@ export function DialogSvetaPhase3() {
               return (
                 <div>
                   <h5>Света</h5>
+                  <SvetaP31/>
                   <div>{Sveta1.text}</div>
                   <div>
                     <Button
@@ -71,6 +74,7 @@ export function DialogSvetaPhase3() {
             case "3":
               return (
                 <div>
+                  <SvetaP32/>
                   <div>{Sveta2.text}</div>
                   <div>
                     <Button onClick={() => handleCloseClick()}>Дальше</Button>
