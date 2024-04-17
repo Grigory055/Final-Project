@@ -23,11 +23,11 @@ const Denis1: IDialog = {
   text: "Вот и подошло к концу Обучение в Эльбрусе, жаль не успели поехать на Курагу в Москву!",
 };
 
-const Denis2: IDialog = {
-  person: "Denis",
-  status: "2",
-  text: "Давай просто преисполнимся и насладимся Своей игрой...",
-};
+// const Denis2: IDialog = {
+//   person: "Denis",
+//   status: "2",
+//   text: "Давай просто преисполнимся и насладимся Своей игрой...",
+// };
 
 export function DialogDenisPhase3() {
   const dispatch = useAppDispatch();
@@ -60,21 +60,21 @@ export function DialogDenisPhase3() {
                   <DenisP31/>
                   <div>{Denis1.text}</div>
                   <div>
-                    <Button className={styles.button} onClick={() => handlerDialog("2")} >Далее</Button>
+                    <Button style={{ width: '250px', marginTop: '15px'}} onClick={() => endGameHandler()} >Давай преисполнимся</Button>
                   </div>
                 </div>
               );
-            case "2":
-              return (
-                <div>
-                  <DenisP32/>
-                  <div>{Denis2.text}</div>
-                  <div>
-                    <Button onClick={()=>endGameHandler()}>Конец</Button>
+            // case "2":
+            //   return (
+            //     <div>
+            //       <DenisP32/>
+            //       <div>{Denis2.text}</div>
+            //       <div>
+            //         <Button onClick={()=>endGameHandler()}>Конец</Button>
                     
-                  </div>
-                </div>
-              );
+            //       </div>
+            //     </div>
+            //   );
           }
         })()}
       </div>
