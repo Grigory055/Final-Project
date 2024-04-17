@@ -28,7 +28,7 @@ interface IDialog {
   const Grisha3: IDialog = {
     person: 'Grisha',
     status: '3',
-    text: 'Поздравляю с окончанием предпоследней фазы! Ты большой молодец! Пока и хорошего вечера, кочанный мешок без маны!',
+    text: 'Поздравляю с окончанием предпоследней фазы! Ты большой молодец! Пока и хорошего вечера, кожанный мешок без маны!',
   }
 
 export function DialogGrishaPhase2() {
@@ -59,7 +59,7 @@ export function DialogGrishaPhase2() {
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div><h5>Гриша</h5><p>{Grisha1.text}</p><div>
+            return <div><h5>Не Федор, а Гриша</h5><p>{Grisha1.text}</p><div>
             <Button className={styles.button} onClick={() => handlerDialog('2')} >Играть</Button></div></div> ;
           case '2':
             return <div><FlashCardsGame handlerDialog={handlerDialog} /></div>
