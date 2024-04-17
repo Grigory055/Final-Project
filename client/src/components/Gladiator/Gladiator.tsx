@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import StepGrass from '../audio/steps/StepGrass';
 
 interface IGladiator {
   name: string;
@@ -413,6 +414,7 @@ export default function Gladiator() {
   return (
     <>
       <div style={{ width: '600px' }}>
+      {/* <StepGrass/> */}
         <Button onClick={() => handlerWeapons()}>Раздача оружия</Button>
         <h2>
           {gladiator1?.img ? 

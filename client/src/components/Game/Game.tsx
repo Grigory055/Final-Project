@@ -6,6 +6,7 @@ import { fetchTopics } from '../../redux/thunkActions';
 import './Game.css';
 import axios from 'axios';
 import { setScores } from '../../redux/userSlice';
+import StepGrass from '../audio/steps/StepGrass';
 
 export function Game({ handlerDialog }) {
   const [open, setOpen] = React.useState(false);
@@ -131,6 +132,7 @@ export function Game({ handlerDialog }) {
   return (
     <>
     <div className='svoya_igra_container'>
+      
         <div style={{ fontSize: '45px', marginBottom: '30px' }}>Ваш счет: {score}</div>
         
       <div>
