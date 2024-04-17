@@ -20,7 +20,7 @@ export function DialogSvetaPhase0() {
 
   const dispatch = useAppDispatch();
 
-  // console.log('loginErr', loginErr)
+  // console.log('loginErr', loginErr, login)
 
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));

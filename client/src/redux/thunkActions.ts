@@ -64,9 +64,9 @@ export const fetchUserRegister = createAsyncThunk(
         user,
         { withCredentials: true }
       );
-      if (response.data.err) {
-        return isRejectedWithValue('Такой пользователь уже существует!')
-      } else {
+      if (!response.data.err) {
+        // return isRejectedWithValue('Такой пользователь уже существует!')
+      // } else {
         console.log("ответ", response.data)
         return response.data;
       }
