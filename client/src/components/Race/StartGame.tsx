@@ -3,6 +3,7 @@ import styles from "./StartGame.module.css";
 import { Button } from "@mui/material";
 import { useAppDispatch } from "../../redux/hooks";
 import { setScores } from "../../redux/userSlice";
+import RacerSound from "../audio/game/RacerSound";
 
 export function StartGame({ handlerDialog }) {
   const [p1, setP1] = useState<string>(
@@ -152,7 +153,9 @@ export function StartGame({ handlerDialog }) {
                   )}
 
                   {startRace ? (
+                    
                     <Button className={styles.gas_btn} onClick={moveHandler}>
+                      <RacerSound/>
                       click to ГАЗ!
                     </Button>
                   ) : (

@@ -7,6 +7,10 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setWalls, switchDialog } from '../../redux/RPGSlice';
 import { Navbar } from '../Navbar/Navbar';
 import { fetchUserScore } from '../../redux/thunkActions';
+import Theme1audio from '../audio/game/Theme1audio';
+import Theme2audio from '../audio/game/Theme2audio';
+import Theme3audio from '../audio/game/Theme3audio';
+import Theme4audio from '../audio/game/Theme4audio';
 const walls = [phase0walls, phase1walls, phase2walls, phase3walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects];
 
@@ -121,12 +125,41 @@ export function RPG() {
 
   return (
     <>
+    {(() => {
+          switch (id) {
+            case "0":
+              return (
+                <div>
+                <Theme1audio/>
+                </div>
+              );
+            case "1":
+              return (
+                <div>
+                <Theme2audio/>
+                </div>
+              );
+            case "2":
+              return (
+                <div>
+                <Theme3audio/>
+                </div>
+              );
+            case "3":
+              return (
+                <div>
+                <Theme4audio/>
+                </div>
+              );
+          }
+        })()}
       <canvas
         id="game-canvas"
         ref={canvasRef}
         width={320}
         height={180}
       ></canvas>
+      {/* <Theme1audio/> */}
       <Navbar />
     </>
   );
