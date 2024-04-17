@@ -4,6 +4,7 @@ import { ICard } from '../types/types';
 
 export type UserSliceState = {
     isLogin: boolean,
+    loginErr: string,
     login: string,
     topics: ICard[],
     score: number,
@@ -12,6 +13,7 @@ export type UserSliceState = {
 
 const initialState: UserSliceState = {
     isLogin: false,
+    loginErr: '',
     login: 'Гость',
     topics: [],
     score: 0,
@@ -40,15 +42,23 @@ const userSlice = createSlice({
             }
         }),
         builder.addCase(fetchUserRegister.fulfilled, (state: UserSliceState, { payload }) => {
-            // console.log('payload', payload);
+            console.log('payload1', payload);
             
-            if (payload.clearedUser) {
+            if (payload) {
                 console.log('payload')
                 state.isLogin = true;
                 state.login = payload.login;
-            } if (payload.err) {
-                console.log('222')
+            } else {
+                state.loginErr = 'Такой пользователь существует'
             }
+        }),
+        builder.addCase(fetchUserRegister.rejected, (state: UserSliceState, { payload }) => {
+            console.log('payload2', payload);
+            
+            // if (payload) {
+            //     console.log('payload', payload)
+            //     // state.loginErr = payload
+            // }
         }),
         builder.addCase(fetchUserLogout.fulfilled, (state: UserSliceState, { payload }) => {
             if (payload === 200) {

@@ -8,6 +8,7 @@ export function Navbar() {
   const isLogin = useAppSelector((store) => store.persistedReducer.isLogin);
   const login = useAppSelector((store) => store.persistedReducer.login);
   const score = useAppSelector((store) => store.persistedReducer.score);
+  
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();

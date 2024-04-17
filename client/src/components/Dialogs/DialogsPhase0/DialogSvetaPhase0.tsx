@@ -16,8 +16,11 @@ interface IDialog {
 export function DialogSvetaPhase0() {
   const isLogin = useAppSelector((store) => store.persistedReducer.isLogin);
   const login = useAppSelector((store) => store.persistedReducer.login);
+  // const loginErr = useAppSelector((store) => store.persistedReducer.loginErr)
 
   const dispatch = useAppDispatch();
+
+  // console.log('loginErr', loginErr)
 
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
