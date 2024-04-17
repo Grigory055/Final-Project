@@ -48,7 +48,7 @@ const userSlice = createSlice({
                 console.log('payload')
                 state.isLogin = true;
                 state.login = payload.login;
-            } else {
+            } if (!payload) {
                 state.loginErr = 'Такой пользователь существует'
             }
         }),

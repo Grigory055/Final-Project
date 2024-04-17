@@ -22,7 +22,7 @@ const Sveta1: IDialog = {
 const Sveta2: IDialog = {
   person: "Sveta",
   status: "2",
-  text: "Понравилась фаза 1?",
+  text: "Оставишь обратную связь?",
 };
 
 const Sveta3: IDialog = {
@@ -92,13 +92,13 @@ export function DialogSvetaPhase1() {
                   <div className={styles.buttons_div}>
                     <div>
                       <Button onClick={() => setDialog((pre) => ({ ...pre, status: "3" }))}>
-                        Понравилась
+                        Напишу
                       </Button>
 
                       {/* <div className={styles.button_wrapper} onClick={() => handleCloseClick()}><div><input className={styles.my_button} type="button" value="Понравилось" /></div></div> */}
                     </div>
                     <div>
-                      <Button onMouseMove={moveHandler}> Не понравилась</Button>
+                      <Button onMouseMove={moveHandler}> Нет времени</Button>
                       {/* <div className={styles.button_wrapper} onMouseMove={handlerDialog}><div><input className={styles.my_button} type="button" value="Не понравилось" /></div></div> */}
                     </div>
                   </div>
