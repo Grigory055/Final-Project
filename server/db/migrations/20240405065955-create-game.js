@@ -14,6 +14,9 @@ module.exports = {
       character: {
         type: Sequelize.STRING,
       },
+      level: {
+        type: Sequelize.INTEGER,
+      },
       user_id: {
         type: Sequelize.INTEGER,
         references: {

@@ -53,6 +53,6 @@ export class NPC extends GameObject {
     store.dispatch(switchHeroWalk(false));
     store.dispatch(setDialog(this.dialogID));
     store.dispatch(switchDialog(true));
-    store.dispatch(openExit(`${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`))
+    // store.dispatch(openExit(`${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`))
   }
 }
