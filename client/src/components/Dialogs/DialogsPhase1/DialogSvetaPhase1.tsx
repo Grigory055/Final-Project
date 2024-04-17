@@ -65,6 +65,7 @@ export function DialogSvetaPhase1() {
             case "1":
               return (
                 <div>
+                  <h4>Света</h4>
                   <div>{Sveta1.text}</div>
                   <div>
                     <Button
@@ -81,6 +82,7 @@ export function DialogSvetaPhase1() {
             case "2":
               return (
                 <div>
+                  <h4></h4>
                   <div>{Sveta2.text}</div>
                   <div className={styles.buttons_div}>
                     <div>

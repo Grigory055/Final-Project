@@ -38,6 +38,7 @@ export function DialogDenisPhase3() {
             case "1":
               return (
                 <div>
+                  <h4>Денис</h4>
                   <div>{Denis1.text}</div>
                   <div>
                     <Button

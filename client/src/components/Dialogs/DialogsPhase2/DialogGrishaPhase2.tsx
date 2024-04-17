@@ -52,7 +52,7 @@ export function DialogGrishaPhase2() {
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div><p>{Grisha1.text}</p><div>
+            return <div><h5>Гриша</h5><p>{Grisha1.text}</p><div>
             <Button className={styles.button} onClick={() => handlerDialog('2')} >Играть</Button></div></div> ;
           case '2':
             return <div><FlashCardsGame handlerDialog={handlerDialog} /></div>

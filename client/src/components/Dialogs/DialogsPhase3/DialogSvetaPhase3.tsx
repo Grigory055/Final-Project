@@ -50,6 +50,7 @@ export function DialogSvetaPhase3() {
             case "1":
               return (
                 <div>
+                  <h5>Света</h5>
                   <div>{Sveta1.text}</div>
                   <div>
                     <Button
