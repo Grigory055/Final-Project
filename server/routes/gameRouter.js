@@ -31,6 +31,7 @@ router.put('/', async (req, res) => {
       const stats = await Game.findOne({ where: { user_id: id } });
       stats.score = score;
       stats.save();
+      console.log(stats);
       res.json(stats);
     } catch (error) {
       console.log(error);

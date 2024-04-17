@@ -6,7 +6,10 @@ import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setWalls, switchDialog } from '../../redux/RPGSlice';
 import { Navbar } from '../Navbar/Navbar';
-import { fetchUserScore } from '../../redux/thunkActions';
+import Theme1audio from '../audio/game/Theme1audio';
+import Theme2audio from '../audio/game/Theme2audio';
+import Theme3audio from '../audio/game/Theme3audio';
+import Theme4audio from '../audio/game/Theme4audio';
 const walls = [phase0walls, phase1walls, phase2walls, phase3walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects];
 
@@ -18,15 +21,13 @@ export function RPG() {
   const { id } = useParams();
   const levelObjects = gameObjects[Number(id)];
   const canvasRef = useRef();
-  
-  const score = useAppSelector((store) => store.persistedReducer.score)
-  
+
   useEffect(() => {
-    dispatch(switchDialog(false));
+    void dispatch(switchDialog(false));
     const { x, y } = levelObjects.hero.position
     const hero = new Hero(gridCells(x), gridCells(y), 'hero', character);
     
-    dispatch(setWalls(walls[Number(id)]));
+    void dispatch(setWalls(walls[Number(id)]));
       
     const mainScene = new GameObject({
       position: new Vector2(0, 0),
@@ -111,8 +112,7 @@ export function RPG() {
 
     gameLoop.start();
 
-    return async () => {
-      void await dispatch(fetchUserScore(score))
+    return () => {    
       gameLoop.stop();
       events.clear();
       hero.resetPosition();
@@ -121,12 +121,41 @@ export function RPG() {
 
   return (
     <>
+    {(() => {
+          switch (id) {
+            case "0":
+              return (
+                <div>
+                <Theme1audio/>
+                </div>
+              );
+            case "1":
+              return (
+                <div>
+                <Theme2audio/>
+                </div>
+              );
+            case "2":
+              return (
+                <div>
+                <Theme3audio/>
+                </div>
+              );
+            case "3":
+              return (
+                <div>
+                <Theme4audio/>
+                </div>
+              );
+          }
+        })()}
       <canvas
         id="game-canvas"
         ref={canvasRef}
         width={320}
         height={180}
       ></canvas>
+      {/* <Theme1audio/> */}
       <Navbar />
     </>
   );
