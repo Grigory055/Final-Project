@@ -64,17 +64,19 @@ export function DialogSvetaPhase0() {
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div><p>{Sveta.text}</p><div>
+            return <div><h4>Света</h4><p>{Sveta.text}</p><div>
             <Button onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div></div> ;
           case '2':
             return <div>
                 {isLogin ? (
                     <>
+                    <h3>Света</h3>
                       <p>{Sveta3.text}</p>
                       <Button onClick={() => handleCloseClick()} >Искать приключения</Button>
                     </>
                   ) : (
                     <>
+                    
                       <p>{Sveta2.text}</p>
                       <RegForm />
                     </>
