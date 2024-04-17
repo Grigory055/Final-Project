@@ -77,6 +77,7 @@ export function DialogAntonPhase0() {
             case "2":
               return (
                 <div style={{ width: "400px" }}>
+                  <h3>Антон</h3>
                   <p>{Anton2.text}</p>
                   <Button onClick={() => handlerDialog()}>Далее</Button>
                 </div>
@@ -84,6 +85,7 @@ export function DialogAntonPhase0() {
             case "3":
               return (
                 <div style={{ width: "400px" }}>
+                  <h3>Антон</h3>
                   <p>{Anton3.text}</p>
                   <Button onClick={() => handlerDialog2()}>
                     Играть в гладиаторы
