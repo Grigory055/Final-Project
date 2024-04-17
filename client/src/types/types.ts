@@ -5,6 +5,7 @@ interface IUser {
   password: string;
   character?: string;
   score?: number;
+  level?: number;
 }
 
 interface ILoginPassword {

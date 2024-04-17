@@ -4,7 +4,7 @@ import { resources, Sprite, Vector2, GameLoop, Input, gridCells, GameObject, Her
 import { useParams } from 'react-router-dom';
 import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls, phase3objects, phase3walls } from './src/levels/'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setWalls, switchDialog } from '../../redux/RPGSlice';
+import { openExit, setWalls, switchDialog } from '../../redux/RPGSlice';
 import { Navbar } from '../Navbar/Navbar';
 import Theme1audio from '../audio/game/Theme1audio';
 import Theme2audio from '../audio/game/Theme2audio';
@@ -15,8 +15,7 @@ const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects]
 
 
 export function RPG() {
-
-  const character = useAppSelector((store) => store.persistedReducer.character);
+  const { isLogin, character } = useAppSelector((store) => store.persistedReducer);
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const levelObjects = gameObjects[Number(id)];
@@ -118,6 +117,13 @@ export function RPG() {
       hero.resetPosition();
     }
   }, []);
+
+  useEffect(() => {
+    if (isLogin && Number(id) === 0) {
+      void dispatch(openExit('384,384'));
+    }
+  },[isLogin])
+
 
   return (
     <>

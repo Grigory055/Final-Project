@@ -9,6 +9,7 @@ export type UserSliceState = {
     topics: ICard[],
     score: number,
     character: string,
+    level: number,
 }
 
 const initialState: UserSliceState = {
@@ -18,6 +19,7 @@ const initialState: UserSliceState = {
     topics: [],
     score: 0,
     character: '',
+    level: 0,
 }
 
 const userSlice = createSlice({
@@ -39,6 +41,7 @@ const userSlice = createSlice({
                state.login = payload.login;
                state.score = payload.score;
                state.character = payload.character;
+               state.level = payload.level;
             }
         }),
         builder.addCase(fetchUserRegister.fulfilled, (state: UserSliceState, { payload }) => {
@@ -66,6 +69,7 @@ const userSlice = createSlice({
                 state.login = 'Гость';
                 state.score = 0;
                 state.character = '';
+                state.level = 0;
             }
         })
         builder.addCase(fetchTopics.fulfilled, (state: UserSliceState, { payload }) => {

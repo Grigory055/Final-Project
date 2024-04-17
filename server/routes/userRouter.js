@@ -4,7 +4,9 @@ const { User, Game } = require('../db/models');
 const isUser = require('../middlewares/isUser');
 
 userRouter.post('/registration', async (req, res) => {
-  const { login, password, email, character } = req.body;
+  const {
+    login, password, email, character,
+  } = req.body;
   try {
     const user = await User.findOne({ where: { login } });
     if (user) {
@@ -12,14 +14,16 @@ userRouter.post('/registration', async (req, res) => {
     } else {
       const hash = await bcrypt.hash(password, 10);
       const newUser = await User.create({ login, email, password: hash });
-      const game = await Game.create({ score: 0, character, user_id: newUser.id });
+      const game = await Game.create({
+        score: 0, character, level: 0, user_id: newUser.id,
+      });
       const clearedUser = {
         id: newUser.id,
         login: newUser.login,
         email: newUser.email,
       };
 
-      req.session.newUser = clearedUser;
+      req.session.user = clearedUser;
 
       res.json(clearedUser);
     }
@@ -47,11 +51,10 @@ userRouter.post('/login', async (req, res) => {
           login: user.login,
           email: user.email,
         };
+        const { score, character, level } = game;
         req.session.user = clearedUser;
         res.json({
-          ...clearedUser,
-          score: game.score,
-          character: game.character,
+          ...clearedUser, score, character, level,
         });
       } else {
         res.sendStatus(400);

@@ -89,10 +89,39 @@ body,
 
 #navbar {
   width: 100%;
+  padding-right: 30px;
+  padding-top: 8px;
   background-color: none;
   position: absolute;
   top: 0;
   color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-left, 
+.navbar-right,
+.navbar-center {
+  height: 80px;
+}
+
+.navbar-left {
+  background-image: url('/assets/navbar-left.png');
+  width: 24px;
+}
+
+.navbar-right {
+  background-image: url('/assets/navbar-right.png');
+  width: 24px;
+}
+
+.navbar-center {
+  background-image: url('/assets/navbar-center.png');
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 20px;
 }
 
 #navbar a {
@@ -101,6 +130,14 @@ body,
 }
 #navbar a img {
   width: 150px;
+}
+
+#navbar .logout {
+  cursor: pointer;
+}
+
+.navbar-stats {
+  color: rgb(60, 255, 0);
 }
 
 #modal {
