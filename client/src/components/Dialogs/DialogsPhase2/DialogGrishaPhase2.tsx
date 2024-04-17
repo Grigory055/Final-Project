@@ -5,6 +5,7 @@ import { Button } from '@mui/material'
 import { useAppDispatch } from '../../../redux/hooks'
 import { useNavigate } from 'react-router-dom'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
+import { setScores } from '../../../redux/userSlice'
 
 interface IDialog {
     person: string
@@ -40,9 +41,15 @@ export function DialogGrishaPhase2() {
     console.log('dialog1', dialog)
   }
 
+  // const handlerDialog1 = (status: string) => {
+  //   setDialog(() => ({ status: status }))
+  //   console.log('dialog1', dialog)
+  // }
+
   const handleCloseClick = async () => {
     await dispatch(switchHeroWalk(true));
     await dispatch(switchDialog(false));
+    await dispatch(setScores(100))
     navigate('/');
   }
 

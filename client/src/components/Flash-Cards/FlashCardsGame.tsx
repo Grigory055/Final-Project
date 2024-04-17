@@ -60,8 +60,9 @@ export function FlashCardsGame({ handlerDialog }) {
   const foultQuest = JSON.parse(localStorage.getItem("questFoult")) || [];
 
   function resetGame() {
-    // localStorage.clear();
+    localStorage.clear();
     // window.location.reload();
+    handlerDialog('3')
   }
 
   console.log(row7);
@@ -160,7 +161,7 @@ export function FlashCardsGame({ handlerDialog }) {
 
         <GameModal questionsId={questionsId} showGameModal={showGameModal} closeGameModal={closeGameModal} />
 
-        <Button style={{ marginTop: '20px'}} className="buttonGame" onClick={() => handlerDialog('3')}>
+        <Button style={{ marginTop: '20px'}} className="buttonGame" onClick={() => resetGame()}>
         Далее
       </Button>
       </Container>
