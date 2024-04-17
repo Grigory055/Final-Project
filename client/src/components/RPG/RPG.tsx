@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setWalls, switchDialog } from '../../redux/RPGSlice';
 import { Navbar } from '../Navbar/Navbar';
 import { fetchUserScore } from '../../redux/thunkActions';
-import { setScores } from '../../redux/userSlice';
 const walls = [phase0walls, phase1walls, phase2walls, phase3walls]
 const gameObjects = [phase0objects, phase1objects, phase2objects, phase3objects];
 
@@ -112,12 +111,11 @@ export function RPG() {
 
     gameLoop.start();
 
-    return () => {
+    return async () => {
+      void await dispatch(fetchUserScore(score))
       gameLoop.stop();
       events.clear();
       hero.resetPosition();
-      // console.log('score', score)
-      void dispatch(fetchUserScore(score))
     }
   }, []);
 

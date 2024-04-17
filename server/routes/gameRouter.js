@@ -24,15 +24,17 @@ router.get('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
-  const id = req.session.userId;
-  const { score } = req.body;
-  try {
-    const stats = await Game.findOne({ where: { user_id: id } });
-    stats.score = score;
-    stats.save();
-    res.json(stats);
-  } catch (error) {
-    console.log(error);
+  if (req.session.user) {
+    const { id } = req.session.user;
+    const { score } = req.body;
+    try {
+      const stats = await Game.findOne({ where: { user_id: id } });
+      stats.score = score;
+      stats.save();
+      res.json(stats);
+    } catch (error) {
+      console.log(error);
+    }
   }
 });
 
