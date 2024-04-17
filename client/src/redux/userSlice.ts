@@ -40,9 +40,14 @@ const userSlice = createSlice({
             }
         }),
         builder.addCase(fetchUserRegister.fulfilled, (state: UserSliceState, { payload }) => {
-            if (payload) {
+            // console.log('payload', payload);
+            
+            if (payload.clearedUser) {
+                console.log('payload')
                 state.isLogin = true;
                 state.login = payload.login;
+            } if (payload.err) {
+                console.log('222')
             }
         }),
         builder.addCase(fetchUserLogout.fulfilled, (state: UserSliceState, { payload }) => {

@@ -54,8 +54,9 @@ export const fetchUserRegister = createAsyncThunk(
     try {
       const response = await axios.post<AxiosResponse<IUser>>('http://localhost:3000/api/users/registration', 
       user, { withCredentials: true });
-
+      console.log("ответ", response.data)
       return response.data;
+      
     } catch (error) {
       console.log(error)
     }
