@@ -9,7 +9,7 @@ export default function SvetaP21() {
 
     if ( voiceElement) {
       voiceElement.volume = 0.5; // Установка громкости на 50%
-      voiceElement.playbackRate = 1.5; // Установка скорости на 150%
+      voiceElement.playbackRate = 1.3; // Установка скорости на 150%
       voiceElement.addEventListener('canplay', handleCanPlay);
       voiceElement.play().catch((error) => {
         console.log('Auto-play failed:', error);

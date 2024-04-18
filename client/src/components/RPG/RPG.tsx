@@ -126,7 +126,7 @@ export function RPG() {
     const stepAudio = stepRef.current; 
 
     if (stepAudio) {
-      stepAudio.volume = 0.05; // Установка громкости на 20%
+      stepAudio.volume = 0.1; // Установка громкости на 20%
       stepAudio.playbackRate = 1.0; // Установка скорости на 100%
       stepAudio.addEventListener('canplay', handleCanPlay);
     }
