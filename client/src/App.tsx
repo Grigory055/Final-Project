@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { MainPage, StatsPage, RPGPage } from './pages'
 import Modals from './components/Modals/Modals'
 import Video from './components/video/Video'
+import ProtectedRoute from './components/router/ProtectedRoute'
 
 function App() {
   return (

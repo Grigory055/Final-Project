@@ -8,8 +8,9 @@ userRouter.post('/registration', async (req, res) => {
     login, password, email, character,
   } = req.body;
   try {
-    const user = await User.findOne({ where: { login } });
-    if (user) {
+    const logUser = await User.findOne({ where: { login } });
+    const emailUser = await User.findOne({ where: { email } });
+    if (logUser || emailUser) {
       res.json({ err: 'Пользователь зарегистрирован' });
     } else {
       const hash = await bcrypt.hash(password, 10);
