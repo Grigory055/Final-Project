@@ -9,6 +9,8 @@ export function Navbar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  console.log('level', level)
+
   const logoutHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault()
     if (isLogin) {
