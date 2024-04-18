@@ -46,6 +46,9 @@ export function DialogDenisPhase3() {
   const endGameHandler=()=>{
     dispatch(switchDialog(false));
     navigate('/end')
+    setTimeout(() => {
+      navigate('/')
+    }, 109000);
   }
 
   return (
