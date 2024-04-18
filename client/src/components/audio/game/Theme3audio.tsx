@@ -8,8 +8,8 @@ export default function Theme3audio() {
     const  voiceElement =  voiceRef.current;
 
     if ( voiceElement) {
-      voiceElement.volume = 0.1; // Установка громкости на 50%
-      voiceElement.playbackRate = 1.0; // Установка скорости на 150%
+      voiceElement.volume = 0.01; // Установка громкости
+      voiceElement.playbackRate = 1.0; // Установка скорости на 100%
       voiceElement.addEventListener('canplay', handleCanPlay);
       voiceElement.play().catch((error) => {
         console.log('Auto-play failed:', error);

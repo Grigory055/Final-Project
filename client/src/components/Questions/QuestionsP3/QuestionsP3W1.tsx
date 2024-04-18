@@ -3,6 +3,7 @@ import styles from './QuestionsP3.module.css';
 import { useAppDispatch } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 import { setScores } from '../../../redux/userSlice';
+import { Button } from '@mui/material';
 
 export function QuestionsP3W1() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
@@ -75,7 +76,7 @@ const secondRightAnswerHandler: () => void = () => {
             <button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/3dbtn_play.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
-          <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}
+          <Button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</Button></>)}
       </div>
     </>
   )

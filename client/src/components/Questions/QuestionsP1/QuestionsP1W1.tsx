@@ -3,6 +3,7 @@ import styles from './QuestionsP1.module.css';
 import { useAppDispatch } from '../../../redux/hooks';
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
 import { setScores } from '../../../redux/userSlice';
+import { Button } from '@mui/material';
 
 export function QuestionsP1W1() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
@@ -55,15 +56,15 @@ const secondRightAnswerHandler: () => void = () => {
             <>{nextAnswer?(<div>
               <h2>{question2}</h2>
               <div className={styles.answers}>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>Погуглить</button>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>Написать в хелпу </button>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>Тип поискового алгоритма, который последовательно делит пополам заранее отсортированный массив данных, чтобы обнаружить нужный элемент. </button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. Погуглить</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>2. Написать в хелпу </button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>3. Тип поискового алгоритма, который последовательно делит пополам заранее отсортированный массив данных, чтобы обнаружить нужный элемент. </button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>git pull 'any commit'</button>
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>git commit -m 'any commit'</button>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>git add commit -f 'any commit'</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>1. git pull 'any commit'</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>2. git commit -m 'any commit'</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>3. git add commit -f 'any commit'</button>
               </div>
             </div>
             )}</>
@@ -71,7 +72,7 @@ const secondRightAnswerHandler: () => void = () => {
             <p>Попробую его взломать!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
-          <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}
+          <Button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</Button></>)}
       </div>
     </>
   )
