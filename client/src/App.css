@@ -1,6 +1,12 @@
 @font-face {
-  font-family: 'pixel';
-  src: url('/fonts/font.ttf');
+  font-family: "pixel";
+  src: url("/fonts/font.ttf");
+}
+
+* {
+  /* cursor: none; */
+  cursor: url(../public/cursor.png), auto;
+  /* cursor: url(../public/cursor2.png), pointe r; */
 }
 
 html,
@@ -31,7 +37,7 @@ body,
   width: 1200px;
   height: 842px;
   margin: 0 auto;
-  background-image: url('/map-inactive.png');
+  background-image: url("/map-inactive.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: contain;
@@ -56,7 +62,7 @@ body,
 .phase {
   height: 100%;
   width: 50%;
-  background-image: url('/assets/padlock.png');
+  background-image: url("/assets/padlock.png");
   background-position: center center;
   background-repeat: no-repeat;
 }
@@ -66,22 +72,22 @@ body,
 }
 
 #map:has(#phase-0.active:hover) {
-  background-image: url('/map-phase-0.png');
+  background-image: url("/map-phase-0.png");
   cursor: pointer;
 }
 
 #map:has(#phase-1.active:hover) {
-  background-image: url('/map-phase-1.png');
+  background-image: url("/map-phase-1.png");
   cursor: pointer;
 }
 
 #map:has(#phase-2.active:hover) {
-  background-image: url('/map-phase-2.png');
+  background-image: url("/map-phase-2.png");
   cursor: pointer;
 }
 
 #map:has(#phase-3.active:hover) {
-  background-image: url('/map-phase-3.png');
+  background-image: url("/map-phase-3.png");
   cursor: pointer;
 }
 
@@ -106,24 +112,24 @@ body,
   justify-content: flex-end;
 }
 
-.navbar-left, 
+.navbar-left,
 .navbar-right,
 .navbar-center {
   height: 80px;
 }
 
 .navbar-left {
-  background-image: url('/assets/navbar-left.png');
+  background-image: url("/assets/navbar-left.png");
   width: 24px;
 }
 
 .navbar-right {
-  background-image: url('/assets/navbar-right.png');
+  background-image: url("/assets/navbar-right.png");
   width: 24px;
 }
 
 .navbar-center {
-  background-image: url('/assets/navbar-center.png');
+  background-image: url("/assets/navbar-center.png");
   display: flex;
   align-items: center;
   justify-content: space-between;
