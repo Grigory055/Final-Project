@@ -8,8 +8,8 @@ export default function RacerSound() {
     const  voiceElement =  voiceRef.current;
 
     if ( voiceElement) {
-      voiceElement.volume = 0.3; // Установка громкости на 50%
-      voiceElement.playbackRate = 1.0; // Установка скорости на 150%
+      voiceElement.volume = 0.2; // Установка громкости на 20%
+      voiceElement.playbackRate = 1.0; // Установка скорости на 100%
       voiceElement.addEventListener('canplay', handleCanPlay);
       voiceElement.play().catch((error) => {
         console.log('Auto-play failed:', error);

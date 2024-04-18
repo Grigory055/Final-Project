@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../../redux/hooks';
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
 import styles from './QuestionsP1.module.css';
 import { setScores } from '../../../redux/userSlice';
+import { Button } from '@mui/material';
 
 export function QuestionsP1W2() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
@@ -55,15 +56,15 @@ const secondRightAnswerHandler: () => void = () => {
             <>{nextAnswer?(<div>
               <h2>{question2}</h2>
               <div className={styles.answers}>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>get/send</button>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>async/await</button>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>to/from</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. get/send</button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>2. async/await</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>3. to/from</button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>sort(), filter()</button>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>map(),forEach()</button>
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>join(),reverse()</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>1. sort(), filter()</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>2. map(),forEach()</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>3. join(),reverse()</button>
               </div>
             </div>
             )}</>
@@ -71,7 +72,7 @@ const secondRightAnswerHandler: () => void = () => {
             <p>А массив массивов?!</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
-          <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}
+          <Button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</Button></>)}
       </div>
     </>
   )
