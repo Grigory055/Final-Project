@@ -18,6 +18,10 @@ interface IWeapons {
   damage: number;
 }
 
+interface IStatus {
+  status: number;
+}
+
 const Denisius: IGladiator = {
   name: 'Денисиус',
   img: 'den.gif',
@@ -114,6 +118,8 @@ export default function Gladiator() {
   const [gladiator1, setGladiator1] = useState<IGladiator>();
   const [gladiator2, setGladiator2] = useState<IGladiator>();
 
+  const [status, setStatus] = useState<IStatus>('1');
+
   const [weapon1, setWeapon1] = useState<IWeapons>();
   const [weapon2, setWeapon2] = useState<IWeapons>();
 
@@ -134,6 +140,7 @@ export default function Gladiator() {
     const glad1 = gladArr[Math.floor(Math.random() * gladArr.length)];
     const weap1 = weaponsArr[Math.floor(Math.random() * weaponsArr.length)];
     const weap2 = weaponsArr[Math.floor(Math.random() * weaponsArr.length)];
+    setStatus((pre) => '2')
     if (glad1.name === 'Светланиус') {
       setTimeout(() => {
         setGladiator1(() => glad1);
@@ -149,6 +156,7 @@ export default function Gladiator() {
         setReserved1(() => 'получил');
         setWeapon1(() => weap1);
         glad1.weapon += weap1?.name;
+        // setStatus(() => '2')
 
         console.log('glad1', glad1.name);
       }, 1000);
@@ -206,17 +214,17 @@ export default function Gladiator() {
 
   const handleFight = () => {
     // setTimeout(() => {
-      const player1 = gladiator1;
-      setGame1(() => player1);
-      setAttack1(() => fight[Math.floor(Math.random() * fight.length)]);
+    const player1 = gladiator1;
+    setGame1(() => player1);
+    setAttack1(() => fight[Math.floor(Math.random() * fight.length)]);
     // }, 1000);
 
     // setTimeout(() => {
-      // const player2 = arrGame.filter((el) => el !== player1)
-      const player2 = gladiator2
-      setGame2(() => player2);
-      // setGame2(() => player2[Math.floor(Math.random() * player2.length)]) //! 2
-      setAttack2(() => fight[Math.floor(Math.random() * fight.length)]);
+    // const player2 = arrGame.filter((el) => el !== player1)
+    const player2 = gladiator2;
+    setGame2(() => player2);
+    // setGame2(() => player2[Math.floor(Math.random() * player2.length)]) //! 2
+    setAttack2(() => fight[Math.floor(Math.random() * fight.length)]);
     // }, 2000);
 
     if (attack1 === 'ушёл читать лекцию') {
@@ -379,6 +387,7 @@ export default function Gladiator() {
     }
 
     if (game1.hp < 0) {
+      setStatus((pre) => '3')
       setGladiator1(() => ({}));
       setGladiator2(() => ({}));
       setAttack1(() => '');
@@ -395,6 +404,7 @@ export default function Gladiator() {
     }
 
     if (game2.hp < 0) {
+      setStatus((pre) => '3')
       setGladiator1(() => ({}));
       setGladiator2(() => ({}));
       setAttack1(() => '');
@@ -413,40 +423,91 @@ export default function Gladiator() {
 
   return (
     <>
-      <div style={{ width: '600px' }}>
-      {/* <StepGrass/> */}
-        <Button onClick={() => handlerWeapons()}>Раздача оружия</Button>
-        <h2>
-          {gladiator1?.img ? 
-            <img
-              style={{ width: '100px', height: '100px' }}
-              src={`/${gladiator1?.img}`}
-            /> : <></>
-          }{' '}
-          {gladiator1?.name} {game1.hp} {reserved1} {weapon1?.name}
-        </h2>
+      {(() => {
+        switch (status) {
+          case '1':
+            return (
+              <div style={{ width: '600px' }}>
+                {/* <StepGrass/> */}
+                <Button onClick={() => handlerWeapons()}>Раздача оружия</Button>
+                <h2>
+                  {gladiator1?.img ? (
+                    <img
+                      style={{ width: '100px', height: '100px' }}
+                      src={`/${gladiator1?.img}`}
+                    />
+                  ) : (
+                    <></>
+                  )}{' '}
+                  {gladiator1?.name} {game1.hp} {reserved1} {weapon1?.name}
+                </h2>
 
-        <h2>
-          {gladiator1?.img ?  
-            <img
-              style={{ width: '100px', height: '100px' }}
-              src={`/${gladiator2?.img}`}
-            /> : <></>
-          }{' '}
-          {gladiator2?.name} {game2.hp} {reserved2} {weapon2?.name}
-        </h2>
-      </div>
-      <div>
-        <Button onClick={() => handleFight()}>Атака</Button>
-        <h2>
-          {game1.name} {attack1} 
-        </h2>
-        <h1 style={{ color: 'red' }}>{game3}</h1>
-        <h2>
-          {game2.name} {attack2} 
-        </h2>
-        <h1 style={{ color: 'red' }}>{game4}</h1>
-      </div>
+                <h2>
+                  {gladiator1?.img ? (
+                    <img
+                      style={{ width: '100px', height: '100px' }}
+                      src={`/${gladiator2?.img}`}
+                    />
+                  ) : (
+                    <></>
+                  )}{' '}
+                  {gladiator2?.name} {game2.hp} {reserved2} {weapon2?.name}
+                </h2>
+              </div>
+            );
+          case '2':
+            return (
+              <>
+              <div style={{ width: '600px' }}>
+                {/* <StepGrass/> */}
+                {/* <Button onClick={() => handlerWeapons()}>Раздача оружия</Button> */}
+                <h2>
+                  {gladiator1?.img ? (
+                    <img
+                      style={{ width: '100px', height: '100px' }}
+                      src={`/${gladiator1?.img}`}
+                    />
+                  ) : (
+                    <></>
+                  )}{' '}
+                  {gladiator1?.name} <span style={{ fontSize: '35px', color: 'green', fontWeight: '00'}}>{game1.hp}</span> {reserved1} {weapon1?.name}
+                </h2>
+
+                <h2>
+                  {gladiator1?.img ? (
+                    <img
+                      style={{ width: '100px', height: '100px' }}
+                      src={`/${gladiator2?.img}`}
+                    />
+                  ) : (
+                    <></>
+                  )}{' '}
+                  {gladiator2?.name} <span style={{ fontSize: '35px', color: 'green', fontWeight: '00'}}>{game2.hp}</span> {reserved2} {weapon2?.name}
+                </h2>
+              </div>
+              <div>
+                <Button onClick={() => handleFight()}>Атака</Button>
+                <h2>
+                  {game1.name} {attack1}
+                </h2>
+                <h1 style={{ color: 'red' }}>{game3}</h1>
+                <h2>
+                  {game2.name} {attack2}
+                </h2>
+                <h1 style={{ color: 'red' }}>{game4}</h1>
+              </div>
+              </>
+            );
+            case '3':
+              return (
+                <>
+                <div>
+                  Продолжай путь к вершине Эльбруса
+                </div>
+                </>
+              )
+        }
+      })()}
     </>
   );
 }
