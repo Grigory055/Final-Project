@@ -37,21 +37,21 @@ export function DialogSvetaPhase3() {
   const dispatch = useAppDispatch();
 
   const handleCloseClick = () => {
-    dispatch(switchHeroWalk(true));
-    dispatch(switchDialog(false));
+    void dispatch(switchHeroWalk(true));
+    void dispatch(switchDialog(false));
   }
 
   return (
     <>
-      <div className={styles.container}>
+      <div>
         {(() => {
           switch (dialog.status) {
             case "1":
               return (
-                <div>
-                  <h5>Света</h5>
+                <div className='dialog'>
+                  <h2>Света</h2>
                   <SvetaP31/>
-                  <div>{Sveta1.text}</div>
+                  <p>{Sveta1.text}</p>
                   <div>
                     <Button
                       className={styles.button}
@@ -70,12 +70,12 @@ export function DialogSvetaPhase3() {
               );
             case "3":
               return (
-                <div>
+                <div className='dialog'>
+                  <h2>Света</h2>
                   <SvetaP32/>
-                  <div>{Sveta2.text}</div>
+                  <p>{Sveta2.text}</p>
                   <div>
                     <Button onClick={() => handleCloseClick()}>Дальше</Button>
-                    
                   </div>
                 </div>
               );

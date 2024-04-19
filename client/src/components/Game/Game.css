@@ -1,9 +1,9 @@
 .aa {
-  background-color: red;
+  background-color: rgb(192, 76, 113);
 }
 
 .oo {
-  background-color: green;
+  background-color: rgb(115, 221, 115);
 }
 
 .pp {
@@ -12,8 +12,38 @@
 
 .svoya_igra_container {
   margin-left: -20px;
-  /* width: 500px; */
-  font-size: 13px;
+  width: 700px;
+  font-size: 24px;
 }
 .center {
+}
+
+.card {
+  display: none;
+}
+
+.card.open {
+  display: block;
+}
+
+.card-container {
+  min-height: 200px;
+}
+
+#answer {
+  background: none;
+  border-radius: 0;
+  border: 4px solid rgb(116, 64, 64);
+  padding: 10px;
+  box-shadow: none;
+  font-size: 20px;
+  font-family: "pixel";
+  margin-right: 50px;
+  outline: none;
+}
+
+#answer:focus {
+  background: none;
+  box-shadow: none;
+  outline: none;
 }

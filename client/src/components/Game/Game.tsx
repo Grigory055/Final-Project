@@ -130,16 +130,36 @@ export function Game({ handlerDialog }) {
     <>
     <div className='svoya_igra_container'>
       
-        <div style={{ fontSize: '45px', marginBottom: '30px' }}>Ваш счет: {score}</div>
+        <div style={{ fontSize: '24px' }}>Ваш счет: {score}</div>
+        <div className='card-container'>
+          <div className={ open ? 'card open' : 'card' }>
+            <div className='timer'>{time}</div>
+            <div>{card.questions}</div>
+            <form onSubmit={submitHandler}>
+              <input
+              onChange={inputHandler}
+              autoFocus
+              required
+              id="answer"
+              name="answer"
+              label="Ваш ответ"
+              type="text"
+              value={input}
+              />
+              <Button type="submit">Ответить</Button>
+            </form>
+          </div>
+        </div>
+        
         
       <div>
         <div style={{ display: 'flex' }}>
           <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>JS</div>
         {cards &&
           cards.filter((el) => el.topic_id === 1).map((el) => (
-              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div style={{ margin: '4px' }}>
                 <div onClick={() => handleClickOpen(el.id)}>
-                  <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+                  <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
                 </div>
               </div>
             ))}
@@ -151,10 +171,10 @@ export function Game({ handlerDialog }) {
           cards
             .filter((el) => el.topic_id === 2)
             .map((el) => (
-              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
-              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
              
               </div>
               </div>
@@ -166,10 +186,10 @@ export function Game({ handlerDialog }) {
           cards
             .filter((el) => el.topic_id === 3)
             .map((el) => (
-              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
-              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
              
               </div>
               </div>
@@ -196,10 +216,10 @@ export function Game({ handlerDialog }) {
           cards
             .filter((el) => el.topic_id === 4)
             .map((el) => (
-              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
-              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
              
               </div>
               </div>
@@ -211,10 +231,10 @@ export function Game({ handlerDialog }) {
           cards
             .filter((el) => el.topic_id === 5)
             .map((el) => (
-              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
-              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
              
               </div>
               </div>
@@ -226,17 +246,16 @@ export function Game({ handlerDialog }) {
           cards
             .filter((el) => el.topic_id === 6)
             .map((el) => (
-              <div style={{ margin: '10px', fontSize: '15px' }}>
+              <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
-              <div style={{ border: '1px solid', padding: '4px', borderRadius: '8px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
              
               </div>
               </div>
             ))}
             </div>
           </div>
-
       <Box mt={5}>
         <Button
           // variant="contained"
@@ -251,66 +270,6 @@ export function Game({ handlerDialog }) {
           Завершить игру
         </Button>
       </Box>
-
-      <Dialog 
-        open={open}
-        // onClose={handleClose}
-        PaperProps={{
-          component: 'form',
-          onSubmit: submitHandler,
-        }}
-        disableRestoreFocus
-      >
-        <DialogTitle  textAlign="center">
-          {card.image && (
-            <Box maxWidth={'500px'}>
-              <img width={'100%'} src={card.image} alt="Image" />
-            </Box>
-          )}
-        </DialogTitle>
-        <DialogContent sx={{
-            backgroundColor: 'white',
-            width: 500,
-            color: 'black',
-            borderRadius: '12px', 
-            padding: '24px'
-          }}>
-          <DialogContentText  sx={{
-            color: 'black', 
-            padding: '14px'
-          }}>{card.questions}</DialogContentText>
-          {/* <input type="text" /> */}
-          <TextField 
-          // sx={{
-          //   backgroundColor: 'yellow',
-          //   width: 300,
-          //   color: 'red',
-          // }}
-            onChange={inputHandler}
-            autoFocus
-            required
-            margin="dense"
-            id="answer"
-            name="answer"
-            label="Ваш ответ"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={input}
-          />
-          {time}
-        </DialogContent>
-        <DialogActions  sx={{
-            // backgroundColor: 'white',
-            // width: 500,
-            color: 'black',
-            borderRadius: '12px', 
-            padding: '24px'
-          }}>
-          {/* <Button onClick={() => handleCloseClick(card.id)}>Закрыть</Button> */}
-          <Button type="submit">Отправить</Button>
-        </DialogActions>
-      </Dialog>
       </div>
     </>
   );

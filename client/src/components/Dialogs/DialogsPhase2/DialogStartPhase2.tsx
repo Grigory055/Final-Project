@@ -26,9 +26,9 @@ export function DialogStartPhase2() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className='dialog'>
         <div>
-          {dialog.text}
+          <p>{dialog.text}</p>
           <BubbleP2/>
         </div>
         <div>

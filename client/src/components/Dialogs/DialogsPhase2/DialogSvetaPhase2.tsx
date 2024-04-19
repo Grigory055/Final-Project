@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./DialogPhase2.module.css";
 import { Button } from "@mui/material";
 import { StartGame } from "../..";
@@ -41,15 +41,15 @@ export function DialogSvetaPhase2() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div>
         {(() => {
           switch (dialog.status) {
             case "1":
               return (
-                <div>
-                  <h5>Света</h5>
+                <div className="dialog">
+                  <h2>Света</h2>
                   <SvetaP21/>
-                  <div>{Sveta1.text}</div>
+                  <p>{Sveta1.text}</p>
                   <div>
                     <Button
                       className={styles.button}
@@ -68,9 +68,10 @@ export function DialogSvetaPhase2() {
               );
             case "3":
               return (
-                <div>
+                <div className="dialog">
+                  <h2>Света</h2>
                   <SvetaP22/>
-                  <div>{Sveta2.text}</div>
+                  <p>{Sveta2.text}</p>
                   <div>
                     <Button onClick={() => handleCloseClick()}>Дальше</Button>
                   </div>
