@@ -4,9 +4,7 @@
 }
 
 * {
-  /* cursor: none; */
-  cursor: url(../public/cursor.png), auto;
-  /* cursor: url(../public/cursor2.png), pointe r; */
+  cursor: url("cursor.png"), auto;
 }
 
 html,
@@ -70,6 +68,11 @@ body,
 .phase.active {
   background: none;
 }
+
+.phase.active:hover {
+  cursor: url("cursor2.png"), auto;
+}
+
 
 #map:has(#phase-0.active:hover) {
   background-image: url("/map-phase-0.png");
@@ -146,13 +149,14 @@ body,
 }
 
 #navbar .menu {
-  cursor: pointer;
+  cursor: url("cursor2.png"), auto;
 }
 
 .navbar-stats {
   color: rgb(60, 255, 0);
 }
 
-.link {
-  cursor: pointer;
+button,
+button img {
+  cursor: url("cursor2.png"), auto !important;
 }
