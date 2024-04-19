@@ -14,6 +14,7 @@
   justify-content: center;
   /* background-image: url('../../../public/components/bgcrace.png'); */
   background-size: cover;
+  text-align: center;
 }
 .start_game {
   background-image: url('/bgcrace_start.png');

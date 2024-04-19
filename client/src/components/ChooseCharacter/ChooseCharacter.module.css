@@ -14,14 +14,14 @@
   background-image: url('/character-male-inactive.png');
   width: 200px;
   height: 285px;
-  cursor: pointer;
+  cursor: url("cursor2.png"), auto;
 }
 
 .female {
   background-image: url('/character-female-inactive.png');
   width: 200px;
   height: 285px;
-  cursor: pointer;
+  cursor: url("cursor2.png"), auto;
 }
 
 .male:hover {

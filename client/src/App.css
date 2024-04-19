@@ -157,7 +157,8 @@ body,
 }
 
 button,
-button img {
+button img,
+.link {
   cursor: url("cursor2.png"), auto !important;
 }
 
@@ -172,3 +173,10 @@ button img {
 .dialog p {
   font-size: 24px;
 }
+
+input,
+input:focus,
+input:active {
+  cursor: url("cursor2.png"), auto;
+}
+

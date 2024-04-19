@@ -32,7 +32,7 @@ export function MainMenu() {
       <Typography variant="h4" id="MainMenu_gl" textAlign="center">Главное меню</Typography>
       <Button onClick={toMapHandler}>На карту уровней</Button>
       <Button onClick={statsHandler}>Статистика</Button>
-      <Button onClick={logoutHandler}>Выйти из аккаунта</Button>
+      {isLogin && <Button onClick={logoutHandler}>Выйти из аккаунта</Button>}
     </Box>
   )
 }
