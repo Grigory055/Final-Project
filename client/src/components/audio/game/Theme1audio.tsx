@@ -8,7 +8,7 @@ export default function Theme1audio() {
     const  voiceElement =  voiceRef.current;
 
     if ( voiceElement) {
-      voiceElement.volume = 0.01; // Установка громкости
+      voiceElement.volume = 0.04; // Установка громкости
       voiceElement.playbackRate = 1.0; // Установка скорости на 100%
       voiceElement.addEventListener('canplay', handleCanPlay);
       voiceElement.play().catch((error) => {

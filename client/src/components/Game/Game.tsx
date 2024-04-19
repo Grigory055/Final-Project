@@ -1,12 +1,9 @@
-import {Box, Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormGroup, Grid, TextField, Typography, } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { Link as ReactRouterLink } from 'react-router-dom';
-import { fetchTopics } from '../../redux/thunkActions';
+import {Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
+import React, { useEffect } from 'react';
+import { useAppDispatch } from '../../redux/hooks';
 import './Game.css';
 import axios from 'axios';
 import { setScores } from '../../redux/userSlice';
-import StepGrass from '../audio/steps/StepGrass';
 
 export function Game({ handlerDialog }) {
   const [open, setOpen] = React.useState(false);
