@@ -8,8 +8,8 @@ export default function BubbleP2() {
     const  voiceElement =  voiceRef.current;
 
     if ( voiceElement) {
-      voiceElement.volume = 0.5; // Установка громкости на 50%
-      voiceElement.playbackRate = 1.5; // Установка скорости на 150%
+      voiceElement.volume = 0.15; // Установка громкости на 15%
+      voiceElement.playbackRate = 1.3; // Установка скорости на 130%
       voiceElement.addEventListener('canplay', handleCanPlay);
       voiceElement.play().catch((error) => {
         console.log('Auto-play failed:', error);

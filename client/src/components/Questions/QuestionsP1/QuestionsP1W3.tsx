@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../../redux/hooks';
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice';
 import styles from './QuestionsP1.module.css';
 import { setScores } from '../../../redux/userSlice';
+import { Button } from '@mui/material';
 
 export function QuestionsP1W3() {
   const[startP1W1,setStartP1W1] = useState<boolean>(false)
@@ -55,15 +56,15 @@ const secondRightAnswerHandler: () => void = () => {
             <>{nextAnswer?(<div>
               <h2>{question2}</h2>
               <div className={styles.answers}>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>Это взаимодействие между классами</button>
-              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>Это переработка исходного кода программы, чтобы он стал более простым и понятным</button>
-              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>Это тестирование для проекта</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>1. Это взаимодействие между классами</button>
+              <button onClick={secondRightAnswerHandler} className={styles.modal_btn_answer}>2. Это переработка исходного кода программы, чтобы он стал более простым и понятным</button>
+              <button onClick={secondWrongAnswerHandler} className={styles.modal_btn_answer}>3. Это тестирование для проекта</button>
             </div></div>):(<div>
               <h2>{question1}</h2>
               <div className={styles.answers}>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>const users = Users.find(where : User)</button>
-              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>const users = findAll.Users()</button>
-              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>const users = await User.findAll()</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>1. const users = Users.find(where : User)</button>
+              <button onClick={wrongAnswerHandler} className={styles.modal_btn_answer}>2. const users = findAll.Users()</button>
+              <button onClick={rightAnswerHandler} className={styles.modal_btn_answer}>3. const users = await User.findAll()</button>
               </div>
             </div>
             )}</>
@@ -71,7 +72,7 @@ const secondRightAnswerHandler: () => void = () => {
             <p>Жми & отвечай на вопросы.</p><button onClick={startHandler} className={styles.modal_btn}><img className={styles.btn_img} src="/components/start_btn_p.png" alt="start" /></button></>)}
           </div>
           </>):(<><h2>вы можете продолжить игру</h2><p>вы закончили, ответив на {coins} из 2 вопросов</p>
-          <button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</button></>)}
+          <Button onClick={() => handleCloseClick()} className={styles.modal_btn_answer}>далее</Button></>)}
       </div>
     </>
   )
