@@ -52,14 +52,15 @@ export function DialogMaksPhase1() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div>
         {(() => {
           switch (dialog.status) {
             case "1":
               return (
-                <div>
+                <div className="dialog">
+                  <h2>Максимус</h2>
                   <MaxP11/>
-                  <div>{Maks1.text}</div>
+                  <p>{Maks1.text}</p>
                   <div>
                     <Button
                       className={styles.button}
@@ -74,10 +75,10 @@ export function DialogMaksPhase1() {
               );
             case "2":
               return (
-                <div>
-                  <h4>Максимус</h4>
+                <div className="dialog">
+                  <h2>Максимус</h2>
                   <MaxP12/>
-                  <div>{Maks2.text}</div>
+                  <p>{Maks2.text}</p>
                   <div>
                     <Button onClick={() => handlerDialog('3')}>Играть</Button>
                   </div>
@@ -91,10 +92,10 @@ export function DialogMaksPhase1() {
               );
             case "4":
               return (
-                <div>
-                  <h4>Максимус</h4>
+                <div  className="dialog">
+                  <h2>Максимус</h2>
                   <MaxP13/>
-                  <div>{Maks3.text}</div>
+                  <p>{Maks3.text}</p>
                   <div>
                     <Button
                       onClick={() =>

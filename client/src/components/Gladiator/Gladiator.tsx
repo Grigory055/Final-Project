@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import StepGrass from '../audio/steps/StepGrass';
+import styles from './Gladiatot.module.css'
 
 interface IGladiator {
   name: string;
@@ -135,6 +136,12 @@ export default function Gladiator() {
   const [game3, setGame3] = useState('');
   const [game4, setGame4] = useState('');
 
+  const [game5, setGame5] = useState('');
+  const [game6, setGame6] = useState('');
+
+  const [imgWin1, setImgWin1] = useState('');
+  const [imgWin2, setImgWin2] = useState('');
+
   const handlerWeapons = () => {
     // первый боец
     const glad1 = gladArr[Math.floor(Math.random() * gladArr.length)];
@@ -148,7 +155,7 @@ export default function Gladiator() {
         setReserved1(() => 'получила');
         setWeapon1(() => weap1);
         glad1.weapon += weap1?.name;
-      }, 1000);
+      }, 100);
     } else {
       setTimeout(() => {
         setGladiator1(() => glad1);
@@ -159,7 +166,7 @@ export default function Gladiator() {
         // setStatus(() => '2')
 
         console.log('glad1', glad1.name);
-      }, 1000);
+      }, 100);
     }
 
     // второй боец
@@ -173,7 +180,7 @@ export default function Gladiator() {
 
           glad2.weapon += weap2?.name;
           console.log('glad2', glad2);
-        }, 2000);
+        }, 500);
       } else {
         setTimeout(() => {
           setGladiator2(() => glad2);
@@ -182,7 +189,7 @@ export default function Gladiator() {
 
           glad2.weapon += weap2?.name;
           console.log('glad2', glad2);
-        }, 2000);
+        }, 500);
       }
     } else {
       const newSArr = gladArr.filter((el) => el !== glad2);
@@ -197,7 +204,7 @@ export default function Gladiator() {
 
           pl2.weapon += weap2?.name;
           console.log('pl2', pl2);
-        }, 2000);
+        }, 500);
       } else {
         setTimeout(() => {
           setGladiator2(() => pl2);
@@ -207,7 +214,7 @@ export default function Gladiator() {
 
           pl2.weapon += weap2?.name;
           console.log('pl2', pl2);
-        }, 2000);
+        }, 500);
       }
     }
   };
@@ -387,7 +394,10 @@ export default function Gladiator() {
     }
 
     if (game1.hp < 0) {
-      setStatus((pre) => '3')
+      // setStatus((pre) => '3')
+      setGame5(() => `${game2.name} выиграл`);
+      setImgWin2(() => gladiator2?.img);
+      setImgWin1(() => gladiator1?.img);
       setGladiator1(() => ({}));
       setGladiator2(() => ({}));
       setAttack1(() => '');
@@ -400,11 +410,16 @@ export default function Gladiator() {
       setReserved2(() => '');
       setWeapon1(() => ({}));
       setWeapon2(() => ({}));
-      alert(`${game2.name} выиграл`);
+      // alert(`${game2.name} выиграл`);
+      
+      console.log('game5', game5)
     }
 
     if (game2.hp < 0) {
-      setStatus((pre) => '3')
+      // setStatus((pre) => '3')
+      setGame6(() => `${game1.name} выиграл`);
+      setImgWin1(() => gladiator1?.img);
+      setImgWin2(() => gladiator2?.img);
       setGladiator1(() => ({}));
       setGladiator2(() => ({}));
       setAttack1(() => '');
@@ -417,8 +432,13 @@ export default function Gladiator() {
       setReserved2(() => '');
       setWeapon1(() => ({}));
       setWeapon2(() => ({}));
-      alert(`${game1.name} выиграл`);
+      // alert(`${game1.name} выиграл`);
+      
+      
+    console.log('game6', game6.name)
     }
+
+    
   };
 
   return (
@@ -427,10 +447,10 @@ export default function Gladiator() {
         switch (status) {
           case '1':
             return (
-              <div style={{ width: '600px' }}>
+              <div>
                 {/* <StepGrass/> */}
                 <Button onClick={() => handlerWeapons()}>Раздача оружия</Button>
-                <h2>
+                <div style={{ width: '600px'}}>
                   {gladiator1?.img ? (
                     <img
                       style={{ width: '100px', height: '100px' }}
@@ -439,11 +459,11 @@ export default function Gladiator() {
                   ) : (
                     <></>
                   )}{' '}
-                  {gladiator1?.name} {game1.hp} {reserved1} {weapon1?.name}
-                </h2>
+                  <h1>{gladiator1?.name} {game1.hp} {reserved1} {weapon1?.name}</h1>
+                </div>
 
-                <h2>
-                  {gladiator1?.img ? (
+                <div style={{ width: '600px'}}>
+                  {gladiator2?.img ? (
                     <img
                       style={{ width: '100px', height: '100px' }}
                       src={`/${gladiator2?.img}`}
@@ -452,16 +472,16 @@ export default function Gladiator() {
                     <></>
                   )}{' '}
                   {gladiator2?.name} {game2.hp} {reserved2} {weapon2?.name}
-                </h2>
+                </div>
               </div>
             );
           case '2':
             return (
               <>
-              <div style={{ width: '600px' }}>
+              <div style={{ width: '750px' }}>
                 {/* <StepGrass/> */}
                 {/* <Button onClick={() => handlerWeapons()}>Раздача оружия</Button> */}
-                <h2>
+                <div style={{ width: '700px', fontSize: '28px'}}>
                   {gladiator1?.img ? (
                     <img
                       style={{ width: '100px', height: '100px' }}
@@ -471,10 +491,10 @@ export default function Gladiator() {
                     <></>
                   )}{' '}
                   {gladiator1?.name} <span style={{ fontSize: '35px', color: 'green', fontWeight: '00'}}>{game1.hp}</span> {reserved1} {weapon1?.name}
-                </h2>
+                </div>
 
-                <h2>
-                  {gladiator1?.img ? (
+                <div style={{ width: '700px', fontSize: '28px'}}>
+                  {gladiator2?.img ? (
                     <img
                       style={{ width: '100px', height: '100px' }}
                       src={`/${gladiator2?.img}`}
@@ -483,29 +503,35 @@ export default function Gladiator() {
                     <></>
                   )}{' '}
                   {gladiator2?.name} <span style={{ fontSize: '35px', color: 'green', fontWeight: '00'}}>{game2.hp}</span> {reserved2} {weapon2?.name}
-                </h2>
+                </div>
               </div>
               <div>
-                <Button onClick={() => handleFight()}>Атака</Button>
-                <h2>
-                  {game1.name} {attack1}
-                </h2>
-                <h1 style={{ color: 'red' }}>{game3}</h1>
-                <h2>
-                  {game2.name} {attack2}
-                </h2>
-                <h1 style={{ color: 'red' }}>{game4}</h1>
+                {game5 || game6 ? (
+                  <div style={{ fontSize: '50px', color: 'green'}}>
+                    <img className={styles.imgGlad} style={{ width: '100px', height: '100px', visibility: 'visible' }} src={`/${imgWin1}`} />{game5} {game6}<img className={styles.imgGlad} style={{ width: '100px', height: '100px', visibility: 'visible' }} src={`/${imgWin2}`} />
+                    </div>
+                ) : (<><Button onClick={() => handleFight()}>Атака</Button>
+                 <h1 style={{ width: '700px', fontSize: '25px' }}>
+                   {game1.name} {attack1}
+                 </h1>
+                 <h1 style={{ color: 'red' }}>{game3}</h1>
+                 <h1 style={{ width: '700px', fontSize: '25px' }}>
+                   {game2.name} {attack2}
+                 </h1>
+                 <h1 style={{ color: 'red' }}>{game4}</h1>
+                 </>)}
+                
               </div>
               </>
             );
-            case '3':
-              return (
-                <>
-                <div>
-                  Продолжай путь к вершине Эльбруса
-                </div>
-                </>
-              )
+            // case '3':
+            //   return (
+            //     <>
+            //     <div>
+            //       Продолжай путь к вершине Эльбруса
+            //     </div>
+            //     </>
+            //   )
         }
       })()}
     </>

@@ -20,7 +20,6 @@ export function DialogStartPhase1() {
   const handleCloseClick = () => {
     dispatch(switchHeroWalk(true));
     dispatch(switchDialog(false));
-    console.log('score', score)
   }
 
 
@@ -28,10 +27,10 @@ export function DialogStartPhase1() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className="dialog">
         <div>
           <BubbleP1/>
-          {dialog.text}
+          <p>{dialog.text}</p>
         </div>
         <div>
           <Button onClick={() => handleCloseClick()} >Далее</Button>

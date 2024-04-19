@@ -65,7 +65,8 @@ export function DialogAntonPhase0() {
           switch (dialog.status) {
             case "1":
               return (
-                <div style={{ width: "400px" }}>
+                <div className="dialog">
+                  <h2>Антон</h2>
                   <AntonP01/>
                   <p>{Anton.text}</p>
                   <Button onClick={() => handlerDialog("2")}>Далее</Button>
@@ -73,8 +74,8 @@ export function DialogAntonPhase0() {
               );
             case "2":
               return (
-                <div style={{ width: "400px" }}>
-                  <h3>Антон</h3>
+                <div className="dialog">
+                  <h2>Антон</h2>
                   <AntonP02/>
                   <p>{Anton2.text}</p>
                   <Button onClick={() => handlerDialog("3")}>Далее</Button>
@@ -82,8 +83,8 @@ export function DialogAntonPhase0() {
               );
             case "3":
               return (
-                <div style={{ width: "400px" }}>
-                  <h3>Антон</h3>
+                <div className="dialog">
+                  <h2>Антон</h2>
                   <AntonP03/>
                   <p>{Anton3.text}</p>
                   <Button onClick={() => handlerDialog("4")}>
@@ -100,9 +101,10 @@ export function DialogAntonPhase0() {
               );
             case "5":
               return (
-                <div style={{ width: "400px" }}>
+                <div className="dialog">
+                  <h2>Антон</h2>
                   <AntonP04/>
-                  {Anton4.text}
+                  <p>{Anton4.text}</p>
                   <Button onClick={handleCloseClick}>К следующей фазе!</Button>
                 </div>
               );

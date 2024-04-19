@@ -58,16 +58,17 @@ export function DialogGrishaPhase2() {
 
   return (
     <>
-    <div className={styles.container}>
+    <div>
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div><h5>Не Федор, а Гриша</h5><GrishaP21/><p>{Grisha1.text}</p><div>
-            <Button className={styles.button} onClick={() => handlerDialog('2')} >Играть</Button></div></div> ;
+            return <div className='dialog'><h2>Не Федор, а Гриша</h2><GrishaP21/><p>{Grisha1.text}</p><div>
+            <Button onClick={() => handlerDialog('2')} >Играть</Button></div></div> ;
           case '2':
             return <div><FlashCardsGame handlerDialog={handlerDialog} /></div>
           case '3':
-            return <div>
+            return <div className='dialog'>
+              <h2>Не Федор, а Гриша</h2>
               <GrishaP23/>
               <p>{Grisha3.text}</p>
                 <div>

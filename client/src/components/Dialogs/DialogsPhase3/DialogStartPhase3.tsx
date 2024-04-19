@@ -19,16 +19,16 @@ export function DialogStartPhase3() {
   const dispatch = useAppDispatch();
 
   const handleCloseClick = () => {
-    dispatch(switchHeroWalk(true));
-    dispatch(switchDialog(false));
+    void dispatch(switchHeroWalk(true));
+    void dispatch(switchDialog(false));
   }
 
   return (
     <>
-      <div className={styles.container}>
+      <div className='dialog'>
         <div>
           <BubbleP3/>
-          {dialog.text}
+          <p>{dialog.text}</p>
         </div>
         <div>
           <Button onClick={() => handleCloseClick()} >Далее</Button>

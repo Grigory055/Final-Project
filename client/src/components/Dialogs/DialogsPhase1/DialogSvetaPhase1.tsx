@@ -49,7 +49,7 @@ export function DialogSvetaPhase1() {
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-    e.target.style.left = getRandomInt(50, 650) + "px";
+    e.target.style.left = getRandomInt(50, 400) + "px";
     e.target.style.top = getRandomInt(0, 220) + "px";
     e.target.style.position = "absolute";
     // e.target.style.transition= "all 0.07s linear 0s";
@@ -64,16 +64,15 @@ export function DialogSvetaPhase1() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className="dialog">
         {(() => {
           switch (dialog.status) {
             case "1":
               return (
                 <div>
-                  <h4>Света</h4>
-
+                  <h2>Света</h2>
                   <SvetaP11/>
-                  <div>{Sveta1.text}</div>
+                  <p>{Sveta1.text}</p>
                   <div>
                     <Button className={styles.button} onClick={() => handlerDialog("2")}>Далее</Button>
                   </div>
@@ -82,9 +81,9 @@ export function DialogSvetaPhase1() {
             case "2":
               return (
                 <div>
-                  <h4></h4>
+                  <h2>Света</h2>
                   <SvetaP12/>
-                  <div>{Sveta2.text}</div>
+                  <p>{Sveta2.text}</p>
                   <div className={styles.buttons_div}>
                     <div>
                       <Button onClick={() => handlerDialog("3")}>Напишу</Button>
@@ -98,7 +97,8 @@ export function DialogSvetaPhase1() {
             case "3":
               return (
                 <div>
-                  <div>{Sveta3.text}</div>
+                  <h2>Света</h2>
+                  <p>{Sveta3.text}</p>
                   <Button onClick={handleCloseClick}>К следующей фазе!</Button>
                 </div>
               );

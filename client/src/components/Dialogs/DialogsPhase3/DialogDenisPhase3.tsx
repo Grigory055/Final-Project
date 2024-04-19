@@ -53,15 +53,15 @@ export function DialogDenisPhase3() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className="dialog">
         {(() => {
           switch (dialog.status) {
             case "1":
               return (
                 <div>
-                  <h4>Денис</h4>
+                  <h2>Денис</h2>
                   <DenisP31/>
-                  <div>{Denis1.text}</div>
+                  <p>{Denis1.text}</p>
                   <div>
                     <Button style={{ width: '250px', marginTop: '15px'}} onClick={() => endGameHandler()} >Давай преисполнимся</Button>
                   </div>

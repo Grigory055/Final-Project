@@ -26,8 +26,8 @@ export function DialogSvetaPhase0() {
   // console.log('loginErr', loginErr, login)
 
   const handleCloseClick = () => {
-    dispatch(switchHeroWalk(true));
-    dispatch(switchDialog(false));
+    void dispatch(switchHeroWalk(true));
+    void dispatch(switchDialog(false));
   }
 
   const Sveta: IDialog = {
@@ -66,17 +66,21 @@ export function DialogSvetaPhase0() {
     // }
 
   return (
-    <div className={styles.container}>
+    <div  className="dialog">
        {(() => {
         switch (dialog.status) {
           case '1':
-            return <div><h4>Света</h4><SvetaP01/><p>{Sveta.text}</p><div>
-            <Button onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div></div> ;
+            return <div>
+              <h2>Света</h2>
+                <SvetaP01/>
+                <p>{Sveta.text}</p>
+                <div><Button onClick={() => setDialog((pre) => ({...pre, status: '2'}))} >Далее</Button></div>
+              </div> ;
           case '2':
             return <div>
                 {isLogin ? (
                     <>
-                    <h3>Света</h3>
+                    <h2>Света</h2>
                     <SvetaP03/>
                       <p>{Sveta3.text}</p>
                       <Button onClick={() => handleCloseClick()} >Искать приключения</Button>

@@ -160,3 +160,15 @@ button,
 button img {
   cursor: url("cursor2.png"), auto !important;
 }
+
+.dialog {
+  width: 400px;
+}
+
+.dialog h2 {
+  color: #743f39;
+}
+
+.dialog p {
+  font-size: 24px;
+}

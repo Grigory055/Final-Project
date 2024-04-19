@@ -10,7 +10,7 @@ interface IDialog {
   }
   
   const dialogStartPhase0: IDialog = {
-    text: 'Итак, приступим! Твоя задача: нужно найти три таблички и ответить на вопросы, которые на ней написаны'
+    text: 'Итак, приступим! Твоя задача: нужно найти три брюлика и ответить на вопросы, которые на ней написаны'
   }
 
 export function DialogStartPhase0() {
@@ -26,11 +26,11 @@ export function DialogStartPhase0() {
 
   return (
     <>
-      <div className={styles.container}>
-        <div>
+      <div  className="dialog">
+        <p>
           <BubbleP0/>
           {dialog.text}
-        </div>
+        </p>
         <div>
         <Button onClick={() => handleCloseClick()} >Далее</Button>
         </div>

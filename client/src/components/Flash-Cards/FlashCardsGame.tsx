@@ -60,7 +60,9 @@ export function FlashCardsGame({ handlerDialog }) {
   const foultQuest = JSON.parse(localStorage.getItem("questFoult")) || [];
 
   function resetGame() {
-    localStorage.clear();
+    localStorage.removeItem('quest');
+    localStorage.removeItem('answerOK');
+    localStorage.removeItem('questFoult');
     // window.location.reload();
     handlerDialog('3')
   }
@@ -71,8 +73,8 @@ export function FlashCardsGame({ handlerDialog }) {
       <Container style={{ width: '1400px'}} className="containerGame">
         {row7.map((row, index) => (
           <Row key={index} className="rowGame">
-            <Col className="colGame colTheme">
-              <span className="themeText">{row[0]?.["Theme.title"]}</span>
+            <Col className="colTheme">
+              <span>{row[0]?.["Theme.title"]}</span>
             </Col>
 
             {comfirmQuest.includes(row[0]?.id) && (
