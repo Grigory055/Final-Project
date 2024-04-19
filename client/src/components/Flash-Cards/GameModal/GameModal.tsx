@@ -1,7 +1,4 @@
 import { useEffect, useState } from 'react';
-// import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import shuffle from './shuffle';
 import './GameModal.css';
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../redux/hooks';
@@ -93,7 +90,7 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
   console.log('shuffledAnswers', answers);
 
   return (
-    <>
+    <div className='gameModal'>
     <div style={{ marginTop: '15px'}}>{answers[0]?.body}</div>
     <div>{answers.map((el: any) => {
             return (
@@ -138,7 +135,7 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
           })}
         </Modal.Footer>
       </Modal> */}
-    </>
+    </div>
   );
 }
 
