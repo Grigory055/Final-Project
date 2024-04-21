@@ -9,14 +9,26 @@
   gap: 24px
 }
 
+.flashgame-header {
+  height: 120px;
+  text-align: center;
+}
+
+.flashgame-score {
+  font-size: 32px;
+  font-weight: bold;
+}
+
 .timer {
   text-align: center;
 }
 
 .flashcard {
-  padding: 24px;
-  background-color: #e4a672;
-  border: 4px solid #b86f50;
+  width: 464px;
+  height: 364px;
+  padding: 24px 48px 0;
+  background: url('/assets/flashcards-frame.png');
+  background-color: #e4d7bb;
 }
 
 .correct {
