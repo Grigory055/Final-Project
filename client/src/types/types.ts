@@ -50,4 +50,10 @@ interface IEvent {
   callback: () => void,
 }
 
-export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent, IGameSave }
+interface IFlashCard {
+  question: string;
+  answer: string;
+  variants: Array<string>;
+}
+
+export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent, IGameSave, IFlashCard }

@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import styles from './DialogPhase2.module.css'
-import { FlashCardsGame } from '../../Flash-Cards/FlashCardsGame'
 import { Button } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { useNavigate } from 'react-router-dom'
@@ -8,6 +6,7 @@ import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 import { fetchUserScore } from '../../../redux/thunkActions'
 import GrishaP21 from '../../audio/prepods/grishaP2/GrishaP21'
 import GrishaP23 from '../../audio/prepods/grishaP2/GrishaP23'
+import Flash from '../../Flash/Flash'
 
 interface IDialog {
     person: string
@@ -41,7 +40,6 @@ export function DialogGrishaPhase2() {
 
   const handlerDialog = (status: string) => {
     setDialog((pre) => ({...pre, status: status}))
-    console.log('dialog1', dialog)
   }
 
   // const handlerDialog1 = (status: string) => {
@@ -65,7 +63,7 @@ export function DialogGrishaPhase2() {
             return <div className='dialog'><h2>Не Федор, а Гриша</h2><GrishaP21/><p>{Grisha1.text}</p><div>
             <Button onClick={() => handlerDialog('2')} >Играть</Button></div></div> ;
           case '2':
-            return <div><FlashCardsGame handlerDialog={handlerDialog} /></div>
+            return <Flash handlerDialog={handlerDialog} />
           case '3':
             return <div className='dialog'>
               <h2>Не Федор, а Гриша</h2>

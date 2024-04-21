@@ -1,0 +1,40 @@
+.flashgame {
+  font-size: 24px;
+  width: 600px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px
+}
+
+.timer {
+  text-align: center;
+}
+
+.flashcard {
+  padding: 24px;
+  background-color: #e4a672;
+  border: 4px solid #b86f50;
+}
+
+.correct {
+  background-color: rgb(115, 221, 115);
+}
+
+.incorrect {
+  background-color: rgb(192, 76, 113);
+}
+
+.variants {
+  list-style: square;
+}
+
+.variant {
+  color: #743f39;
+}
+
+.variant:hover {
+  cursor: url("cursor2.png"), auto;
+}
