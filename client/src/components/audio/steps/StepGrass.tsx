@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import voice from "./step_grass.wav";
 
 export default function StepGrass() {
-  const voiceRef = useRef(null);
+  const voiceRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     const voiceElement:any|HTMLAudioElement = voiceRef.current;
