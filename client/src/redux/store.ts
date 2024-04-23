@@ -1,7 +1,7 @@
-import { ConfigureStoreOptions, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 // import todoSlice, { TodoSliceState } from './todoSlice';
-import userSlice, { UserSliceState } from './userSlice';
-import statSlice, { StatSliceState } from './statSlice';
+import userSlice from './userSlice';
+import statSlice from './statSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -28,7 +28,7 @@ const storeOptions = {
     RPGSlice,
     persistedReducer
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: (getDefaultMiddleware: any) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

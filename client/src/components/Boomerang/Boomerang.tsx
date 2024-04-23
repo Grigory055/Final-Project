@@ -35,14 +35,14 @@ const initGame = {
   enemyIsAlive: true
 }
 
-export function Boomerang({ handlerDialog }) {
+export function Boomerang({ handlerDialog }:any) {
   const [game, setGame] = useState<IGame>(initGame)
 
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     setGame((pre: IGame): IGame => {
-      const newTrack = pre.track.map((el, index) => {
+      const newTrack = pre.track.map((_el, index) => {
       if (index === pre.heroPosition) {
         return pre.heroSkin;
       } else if (index === pre.boomerangPosition) {
@@ -88,7 +88,7 @@ export function Boomerang({ handlerDialog }) {
   }, [game.status, game.boomerangIsFlying, game.boomerangPosition])
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+     setTimeout(() => {
       setGame((pre) => {
         if (pre.status === 'play' && pre.enemyIsAlive && pre.enemyPosition > pre.heroPosition) {        
           return ({...pre, enemyPosition: pre.enemyPosition - 1})
@@ -180,7 +180,7 @@ export function Boomerang({ handlerDialog }) {
             return <Button onClick={() => setGame((pre) => ({...pre, status: 'end'}))} >Завершить игру</Button>;
           case 'lose':
           case 'end':
-            return <Button onClick={() => setGame((pre) => ({...initGame, status: 'play'}))} >Начать заново</Button>;
+            return <Button onClick={() => setGame(() => ({...initGame, status: 'play'}))} >Начать заново</Button>;
           case 'won':
             return <Button onClick={() => exitGameHandler()}>Идем дальше!</Button>;
         }

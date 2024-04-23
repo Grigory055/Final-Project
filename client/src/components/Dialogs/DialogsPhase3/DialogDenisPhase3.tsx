@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import styles from "./DialogPhase3.module.css";
+
 import { Button } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { fetchUserScore } from "../../../redux/thunkActions";
 import DenisP31 from "../../audio/prepods/denisP3/DenisP31";
-import DenisP32 from "../../audio/prepods/denisP3/DenisP32";
+
 import { useNavigate } from "react-router-dom";
 import { switchDialog } from "../../../redux/RPGSlice";
 
@@ -31,7 +31,7 @@ const Denis1: IDialog = {
 
 export function DialogDenisPhase3() {
   const dispatch = useAppDispatch();
-  const [dialog, setDialog] = useState<IDialog>(Denis1);
+  const [dialog] = useState<IDialog>(Denis1);
   const navigate = useNavigate();
   const score = useAppSelector((store) => store.persistedReducer.score)
 
@@ -39,9 +39,9 @@ export function DialogDenisPhase3() {
     void dispatch(fetchUserScore({ score, level: 3 }));
   },[])
 
-  const handlerDialog = (status: string) => {
-    setDialog((pre) => ({ ...pre, status: status }));
-  };
+  // const handlerDialog = (status: string) => {
+  //   setDialog((pre) => ({ ...pre, status: status }));
+  // };
 
   const endGameHandler=()=>{
     dispatch(switchDialog(false));

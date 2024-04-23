@@ -6,6 +6,7 @@ interface IUser {
   character?: string;
   score?: number;
   level?: number;
+  err?: string;
 }
 
 interface IGameSave {
@@ -39,7 +40,7 @@ interface ICard {
   answer: string,
   image: string,
   value: number,
-  condition: string, // тут добавил
+  condition: unknown, // тут добавил
   topic_id: number,
 }
 

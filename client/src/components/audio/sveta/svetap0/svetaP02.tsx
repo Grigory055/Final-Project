@@ -1,17 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import  { useEffect, useRef } from 'react';
 import voice from '../../../../../public/audio/svetap0/2.wav';
 
 export default function SvetaP02() {
   const voiceRef = useRef(null);
 
   useEffect(() => {
-    const  voiceElement =  voiceRef.current;
+    const  voiceElement:any =  voiceRef.current;
 
     if ( voiceElement) {
       voiceElement.volume = 0.2; // Установка громкости на 20%
       voiceElement.playbackRate = 1.3; // Установка скорости на 130%
       voiceElement.addEventListener('canplay', handleCanPlay);
-      voiceElement.play().catch((error) => {
+      voiceElement.play().catch((error:any) => {
         console.log('Auto-play failed:', error);
       });
     }

@@ -1,17 +1,17 @@
-import {Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
+import {Box, Button } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useAppDispatch } from '../../redux/hooks';
 import './Game.css';
 import axios from 'axios';
 import { setScores } from '../../redux/userSlice';
 
-export function Game({ handlerDialog }) {
-  const [open, setOpen] = React.useState(false);
-  const [card, setCard] = React.useState({});
+export function Game({ handlerDialog }:any) {
+  const [open, setOpen] = React.useState<any>(false);
+  const [card, setCard] = React.useState<any>({});
   const [input, setInput] = React.useState<string>('');
-  const [score, setScore] = React.useState<number>(0);
-  const [cards, setCards] = React.useState([]);
-  const [time, setTimer] = React.useState(3);
+  const [score, setScore] = React.useState<any>(0);
+  const [cards, setCards] = React.useState<any>([]);
+  const [time, setTimer] = React.useState<number>(3);
 
   const dispatch = useAppDispatch()
 
@@ -28,10 +28,10 @@ export function Game({ handlerDialog }) {
     })();
   }, []);
 
-  const handleClickOpen = (id) => {
+  const handleClickOpen = (id:any) => {
     setInput('')
     setTimer(15)
-    const currentCard = cards.find((el) => el.id === id);
+    const currentCard = cards.find((el:any) => el.id === id);
     setCard(currentCard);
     if (currentCard.condition === '') {
       setOpen(true); 
@@ -44,11 +44,11 @@ export function Game({ handlerDialog }) {
     setTimer(0)
     // console.log(card)
     // setScore((pre) => score - card.value);
-    setScore((pre) => {
-      if ((score - card.value) < 0) {
+    setScore(() => {
+        if ((score - card.value) < 0) {
         setScore(0)
       } else {
-        setScore((pre) => score - card.value)
+        setScore(() => score - card.value)
       }
     });
     card.condition = '2';
@@ -56,7 +56,7 @@ export function Game({ handlerDialog }) {
     // setCard({});
   };
 
-  const handleCloseClick = (id) => {
+  // const handleCloseClick = (id) => {
     // const currentCard = cards.find((el) => el.id === id);
     // // setCard(currentCard);
     // setScore((pre) => {
@@ -66,11 +66,11 @@ export function Game({ handlerDialog }) {
     //     setScore((pre) => score - card.value)
     //   }
     // });
-    setScore((pre) => score - card.value);
+    // setScore((pre) => score - card.value);
     // console.log(id)
-    setOpen(false);
-    setCard({})
-  }
+  //   setOpen(false);
+  //   setCard({})
+  // }
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -85,8 +85,8 @@ export function Game({ handlerDialog }) {
     }
   }, [time]);
 
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(() => e.target.value);
+  const inputHandler = (e:any) =>  {
+    void setInput(() => e.target.value);
   };
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
@@ -96,11 +96,11 @@ export function Game({ handlerDialog }) {
     
 
     if (input.toLowerCase() === card.answer.toLowerCase()) {
-      setScore((pre) => {
+      setScore(() => {
         if ((score - card.value) < 0) {
-          setScore((pre) => score + card.value);
+          setScore(() => score + card.value);
         } else {
-          setScore((pre) => score + card.value)
+          setScore(() => score + card.value)
         }
       });
       // setScore((pre) => score + card.value);
@@ -108,11 +108,11 @@ export function Game({ handlerDialog }) {
       setTimer(1800);
       console.log(score)
     } else {
-       setScore((pre) => {
+       setScore(() => {
       if ((score - card.value) < 0) {
         setScore(0)
       } else {
-        setScore((pre) => score - card.value)
+        setScore(() => score - card.value)
       }
     });
       card.condition = '2';
@@ -142,7 +142,8 @@ export function Game({ handlerDialog }) {
               required
               id="answer"
               name="answer"
-              label="Ваш ответ"
+              // label="Ваш ответ"
+              placeholder='Ваш ответ'
               type="text"
               value={input}
               />
@@ -156,7 +157,7 @@ export function Game({ handlerDialog }) {
         <div style={{ display: 'flex' }}>
           <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>JS</div>
         {cards &&
-          cards.filter((el) => el.topic_id === 1).map((el) => (
+          cards.filter((el:any) => el.topic_id === 1).map((el:any) => (
               <div style={{ margin: '4px' }}>
                 <div onClick={() => handleClickOpen(el.id)}>
                   <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
@@ -169,13 +170,11 @@ export function Game({ handlerDialog }) {
               
         {cards &&
           cards
-            .filter((el) => el.topic_id === 2)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 2)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
-             
               <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
-             
               </div>
               </div>
             ))}
@@ -184,8 +183,8 @@ export function Game({ handlerDialog }) {
             <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>HTML</div>
         {cards &&
           cards
-            .filter((el) => el.topic_id === 3)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 3)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
@@ -214,8 +213,8 @@ export function Game({ handlerDialog }) {
             <div style={{ margin: 'auto',  width: '120px', fontSize: '20px' }}>React</div>
         {cards &&
           cards
-            .filter((el) => el.topic_id === 4)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 4)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
@@ -229,8 +228,8 @@ export function Game({ handlerDialog }) {
             <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>Express</div>
         {cards &&
           cards
-            .filter((el) => el.topic_id === 5)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 5)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
@@ -244,8 +243,8 @@ export function Game({ handlerDialog }) {
             <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>GIT</div>
         {cards &&
           cards
-            .filter((el) => el.topic_id === 6)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 6)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              

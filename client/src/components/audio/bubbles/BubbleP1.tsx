@@ -1,17 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import voice from '../../../../public/audio/bubbles/p1start.wav';
 
 export default function BubbleP1() {
   const voiceRef = useRef(null);
 
   useEffect(() => {
-    const  voiceElement =  voiceRef.current;
+    const  voiceElement:any =  voiceRef.current;
 
     if ( voiceElement) {
       voiceElement.volume = 0.15; // Установка громкости на 15%
       voiceElement.playbackRate = 1.3; // Установка скорости на 130%
       voiceElement.addEventListener('canplay', handleCanPlay);
-      voiceElement.play().catch((error) => {
+      voiceElement.play().catch((error:any) => {
         console.log('Auto-play failed:', error);
       });
     }

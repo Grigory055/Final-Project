@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./DialogsPhase1.module.css";
 import { Button } from "@mui/material";
 import { Boomerang } from "../..";
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+import { useAppDispatch } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 import MaxP11 from "../../audio/prepods/maxP1/MaxP11";
 import MaxP12 from "../../audio/prepods/maxP1/MaxP12";
@@ -45,7 +45,7 @@ export function DialogMaksPhase1() {
 
   const [dialog, setDialog] = useState<IDialog>(Maks1)
 
-  const handlerDialog = (status) => {
+  const handlerDialog = (status:any) => {
     setDialog((pre) => ({ ...pre, status: status }));
     console.log("dialog1", dialog);
   };

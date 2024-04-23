@@ -1,8 +1,8 @@
 import './style.css'
 import { useEffect, useRef } from 'react';
-import { resources, Sprite, Vector2, GameLoop, Input, gridCells, GameObject, Hero, DialogBubble, NPC, Camera, Inventory, Rod, events } from "./src";
+import { resources, Sprite, Vector2, GameLoop, Input, gridCells, GameObject, Hero, DialogBubble, NPC, Camera, Inventory, Rod } from "./src";
 import { useParams } from 'react-router-dom';
-import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls, phase3objects, phase3walls } from './src/levels/'
+import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls, phase3objects, phase3walls } from './src/levels'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { openExit, setWalls, switchDialog } from '../../redux/RPGSlice';
 import { Navbar } from '../Navbar/Navbar';
@@ -20,8 +20,8 @@ export function RPG() {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const levelObjects = gameObjects[Number(id)];
-  const canvasRef = useRef();
-  const stepRef = useRef();
+  const canvasRef = useRef<any>();
+  const stepRef = useRef<any>();
 
   useEffect(() => {
     void dispatch(switchDialog(false));
@@ -91,13 +91,13 @@ export function RPG() {
 
     mainScene.input = new Input();
 
-    const update = (delta) => {
+    const update = (delta:any) => {
       mainScene.stepEntry(delta, mainScene);
     };
 
     const draw = () => {
       if (canvasRef.current) {
-        const canvas = canvasRef.current;
+        const canvas:any = canvasRef.current;
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         // waterSprite.drawImage(ctx, 0, 0)
@@ -116,14 +116,14 @@ export function RPG() {
     gameLoop.start();
 
     return () => {    
-      gameLoop.stop();
+      gameLoop.stop()
       events.clear();
       hero.resetPosition();
     }
   }, []);
 
   useEffect(() => {
-    const stepAudio = stepRef.current; 
+    const stepAudio:any = stepRef.current; 
 
     if (stepAudio) {
       stepAudio.volume = 0.1; // Установка громкости на 20%

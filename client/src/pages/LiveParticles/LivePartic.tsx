@@ -1,5 +1,5 @@
-import React from 'react'
-import { LiveParticles } from 'live-particles';
+
+// import { LiveParticles } from 'live-particles';
 import styles from './LivePartic.module.css'
 
 export default function LiveParticles() {

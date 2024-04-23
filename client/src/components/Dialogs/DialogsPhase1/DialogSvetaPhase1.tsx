@@ -44,9 +44,9 @@ export function DialogSvetaPhase1() {
     navigate('/');
   }
 
-  const moveHandler = (e) => {
+  const moveHandler = (e:any) => {
     e.target.style.transition = "all 0.03s linear 0s";
-    function getRandomInt(min, max) {
+    function getRandomInt(min:any, max:any) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     e.target.style.left = getRandomInt(50, 400) + "px";

@@ -1,6 +1,5 @@
 import { Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import StepGrass from '../audio/steps/StepGrass';
+import  {  useState } from 'react';
 import styles from './Gladiatot.module.css'
 
 interface IGladiator {
@@ -19,9 +18,9 @@ interface IWeapons {
   damage: number;
 }
 
-interface IStatus {
-  status: number;
-}
+// interface IStatus {
+//   status: any;
+// }
 
 const Denisius: IGladiator = {
   name: 'Денисиус',
@@ -119,35 +118,35 @@ export default function Gladiator() {
   const [gladiator1, setGladiator1] = useState<IGladiator>();
   const [gladiator2, setGladiator2] = useState<IGladiator>();
 
-  const [status, setStatus] = useState<IStatus>('1');
+  const [status, setStatus] = useState<string>('1');
 
   const [weapon1, setWeapon1] = useState<IWeapons>();
   const [weapon2, setWeapon2] = useState<IWeapons>();
 
-  const [reserved1, setReserved1] = useState('');
-  const [reserved2, setReserved2] = useState('');
+  const [reserved1, setReserved1] = useState<any>('');
+  const [reserved2, setReserved2] = useState<any>('');
 
-  const [game1, setGame1] = useState('');
-  const [game2, setGame2] = useState('');
+  const [game1, setGame1] = useState<any>('');
+  const [game2, setGame2] = useState<any>('');
 
-  const [attack1, setAttack1] = useState('');
-  const [attack2, setAttack2] = useState('');
+  const [attack1, setAttack1] = useState<any>('');
+  const [attack2, setAttack2] = useState<any>('');
 
-  const [game3, setGame3] = useState('');
-  const [game4, setGame4] = useState('');
+  const [game3, setGame3] = useState<any>('');
+  const [game4, setGame4] = useState<any>('');
 
-  const [game5, setGame5] = useState('');
-  const [game6, setGame6] = useState('');
+  const [game5, setGame5] = useState<any>('');
+  const [game6, setGame6] = useState<any>('');
 
-  const [imgWin1, setImgWin1] = useState('');
-  const [imgWin2, setImgWin2] = useState('');
+  const [imgWin1, setImgWin1] = useState<any>('');
+  const [imgWin2, setImgWin2] = useState<any>('');
 
   const handlerWeapons = () => {
     // первый боец
     const glad1 = gladArr[Math.floor(Math.random() * gladArr.length)];
     const weap1 = weaponsArr[Math.floor(Math.random() * weaponsArr.length)];
     const weap2 = weaponsArr[Math.floor(Math.random() * weaponsArr.length)];
-    setStatus((pre) => '2')
+    setStatus(() => '2')
     if (glad1.name === 'Светланиус') {
       setTimeout(() => {
         setGladiator1(() => glad1);
@@ -221,14 +220,14 @@ export default function Gladiator() {
 
   const handleFight = () => {
     // setTimeout(() => {
-    const player1 = gladiator1;
+    const player1:any = gladiator1;
     setGame1(() => player1);
     setAttack1(() => fight[Math.floor(Math.random() * fight.length)]);
     // }, 1000);
 
     // setTimeout(() => {
     // const player2 = arrGame.filter((el) => el !== player1)
-    const player2 = gladiator2;
+    const player2:any = gladiator2;
     setGame2(() => player2);
     // setGame2(() => player2[Math.floor(Math.random() * player2.length)]) //! 2
     setAttack2(() => fight[Math.floor(Math.random() * fight.length)]);
@@ -398,8 +397,26 @@ export default function Gladiator() {
       setGame5(() => `${game2.name} выиграл`);
       setImgWin2(() => gladiator2?.img);
       setImgWin1(() => gladiator1?.img);
-      setGladiator1(() => ({}));
-      setGladiator2(() => ({}));
+      setGladiator1(() => ({
+        name: '',
+        img: '',
+        weapon: '',
+        hp: 0,
+        sp: 0,
+        strength: 0,
+        level: 0,
+        exp: 0,
+      }));
+      setGladiator2(() => ({
+        name: '',
+        img: '',
+        weapon: '',
+        hp: 0,
+        sp: 0,
+        strength: 0,
+        level: 0,
+        exp: 0,
+      }));
       setAttack1(() => '');
       setAttack2(() => '');
       setGame1(() => '');
@@ -408,8 +425,14 @@ export default function Gladiator() {
       setGame4(() => '');
       setReserved1(() => '');
       setReserved2(() => '');
-      setWeapon1(() => ({}));
-      setWeapon2(() => ({}));
+      setWeapon1(() => ({
+        name: '',
+        damage: 0,
+      }));
+      setWeapon2(() => ({
+        name: '',
+        damage: 0,
+      }));
       // alert(`${game2.name} выиграл`);
       
       console.log('game5', game5)
@@ -420,8 +443,26 @@ export default function Gladiator() {
       setGame6(() => `${game1.name} выиграл`);
       setImgWin1(() => gladiator1?.img);
       setImgWin2(() => gladiator2?.img);
-      setGladiator1(() => ({}));
-      setGladiator2(() => ({}));
+      setGladiator1(() => ({
+        name: '',
+        img: '',
+        weapon: '',
+        hp: 0,
+        sp: 0,
+        strength: 0,
+        level: 0,
+        exp: 0,
+      }));
+      setGladiator2(() => ({
+        name: '',
+        img: '',
+        weapon: '',
+        hp: 0,
+        sp: 0,
+        strength: 0,
+        level: 0,
+        exp: 0,
+      }));
       setAttack1(() => '');
       setAttack2(() => '');
       setGame1(() => '');
@@ -430,8 +471,14 @@ export default function Gladiator() {
       setGame4(() => '');
       setReserved1(() => '');
       setReserved2(() => '');
-      setWeapon1(() => ({}));
-      setWeapon2(() => ({}));
+      setWeapon1(() => ({
+        name: '',
+        damage: 0,
+      }));
+      setWeapon2(() => ({
+        name: '',
+        damage: 0,
+      }));
       // alert(`${game1.name} выиграл`);
       
       

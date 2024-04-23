@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import styles from './DialogsPhase0.module.css'
 import { Button } from '@mui/material'
 import { useAppDispatch } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
@@ -22,7 +21,7 @@ export function DialogStartPhase0() {
     dispatch(switchDialog(false));
   }
 
-    const [dialog, setDialog] = useState<IDialog>(dialogStartPhase0)
+    const [dialog] = useState<IDialog>(dialogStartPhase0)
 
   return (
     <>

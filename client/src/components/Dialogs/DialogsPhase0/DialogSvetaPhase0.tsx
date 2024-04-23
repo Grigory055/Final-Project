@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import styles from './DialogsPhase0.module.css'
+
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
@@ -52,13 +52,13 @@ export function DialogSvetaPhase0() {
   
   const [dialog, setDialog] = useState<IDialog>(Sveta)
 
-    const playAudioHandler = (sound) => {
-      const track = new Audio(sound)
-     track.playbackRate = 1.3
-      track.volume = 0.2
+    // const playAudioHandler = (sound) => {
+    //   const track = new Audio(sound)
+    //  track.playbackRate = 1.3
+    //   track.volume = 0.2
       
-      track.play()
-    }
+    //   track.play()
+    // }
 
     // const d1SvetaHandler = () => {
     //   playAudioHandler(SvetaP0dialog1)
