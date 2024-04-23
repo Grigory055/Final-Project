@@ -20,8 +20,8 @@ export function RPG() {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const levelObjects = gameObjects[Number(id)];
-  const canvasRef = useRef();
-  const stepRef = useRef();
+  const canvasRef = useRef<any>();
+  const stepRef = useRef<any>();
 
   useEffect(() => {
     void dispatch(switchDialog(false));
@@ -97,7 +97,7 @@ export function RPG() {
 
     const draw = () => {
       if (canvasRef.current) {
-        const canvas = canvasRef.current;
+        const canvas:any = canvasRef.current;
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         // waterSprite.drawImage(ctx, 0, 0)
@@ -116,14 +116,14 @@ export function RPG() {
     gameLoop.start();
 
     return () => {    
-      gameLoop.stop();
+      gameLoop.stop()
       events.clear();
       hero.resetPosition();
     }
   }, []);
 
   useEffect(() => {
-    const stepAudio = stepRef.current; 
+    const stepAudio:any = stepRef.current; 
 
     if (stepAudio) {
       stepAudio.volume = 0.1; // Установка громкости на 20%

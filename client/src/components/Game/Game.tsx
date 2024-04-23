@@ -9,7 +9,7 @@ export function Game({ handlerDialog }:any) {
   const [open, setOpen] = React.useState<any>(false);
   const [card, setCard] = React.useState<any>({});
   const [input, setInput] = React.useState<string>('');
-  const [score, setScore] = React.useState<number>(0);
+  const [score, setScore] = React.useState<any>(0);
   const [cards, setCards] = React.useState<any>([]);
   const [time, setTimer] = React.useState<number>(3);
 
@@ -45,7 +45,7 @@ export function Game({ handlerDialog }:any) {
     // console.log(card)
     // setScore((pre) => score - card.value);
     setScore(() => {
-       if ((score - card.value) < 0) {
+        if ((score - card.value) < 0) {
         setScore(0)
       } else {
         setScore(() => score - card.value)
@@ -142,7 +142,8 @@ export function Game({ handlerDialog }:any) {
               required
               id="answer"
               name="answer"
-              label="Ваш ответ"
+              // label="Ваш ответ"
+              placeholder='Ваш ответ'
               type="text"
               value={input}
               />
@@ -156,7 +157,7 @@ export function Game({ handlerDialog }:any) {
         <div style={{ display: 'flex' }}>
           <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>JS</div>
         {cards &&
-          cards.filter((el) => el.topic_id === 1).map((el) => (
+          cards.filter((el:any) => el.topic_id === 1).map((el:any) => (
               <div style={{ margin: '4px' }}>
                 <div onClick={() => handleClickOpen(el.id)}>
                   <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
@@ -169,8 +170,8 @@ export function Game({ handlerDialog }:any) {
               
         {cards &&
           cards
-            .filter((el) => el.topic_id === 2)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 2)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
@@ -184,8 +185,8 @@ export function Game({ handlerDialog }:any) {
             <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>HTML</div>
         {cards &&
           cards
-            .filter((el) => el.topic_id === 3)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 3)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
@@ -214,8 +215,8 @@ export function Game({ handlerDialog }:any) {
             <div style={{ margin: 'auto',  width: '120px', fontSize: '20px' }}>React</div>
         {cards &&
           cards
-            .filter((el) => el.topic_id === 4)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 4)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
@@ -229,8 +230,8 @@ export function Game({ handlerDialog }:any) {
             <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>Express</div>
         {cards &&
           cards
-            .filter((el) => el.topic_id === 5)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 5)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
@@ -244,8 +245,8 @@ export function Game({ handlerDialog }:any) {
             <div style={{ margin: 'auto', width: '120px', fontSize: '20px' }}>GIT</div>
         {cards &&
           cards
-            .filter((el) => el.topic_id === 6)
-            .map((el) => (
+            .filter((el:any) => el.topic_id === 6)
+            .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
