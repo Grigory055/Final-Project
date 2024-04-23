@@ -1,4 +1,16 @@
-class Resources {
+interface ImageObject {
+  image: HTMLImageElement;
+  isLoaded: boolean;
+}
+
+interface ToLoadResources {
+  [key: string]: string;
+}
+
+export class Resources {
+  toLoad: ToLoadResources;
+  images: { [key: string]: ImageObject };
+
   constructor() {
     // Everything we plan to download
     this.toLoad = {
@@ -20,17 +32,20 @@ class Resources {
     this.images = {};
 
     // Load each image
-    Object.keys(this.toLoad).forEach(key => {
+    Object.keys(this.toLoad).forEach((key: string) => {
       const img = new Image();
       img.src = this.toLoad[key];
       this.images[key] = {
         image: img,
-        isLoaded: false
-      }
+        isLoaded: false,
+      };
+
       img.onload = () => {
-        this.images[key].isLoaded = true;
-      }
-    })
+        if (this.images[key]) {
+          this.images[key].isLoaded = true;
+        }
+      };
+    });
   }
 }
 
