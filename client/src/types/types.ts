@@ -6,6 +6,7 @@ interface IUser {
   character?: string;
   score?: number;
   level?: number;
+  err?: string;
 }
 
 interface IGameSave {
