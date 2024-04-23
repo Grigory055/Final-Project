@@ -7,7 +7,7 @@ import { store } from "../../../../../redux/store";
 import { openExit, setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
 
 export class NPC extends GameObject {
-  constructor(x, y, name, dialogID, exitCoordX, exitCoordY, skin) {
+  constructor(x: any, y: any, name: any, dialogID: any, exitCoordX: any, exitCoordY: any, skin: any) {
     super({
       position: new Vector2(x, y),
     }, name);
@@ -33,7 +33,7 @@ export class NPC extends GameObject {
   }
 
   ready() {
-    events.on("HERO_POSITION", this, (pos) => {
+    events.on("HERO_POSITION", this, (pos: any) => {
       const roundedHeroX = Math.round(pos.x);
       const roundedHeroY = Math.round(pos.y);
       if (

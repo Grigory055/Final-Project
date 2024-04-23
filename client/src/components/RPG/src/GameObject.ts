@@ -2,7 +2,7 @@ import { Vector2 } from './Vector2.js';
 import { events } from './Events.js';
 
 export class GameObject {
-  constructor({ position }, name ) {
+  constructor({ position }: { position: any }, name: string ) {
     this.position = position ?? new Vector2(0, 0);
     this.children = [];
     this.parent = null;
@@ -11,9 +11,9 @@ export class GameObject {
   }
 
   // First entry point of the loop
-  stepEntry(delta, root) {
+  stepEntry(delta: any, root: any) {
     // Call updates on all children first
-    this.children.forEach(child => child.stepEntry(delta, root));
+    this.children.forEach((child: any) => child.stepEntry(delta, root));
 
     // Call ready on the first frame
     if (!this.hasReadyBeenCalled) {
@@ -31,12 +31,12 @@ export class GameObject {
   }
 
   // Called once every frame
-  step(_delta) {
+  step(_delta: any) {
     // ...
   }
 
   /* draw entry */
-  draw(ctx, x, y) {
+  draw(ctx: any, x: any, y: any) {
     const drawPosX = x + this.position.x;
     const drawPosY = y + this.position.y;
 
@@ -44,28 +44,28 @@ export class GameObject {
     this.drawImage(ctx, drawPosX, drawPosY);
 
     // Pass on to children
-    this.children.forEach(child => child.draw(ctx, drawPosX, drawPosY));
+    this.children.forEach((child: any) => child.draw(ctx, drawPosX, drawPosY));
   }
 
-  drawImage(ctx, drawPosX, drawPosY) {
+  drawImage(ctx: any, drawPosX: any, drawPosY: any) {
     //...
   }
 
   // Remove from the tree
   destroy() {
-    this.children.forEach(child => {
+    this.children.forEach((child: any) => {
       child.destroy();
     });
     this.parent.removeChild(this);
   }
 
   /* Other Game Objects are nestable inside this one */
-  addChild(gameObject) {
+  addChild(gameObject: any) {
     gameObject.parent = this;
     this.children.push(gameObject);
   }
 
-  removeChild(gameObject) {
+  removeChild(gameObject: any) {
     events.unsubscribe(gameObject);
     this.children = this.children.filter(g => {
       return gameObject !== g;

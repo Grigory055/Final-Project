@@ -47,7 +47,7 @@ export class Input {
     return this.heldDirections[0];
   }
 
-  onArrowPressed(direction) {
+  onArrowPressed(direction: any) {
     if (this.active) {
       // Add this arrow to the queue if it's new
       if (this.heldDirections.indexOf(direction) === -1) {
@@ -56,7 +56,7 @@ export class Input {
     }
   }
 
-  onArrowReleased(direction) {
+  onArrowReleased(direction: any) {
     const index = this.heldDirections.indexOf(direction);
     if (index === -1) {
       return;

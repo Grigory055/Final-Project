@@ -1,5 +1,5 @@
 export class GameLoop {
-  constructor(update, render) {
+  constructor(update: any, render: any) {
 
     this.lastFrameTime = 0;
     this.accumulatedTime = 0;
@@ -12,10 +12,10 @@ export class GameLoop {
     this.isRunning = false;
   }
 
-  mainLoop = (timestamp) => {
+  mainLoop = (timestamp: any) => {
     if (!this.isRunning) return;
 
-    let deltaTime = timestamp - this.lastFrameTime;
+    const deltaTime: any = timestamp - this.lastFrameTime;
     this.lastFrameTime = timestamp;
 
     // Accumulate all the time since the last frame.
@@ -47,7 +47,6 @@ export class GameLoop {
     }
     this.isRunning = false;
   }
-
 }
 
 

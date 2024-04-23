@@ -11,7 +11,16 @@ export class Sprite extends GameObject {
       scale, // how large to draw this image
       position, // where to draw it (top left corner)
       animations,
-    }, name) {
+    }: {
+      resource: any
+      frameSize: any
+      hFrames: any
+      vFrames: any
+      frame: any
+      scale: any
+      position: any
+      animations: any
+    }, name: string) {
     super({
       name
     });
@@ -40,7 +49,7 @@ export class Sprite extends GameObject {
     }
   }
 
-  step(delta) {
+  step(delta: any) {
     if (!this.animations) {
       return;
     }
@@ -48,7 +57,7 @@ export class Sprite extends GameObject {
     this.frame = this.animations.frame;
   }
 
-  drawImage(ctx, x, y) {
+  drawImage(ctx: any, x: any, y: any) {
     if (!this.resource.isLoaded) {
       return;
     }

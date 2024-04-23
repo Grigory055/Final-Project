@@ -1,5 +1,7 @@
 export class Animations {
-  constructor(patterns) {
+  patterns: any;
+  activeKey: any;
+  constructor(patterns: any) {
     this.patterns = patterns;
     this.activeKey = Object.keys(this.patterns)[0];
   }
@@ -8,7 +10,7 @@ export class Animations {
     return this.patterns[this.activeKey].frame;
   }
 
-  play(key, startAtTime = 0) {
+  play(key: any, startAtTime = 0) {
     // Already playing this one
     if (this.activeKey === key) {
       return;
@@ -18,7 +20,7 @@ export class Animations {
     this.patterns[this.activeKey].currentTime = startAtTime;
   }
 
-  step(delta) {
+  step(delta: any) {
     this.patterns[this.activeKey].step(delta);
   }
 }

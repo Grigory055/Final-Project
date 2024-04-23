@@ -1,9 +1,16 @@
+interface ISubscribe {
+  id: number,
+  eventName: any,
+  caller: any,
+  callback: any,
+}
+
 class Events {
-  callbacks = [];
+  callbacks = [] ;
   nextId = 0;
 
   // emit event
-  emit(eventName, value) {
+  emit(eventName: any, value: any) {
     this.callbacks.forEach(stored => {
       if (stored.eventName === eventName) {
         stored.callback(value)
@@ -12,23 +19,24 @@ class Events {
   }
 
   // subscribe to something happening
-  on(eventName, caller, callback) {
+  on(eventName: any, caller: any, callback: any) {
     this.nextId += 1;
-    this.callbacks.push({
+    const subscribe: ISubscribe = {
       id: this.nextId,
       eventName,
       caller,
       callback,
-    });
+    }
+    this.callbacks.push(subscribe);
     return this.nextId;
   }
 
   // remove the subscription
-  off(id) {
+  off(id: any) {
     this.callbacks = this.callbacks.filter((stored) => stored.id !== id);
   }
 
-  unsubscribe(caller) {
+  unsubscribe(caller: any) {
     this.callbacks = this.callbacks.filter(
         (stored) => stored.caller !== caller,
     );

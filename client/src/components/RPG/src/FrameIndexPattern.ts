@@ -1,5 +1,5 @@
 export class FrameIndexPattern {
-  constructor(animationConfig) {
+  constructor(animationConfig: any) {
     this.currentTime = 0;
     this.animationConfig = animationConfig;
     this.duration = animationConfig.duration ?? 500;
@@ -15,7 +15,7 @@ export class FrameIndexPattern {
     throw "Time is before the first keyframe";
   }
 
-  step(delta) {
+  step(delta: any) {
     this.currentTime += delta;
     if (this.currentTime >= this.duration) {
       this.currentTime = 0;

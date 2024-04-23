@@ -24,7 +24,7 @@ import { store } from "../../../../../redux/store";
 
 
 export class Hero extends GameObject {
-  constructor(x, y, name, character, stepAudio) {
+  constructor(x: any, y: any, name: any, character: any, stepAudio: any) {
     super({
       position: new Vector2(x, y),
     }, name);
@@ -66,13 +66,13 @@ export class Hero extends GameObject {
     this.stepAudio = stepAudio;
 
     // React to picking up an item
-    events.on("HERO_PICKS_UP_ITEM", this, data => {
+    events.on("HERO_PICKS_UP_ITEM", this, (data: any) => {
       this.onPickUpItem(data)
     })
 
   }
 
-  step(delta, root) {
+  step(delta: any, root: any) {
 
     const state = store.getState();
     this.isWalking = state.RPGSlice.heroIsWalking;
@@ -105,7 +105,7 @@ export class Hero extends GameObject {
     events.emit("HERO_POSITION", this.position)
   }
 
-  tryMove(root) {
+  tryMove(root: any) {
     const {input} = root;
 
     if (!input.direction) {
@@ -152,7 +152,7 @@ export class Hero extends GameObject {
     this.stepAudio.play();
   }
 
-  onPickUpItem({ image, position }) {
+  onPickUpItem({ image, position }: { image: any, position: any }) {
     // Make sure we land right on the item
     this.destinationPosition = position.duplicate();
 
@@ -167,7 +167,7 @@ export class Hero extends GameObject {
     this.addChild(this.itemPickupShell);
   }
 
-  workOnItemPickup(delta) {
+  workOnItemPickup(delta: any) {
     this.itemPickupTime -= delta;
     this.body.animations.play("pickUpDown")
 

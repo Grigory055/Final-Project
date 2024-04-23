@@ -5,7 +5,7 @@ import {Vector2} from "../../Vector2.js";
 import {events} from "../../Events.js";
 
 export class Inventory extends GameObject {
-  constructor(name) {
+  constructor(name: any) {
     super({
       position: new Vector2(0, 1)
     }, name);
@@ -14,7 +14,7 @@ export class Inventory extends GameObject {
     this.items = []
 
     // React to Hero picking up an item
-    events.on("HERO_PICKS_UP_ITEM", this, data => {
+    events.on("HERO_PICKS_UP_ITEM", this, (data: any) => {
       this.nextId += 1;
       this.items.push({
         id: this.nextId,
@@ -35,10 +35,10 @@ export class Inventory extends GameObject {
   renderInventory() {
 
     // Remove stale drawings
-    this.children.forEach(child => child.destroy())
+    this.children.forEach((child: any) => child.destroy())
 
     // Draw fresh from the latest version of the list
-    this.items.forEach((item, index) => {
+    this.items.forEach((item: any, index: any) => {
       const sprite = new Sprite({
         resource: item.image,
         position: new Vector2(index*12, 0)
@@ -47,7 +47,7 @@ export class Inventory extends GameObject {
     })
   }
 
-  removeFromInventory(id) {
+  removeFromInventory(id: any) {
     this.items = this.items.filter(item => item.id !== id);
     this.renderInventory();
   }

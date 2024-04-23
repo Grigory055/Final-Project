@@ -3,10 +3,10 @@ import {events} from "./Events.js";
 import {Vector2} from "./Vector2.js";
 
 export class Camera extends GameObject {
-  constructor(name) {
+  constructor(name: string) {
     super({}, name);
 
-    events.on("HERO_POSITION", this, heroPosition => {
+    events.on("HERO_POSITION", this, (heroPosition: any) => {
 
       // Create a new position based on the hero's position
       const personHalf = 8;
@@ -19,6 +19,5 @@ export class Camera extends GameObject {
           -heroPosition.y + halfHeight,
       )
     })
-
   }
 }
