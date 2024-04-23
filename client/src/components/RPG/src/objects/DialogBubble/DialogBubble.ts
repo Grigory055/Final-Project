@@ -7,6 +7,8 @@ import { store } from "../../../../../redux/store";
 import { setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
 
 export class DialogBubble extends GameObject {
+  body: any;
+  dialogID: any;
   constructor(x: any, y: any, name: any, dialogID: any) {
     super({
       position: new Vector2(x, y),
