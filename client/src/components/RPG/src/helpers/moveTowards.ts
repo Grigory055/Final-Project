@@ -1,4 +1,4 @@
-export function moveTowards(person, destinationPosition, speed) {
+export function moveTowards(person: any, destinationPosition: any, speed: any) {
   let distanceToTravelX = destinationPosition.x - person.position.x;
   let distanceToTravelY = destinationPosition.y - person.position.y;
 
@@ -10,8 +10,8 @@ export function moveTowards(person, destinationPosition, speed) {
     person.position.y = destinationPosition.y;
   } else {
     // Otherwise, move by the specified speed in the direction of the destination
-    let normalizedX = distanceToTravelX / distance;
-    let normalizedY = distanceToTravelY / distance;
+    const normalizedX = distanceToTravelX / distance;
+    const normalizedY = distanceToTravelY / distance;
 
     person.position.x += normalizedX * speed;
     person.position.y += normalizedY * speed;
