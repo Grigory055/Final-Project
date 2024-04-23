@@ -397,8 +397,26 @@ export default function Gladiator() {
       setGame5(() => `${game2.name} выиграл`);
       setImgWin2(() => gladiator2?.img);
       setImgWin1(() => gladiator1?.img);
-      setGladiator1(() => ({}));
-      setGladiator2(() => ({}));
+      setGladiator1(() => ({
+        name: '',
+        img: '',
+        weapon: '',
+        hp: 0,
+        sp: 0,
+        strength: 0,
+        level: 0,
+        exp: 0,
+      }));
+      setGladiator2(() => ({
+        name: '',
+        img: '',
+        weapon: '',
+        hp: 0,
+        sp: 0,
+        strength: 0,
+        level: 0,
+        exp: 0,
+      }));
       setAttack1(() => '');
       setAttack2(() => '');
       setGame1(() => '');
@@ -407,8 +425,14 @@ export default function Gladiator() {
       setGame4(() => '');
       setReserved1(() => '');
       setReserved2(() => '');
-      setWeapon1(() => ({}));
-      setWeapon2(() => ({}));
+      setWeapon1(() => ({
+        name: '',
+        damage: 0,
+      }));
+      setWeapon2(() => ({
+        name: '',
+        damage: 0,
+      }));
       // alert(`${game2.name} выиграл`);
       
       console.log('game5', game5)
@@ -419,8 +443,26 @@ export default function Gladiator() {
       setGame6(() => `${game1.name} выиграл`);
       setImgWin1(() => gladiator1?.img);
       setImgWin2(() => gladiator2?.img);
-      setGladiator1(() => ({}));
-      setGladiator2(() => ({}));
+      setGladiator1(() => ({
+        name: '',
+        img: '',
+        weapon: '',
+        hp: 0,
+        sp: 0,
+        strength: 0,
+        level: 0,
+        exp: 0,
+      }));
+      setGladiator2(() => ({
+        name: '',
+        img: '',
+        weapon: '',
+        hp: 0,
+        sp: 0,
+        strength: 0,
+        level: 0,
+        exp: 0,
+      }));
       setAttack1(() => '');
       setAttack2(() => '');
       setGame1(() => '');
@@ -429,8 +471,14 @@ export default function Gladiator() {
       setGame4(() => '');
       setReserved1(() => '');
       setReserved2(() => '');
-      setWeapon1(() => ({}));
-      setWeapon2(() => ({}));
+      setWeapon1(() => ({
+        name: '',
+        damage: 0,
+      }));
+      setWeapon2(() => ({
+        name: '',
+        damage: 0,
+      }));
       // alert(`${game1.name} выиграл`);
       
       

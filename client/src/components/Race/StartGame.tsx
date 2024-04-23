@@ -14,7 +14,7 @@ export function StartGame({ handlerDialog }:any) {
   );
   const [roundTime] = useState<number>(175);
   const [active, setActive] = useState<boolean>(false);
-  const [winner, setWinner] = useState<string|undefined>("");
+  const [winner, setWinner] = useState<string|undefined|any>("");
   const [startRace, setStartRace] = useState<boolean>(false);
   const [wins, setWins] = useState<number>(0);
 
