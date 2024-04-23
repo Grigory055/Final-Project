@@ -1,9 +1,19 @@
-export class GameLoop {
-  constructor(update: any, render: any) {
+type UpdateFunction = (deltaTime: number) => void;
+type RenderFunction = () => void;
 
+export class GameLoop {
+  private lastFrameTime: number;
+  private accumulatedTime: number;
+  private timeStep: number;
+  private update: UpdateFunction;
+  private render: RenderFunction;
+  private rafId: number | null;
+  private isRunning: boolean;
+
+  constructor(update: UpdateFunction, render: RenderFunction) {
     this.lastFrameTime = 0;
     this.accumulatedTime = 0;
-    this.timeStep = 1000/60; // 60 frames per second
+    this.timeStep = 1000 / 60; // 60 frames per second
 
     this.update = update;
     this.render = render;
@@ -12,10 +22,10 @@ export class GameLoop {
     this.isRunning = false;
   }
 
-  mainLoop = (timestamp: any) => {
+  private mainLoop = (timestamp: number) => {
     if (!this.isRunning) return;
 
-    const deltaTime: any = timestamp - this.lastFrameTime;
+    const deltaTime: number = timestamp - this.lastFrameTime;
     this.lastFrameTime = timestamp;
 
     // Accumulate all the time since the last frame.
@@ -32,31 +42,19 @@ export class GameLoop {
     this.render();
 
     this.rafId = requestAnimationFrame(this.mainLoop);
-  }
+  };
 
-  start() {
+  start(): void {
     if (!this.isRunning) {
       this.isRunning = true;
       this.rafId = requestAnimationFrame(this.mainLoop);
     }
   }
 
-  stop() {
+  stop(): void {
     if (this.rafId) {
       cancelAnimationFrame(this.rafId);
     }
     this.isRunning = false;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-

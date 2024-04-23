@@ -1,23 +1,34 @@
-import {GameObject} from "./GameObject.js";
-import {events} from "./Events.js";
-import {Vector2} from "./Vector2.js";
+import { GameObject } from "./GameObject.js";
+import { events } from "./Events.js";
+import { Vector2 } from "./Vector2.js";
+
+interface HeroPosition {
+  x: number;
+  y: number;
+}
+
+interface GameObjectProps {
+  position: Vector2;
+}
 
 export class Camera extends GameObject {
   constructor(name: string) {
-    super({}, name);
+    const initialProps: GameObjectProps = {
+      position: new Vector2(0, 0)
+    };
 
-    events.on("HERO_POSITION", this, (heroPosition: any) => {
+    super(initialProps, name);
 
-      // Create a new position based on the hero's position
+    events.on("HERO_POSITION", this, (heroPosition: HeroPosition) => {
       const personHalf = 8;
       const canvasWidth = 320;
       const canvasHeight = 180;
       const halfWidth = -personHalf + canvasWidth / 2;
       const halfHeight = -personHalf + canvasHeight / 2;
       this.position = new Vector2(
-          -heroPosition.x + halfWidth,
-          -heroPosition.y + halfHeight,
-      )
-    })
+        -heroPosition.x + halfWidth,
+        -heroPosition.y + halfHeight
+      );
+    });
   }
 }

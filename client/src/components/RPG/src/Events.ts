@@ -6,11 +6,11 @@ interface ISubscribe {
 }
 
 class Events {
-  callbacks = [] ;
+  callbacks: ISubscribe[] = [] ;
   nextId = 0;
 
   // emit event
-  emit(eventName: any, value: any) {
+  emit(eventName: any, value: any): void {
     this.callbacks.forEach(stored => {
       if (stored.eventName === eventName) {
         stored.callback(value)
