@@ -24,6 +24,16 @@ import { store } from "../../../../../redux/store";
 
 
 export class Hero extends GameObject {
+body:any;
+facingDirection :any;
+destinationPosition :any;
+isWalking :any;
+itemPickupTime :any;
+itemPickupShell :any;
+walls :any;
+stepAudio:any;
+lastX:any;
+lastY:any;
   constructor(x: any, y: any, name: any, character: any, stepAudio: any) {
     super({
       position: new Vector2(x, y),
@@ -33,7 +43,8 @@ export class Hero extends GameObject {
       resource: resources.images.shadow,
       frameSize: new Vector2(32, 32),
       position: new Vector2(-8, -19),
-    })
+      
+    },name)
     this.addChild(shadow);
 
     this.body = new Sprite({
@@ -54,7 +65,7 @@ export class Hero extends GameObject {
         standRight: new FrameIndexPattern(STAND_RIGHT),
         pickUpDown: new FrameIndexPattern(PICK_UP_DOWN),
       })
-    })
+    },name)
     this.addChild(this.body);
 
     this.facingDirection = DOWN;

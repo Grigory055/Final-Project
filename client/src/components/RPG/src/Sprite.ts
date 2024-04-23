@@ -2,15 +2,15 @@ import {Vector2} from "./Vector2.js";
 import {GameObject} from "./GameObject.js";
 
 export class Sprite extends GameObject {
-  resource: any;
-      frameSize: any;
-      hFrames: any;
-      vFrames: any;
-      frame: any;
-      scale: any;
-      position: any;
-      animations: any;
-      frameMap:any;
+  resource?: any;
+      frameSize?: any;
+      hFrames?: any;
+      vFrames?: any;
+      frame?: any;
+      scale?: any;
+      position?: any;
+      animations?: any;
+      frameMap?:any;
   constructor({
       resource, // image we want to draw
       frameSize, // size of the crop of the image
@@ -21,15 +21,15 @@ export class Sprite extends GameObject {
       position, // where to draw it (top left corner)
       animations,
     }: {
-      resource: any
-      frameSize: any
-      hFrames: any
-      vFrames: any
-      frame: any
-      scale: any
-      position: any
-      animations: any
-    }, name: string) {
+      resource?: any
+      frameSize?: any
+      hFrames?: any
+      vFrames?: any
+      frame?: any
+      scale?: any
+      position?: any
+      animations?: any
+    }, name?: string) {
     super({ position }, name);
     this.resource = resource;
     this.frameSize = frameSize ?? new Vector2(16,16);

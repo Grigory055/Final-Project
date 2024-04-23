@@ -2,12 +2,12 @@ import { Vector2 } from './Vector2.js';
 import { events } from './Events.js';
 
 export class GameObject {
-  position: any;
-  children: any;
-  parent: any;
-  hasReadyBeenCalled: any;
-  name: any;
-  constructor({ position}: { position: any }, name: string ) {
+  position?: any;
+  children?: any;
+  parent?: any;
+  hasReadyBeenCalled?: any;
+  name?: any;
+  constructor({ position}: { position?: any }, name?: string ) {
     this.position = position ?? new Vector2(0, 0);
     this.children = [];
     this.parent = null;
