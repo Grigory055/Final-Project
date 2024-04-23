@@ -2,6 +2,11 @@ import { Vector2 } from './Vector2.js';
 import { events } from './Events.js';
 
 export class GameObject {
+  position: any;
+  children: any;
+  parent: any;
+  hasReadyBeenCalled: any;
+  name: any;
   constructor({ position }: { position: any }, name: string ) {
     this.position = position ?? new Vector2(0, 0);
     this.children = [];
@@ -31,8 +36,9 @@ export class GameObject {
   }
 
   // Called once every frame
-  step(_delta: any) {
-    // ...
+  step(_delta: any, root: any) {
+    const result = { _delta, root };
+    return result;
   }
 
   /* draw entry */
@@ -48,7 +54,8 @@ export class GameObject {
   }
 
   drawImage(ctx: any, drawPosX: any, drawPosY: any) {
-    //...
+    const result = { ctx, drawPosX, drawPosY };
+    return result;
   }
 
   // Remove from the tree
@@ -67,7 +74,7 @@ export class GameObject {
 
   removeChild(gameObject: any) {
     events.unsubscribe(gameObject);
-    this.children = this.children.filter(g => {
+    this.children = this.children.filter((g: any) => {
       return gameObject !== g;
     });
   }
