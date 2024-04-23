@@ -7,6 +7,7 @@ export class GameObject {
   parent?: any;
   hasReadyBeenCalled?: any;
   name?: any;
+  input?: any;
   constructor({ position}: { position?: any }, name?: string ) {
     this.position = position ?? new Vector2(0, 0);
     this.children = [];

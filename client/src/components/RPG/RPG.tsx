@@ -87,7 +87,7 @@ export function RPG() {
 
     mainScene.addChild(hero);
 
-    const inventory = new Inventory('inventory');
+    const inventory = new Inventory({name: 'inventory'});
 
     mainScene.input = new Input();
 
