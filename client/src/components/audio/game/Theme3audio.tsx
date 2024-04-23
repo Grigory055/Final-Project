@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import voice from '../../../../public/audio/gamemusic/theme3.mp3';
 
 export default function Theme3audio() {
   const voiceRef = useRef(null);
 
   useEffect(() => {
-    const  voiceElement =  voiceRef.current;
+    const  voiceElement:any =  voiceRef.current;
 
     if ( voiceElement) {
 
@@ -13,7 +13,7 @@ export default function Theme3audio() {
       voiceElement.playbackRate = 1.0; // Установка скорости на 100%
 
       voiceElement.addEventListener('canplay', handleCanPlay);
-      voiceElement.play().catch((error) => {
+      voiceElement.play().catch((error:any) => {
         console.log('Auto-play failed:', error);
       });
     }

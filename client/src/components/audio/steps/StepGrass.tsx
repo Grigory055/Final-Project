@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import voice from "./step_grass.wav";
 
 export default function StepGrass() {
   const voiceRef = useRef(null);
 
   useEffect(() => {
-    const voiceElement = voiceRef.current;
+    const voiceElement:any|HTMLAudioElement = voiceRef.current;
 
     if (voiceElement) {
       voiceElement.volume = 0.09; // Установка громкости
@@ -24,10 +24,10 @@ export default function StepGrass() {
     };
   }, []);
 
-  const goHandler = (e) => {
+  const goHandler = (e:any) => {
     const voiceElement = voiceRef.current;
     if (e.code === "KeyW") {
-      voiceElement.play();
+      voiceElement?.play();
     }
   };
 

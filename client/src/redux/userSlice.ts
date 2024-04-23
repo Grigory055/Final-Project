@@ -9,7 +9,7 @@ export type UserSliceState = {
     topics: ICard[],
     score: number,
     character: string,
-    level: number,
+    level: any,
 }
 
 const initialState: UserSliceState = {
@@ -35,7 +35,7 @@ const userSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchUserLogin.fulfilled, (state: UserSliceState, { payload }) => {
+        builder.addCase(fetchUserLogin.fulfilled, (state: UserSliceState, { payload }:any) => {
             if (payload) {
                state.isLogin = true;
                state.login = payload.login;

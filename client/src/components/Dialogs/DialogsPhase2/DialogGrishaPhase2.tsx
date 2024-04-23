@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from './DialogPhase2.module.css'
+
 import { FlashCardsGame } from '../../Flash-Cards/FlashCardsGame'
 import { Button } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
@@ -21,11 +21,11 @@ interface IDialog {
     text: 'Ну здарова! Я местный колдун, маг, ведьмак и вообще, че пристал ко мне? Ты не пройдёшь!! Хотя, все таки ты и мой ученик, если не пройдешь, тогда и мне прилетит.',
   }
 
-  const Grisha2: IDialog = {
-    person: 'Grisha',
-    status: '2',
-    text: 'Как видишь, вот и пронеслась вторая фаза, осталось только ответить на вопросы в игре Флеш-карты!',
-  }
+  // const Grisha2: IDialog = {
+  //   person: 'Grisha',
+  //   status: '2',
+  //   text: 'Как видишь, вот и пронеслась вторая фаза, осталось только ответить на вопросы в игре Флеш-карты!',
+  // }
 
   const Grisha3: IDialog = {
     person: 'Grisha',

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function useCookieExistence(cookieName) {
+function useCookieExistence(cookieName:any) {
   const [cookiesExist, setCookiesExist] = useState(false);
 
   useEffect(() => {

@@ -11,7 +11,7 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
 
   const dispatch = useAppDispatch()
 
-  async function getQuestion(id) {
+  async function getQuestion(questionsId:any) {
     const response = await fetch(
       `http://127.0.0.1:3000/api/v1/game/${questionsId}`,
       {
@@ -35,7 +35,7 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
   }, [showGameModal]);
 
   // const shuffledAnswers = shuffle(answers);
-  const userId = localStorage.getItem('userId');
+  // const userId = localStorage.getItem('userId');
 
   // async function answerInBase(answerId) {
   //   try {
@@ -58,7 +58,7 @@ function GameModal({ questionsId, showGameModal, closeGameModal }: any) {
   //   }
   // }
 
-  function answerInStorage(answerId, questionsID, answerBool) {
+  function answerInStorage(answerId:any, questionsID:any, answerBool:any) {
     
     if (answerBool) {
       const answerOK = JSON.parse(localStorage.getItem('answerOK')) || [];

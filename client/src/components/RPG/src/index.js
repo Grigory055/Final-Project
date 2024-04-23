@@ -13,4 +13,4 @@ export { DialogBubble } from './objects/DialogBubble/DialogBubble';
 export { NPC } from './objects/NPC/NPC';
 export { Rod } from './objects/Rod/Rod';
 export { Inventory } from './objects/Inventory/Inventory';
-export { gridCells } from './helpers/grid'
+export { gridCells } from './helpers/grid';

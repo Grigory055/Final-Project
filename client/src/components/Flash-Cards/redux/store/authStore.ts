@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import authReducer from '../reducers/authReducer';
-import { Provider } from 'react-redux';
+
 
 const rootReducer = combineReducers({
   auth: authReducer,

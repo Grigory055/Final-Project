@@ -1,4 +1,4 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_USER } from '../actions/authActions';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/authActions';
 
 const initialState = {
   user: null,
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action:any) => {
   switch (action.type) {
     case LOGIN_START:
       return {

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import styles from "./DialogPhase3.module.css";
+
 import { Button } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { fetchUserScore } from "../../../redux/thunkActions";
 import DenisP31 from "../../audio/prepods/denisP3/DenisP31";
-import DenisP32 from "../../audio/prepods/denisP3/DenisP32";
+
 import { useNavigate } from "react-router-dom";
 import { switchDialog } from "../../../redux/RPGSlice";
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  {useState } from 'react'
 import styles from './QuestionsP3.module.css';
 import { useAppDispatch } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  {useState } from 'react'
 import styles from './QuestionsP0.module.css';
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../../../redux/hooks';

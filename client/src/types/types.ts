@@ -39,7 +39,7 @@ interface ICard {
   answer: string,
   image: string,
   value: number,
-  condition: string, // тут добавил
+  condition: unknown, // тут добавил
   topic_id: number,
 }
 

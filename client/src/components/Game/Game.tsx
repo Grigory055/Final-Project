@@ -1,17 +1,17 @@
-import {Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
+import {Box, Button } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useAppDispatch } from '../../redux/hooks';
 import './Game.css';
 import axios from 'axios';
 import { setScores } from '../../redux/userSlice';
 
-export function Game({ handlerDialog }) {
-  const [open, setOpen] = React.useState(false);
-  const [card, setCard] = React.useState({});
+export function Game({ handlerDialog }:any) {
+  const [open, setOpen] = React.useState<any>(false);
+  const [card, setCard] = React.useState<any>({});
   const [input, setInput] = React.useState<string>('');
   const [score, setScore] = React.useState<number>(0);
-  const [cards, setCards] = React.useState([]);
-  const [time, setTimer] = React.useState(3);
+  const [cards, setCards] = React.useState<any>([]);
+  const [time, setTimer] = React.useState<number>(3);
 
   const dispatch = useAppDispatch()
 
@@ -28,10 +28,10 @@ export function Game({ handlerDialog }) {
     })();
   }, []);
 
-  const handleClickOpen = (id) => {
+  const handleClickOpen = (id:any) => {
     setInput('')
     setTimer(15)
-    const currentCard = cards.find((el) => el.id === id);
+    const currentCard = cards.find((el:any) => el.id === id);
     setCard(currentCard);
     if (currentCard.condition === '') {
       setOpen(true); 
@@ -44,11 +44,11 @@ export function Game({ handlerDialog }) {
     setTimer(0)
     // console.log(card)
     // setScore((pre) => score - card.value);
-    setScore((pre) => {
-      if ((score - card.value) < 0) {
+    setScore(() => {
+       if ((score - card.value) < 0) {
         setScore(0)
       } else {
-        setScore((pre) => score - card.value)
+        setScore(() => score - card.value)
       }
     });
     card.condition = '2';
@@ -56,7 +56,7 @@ export function Game({ handlerDialog }) {
     // setCard({});
   };
 
-  const handleCloseClick = (id) => {
+  // const handleCloseClick = (id) => {
     // const currentCard = cards.find((el) => el.id === id);
     // // setCard(currentCard);
     // setScore((pre) => {
@@ -66,11 +66,11 @@ export function Game({ handlerDialog }) {
     //     setScore((pre) => score - card.value)
     //   }
     // });
-    setScore((pre) => score - card.value);
+    // setScore((pre) => score - card.value);
     // console.log(id)
-    setOpen(false);
-    setCard({})
-  }
+  //   setOpen(false);
+  //   setCard({})
+  // }
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -85,8 +85,8 @@ export function Game({ handlerDialog }) {
     }
   }, [time]);
 
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(() => e.target.value);
+  const inputHandler = (e:any) =>  {
+    void setInput(() => e.target.value);
   };
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
@@ -96,11 +96,11 @@ export function Game({ handlerDialog }) {
     
 
     if (input.toLowerCase() === card.answer.toLowerCase()) {
-      setScore((pre) => {
+      setScore(() => {
         if ((score - card.value) < 0) {
-          setScore((pre) => score + card.value);
+          setScore(() => score + card.value);
         } else {
-          setScore((pre) => score + card.value)
+          setScore(() => score + card.value)
         }
       });
       // setScore((pre) => score + card.value);
@@ -108,11 +108,11 @@ export function Game({ handlerDialog }) {
       setTimer(1800);
       console.log(score)
     } else {
-       setScore((pre) => {
+       setScore(() => {
       if ((score - card.value) < 0) {
         setScore(0)
       } else {
-        setScore((pre) => score - card.value)
+        setScore(() => score - card.value)
       }
     });
       card.condition = '2';

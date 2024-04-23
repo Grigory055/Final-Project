@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import styles from './DialogPhase3.module.css'
+import { useState } from 'react'
+
 import { Button } from '@mui/material'
 import { useAppDispatch } from '../../../redux/hooks'
 import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
@@ -15,7 +15,7 @@ const dialogStartPhase2: IDialog = {
 
 export function DialogStartPhase3() {
   
-  const [dialog, setDialog] = useState<IDialog>(dialogStartPhase2)
+  const [dialog] = useState<IDialog>(dialogStartPhase2)
   const dispatch = useAppDispatch();
 
   const handleCloseClick = () => {

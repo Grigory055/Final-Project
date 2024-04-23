@@ -1,3 +1,5 @@
+import { IUser } from "../../../../types/types";
+
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -17,12 +19,12 @@ export const loginStart = () => ({
   type: LOGIN_START,
 });
 
-export const loginSuccess = (login) => ({
+export const loginSuccess = (login: any) => ({
   type: LOGIN_SUCCESS,
   payload: { login },
 });
 
-export const loginFailure = (error) => ({
+export const loginFailure = (error: any) => ({
   type: LOGIN_FAILURE,
   payload: error,
 });

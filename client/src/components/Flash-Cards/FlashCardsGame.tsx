@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./FlashCardsGame.css";
 import GameModal from "./GameModal/GameModal";
 import { Button } from "@mui/material";
 
-export function FlashCardsGame({ handlerDialog }) {
-  const [questions, setQuestions] = useState([]);
+export function FlashCardsGame({ handlerDialog }:any) {
+  const [questions, setQuestions] = useState<any>([]);
 
   useEffect(() => {
     getAllQuestions().then((data) => {
@@ -42,8 +42,8 @@ export function FlashCardsGame({ handlerDialog }) {
   const [questionsId, setQuestionsId] = useState(null);
   const [showGameModal, setShowGameModal] = useState(false);
 
-  function getQuestionsIdInGameModal(id) {
-    setQuestionsId((pre) => {
+  function getQuestionsIdInGameModal(id:any) {
+    setQuestionsId(() => {
       console.log(id)
       return id
     });
@@ -55,9 +55,9 @@ export function FlashCardsGame({ handlerDialog }) {
   }
 
 
-  const comfirmQuest = JSON.parse(localStorage.getItem("quest")) || [];
+  const comfirmQuest:string | null = JSON.parse(localStorage.getItem("quest")) || [];
 
-  const foultQuest = JSON.parse(localStorage.getItem("questFoult")) || [];
+  const foultQuest:string | null = JSON.parse(localStorage.getItem("questFoult")) || [];
 
   function resetGame() {
     localStorage.removeItem('quest');

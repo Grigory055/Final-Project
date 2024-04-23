@@ -29,7 +29,7 @@ const Sveta2: IDialog = {
 export function DialogSvetaPhase3() {
   const [dialog, setDialog] = useState<IDialog>(Sveta1); 
 
-  const handlerDialog = (status) => {
+  const handlerDialog = (status:any) => {
     setDialog((pre) => ({ ...pre, status: status }));
     console.log("dialog1", dialog);
   };

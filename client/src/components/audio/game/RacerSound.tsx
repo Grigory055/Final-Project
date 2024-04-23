@@ -1,17 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import voice from '../../../../public/audio/gamemusic/race.mp3';
 
 export default function RacerSound() {
   const voiceRef = useRef(null);
 
   useEffect(() => {
-    const  voiceElement =  voiceRef.current;
+    const  voiceElement:any =  voiceRef.current;
 
     if ( voiceElement) {
       voiceElement.volume = 0.2; // Установка громкости на 20%
       voiceElement.playbackRate = 1.0; // Установка скорости на 100%
       voiceElement.addEventListener('canplay', handleCanPlay);
-      voiceElement.play().catch((error) => {
+      voiceElement.play().catch((error:any) => {
         console.log('Auto-play failed:', error);
       });
     }

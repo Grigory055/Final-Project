@@ -5,7 +5,7 @@ import { setDialog, switchDialog } from "../../redux/RPGSlice";
 export function MainPage() {
 
   const { isLogin, level } = useAppSelector((store) => store.persistedReducer);
-  const dialogIsOpen = useAppSelector((state: { RPGSlice: { dialogIsOpen: boolean } }) => state.RPGSlice.dialogIsOpen)
+  // const dialogIsOpen = useAppSelector((state: { RPGSlice: { dialogIsOpen: boolean } }) => state.RPGSlice.dialogIsOpen)
   
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

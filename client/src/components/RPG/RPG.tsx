@@ -1,8 +1,8 @@
 import './style.css'
 import { useEffect, useRef } from 'react';
-import { resources, Sprite, Vector2, GameLoop, Input, gridCells, GameObject, Hero, DialogBubble, NPC, Camera, Inventory, Rod, events } from "./src";
+import { resources, Sprite, Vector2, GameLoop, Input, gridCells, GameObject, Hero, DialogBubble, NPC, Camera, Inventory, Rod } from "./src";
 import { useParams } from 'react-router-dom';
-import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls, phase3objects, phase3walls } from './src/levels/'
+import { phase0objects, phase0walls, phase1objects, phase1walls, phase2objects, phase2walls, phase3objects, phase3walls } from './src/levels'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { openExit, setWalls, switchDialog } from '../../redux/RPGSlice';
 import { Navbar } from '../Navbar/Navbar';
@@ -91,7 +91,7 @@ export function RPG() {
 
     mainScene.input = new Input();
 
-    const update = (delta) => {
+    const update = (delta:any) => {
       mainScene.stepEntry(delta, mainScene);
     };
 

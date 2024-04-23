@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./StartGame.module.css";
 import { Button } from "@mui/material";
 import { useAppDispatch } from "../../redux/hooks";
 import { setScores } from "../../redux/userSlice";
 import RacerSound from "../audio/game/RacerSound";
 
-export function StartGame({ handlerDialog }) {
+export function StartGame({ handlerDialog }:any) {
   const [p1, setP1] = useState<string>(
     "♞_______________________________________"
   );
   const [p2, setP2] = useState<string>(
     "♘_______________________________________"
   );
-  const [roundTime, setRoundTime] = useState<number>(175);
+  const [roundTime] = useState<number>(175);
   const [active, setActive] = useState<boolean>(false);
   const [winner, setWinner] = useState<string>("");
   const [startRace, setStartRace] = useState<boolean>(false);
@@ -30,7 +30,7 @@ export function StartGame({ handlerDialog }) {
     const interval = setInterval(() => {
       setP2((pre) => "_" + pre.slice(0, -1));
     }, roundTime);
-    const p2timer = setTimeout(() => {
+     setTimeout(() => {
       clearInterval(interval);
     }, roundTime * p2.length);
     //  clearInterval(interval)

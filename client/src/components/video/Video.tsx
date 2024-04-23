@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import  { useEffect, useRef } from 'react';
 import video from '../../../public/video/2024.mp4';
 import styles from './Video.module.css';
 
