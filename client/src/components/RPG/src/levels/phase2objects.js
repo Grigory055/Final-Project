@@ -1,9 +1,9 @@
 export const phase2objects = {
   hero: {
     position: {
-      x: 25, // 19
+      x: 19, // 19
       // x: 24, // 19
-      y: 28, // 52
+      y: 52, // 52
       // y: 28, // 53
     },
   },

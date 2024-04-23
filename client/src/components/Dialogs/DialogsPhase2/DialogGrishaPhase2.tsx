@@ -6,7 +6,7 @@ import { switchDialog, switchHeroWalk } from '../../../redux/RPGSlice'
 import { fetchUserScore } from '../../../redux/thunkActions'
 import GrishaP21 from '../../audio/prepods/grishaP2/GrishaP21'
 import GrishaP23 from '../../audio/prepods/grishaP2/GrishaP23'
-import Flash from '../../Flash/Flash'
+import { Flash } from '../../../components'
 
 interface IDialog {
     person: string

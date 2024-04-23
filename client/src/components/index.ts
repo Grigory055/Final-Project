@@ -1,5 +1,5 @@
 export { StartGame } from "./Race/StartGame";
-export { FlashCardsGame } from "./Flash-Cards/FlashCardsGame";
+export { Flash } from "./Flash/Flash";
 export { Navbar } from "./Navbar/Navbar";
 export { LoginForm } from "./LoginForm/LoginForm";
 export { RegForm } from "./RegForm/RegForm";

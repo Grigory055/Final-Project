@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import { useAppDispatch } from "../../redux/hooks";
 import { setScores } from "../../redux/userSlice";
 
-export default function Flash({ handlerDialog }: { handlerDialog: (status: string) => void }) {
+export function Flash({ handlerDialog }: { handlerDialog: (status: string) => void }) {
   const [correct, setCorrect] = useState<string>('');
   const [cardIndex, setCardIndex] = useState<number>(0);
   const [timer, setTimer] = useState<number>(10);
