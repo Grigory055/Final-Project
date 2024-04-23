@@ -35,7 +35,7 @@ const userSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchUserLogin.fulfilled, (state: UserSliceState, { payload }:any) => {
+        builder.addCase(fetchUserLogin.fulfilled, (state: UserSliceState, { payload }: any) => {
             if (payload) {
                state.isLogin = true;
                state.login = payload.login;
@@ -44,7 +44,7 @@ const userSlice = createSlice({
                state.level = payload.level;
             }
         }),
-        builder.addCase(fetchUserRegister.fulfilled, (state: UserSliceState, { payload }) => {
+        builder.addCase(fetchUserRegister.fulfilled, (state: UserSliceState, { payload }: any) => {
             console.log('payload1', payload);
             
             if (payload) {
@@ -55,14 +55,6 @@ const userSlice = createSlice({
                 state.loginErr = 'Такой пользователь существует'
             }
         }),
-        builder.addCase(fetchUserRegister.rejected, (state: UserSliceState, { payload }) => {
-            console.log('payload2', payload);
-            
-            // if (payload) {
-            //     console.log('payload', payload)
-            //     // state.loginErr = payload
-            // }
-        }),
         builder.addCase(fetchUserLogout.fulfilled, (state: UserSliceState, { payload }) => {
             if (payload === 200) {
                 state.isLogin = false;
@@ -72,10 +64,10 @@ const userSlice = createSlice({
                 state.level = 0;
             }
         })
-        builder.addCase(fetchTopics.fulfilled, (state: UserSliceState, { payload }) => {
+        builder.addCase(fetchTopics.fulfilled, (state: UserSliceState, { payload }: any) => {
             if (payload) state.topics = payload;
         })
-        builder.addCase(fetchUserScore.fulfilled, (state, { payload }) => {
+        builder.addCase(fetchUserScore.fulfilled, (state, { payload }: any) => {
             if (payload) {
                 state.score = payload.score;
                 state.level = payload.level;
