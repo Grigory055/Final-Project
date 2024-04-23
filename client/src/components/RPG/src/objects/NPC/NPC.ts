@@ -1,16 +1,31 @@
-import {GameObject} from "../../GameObject.js";
-import {Vector2} from "../../Vector2.js";
-import {Sprite} from "../../Sprite.js";
-import {resources} from "../../Resource.js";
-import {events} from "../../Events.js";
+import { GameObject } from "../../GameObject";
+import { Vector2 } from "../../Vector2";
+import { Sprite } from "../../Sprite";
+import { resources } from "../../Resource";
+import { events } from "../../Events";
 import { store } from "../../../../../redux/store";
-import { openExit, setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
+import { setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
+
+interface ExitCoords {
+  exitCoordX: number;
+  exitCoordY: number;
+}
 
 export class NPC extends GameObject {
-  constructor(x: any, y: any, name: any, dialogID: any, exitCoordX: any, exitCoordY: any, skin: any) {
-    super({
-      position: new Vector2(x, y),
-    }, name);
+  body: Sprite;
+  dialogID: any;
+  exitCoords: ExitCoords;
+
+  constructor(
+    x: number,
+    y: number,
+    name: string,
+    dialogID: any,
+    exitCoordX: number,
+    exitCoordY: number,
+    skin: number
+  ) {
+    super({ position: new Vector2(x, y)}, name );
 
     const shadow = new Sprite({
       resource: resources.images.shadow,
@@ -28,21 +43,21 @@ export class NPC extends GameObject {
       position: new Vector2(-8, -19),
     });
     this.addChild(this.body);
+
     this.dialogID = dialogID;
     this.exitCoords = { exitCoordX, exitCoordY };
   }
 
   ready() {
-    events.on("HERO_POSITION", this, (pos: any) => {
+    events.on("HERO_POSITION", this, (pos: Vector2) => {
       const roundedHeroX = Math.round(pos.x);
       const roundedHeroY = Math.round(pos.y);
+      const { x, y } = this.position;
+
       if (
-        (roundedHeroX === this.position.x - 16 &&
-          roundedHeroY === this.position.y) ||
-        (roundedHeroX === this.position.x + 16 &&
-          roundedHeroY === this.position.y) ||
-        (roundedHeroX === this.position.x &&
-          roundedHeroY === this.position.y + 16)
+        (roundedHeroX === x - 16 && roundedHeroY === y) ||
+        (roundedHeroX === x + 16 && roundedHeroY === y) ||
+        (roundedHeroX === x && roundedHeroY === y + 16)
       ) {
         this.onCollideWithHero();
       }
@@ -53,6 +68,5 @@ export class NPC extends GameObject {
     store.dispatch(switchHeroWalk(false));
     store.dispatch(setDialog(this.dialogID));
     store.dispatch(switchDialog(true));
-    // store.dispatch(openExit(`${this.exitCoords.exitCoordX},${this.exitCoords.exitCoordY}`))
   }
 }
