@@ -4,6 +4,8 @@ export const UP = "UP"
 export const DOWN = "DOWN"
 
 export class Input {
+  heldDirections:any;
+  active:any;
   constructor() {
 
     this.heldDirections = [];
