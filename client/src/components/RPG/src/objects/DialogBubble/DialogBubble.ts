@@ -1,18 +1,14 @@
-import {GameObject} from "../../GameObject.js";
-import {Vector2} from "../../Vector2.js";
-import {Sprite} from "../../Sprite.js";
-import {resources} from "../../Resource.js";
-import {events} from "../../Events.js";
+import {GameObject, Vector2, Sprite, resources, events} from "../../";
 import { store } from "../../../../../redux/store";
 import { setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
 
 export class DialogBubble extends GameObject {
   body: any;
   dialogID: any;
-  constructor(x: any, y: any, name: any, dialogID: any) {
+  constructor(x: any, y: any, dialogID: any) {
     super({
       position: new Vector2(x, y),
-    }, name);
+    });
     this.body = new Sprite({
       resource: resources.images.dialog,
       frameSize: new Vector2(32, 32),

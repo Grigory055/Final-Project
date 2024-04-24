@@ -1,4 +1,6 @@
-export function moveTowards(person: any, destinationPosition: any, speed: any) {
+import { Hero, Vector2 } from "../";
+
+export function moveTowards(person: Hero, destinationPosition: Vector2, speed: number) {
   let distanceToTravelX = destinationPosition.x - person.position.x;
   let distanceToTravelY = destinationPosition.y - person.position.y;
 

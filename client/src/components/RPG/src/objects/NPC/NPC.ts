@@ -19,13 +19,12 @@ export class NPC extends GameObject {
   constructor(
     x: number,
     y: number,
-    name: string,
     dialogID: any,
     exitCoordX: number,
     exitCoordY: number,
     skin: number
   ) {
-    super({ position: new Vector2(x, y)}, name );
+    super({ position: new Vector2(x, y) });
 
     const shadow = new Sprite({
       resource: resources.images.shadow,

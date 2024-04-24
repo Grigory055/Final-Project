@@ -1,7 +1,4 @@
-interface ImageObject {
-  image: HTMLImageElement;
-  isLoaded: boolean;
-}
+import { ImageObject } from "../../../types/types";
 
 interface ToLoadResources {
   [key: string]: string;

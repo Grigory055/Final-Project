@@ -1,7 +1,7 @@
 import {GameObject} from "../../GameObject.js";
 import {Vector2} from "../../Vector2.js";
 import {DOWN, LEFT, RIGHT, UP} from "../../Input.js";
-import {isSpaceFree} from "../../helpers/grid.js";
+import { isSpaceFree, moveTowards } from "../../";
 import {Sprite} from "../../Sprite.js";
 import {resources} from "../../Resource.js";
 import {Animations} from "../../Animations.js";
@@ -17,8 +17,7 @@ import {
   WALK_RIGHT,
   WALK_UP
 } from "./heroAnimations.js";
-import {moveTowards} from "../../helpers/moveTowards.js";
-import {events} from "../../Events.js";
+import { events } from "../../Events.js";
 import { store } from "../../../../../redux/store";
 
 
@@ -34,17 +33,16 @@ walls :any;
 stepAudio:any;
 lastX:any;
 lastY:any;
-  constructor(x: any, y: any, name: any, character: any, stepAudio: any) {
+  constructor(x: any, y: any, character: any, stepAudio: any) {
     super({
       position: new Vector2(x, y),
-    }, name);
+    });
 
     const shadow = new Sprite({
       resource: resources.images.shadow,
       frameSize: new Vector2(32, 32),
       position: new Vector2(-8, -19),
-      
-    },name)
+    })
     this.addChild(shadow);
 
     this.body = new Sprite({
@@ -65,7 +63,7 @@ lastY:any;
         standRight: new FrameIndexPattern(STAND_RIGHT),
         pickUpDown: new FrameIndexPattern(PICK_UP_DOWN),
       })
-    },name)
+    })
     this.addChild(this.body);
 
     this.facingDirection = DOWN;

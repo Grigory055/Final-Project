@@ -12,12 +12,12 @@ interface GameObjectProps {
 }
 
 export class Camera extends GameObject {
-  constructor(name: string) {
+  constructor() {
     const initialProps: GameObjectProps = {
       position: new Vector2(0, 0)
     };
 
-    super(initialProps, name);
+    super(initialProps);
 
     events.on("HERO_POSITION", this, (heroPosition: HeroPosition) => {
       const personHalf = 8;

@@ -1,25 +1,22 @@
-import { Vector2 } from './Vector2.js';
-import { events } from './Events.js';
+import { Input, Vector2, events } from './';
 
 export class GameObject {
-  position?: any;
-  children?: any;
-  parent?: any;
-  hasReadyBeenCalled?: any;
-  name?: any;
-  input?: any;
-  constructor({ position}: { position?: any }, name?: string ) {
+  position: Vector2;
+  children: Array<GameObject>;
+  parent: GameObject | null;
+  hasReadyBeenCalled: boolean;
+  input?: Input;
+  constructor({ position }: { position: Vector2 | undefined } ) {
     this.position = position ?? new Vector2(0, 0);
     this.children = [];
     this.parent = null;
     this.hasReadyBeenCalled = false;
-    this.name = name;
   }
 
   // First entry point of the loop
-  stepEntry(delta: any, root: any) {
+  stepEntry(delta: number, root: GameObject) {
     // Call updates on all children first
-    this.children.forEach((child: any) => child.stepEntry(delta, root));
+    this.children.forEach((child: GameObject) => child.stepEntry(delta, root));
 
     // Call ready on the first frame
     if (!this.hasReadyBeenCalled) {
@@ -37,15 +34,12 @@ export class GameObject {
   }
 
   // Called once every frame
-  step(_delta: any, root: any) {
-    if(root){
-    console.log('')}
-    // const result = { _delta, root };
-    // return result;
+  step(_delta: number, root: GameObject) {
+    if (root) return;
   }
 
   /* draw entry */
-  draw(ctx: any, x: any, y: any) {
+  draw(ctx: CanvasRenderingContext2D, x: number, y: number) {
     const drawPosX = x + this.position.x;
     const drawPosY = y + this.position.y;
 
@@ -53,34 +47,30 @@ export class GameObject {
     this.drawImage(ctx, drawPosX, drawPosY);
 
     // Pass on to children
-    this.children.forEach((child: any) => child.draw(ctx, drawPosX, drawPosY));
+    this.children.forEach((child: GameObject) => child.draw(ctx, drawPosX, drawPosY));
   }
 
-  drawImage(ctx: any, drawPosX: any, drawPosY: any) {
-    if(ctx && drawPosX && drawPosY){
-      console.log('')
-    }
-    // const result = { ctx, drawPosX, drawPosY };
-    // return result;
+  drawImage(ctx: CanvasRenderingContext2D, drawPosX: number, drawPosY: number) {
+    if(ctx && drawPosX && drawPosY) return;
   }
 
   // Remove from the tree
   destroy() {
-    this.children.forEach((child: any) => {
+    this.children.forEach((child: GameObject) => {
       child.destroy();
     });
-    this.parent.removeChild(this);
+    this.parent?.removeChild(this);
   }
 
   /* Other Game Objects are nestable inside this one */
-  addChild(gameObject: any) {
+  addChild(gameObject: GameObject) {
     gameObject.parent = this;
     this.children.push(gameObject);
   }
 
-  removeChild(gameObject: any) {
+  removeChild(gameObject: GameObject) {
     events.unsubscribe(gameObject);
-    this.children = this.children.filter((g: any) => {
+    this.children = this.children.filter((g: GameObject) => {
       return gameObject !== g;
     });
   }

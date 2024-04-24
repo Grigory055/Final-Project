@@ -9,12 +9,12 @@ import { setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RP
 export class Rod extends GameObject {
   dialogID: any;
 
-  constructor(x: number, y: number, name: string, dialogID: any) {
-    super({ position: new Vector2(x, y)}, name );
+  constructor(x: number, y: number, dialogID: any) {
+    super({ position: new Vector2(x, y) });
     const sprite = new Sprite({
       resource: resources.images.rod,
       position: new Vector2(0, -5),
-    }, "RodSprite");
+    });
     this.addChild(sprite);
     this.dialogID = dialogID;
   }

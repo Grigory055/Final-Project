@@ -1,16 +1,27 @@
-import {Vector2} from "./Vector2.js";
-import {GameObject} from "./GameObject.js";
+import { ImageObject } from "../../../types/types";
+import { Vector2, GameObject, Animations } from "./";
+
+interface ISpriteProps {
+  resource: ImageObject;
+  frameSize?: Vector2;
+  hFrames?: number;
+  vFrames?: number;
+  frame?: number;
+  scale?: number;
+  position?: Vector2;
+  animations?: Animations;
+}
 
 export class Sprite extends GameObject {
-  resource?: any;
-      frameSize?: any;
-      hFrames?: any;
-      vFrames?: any;
-      frame?: any;
-      scale?: any;
-      position?: any;
-      animations?: any;
-      frameMap?:any;
+  resource: ImageObject;
+  frameSize: Vector2;
+  hFrames: number;
+  vFrames: number;
+  frame: number;
+  scale: number;
+  position: Vector2;
+  animations: Animations | null;
+  frameMap: Map<number, Vector2>;
   constructor({
       resource, // image we want to draw
       frameSize, // size of the crop of the image
@@ -20,17 +31,8 @@ export class Sprite extends GameObject {
       scale, // how large to draw this image
       position, // where to draw it (top left corner)
       animations,
-    }: {
-      resource?: any
-      frameSize?: any
-      hFrames?: any
-      vFrames?: any
-      frame?: any
-      scale?: any
-      position?: any
-      animations?: any
-    }, name?: string) {
-    super({ position }, name);
+    }: ISpriteProps) {
+    super({ position });
     this.resource = resource;
     this.frameSize = frameSize ?? new Vector2(16,16);
     this.hFrames = hFrames ?? 1;
@@ -56,10 +58,7 @@ export class Sprite extends GameObject {
     }
   }
 
-  step(delta:any, root:any) {
-    if(root){
-      console.log('')
-    }
+  step(delta: number) {
     if (!this.animations) {
       return 
     }
@@ -67,7 +66,7 @@ export class Sprite extends GameObject {
     this.frame = this.animations.frame;
   }
 
-  drawImage(ctx: any, x: any, y: any) {
+  drawImage(ctx: CanvasRenderingContext2D, x: number, y: number) {
     if (!this.resource.isLoaded) {
       return;
     }

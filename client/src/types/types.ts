@@ -57,4 +57,58 @@ interface IFlashCard {
   variants: Array<string>;
 }
 
-export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent, IGameSave, IFlashCard }
+interface IPhaseObjects {
+  hero: {
+    position: {
+      x: number;
+      y: number;
+    };
+  };
+  rod1: {
+    x: number;
+    y: number;
+    dialogID: number;
+  };
+  rod2: {
+    x: number;
+    y: number;
+    dialogID: number;
+  };
+  rod3: {
+    x: number;
+    y: number;
+    dialogID: number;
+  };
+  dialogBubble: {
+    x: number;
+    y: number;
+    dialogID: number;
+  };
+  npc1: {
+    x: number;
+    y: number;
+    dialogID: number;
+    exit: {
+      x: number;
+      y: number;
+    };
+    skin: number;
+  };
+  npc2: {
+    x: number;
+    y: number;
+    dialogID: number;
+    exit: {
+      x: number;
+      y: number;
+    };
+    skin: number;
+  };
+}
+
+interface ImageObject {
+  image: HTMLImageElement;
+  isLoaded: boolean;
+}
+
+export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent, IGameSave, IFlashCard, IPhaseObjects, ImageObject }

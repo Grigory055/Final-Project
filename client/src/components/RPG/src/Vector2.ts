@@ -1,11 +1,4 @@
-export interface Vector2Interface {
-  x: number;
-  y: number;
-  
-  duplicate(): Vector2Interface;
-}
-
-export class Vector2 implements Vector2Interface {
+export class Vector2 {
   x: number;
   y: number;
 

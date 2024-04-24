@@ -160,7 +160,7 @@ export function Game({ handlerDialog }:any) {
           cards.filter((el:any) => el.topic_id === 1).map((el:any) => (
               <div style={{ margin: '4px' }}>
                 <div onClick={() => handleClickOpen(el.id)}>
-                  <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+                  <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' ? 'pp': ''}>{el.value}</div>
                 </div>
               </div>
             ))}
@@ -174,7 +174,7 @@ export function Game({ handlerDialog }:any) {
             .map((el:any) => (
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
-              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' ? 'pp': ''}>{el.value}</div>
               </div>
               </div>
             ))}
@@ -188,7 +188,7 @@ export function Game({ handlerDialog }:any) {
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
-              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' ? 'pp': ''}>{el.value}</div>
              
               </div>
               </div>
@@ -218,7 +218,7 @@ export function Game({ handlerDialog }:any) {
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
-              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' ? 'pp': ''}>{el.value}</div>
              
               </div>
               </div>
@@ -233,7 +233,7 @@ export function Game({ handlerDialog }:any) {
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
-              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' ? 'pp': ''}>{el.value}</div>
              
               </div>
               </div>
@@ -248,7 +248,7 @@ export function Game({ handlerDialog }:any) {
               <div style={{ margin: '4px' }}>
               <div onClick={() => handleClickOpen(el.id)}>
              
-              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' && 'pp'}>{el.value}</div>
+              <div style={{ border: '4px solid rgb(116, 64, 64)', padding: '8px', fontSize: '20px' }} className={el.condition === '1' ? 'oo' : el.condition === '2' ? 'aa' : el.condition === '' ? 'pp': ''}>{el.value}</div>
              
               </div>
               </div>

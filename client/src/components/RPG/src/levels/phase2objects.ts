@@ -1,53 +1,6 @@
-interface Phase2Objects {
-  hero: {
-    position: {
-      x: number;
-      y: number;
-    };
-  };
-  rod1: {
-    x: number;
-    y: number;
-    dialogID: number;
-  };
-  rod2: {
-    x: number;
-    y: number;
-    dialogID: number;
-  };
-  rod3: {
-    x: number;
-    y: number;
-    dialogID: number;
-  };
-  dialogBubble: {
-    x: number;
-    y: number;
-    dialogID: number;
-  };
-  npc1: {
-    x: number;
-    y: number;
-    dialogID: number;
-    exit: {
-      x: number;
-      y: number;
-    };
-    skin: number;
-  };
-  npc2: {
-    x: number;
-    y: number;
-    dialogID: number;
-    exit: {
-      x: number;
-      y: number;
-    };
-    skin: number;
-  };
-}
+import { IPhaseObjects } from "../../../../types/types";
 
-export const phase2objects: Phase2Objects = {
+export const phase2objects: IPhaseObjects = {
   hero: {
     position: {
       x: 19, // 19

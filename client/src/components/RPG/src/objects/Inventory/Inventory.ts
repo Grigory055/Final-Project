@@ -9,14 +9,12 @@ interface InventoryItem {
 }
 
 export class Inventory extends GameObject {
-  name: string;
   nextId: number;
   items: InventoryItem[];
 
-  constructor({ name }: { name: string }) {
-    super({ position: new Vector2(0, 1) }, name);
+  constructor() {
+    super({ position: new Vector2(0, 1) });
 
-    this.name = name;
     this.nextId = 0;
     this.items = [];
 

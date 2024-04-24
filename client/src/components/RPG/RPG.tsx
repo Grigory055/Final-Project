@@ -20,21 +20,21 @@ export function RPG() {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const levelObjects = gameObjects[Number(id)];
-  const canvasRef = useRef<any>();
-  const stepRef = useRef<any>();
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const stepRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     void dispatch(switchDialog(false));
 
     const stepAudio = stepRef.current;
     const { x, y } = levelObjects.hero.position
-    const hero = new Hero(gridCells(x), gridCells(y), 'hero', character, stepAudio);
+    const hero = new Hero(gridCells(x), gridCells(y), character, stepAudio);
     
     void dispatch(setWalls(walls[Number(id)]));
       
     const mainScene = new GameObject({
       position: new Vector2(0, 0),
-    }, 'mainScene');
+    });
 
     // const waterSprite = new Sprite({
     //   resource: resources.images.water,
@@ -45,28 +45,27 @@ export function RPG() {
     const groundSprite = new Sprite({
       resource: resources.images[`phase${id}`],
       frameSize: new Vector2(1312, 1152),
-    }, 'groundSprite');
+    });
     mainScene.addChild(groundSprite);
 
-    const camera = new Camera('camera');
+    const camera = new Camera();
     mainScene.addChild(camera);
 
-    const rod1 = new Rod(gridCells(levelObjects.rod1.x), gridCells(levelObjects.rod1.y), 'rod1', levelObjects.rod1.dialogID)
+    const rod1 = new Rod(gridCells(levelObjects.rod1.x), gridCells(levelObjects.rod1.y), levelObjects.rod1.dialogID)
     mainScene.addChild(rod1);
 
-    const rod2 = new Rod(gridCells(levelObjects.rod2.x), gridCells(levelObjects.rod2.y), 'rod2', levelObjects.rod2.dialogID)
+    const rod2 = new Rod(gridCells(levelObjects.rod2.x), gridCells(levelObjects.rod2.y), levelObjects.rod2.dialogID)
     mainScene.addChild(rod2);
 
-    const rod3 = new Rod(gridCells(levelObjects.rod3.x), gridCells(levelObjects.rod3.y), 'rod3', levelObjects.rod3.dialogID)
+    const rod3 = new Rod(gridCells(levelObjects.rod3.x), gridCells(levelObjects.rod3.y), levelObjects.rod3.dialogID)
     mainScene.addChild(rod3);
 
-    const dialogBubble = new DialogBubble(gridCells(levelObjects.dialogBubble.x), gridCells(levelObjects.dialogBubble.y), 'dialogBubble', levelObjects.dialogBubble.dialogID)
+    const dialogBubble = new DialogBubble(gridCells(levelObjects.dialogBubble.x), gridCells(levelObjects.dialogBubble.y), levelObjects.dialogBubble.dialogID)
     mainScene.addChild(dialogBubble);
 
     const npc1 = new NPC(
       gridCells(levelObjects.npc1.x),
       gridCells(levelObjects.npc1.y),
-      'npc1',
       levelObjects.npc1.dialogID,
       levelObjects.npc1.exit.x,
       levelObjects.npc1.exit.y,
@@ -77,7 +76,6 @@ export function RPG() {
     const npc2 = new NPC(
       gridCells(levelObjects.npc2.x),
       gridCells(levelObjects.npc2.y),
-      'npc2',
       levelObjects.npc2.dialogID,
       levelObjects.npc2.exit.x,
       levelObjects.npc2.exit.y,
@@ -87,18 +85,18 @@ export function RPG() {
 
     mainScene.addChild(hero);
 
-    const inventory = new Inventory({name: 'inventory'});
+    const inventory = new Inventory();
 
     mainScene.input = new Input();
 
-    const update = (delta:any) => {
+    const update = (delta: number) => {
       mainScene.stepEntry(delta, mainScene);
     };
 
     const draw = () => {
       if (canvasRef.current) {
-        const canvas:any = canvasRef.current;
-        const ctx = canvas.getContext("2d");
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         // waterSprite.drawImage(ctx, 0, 0)
         ctx.save();
@@ -123,16 +121,18 @@ export function RPG() {
   }, []);
 
   useEffect(() => {
-    const stepAudio:any = stepRef.current; 
+    const stepAudio = stepRef.current; 
 
     if (stepAudio) {
-      stepAudio.volume = 0.1; // Установка громкости на 20%
+      stepAudio.volume = 0.1; // Установка громкости на 10%
       stepAudio.playbackRate = 1.0; // Установка скорости на 100%
       stepAudio.addEventListener('canplay', handleCanPlay);
     }
 
     function handleCanPlay() {
-      stepAudio.removeEventListener('canplay', handleCanPlay);
+      if (stepAudio) {
+        stepAudio.removeEventListener('canplay', handleCanPlay);
+      }
     }
 
     return () => {
@@ -186,7 +186,6 @@ export function RPG() {
         height={180}
       ></canvas>
       <audio  src={step} ref={stepRef} />
-      {/* <Theme1audio/> */}
       <Navbar />
     </>
   );
