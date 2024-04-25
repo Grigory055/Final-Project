@@ -20,7 +20,7 @@ export class Rod extends GameObject {
   }
 
   ready() {
-    events.on("HERO_POSITION", this, (pos: Vector2) => {
+    events.on("HERO_POSITION", this, <Vector2>(pos: Vector2) => {
       const roundedHeroX = Math.round(pos.x);
       const roundedHeroY = Math.round(pos.y);
       if (roundedHeroX === this.position.x && roundedHeroY === this.position.y) {

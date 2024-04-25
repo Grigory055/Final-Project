@@ -1,25 +1,16 @@
-import { GameObject } from "./GameObject.js";
-import { events } from "./Events.js";
-import { Vector2 } from "./Vector2.js";
+import { IEventData } from "../../../types/types";
+import { events, GameObject, Vector2 } from "./";
 
-interface HeroPosition {
-  x: number;
-  y: number;
-}
+// const obj = new GameObject({ position: new Vector2(0, 0) });
+// console.log(obj);
 
-interface GameObjectProps {
-  position: Vector2;
-}
 
 export class Camera extends GameObject {
   constructor() {
-    const initialProps: GameObjectProps = {
-      position: new Vector2(0, 0)
-    };
+    super({ position: new Vector2(0, 0) });
 
-    super(initialProps);
-
-    events.on("HERO_POSITION", this, (heroPosition: HeroPosition) => {
+    events.on("HERO_POSITION", this, (data: IEventData) => {
+      const heroPosition = data.position;
       const personHalf = 8;
       const canvasWidth = 320;
       const canvasHeight = 180;

@@ -1,3 +1,5 @@
+import { Vector2 } from "../components/RPG/src";
+
 interface IUser {
   id?: number;
   login: string;
@@ -111,4 +113,10 @@ interface ImageObject {
   isLoaded: boolean;
 }
 
-export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent, IGameSave, IFlashCard, IPhaseObjects, ImageObject }
+interface IEventData {
+  type?: string;
+  image?: ImageObject;
+  position: Vector2;
+}
+
+export type { IUser, ILoginPassword, ILoginEmailPassword, IGameStat, ICard, IEvent, IGameSave, IFlashCard, IPhaseObjects, ImageObject, IEventData }

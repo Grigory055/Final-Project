@@ -4,12 +4,11 @@ export const UP = "UP"
 export const DOWN = "DOWN"
 
 export class Input {
-  heldDirections:any;
-  active:any;
+  heldDirections: Array<string>;
+  active: boolean;
   constructor() {
 
     this.heldDirections = [];
-
     this.active = true;
 
     document.addEventListener("keydown", (e) => {
@@ -49,7 +48,7 @@ export class Input {
     return this.heldDirections[0];
   }
 
-  onArrowPressed(direction: any) {
+  onArrowPressed(direction: string) {
     if (this.active) {
       // Add this arrow to the queue if it's new
       if (this.heldDirections.indexOf(direction) === -1) {
@@ -58,7 +57,7 @@ export class Input {
     }
   }
 
-  onArrowReleased(direction: any) {
+  onArrowReleased(direction: string) {
     const index = this.heldDirections.indexOf(direction);
     if (index === -1) {
       return;

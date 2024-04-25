@@ -9,9 +9,9 @@ interface AnimationConfig {
 }
 
 export class FrameIndexPattern {
-  private currentTime: number;
-  private animationConfig: AnimationConfig;
-  private duration: number;
+  currentTime: number;
+  animationConfig: AnimationConfig;
+  duration: number;
 
   constructor(animationConfig: AnimationConfig) {
     this.currentTime = 0;

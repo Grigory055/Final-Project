@@ -1,7 +1,13 @@
+import { FrameIndexPattern } from "./";
+
+interface IPatterns {
+  [key: string]: FrameIndexPattern
+}
+
 export class Animations {
-  patterns: any;
-  activeKey: any;
-  constructor(patterns: any) {
+  patterns: IPatterns;
+  activeKey: string;
+  constructor(patterns: IPatterns) {
     this.patterns = patterns;
     this.activeKey = Object.keys(this.patterns)[0];
   }
@@ -10,7 +16,7 @@ export class Animations {
     return this.patterns[this.activeKey].frame;
   }
 
-  play(key: any, startAtTime = 0) {
+  play(key: string, startAtTime = 0) {
     // Already playing this one
     if (this.activeKey === key) {
       return;
@@ -20,7 +26,7 @@ export class Animations {
     this.patterns[this.activeKey].currentTime = startAtTime;
   }
 
-  step(delta: any) {
+  step(delta: number) {
     this.patterns[this.activeKey].step(delta);
   }
 }

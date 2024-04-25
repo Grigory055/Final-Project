@@ -1,8 +1,11 @@
+import { IEventData } from "../../../types/types";
+import { GameObject } from "./";
+
 interface ISubscribe {
   id: number,
-  eventName: any,
-  caller: any,
-  callback: any,
+  eventName: string,
+  caller: GameObject,
+  callback: (value: IEventData) => void,
 }
 
 class Events {
@@ -10,7 +13,7 @@ class Events {
   nextId = 0;
 
   // emit event
-  emit(eventName: any, value: any): void {
+  emit(eventName: string, value: IEventData): void {
     this.callbacks.forEach(stored => {
       if (stored.eventName === eventName) {
         stored.callback(value)
@@ -19,7 +22,7 @@ class Events {
   }
 
   // subscribe to something happening
-  on(eventName: any, caller: any, callback: any) {
+  on(eventName: string, caller: GameObject, callback: (value: IEventData) => void) {
     this.nextId += 1;
     const subscribe: ISubscribe = {
       id: this.nextId,
@@ -32,11 +35,11 @@ class Events {
   }
 
   // remove the subscription
-  off(id: any) {
+  off(id: number) {
     this.callbacks = this.callbacks.filter((stored) => stored.id !== id);
   }
 
-  unsubscribe(caller: any) {
+  unsubscribe(caller: GameObject) {
     this.callbacks = this.callbacks.filter(
         (stored) => stored.caller !== caller,
     );

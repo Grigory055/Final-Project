@@ -2,10 +2,11 @@ import { GameObject } from "../../GameObject";
 import { Sprite } from "../../Sprite";
 import { Vector2 } from "../../Vector2";
 import { events } from "../../Events";
+import { IEventData, ImageObject } from "../../../../../types/types";
 
 interface InventoryItem {
   id: number;
-  image: HTMLImageElement;
+  image: ImageObject;
 }
 
 export class Inventory extends GameObject {
@@ -19,7 +20,8 @@ export class Inventory extends GameObject {
     this.items = [];
 
     // React to Hero picking up an item
-    events.on("HERO_PICKS_UP_ITEM", this, (data: { type: string; image: HTMLImageElement; position: Vector2 }) => {
+    events.on("HERO_PICKS_UP_ITEM", this, (data: IEventData): void => {
+      if (!data.image) return;
       this.nextId += 1;
       this.items.push({
         id: this.nextId,
@@ -34,7 +36,7 @@ export class Inventory extends GameObject {
 
   renderInventory() {
     // Remove stale drawings
-    this.children.forEach((child: any) => child.destroy());
+    this.children.forEach((child) => child.destroy());
 
     // Draw fresh from the latest version of the list
     this.items.forEach((item, index) => {
