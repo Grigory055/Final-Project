@@ -111,7 +111,7 @@ lastY:any;
     
     this.lastX = this.position.x;
     this.lastY = this.position.y;
-    events.emit("HERO_POSITION", this.position)
+    events.emit("HERO_POSITION", {position: this.position})
   }
 
   tryMove(root: any) {
