@@ -1,15 +1,12 @@
-import { GameObject } from "../../GameObject";
-import { Vector2 } from "../../Vector2";
-import { Sprite } from "../../Sprite";
-import { resources } from "../../Resource";
-import { events } from "../../Events";
+import { GameObject, Vector2, Sprite, resources, events } from "../../";
 import { store } from "../../../../../redux/store";
 import { setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
+import { IEventData } from "../../../../../types/types";
 
 export class Rod extends GameObject {
-  dialogID: any;
+  dialogID: number;
 
-  constructor(x: number, y: number, dialogID: any) {
+  constructor(x: number, y: number, dialogID: number) {
     super({ position: new Vector2(x, y) });
     const sprite = new Sprite({
       resource: resources.images.rod,
@@ -20,9 +17,10 @@ export class Rod extends GameObject {
   }
 
   ready() {
-    events.on("HERO_POSITION", this, <Vector2>(pos: Vector2) => {
-      const roundedHeroX = Math.round(pos.x);
-      const roundedHeroY = Math.round(pos.y);
+    events.on("HERO_POSITION", this, (data: IEventData) => {
+      const heroPosition = data.position;
+      const roundedHeroX = Math.round(heroPosition.x);
+      const roundedHeroY = Math.round(heroPosition.y);
       if (roundedHeroX === this.position.x && roundedHeroY === this.position.y) {
         this.onCollideWithHero();
       }

@@ -26,7 +26,7 @@ export function RPG() {
   useEffect(() => {
     void dispatch(switchDialog(false));
 
-    const stepAudio = stepRef.current;
+    const stepAudio = stepRef.current as HTMLAudioElement;
     const { x, y } = levelObjects.hero.position
     const hero = new Hero(gridCells(x), gridCells(y), character, stepAudio);
     
@@ -114,9 +114,7 @@ export function RPG() {
     gameLoop.start();
 
     return () => {    
-      gameLoop.stop()
-      events.clear();
-      hero.resetPosition();
+      gameLoop.stop();
     }
   }, []);
 

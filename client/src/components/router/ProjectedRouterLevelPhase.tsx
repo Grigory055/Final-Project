@@ -6,14 +6,13 @@ export default function ProjectedRouterLevelPhase() {
     
     const { level } = useAppSelector((store) => store.persistedReducer);
 
-    const { id } = useParams()
-    console.log('id', id)
+    const { id } = useParams();
 
     if(id){
-    if(level < id) {
-        return <Navigate to='/' replace />
+        if(level < id) {
+            return <Navigate to='/' replace />
+        }
     }
-    }
-
+    
     return <Outlet />
 }

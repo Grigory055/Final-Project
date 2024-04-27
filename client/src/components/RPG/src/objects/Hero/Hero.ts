@@ -1,11 +1,5 @@
-import {GameObject} from "../../GameObject.js";
-import {Vector2} from "../../Vector2.js";
-import {DOWN, LEFT, RIGHT, UP} from "../../Input.js";
-import { isSpaceFree, moveTowards } from "../../";
-import {Sprite} from "../../Sprite.js";
-import {resources} from "../../Resource.js";
-import {Animations} from "../../Animations.js";
-import {FrameIndexPattern} from "../../FrameIndexPattern.js";
+import {GameObject, Vector2, isSpaceFree, moveTowards, Sprite, resources, Animations, FrameIndexPattern, events} from "../../";
+import {DOWN, LEFT, RIGHT, UP} from "../../Input";
 import {
   PICK_UP_DOWN,
   STAND_DOWN,
@@ -16,24 +10,23 @@ import {
   WALK_LEFT,
   WALK_RIGHT,
   WALK_UP
-} from "./heroAnimations.js";
-import { events } from "../../Events.js";
+} from "./heroAnimations";
 import { store } from "../../../../../redux/store";
+import { IEventData, ImageObject } from "../../../../../types/types";
 
 
 
 export class Hero extends GameObject {
-body:any;
-facingDirection :any;
-destinationPosition :any;
-isWalking :any;
-itemPickupTime :any;
-itemPickupShell :any;
-walls :any;
-stepAudio:any;
-lastX:any;
-lastY:any;
-  constructor(x: any, y: any, character: any, stepAudio: any) {
+body: Sprite;
+facingDirection: string;
+destinationPosition: Vector2;
+isWalking: boolean;
+itemPickupTime: number;
+itemPickupShell: GameObject | null;
+stepAudio: HTMLAudioElement;
+lastX?: number;
+lastY?: number;
+  constructor(x: number, y: number, character: string, stepAudio: HTMLAudioElement) {
     super({
       position: new Vector2(x, y),
     });
@@ -71,17 +64,16 @@ lastY:any;
     this.isWalking = true;
     this.itemPickupTime = 0;
     this.itemPickupShell = null;
-    this.walls = null;
     this.stepAudio = stepAudio;
 
     // React to picking up an item
-    events.on("HERO_PICKS_UP_ITEM", this, (data: any) => {
+    events.on("HERO_PICKS_UP_ITEM", this, (data: IEventData) => {
       this.onPickUpItem(data)
     })
 
   }
 
-  step(delta: any, root: any) {
+  step(delta: number, root: GameObject) {
 
     const state = store.getState();
     this.isWalking = state.RPGSlice.heroIsWalking;
@@ -114,15 +106,15 @@ lastY:any;
     events.emit("HERO_POSITION", {position: this.position})
   }
 
-  tryMove(root: any) {
+  tryMove(root: GameObject) {
     const {input} = root;
 
-    if (!input.direction) {
+    if (!input?.direction) {
 
-      if (this.facingDirection === LEFT) { this.body.animations.play("standLeft")}
-      if (this.facingDirection === RIGHT) { this.body.animations.play("standRight")}
-      if (this.facingDirection === UP) { this.body.animations.play("standUp")}
-      if (this.facingDirection === DOWN) { this.body.animations.play("standDown")}
+      if (this.facingDirection === LEFT) { this.body.animations?.play("standLeft")}
+      if (this.facingDirection === RIGHT) { this.body.animations?.play("standRight")}
+      if (this.facingDirection === UP) { this.body.animations?.play("standUp")}
+      if (this.facingDirection === DOWN) { this.body.animations?.play("standDown")}
 
       return;
     }
@@ -133,19 +125,19 @@ lastY:any;
 
     if (input.direction === DOWN) {
       nextY += gridSize;
-      this.body.animations.play("walkDown");
+      this.body.animations?.play("walkDown");
     }
     if (input.direction === UP) {
       nextY -= gridSize;
-      this.body.animations.play("walkUp");
+      this.body.animations?.play("walkUp");
     }
     if (input.direction === LEFT) {
       nextX -= gridSize;
-      this.body.animations.play("walkLeft");
+      this.body.animations?.play("walkLeft");
     }
     if (input.direction === RIGHT) {
       nextX += gridSize;
-      this.body.animations.play("walkRight");
+      this.body.animations?.play("walkRight");
     }
     this.facingDirection = input.direction ?? this.facingDirection;
 
@@ -161,34 +153,28 @@ lastY:any;
     this.stepAudio.play();
   }
 
-  onPickUpItem({ image, position }: { image: any, position: any }) {
+  onPickUpItem({ image, position }: IEventData) {
     // Make sure we land right on the item
     this.destinationPosition = position.duplicate();
 
     // Start the pickup animation
     this.itemPickupTime = 500; // ms
 
-    this.itemPickupShell = new GameObject({});
+    this.itemPickupShell = new GameObject({ position: new Vector2(0, 0) });
     this.itemPickupShell.addChild(new Sprite({
-      resource: image,
+      resource: image as ImageObject,
       position: new Vector2(0, -18)
     }))
     this.addChild(this.itemPickupShell);
   }
 
-  workOnItemPickup(delta: any) {
+  workOnItemPickup(delta: number) {
     this.itemPickupTime -= delta;
-    this.body.animations.play("pickUpDown")
+    this.body.animations?.play("pickUpDown")
 
     // Remove the item being held overhead
     if (this.itemPickupTime <= 0) {
-      this.itemPickupShell.destroy();
+      this.itemPickupShell?.destroy();
     }
   }
-
-  resetPosition() {
-    this.position = null;
-  }
-
-
 }

@@ -15,8 +15,6 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    console.log('stats', stats);
-
     res.json(stats);
   } catch (error) {
     console.log(error);
@@ -32,7 +30,6 @@ router.put('/', async (req, res) => {
       if (level > stats.level) stats.level = level;
       stats.score = score;
       stats.save();
-      console.log(stats);
       res.json(stats);
     } catch (error) {
       console.log(error);

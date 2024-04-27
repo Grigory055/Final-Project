@@ -1,6 +1,5 @@
 import { IEventData } from "../../../types/types";
-import { events, Vector2 } from "./";
-import { GameObject } from './GameObject'
+import { events, Vector2, GameObject } from "./";
 
 export class Camera extends GameObject {
   constructor() {

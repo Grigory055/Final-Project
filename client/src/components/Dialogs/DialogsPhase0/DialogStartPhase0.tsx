@@ -24,16 +24,12 @@ export function DialogStartPhase0() {
     const [dialog] = useState<IDialog>(dialogStartPhase0)
 
   return (
-    <>
-      <div  className="dialog">
-        <p>
-          <BubbleP0/>
-          {dialog.text}
-        </p>
-        <div>
-        <Button onClick={() => handleCloseClick()} >Далее</Button>
-        </div>
+    <div  className="dialog">
+      <BubbleP0/>
+      <p>{dialog.text}</p>
+      <div>
+      <Button onClick={() => handleCloseClick()} >Далее</Button>
       </div>
-    </>
+    </div>
   )
 }

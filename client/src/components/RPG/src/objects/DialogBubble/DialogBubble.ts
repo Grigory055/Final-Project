@@ -1,11 +1,12 @@
 import {GameObject, Vector2, Sprite, resources, events} from "../../";
 import { store } from "../../../../../redux/store";
 import { setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
+import { IEventData } from "../../../../../types/types";
 
 export class DialogBubble extends GameObject {
-  body: any;
-  dialogID: any;
-  constructor(x: any, y: any, dialogID: any) {
+  body: Sprite;
+  dialogID: number;
+  constructor(x: number, y: number, dialogID: number) {
     super({
       position: new Vector2(x, y),
     });
@@ -22,9 +23,10 @@ export class DialogBubble extends GameObject {
   }
 
   ready() {
-    events.on("HERO_POSITION", this, (pos: any) => {
-      const roundedHeroX = Math.round(pos.x);
-      const roundedHeroY = Math.round(pos.y);
+    events.on("HERO_POSITION", this, (data: IEventData) => {
+      const heroPosition = data.position;
+      const roundedHeroX = Math.round(heroPosition.x);
+      const roundedHeroY = Math.round(heroPosition.y);
       if (
         roundedHeroX === this.position.x &&
         roundedHeroY === this.position.y

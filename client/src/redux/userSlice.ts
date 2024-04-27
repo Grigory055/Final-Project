@@ -9,7 +9,7 @@ export type UserSliceState = {
     topics: ICard[],
     score: number,
     character: string,
-    level: any,
+    level: number,
 }
 
 const initialState: UserSliceState = {
@@ -31,7 +31,6 @@ const userSlice = createSlice({
         },
         setScores(state, { payload } ) {
             state.score += payload;
-            console.log('state.score!!!!!', state.score) // здесь ловит очки реальные
         }
     },
     extraReducers: (builder) => {
@@ -48,7 +47,6 @@ const userSlice = createSlice({
             console.log('payload1', payload);
             
             if (payload) {
-                console.log('payload')
                 state.isLogin = true;
                 state.login = payload.login;
             } if (!payload) {
@@ -72,7 +70,6 @@ const userSlice = createSlice({
                 state.score = payload.score;
                 state.level = payload.level;
             }
-            console.log('123456', payload) // здесь тоже очки реальные
         })
     }
 })

@@ -1,7 +1,4 @@
-import { GameObject } from "../../GameObject";
-import { Sprite } from "../../Sprite";
-import { Vector2 } from "../../Vector2";
-import { events } from "../../Events";
+import { GameObject, Sprite, Vector2, events } from "../../";
 import { IEventData, ImageObject } from "../../../../../types/types";
 
 interface InventoryItem {

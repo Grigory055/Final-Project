@@ -1,10 +1,7 @@
-import { GameObject } from "../../GameObject";
-import { Vector2 } from "../../Vector2";
-import { Sprite } from "../../Sprite";
-import { resources } from "../../Resource";
-import { events } from "../../Events";
+import { GameObject, Vector2, Sprite, resources, events } from "../../";
 import { store } from "../../../../../redux/store";
 import { setDialog, switchDialog, switchHeroWalk } from "../../../../../redux/RPGSlice";
+import { IEventData } from "../../../../../types/types";
 
 interface ExitCoords {
   exitCoordX: number;
@@ -13,13 +10,13 @@ interface ExitCoords {
 
 export class NPC extends GameObject {
   body: Sprite;
-  dialogID: any;
+  dialogID: number;
   exitCoords: ExitCoords;
 
   constructor(
     x: number,
     y: number,
-    dialogID: any,
+    dialogID: number,
     exitCoordX: number,
     exitCoordY: number,
     skin: number
@@ -48,9 +45,10 @@ export class NPC extends GameObject {
   }
 
   ready() {
-    events.on("HERO_POSITION", this, (pos: Vector2) => {
-      const roundedHeroX = Math.round(pos.x);
-      const roundedHeroY = Math.round(pos.y);
+    events.on("HERO_POSITION", this, (data: IEventData) => {
+      const heroPosition = data.position;
+      const roundedHeroX = Math.round(heroPosition.x);
+      const roundedHeroY = Math.round(heroPosition.y);
       const { x, y } = this.position;
 
       if (

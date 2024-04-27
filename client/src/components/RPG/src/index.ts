@@ -1,9 +1,9 @@
+export { GameObject } from './GameObject';
 export { Animations } from './Animations';
 export { Camera } from './Camera';
 export { events } from './Events';
 export { FrameIndexPattern } from './FrameIndexPattern';
 export { GameLoop } from './GameLoop';
-export { GameObject } from './GameObject';
 export { Input } from './Input';
 export { resources } from './Resource';
 export { Sprite } from './Sprite';
