@@ -113,8 +113,8 @@ export function RPG() {
 
     gameLoop.start();
 
-    return () => {    
-      gameLoop.stop();
+    return () => {
+      events.clear();
     }
   }, []);
 

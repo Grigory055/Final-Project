@@ -9,7 +9,7 @@ export default function ProjectedRouterLevelPhase() {
     const { id } = useParams();
 
     if(id){
-        if(level < id) {
+        if(level < Number(id)) {
             return <Navigate to='/' replace />
         }
     }
